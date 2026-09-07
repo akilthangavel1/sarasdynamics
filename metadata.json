@@ -1,0 +1,6 @@
+{
+  "name": "Hero Section",
+  "description": "A bold minimalist application featuring a responsive navigation bar, hero section with visceral digital storytelling, brand about showcase, hover-reveal cards, an expandable gallery, scrolling testimonials, latest blog cards, and a comprehensive site footer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
