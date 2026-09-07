@@ -42,7 +42,7 @@ const navigation = {
           items: [
             { name: "Design System", href: "#" },
             { name: "Components", href: "#" },
-            { name: "Blogs", href: "#blog-heading" },
+            { name: "Contact & FAQ", href: "#contact" },
           ],
         },
         {

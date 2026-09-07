@@ -1,4 +1,4 @@
-import { Book, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Mail, Sunset, Trees, Zap } from "lucide-react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 
 const demoData = {
@@ -18,10 +18,10 @@ const demoData = {
       url: "#",
       items: [
         {
-          title: "Blog",
-          description: "The latest industry news, updates, and info",
-          icon: <Book className="size-5 shrink-0" />,
-          url: "#blog-heading",
+          title: "Contact Us",
+          description: "Reach out to our team or explore our help center",
+          icon: <Mail className="size-5 shrink-0" />,
+          url: "#contact",
         },
         {
           title: "Company",
@@ -33,7 +33,7 @@ const demoData = {
           title: "Careers",
           description: "Browse job listing and discover our workspace",
           icon: <Sunset className="size-5 shrink-0" />,
-          url: "#expandable-gallery-section",
+          url: "#interactive-links-section",
         },
         {
           title: "Support",
@@ -49,16 +49,16 @@ const demoData = {
       url: "#",
       items: [
         {
-          title: "Help Center",
+          title: "Help Center & FAQs",
           description: "Get all the answers you need right here",
           icon: <Zap className="size-5 shrink-0" />,
-          url: "#",
+          url: "#contact",
         },
         {
           title: "Contact Us",
           description: "We are here to help you with any questions you have",
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: "#",
+          icon: <Mail className="size-5 shrink-0" />,
+          url: "#contact",
         },
         {
           title: "Status",
@@ -79,13 +79,13 @@ const demoData = {
       url: "#",
     },
     {
-      title: "Blog",
-      url: "#blog-heading",
+      title: "Contact Us",
+      url: "#contact",
     },
   ],
   mobileExtraLinks: [
     { name: "Press", url: "#" },
-    { name: "Contact", url: "#" },
+    { name: "Contact Us", url: "#contact" },
     { name: "Imprint", url: "#" },
     { name: "Sitemap", url: "#" },
   ],

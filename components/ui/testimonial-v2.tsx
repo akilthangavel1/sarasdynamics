@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from "framer-motion";
-import { Sun, Moon } from 'lucide-react';
+import React from 'react';
+import { motion } from "motion/react";
 
 // --- Types ---
 export interface Testimonial {
@@ -112,10 +111,10 @@ export const TestimonialsColumn = (props: {
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.05)",
                     transition: { type: "spring", stiffness: 400, damping: 17 }
                   }}
-                  className="p-8 sm:p-10 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-lg shadow-black/5 max-w-xs w-full bg-white dark:bg-neutral-900 transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30" 
+                  className="p-8 sm:p-10 rounded-3xl border border-zinc-200 shadow-md shadow-zinc-900/[0.03] max-w-xs w-full bg-white transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-zinc-400" 
                 >
                   <blockquote className="m-0 p-0">
-                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed font-normal m-0 transition-colors duration-300 text-sm sm:text-base">
+                    <p className="text-zinc-600 leading-relaxed font-normal m-0 transition-colors duration-300 text-sm sm:text-base">
                       {text}
                     </p>
                     <footer className="flex items-center gap-3 mt-6">
@@ -124,14 +123,14 @@ export const TestimonialsColumn = (props: {
                         height={40}
                         src={image}
                         alt={`Avatar of ${name}`}
-                        className="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800 group-hover:ring-primary/30 transition-all duration-300 ease-in-out"
+                        className="h-10 w-10 rounded-full object-cover ring-2 ring-zinc-100 group-hover:ring-zinc-300 transition-all duration-300 ease-in-out"
                         loading="lazy"
                       />
                       <div className="flex flex-col">
-                        <cite className="font-semibold not-italic tracking-tight leading-5 text-neutral-900 dark:text-white transition-colors duration-300 text-sm">
+                        <cite className="font-semibold not-italic tracking-tight leading-5 text-zinc-900 transition-colors duration-300 text-sm">
                           {name}
                         </cite>
-                        <span className="text-xs sm:text-sm leading-5 tracking-tight text-neutral-500 dark:text-neutral-500 mt-0.5 transition-colors duration-300">
+                        <span className="text-xs sm:text-sm leading-5 tracking-tight text-zinc-500 mt-0.5 transition-colors duration-300">
                           {role}
                         </span>
                       </div>
@@ -152,7 +151,7 @@ export const TestimonialsSection = () => {
     <section 
       id="testimonials-v2-section"
       aria-labelledby="testimonials-heading"
-      className="bg-white dark:bg-neutral-950 py-24 relative overflow-hidden border-t border-zinc-200/80 transition-colors duration-300 w-full"
+      className="bg-white py-24 relative overflow-hidden border-t border-zinc-200/80 transition-colors duration-300 w-full select-none"
     >
       <motion.div 
         initial={{ opacity: 0, y: 50, rotate: -2 }}
@@ -167,15 +166,15 @@ export const TestimonialsSection = () => {
       >
         <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16">
           <div className="flex justify-center">
-            <div className="border border-neutral-300 dark:border-neutral-700 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-neutral-600 dark:text-neutral-400 bg-neutral-100/50 dark:bg-neutral-800/50 transition-colors">
+            <div className="border border-zinc-300 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-zinc-700 bg-zinc-100/70 transition-colors">
               Testimonials
             </div>
           </div>
 
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-neutral-900 dark:text-white transition-colors">
+          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-zinc-900 transition-colors">
             What our users say
           </h2>
-          <p className="text-center mt-4 text-neutral-500 dark:text-neutral-400 text-base sm:text-lg leading-relaxed max-w-sm transition-colors">
+          <p className="text-center mt-4 text-zinc-500 text-base sm:text-lg leading-relaxed max-w-sm transition-colors">
             Discover how thousands of teams streamline their operations with our platform.
           </p>
         </div>
@@ -196,18 +195,8 @@ export const TestimonialsSection = () => {
 
 // --- Main Component ---
 export default function TestimonialsApp() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
-
   return (
-    <div className="w-full bg-white dark:bg-neutral-950 transition-colors duration-300 flex flex-col justify-center relative">
+    <div className="w-full bg-white flex flex-col justify-center relative">
       <TestimonialsSection />
     </div>
   );

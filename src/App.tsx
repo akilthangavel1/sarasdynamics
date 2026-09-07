@@ -1,13 +1,46 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Navbar1Demo from '@/components/ui/navbar-demo';
 import AboutSection from './components/AboutSection';
-import HoverRevealCardsDemo from '@/components/ui/hover-cards-demo';
+import InteractiveHoverLinks from '@/components/ui/interactive-hover-links';
 import ExpandableGallery from '@/components/ui/expandable-gallery';
 import { TestimonialsSection } from '@/components/ui/testimonial-v2';
-import BlogCards from '@/components/ui/blog-cards';
 import { SiteFooter } from '@/components/ui/site-footer';
+import ContactPage from './components/ContactPage';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'contact'>('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        setCurrentPage('contact');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#home' || hash === '' || hash === '#') {
+        setCurrentPage('home');
+      }
+    };
+
+    // Check initial hash
+    if (window.location.hash === '#contact') {
+      setCurrentPage('contact');
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateTo = (page: 'home' | 'contact') => {
+    setCurrentPage(page);
+    window.location.hash = page === 'contact' ? '#contact' : '#';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (currentPage === 'contact') {
+    return <ContactPage onBackToHome={() => navigateTo('home')} />;
+  }
+
   return (
     <div id="page-wrapper" className="w-full min-h-screen bg-white flex flex-col">
       {/* Sticky Responsive Header Navigation */}
@@ -77,17 +110,14 @@ export default function App() {
       {/* About Section (White Theme) */}
       <AboutSection />
 
-      {/* Hover Reveal Cards Section */}
-      <HoverRevealCardsDemo />
+      {/* Interactive Hover Links Section */}
+      <InteractiveHoverLinks />
 
       {/* Expandable Gallery Section */}
       <ExpandableGallery />
 
-      {/* Testimonials Section (Above Latest Blogs) */}
+      {/* Testimonials Section */}
       <TestimonialsSection />
-
-      {/* Latest Blog Cards Section */}
-      <BlogCards />
 
       {/* Site Footer */}
       <SiteFooter />
