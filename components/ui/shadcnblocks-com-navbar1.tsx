@@ -245,9 +245,9 @@ const renderMenuItem = (item: MenuItem) => {
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul className="w-80 p-3 bg-white rounded-lg shadow-xl border border-zinc-200">
-            <NavigationMenuLink>
-              {item.items.map((subItem) => (
-                <li key={subItem.title}>
+            {item.items.map((subItem) => (
+              <li key={subItem.title}>
+                <NavigationMenuLink asChild>
                   <a
                     className="flex select-none gap-3.5 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-zinc-100 text-zinc-900"
                     href={subItem.url}
@@ -264,9 +264,9 @@ const renderMenuItem = (item: MenuItem) => {
                       )}
                     </div>
                   </a>
-                </li>
-              ))}
-            </NavigationMenuLink>
+                </NavigationMenuLink>
+              </li>
+            ))}
           </ul>
         </NavigationMenuContent>
       </NavigationMenuItem>
@@ -274,13 +274,16 @@ const renderMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a
-      key={item.title}
-      className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-900"
-      href={item.url}
-    >
-      {item.title}
-    </a>
+    <NavigationMenuItem key={item.title}>
+      <NavigationMenuLink asChild>
+        <a
+          className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-900"
+          href={item.url}
+        >
+          {item.title}
+        </a>
+      </NavigationMenuLink>
+    </NavigationMenuItem>
   );
 };
 

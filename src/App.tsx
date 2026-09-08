@@ -7,15 +7,19 @@ import ExpandableGallery from '@/components/ui/expandable-gallery';
 import { TestimonialsSection } from '@/components/ui/testimonial-v2';
 import { SiteFooter } from '@/components/ui/site-footer';
 import ContactPage from './components/ContactPage';
+import AboutPage from './components/AboutPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about'>('home');
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash === '#contact') {
         setCurrentPage('contact');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#about') {
+        setCurrentPage('about');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#home' || hash === '' || hash === '#') {
         setCurrentPage('home');
@@ -25,20 +29,26 @@ export default function App() {
     // Check initial hash
     if (window.location.hash === '#contact') {
       setCurrentPage('contact');
+    } else if (window.location.hash === '#about') {
+      setCurrentPage('about');
     }
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'contact') => {
+  const navigateTo = (page: 'home' | 'contact' | 'about') => {
     setCurrentPage(page);
-    window.location.hash = page === 'contact' ? '#contact' : '#';
+    window.location.hash = page === 'contact' ? '#contact' : page === 'about' ? '#about' : '#';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   if (currentPage === 'contact') {
     return <ContactPage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'about') {
+    return <AboutPage onBackToHome={() => navigateTo('home')} />;
   }
 
   return (

@@ -1,4 +1,4 @@
-import { Book, Mail, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Building2, Mail, Sparkles, Sunset, Trees, Users, Zap } from "lucide-react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 
 const demoData = {
@@ -18,59 +18,58 @@ const demoData = {
       url: "#",
       items: [
         {
-          title: "Contact Us",
-          description: "Reach out to our team or explore our help center",
-          icon: <Mail className="size-5 shrink-0" />,
-          url: "#contact",
-        },
-        {
-          title: "Company",
-          description: "Our mission is to innovate and empower the world",
-          icon: <Trees className="size-5 shrink-0" />,
-          url: "#about-section",
-        },
-        {
-          title: "Careers",
-          description: "Browse job listing and discover our workspace",
-          icon: <Sunset className="size-5 shrink-0" />,
+          title: "Design Portfolio",
+          description: "Explore our featured digital work and showcases",
+          icon: <Sparkles className="size-5 shrink-0" />,
           url: "#interactive-links-section",
         },
         {
-          title: "Support",
-          description:
-            "Get in touch with our support team or visit our community forums",
-          icon: <Zap className="size-5 shrink-0" />,
+          title: "Work Gallery",
+          description: "Browse interactive case studies and creative builds",
+          icon: <Trees className="size-5 shrink-0" />,
+          url: "#gallery-section",
+        },
+        {
+          title: "Client Testimonials",
+          description: "Discover what founders and partners say about our work",
+          icon: <Sunset className="size-5 shrink-0" />,
           url: "#testimonials-v2-section",
+        },
+        {
+          title: "Get in Touch",
+          description: "Contact our product team for inquiries and project quotes",
+          icon: <Mail className="size-5 shrink-0" />,
+          url: "#contact",
         },
       ],
     },
     {
-      title: "Resources",
-      url: "#",
+      title: "Company",
+      url: "#about",
       items: [
         {
+          title: "About Us",
+          description: "Learn about our philosophy, story, and digital design craft",
+          icon: <Users className="size-5 shrink-0" />,
+          url: "#about",
+        },
+        {
+          title: "Careers",
+          description: "Discover opportunities to join our team of designers and engineers",
+          icon: <Sunset className="size-5 shrink-0" />,
+          url: "#interactive-links-section",
+        },
+        {
           title: "Help Center & FAQs",
-          description: "Get all the answers you need right here",
+          description: "Get quick answers to common questions about our services",
           icon: <Zap className="size-5 shrink-0" />,
           url: "#contact",
         },
         {
           title: "Contact Us",
-          description: "We are here to help you with any questions you have",
+          description: "Speak directly with our team or request assistance",
           icon: <Mail className="size-5 shrink-0" />,
           url: "#contact",
-        },
-        {
-          title: "Status",
-          description: "Check the current status of our services and APIs",
-          icon: <Trees className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Terms of Service",
-          description: "Our terms and conditions for using our services",
-          icon: <Book className="size-5 shrink-0" />,
-          url: "#",
         },
       ],
     },
@@ -84,9 +83,9 @@ const demoData = {
     },
   ],
   mobileExtraLinks: [
-    { name: "Press", url: "#" },
+    { name: "About Us", url: "#about" },
     { name: "Contact Us", url: "#contact" },
-    { name: "Imprint", url: "#" },
+    { name: "Careers", url: "#interactive-links-section" },
     { name: "Sitemap", url: "#" },
   ],
   auth: {

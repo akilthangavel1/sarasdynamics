@@ -13,7 +13,7 @@ const navigation = {
           id: "about",
           name: "About",
           items: [
-            { name: "About Story", href: "#about-section" },
+            { name: "About Story", href: "#about" },
             { name: "Brand Works", href: "#gallery-preview" },
             { name: "Interactive Showcase", href: "#expandable-gallery-section" },
           ],
