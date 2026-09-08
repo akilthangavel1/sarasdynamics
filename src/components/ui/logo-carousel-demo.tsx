@@ -1,0 +1,18 @@
+export {
+  LogoCarouselDemo,
+  allLogos,
+  default,
+  AppleIcon,
+  PierreIcon,
+  BMWIcon,
+  VercelIcon,
+  StripeIcon,
+  TypeScriptIcon,
+  ClaudeAIIcon,
+  SupabaseIcon,
+  OpenAIIconBlack,
+  TailwindCSSIcon,
+  NextjsIcon,
+  ReactIcon,
+  ViteIcon,
+} from "@/components/ui/logo-carousel-demo";

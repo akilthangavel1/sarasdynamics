@@ -1,60 +1,6 @@
 import { motion } from 'motion/react';
-import {
-  Sun,
-  Shield,
-  Waves,
-  Zap,
-  Sparkles,
-  CircleDot,
-  Layers,
-  Orbit,
-} from 'lucide-react';
-
-const brands = [
-  {
-    name: 'Logoipsum',
-    icon: (
-      <div className="flex items-center gap-1">
-        <div className="w-5 h-5 rounded-full border-2 border-current flex items-center justify-center">
-          <div className="w-2 h-2 rounded-full bg-current" />
-        </div>
-        <div className="w-3.5 h-3.5 rounded-full border-2 border-current -ml-1.5" />
-      </div>
-    ),
-  },
-  {
-    name: 'Logoipsum',
-    icon: <CircleDot className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Sun className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Shield className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Orbit className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Waves className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Zap className="w-5 h-5 fill-current" strokeWidth={1} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Sparkles className="w-5 h-5" strokeWidth={2.2} />,
-  },
-  {
-    name: 'Logoipsum',
-    icon: <Layers className="w-5 h-5" strokeWidth={2.2} />,
-  },
-];
+import { LogoCarousel } from '@/components/ui/logo-carousel';
+import { allLogos } from '@/components/ui/logo-carousel-demo';
 
 export default function AboutSection() {
   return (
@@ -95,26 +41,13 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Brand Logos Bar */}
+        {/* Animated Technology Logos Carousel */}
         <div
           id="about-brand-logos"
           className="pt-10 md:pt-14 border-t border-zinc-200/90 w-full"
         >
-          <div className="relative w-full overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-2">
-            <div className="flex items-center justify-between min-w-[850px] gap-8 lg:gap-12 text-zinc-800">
-              {brands.map((brand, idx) => (
-                <div
-                  key={idx}
-                  id={`brand-logo-${idx}`}
-                  className="flex items-center gap-2.5 opacity-75 hover:opacity-100 transition-opacity duration-200 cursor-pointer shrink-0"
-                >
-                  <div className="text-zinc-900">{brand.icon}</div>
-                  <span className="text-sm md:text-base font-bold tracking-tight text-zinc-900">
-                    {brand.name}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div className="w-full flex items-center justify-center">
+            <LogoCarousel columnCount={7} logos={allLogos} />
           </div>
         </div>
       </div>
