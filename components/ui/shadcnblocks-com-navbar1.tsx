@@ -239,22 +239,24 @@ const Navbar1 = ({
 const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
-      <NavigationMenuItem key={item.title} className="text-zinc-700">
+      <NavigationMenuItem key={item.title} className="relative text-zinc-700">
         <NavigationMenuTrigger className="text-zinc-700 hover:text-zinc-900 font-medium text-sm">
           {item.title}
         </NavigationMenuTrigger>
-        <NavigationMenuContent>
-          <ul className="w-80 p-3 bg-white rounded-lg shadow-xl border border-zinc-200">
+        <NavigationMenuContent className="before:absolute before:-top-3 before:left-0 before:right-0 before:h-3">
+          <ul className="w-80 p-2.5 bg-white rounded-xl shadow-xl border border-zinc-200/90 divide-y divide-zinc-100">
             {item.items.map((subItem) => (
               <li key={subItem.title}>
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex select-none gap-3.5 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-zinc-100 text-zinc-900"
+                    className="flex select-none gap-3.5 rounded-lg p-2.5 leading-none no-underline outline-none transition-colors hover:bg-zinc-100/80 text-zinc-900 group"
                     href={subItem.url}
                   >
-                    {subItem.icon}
+                    <div className="text-zinc-500 group-hover:text-zinc-900 transition-colors mt-0.5">
+                      {subItem.icon}
+                    </div>
                     <div>
-                      <div className="text-sm font-semibold text-zinc-900">
+                      <div className="text-sm font-semibold text-zinc-900 group-hover:text-zinc-950">
                         {subItem.title}
                       </div>
                       {subItem.description && (

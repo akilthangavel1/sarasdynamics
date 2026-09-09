@@ -8,9 +8,10 @@ import { TestimonialsSection } from '@/components/ui/testimonial-v2';
 import { SiteFooter } from '@/components/ui/site-footer';
 import ContactPage from './components/ContactPage';
 import AboutPage from './components/AboutPage';
+import RecentHirePage from './components/RecentHirePage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires'>('home');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -20,6 +21,9 @@ export default function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#about') {
         setCurrentPage('about');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#recent-hires' || hash === '#admin-recent-hires' || hash === '#recent-hire' || hash === '#admin') {
+        setCurrentPage('recent-hires');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#home' || hash === '' || hash === '#') {
         setCurrentPage('home');
@@ -31,15 +35,29 @@ export default function App() {
       setCurrentPage('contact');
     } else if (window.location.hash === '#about') {
       setCurrentPage('about');
+    } else if (
+      window.location.hash === '#recent-hires' ||
+      window.location.hash === '#admin-recent-hires' ||
+      window.location.hash === '#recent-hire' ||
+      window.location.hash === '#admin'
+    ) {
+      setCurrentPage('recent-hires');
     }
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'contact' | 'about') => {
+  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires') => {
     setCurrentPage(page);
-    window.location.hash = page === 'contact' ? '#contact' : page === 'about' ? '#about' : '#';
+    window.location.hash =
+      page === 'contact'
+        ? '#contact'
+        : page === 'about'
+        ? '#about'
+        : page === 'recent-hires'
+        ? '#recent-hires'
+        : '#';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -49,6 +67,10 @@ export default function App() {
 
   if (currentPage === 'about') {
     return <AboutPage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'recent-hires') {
+    return <RecentHirePage onBackToHome={() => navigateTo('home')} />;
   }
 
   return (

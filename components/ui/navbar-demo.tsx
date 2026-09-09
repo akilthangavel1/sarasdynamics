@@ -78,12 +78,25 @@ const demoData = {
       url: "#",
     },
     {
+      title: "Admin",
+      url: "#recent-hires",
+      items: [
+        {
+          title: "Recent Hire",
+          description: "View and manage recent employee hires and staff records",
+          icon: <Users className="size-5 shrink-0" />,
+          url: "#recent-hires",
+        },
+      ],
+    },
+    {
       title: "Contact Us",
       url: "#contact",
     },
   ],
   mobileExtraLinks: [
     { name: "About Us", url: "#about" },
+    { name: "Recent Hire", url: "#recent-hires" },
     { name: "Contact Us", url: "#contact" },
     { name: "Careers", url: "#interactive-links-section" },
     { name: "Sitemap", url: "#" },

@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/ui/faqsection";
 import { defaultFaqsLeft, defaultFaqsRight } from "@/components/ui/faq-demo";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { CTAWithVerticalMarquee } from "@/components/ui/cta-with-text-marquee";
 
 interface ContactPageProps {
   onBackToHome?: () => void;
@@ -36,21 +37,31 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
     setIsSubmitted(false);
   };
 
+  const scrollToContactForm = () => {
+    document.getElementById("contact-form-section")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div id="contact-page-wrapper" className="w-full min-h-screen bg-white text-zinc-900 flex flex-col">
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Hero Section */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+      {/* Hero Section with Vertical Text Marquee */}
+      <CTAWithVerticalMarquee
+        onPrimaryCtaClick={scrollToContactForm}
+        onSecondaryCtaClick={scrollToContactForm}
+      />
+
+      {/* Contact Form and Details Section */}
+      <main id="contact-form-section" className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4">
             <Sparkles className="w-3.5 h-3.5 text-red-600" />
             <span>We are here to help</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-zinc-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-4">
             Get in Touch with Us
-          </h1>
+          </h2>
           <p className="text-base sm:text-lg text-zinc-500 leading-relaxed">
             Have questions about our designs, licensing, or custom agency collaborations?
             Reach out directly or explore answers to common questions below.
