@@ -20,6 +20,7 @@ export interface MapProps {
   animationDuration?: number;
   loop?: boolean;
   theme?: "light" | "dark";
+  className?: string;
 }
 
 export function WorldMap({
@@ -30,6 +31,7 @@ export function WorldMap({
   animationDuration = 2,
   loop = false,
   theme = "light",
+  className,
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
@@ -86,7 +88,7 @@ export function WorldMap({
   }, [dots]);
 
   return (
-    <div className="w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2/1] bg-white rounded-2xl relative font-sans overflow-hidden select-none">
+    <div className={`w-full aspect-[2.3/1] sm:aspect-[2.6/1] md:aspect-[2.9/1] max-h-[300px] sm:max-h-[350px] md:max-h-[380px] bg-white rounded-2xl relative font-sans overflow-hidden select-none flex items-center justify-center ${className || ""}`}>
       {svgMap && (
         <img
           src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
