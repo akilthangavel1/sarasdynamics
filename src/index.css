@@ -133,3 +133,12 @@
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out forwards;
 }
+
+@keyframes cta69-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

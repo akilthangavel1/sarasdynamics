@@ -6,7 +6,7 @@ import { FAQSection } from "@/components/ui/faqsection";
 import { defaultFaqsLeft, defaultFaqsRight } from "@/components/ui/faq-demo";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { CTAWithVerticalMarquee } from "@/components/ui/cta-with-text-marquee";
+import { Cta69 } from "@/components/ui/cta69";
 
 interface ContactPageProps {
   onBackToHome?: () => void;
@@ -46,10 +46,20 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Hero Section with Vertical Text Marquee */}
-      <CTAWithVerticalMarquee
-        onPrimaryCtaClick={scrollToContactForm}
-        onSecondaryCtaClick={scrollToContactForm}
+      {/* Hero Section: Cta69 */}
+      <Cta69
+        badge={{ label: "Last word" }}
+        heading="Let's make something worth keeping."
+        button={{
+          label: "Start the conversation",
+          href: "#contact-form-section",
+        }}
+        labels={{
+          marqueePhrase: "Worth keeping",
+          note: "No decks, no detours: one room, your problem, and a studio that ships.",
+          footnote: "Booking two new partners for the autumn cycle.",
+        }}
+        onButtonClick={scrollToContactForm}
       />
 
       {/* Contact Form and Details Section */}

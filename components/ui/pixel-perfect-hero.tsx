@@ -346,7 +346,7 @@ export function PixelHero({
   }, []);
 
   return (
-    <div className={cn("relative w-full min-h-[90vh] md:min-h-[100dvh] bg-background flex flex-col justify-between md:justify-center md:gap-6 py-8 md:py-0 px-2 sm:px-6 overflow-hidden select-none isolate", className)}>
+    <div className={cn("relative w-full min-h-[62vh] md:min-h-[70vh] lg:min-h-[74vh] bg-background flex flex-col justify-center items-center py-14 md:py-20 px-4 sm:px-6 overflow-hidden select-none isolate", className)}>
       <style>{`
         @keyframes marquee {
           0% { transform: translateX(0%); }
@@ -386,38 +386,26 @@ export function PixelHero({
       </div>
 
       {/* Top Container: Tahoe Glass Header */}
-      <div className="flex flex-col items-center justify-center text-center order-1 md:order-1 mt-20 sm:mt-8 md:mt-0 pointer-events-none w-full z-10">
-        <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-1.5 sm:gap-4 lg:gap-6 px-1 w-full flex-wrap text-[2.8rem] xs:text-[3.2rem] sm:text-6xl md:text-8xl lg:text-9xl leading-none">
+      <div className="flex flex-col items-center justify-center text-center mt-3 sm:mt-2 pointer-events-none w-full z-10">
+        <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-2 sm:gap-4 lg:gap-5 px-1 w-full flex-wrap text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-none">
           <span className="font-serif italic font-medium">{word1}</span>
           <span className="font-sans font-extrabold tracking-tighter">{word2}</span>
         </h1>
       </div>
 
-      {/* Center Container: Description & Mobile Vector Marquee */}
-      <div className="flex flex-col items-center justify-center text-center my-auto md:my-0 order-2 md:order-2 px-1 w-full pointer-events-none z-10">
-        <p className="text-sm sm:text-lg md:text-xl font-light text-foreground/85 max-w-[95%] sm:max-w-md md:max-w-xl px-1 leading-relaxed">
+      {/* Center Container: Description */}
+      <div className="flex flex-col items-center justify-center text-center px-1 w-full pointer-events-none z-10 mt-4 md:mt-5">
+        <p className="text-sm sm:text-base md:text-lg font-light text-foreground/85 max-w-[95%] sm:max-w-md md:max-w-xl px-1 leading-relaxed">
           {description}
         </p>
-
-        <div className="block md:hidden w-full mt-14 pointer-events-auto">
-          <div className="text-[11px] uppercase tracking-wider text-muted-foreground/80 font-medium mb-5">
-            Trusted by industry leaders
-          </div>
-          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
-            <div className="flex w-max gap-12 py-1 animate-marquee">
-              <div className="flex gap-12 items-center">{BRAND_LOGOS.map((Logo, i) => <Logo key={i} />)}</div>
-              <div className="flex gap-12 items-center" aria-hidden="true">{BRAND_LOGOS.map((Logo, i) => <Logo key={`c-${i}`} />)}</div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Container: CTA Row */}
       <div
-        className={cn("pointer-events-auto flex flex-row items-center justify-center gap-3 mt-4 md:mt-10 mb-4 md:mb-0 order-4 md:order-3 transition-all duration-1000 transform px-1 z-10", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
+        className={cn("pointer-events-auto flex flex-row items-center justify-center gap-3 mt-6 md:mt-8 transition-all duration-1000 transform px-1 z-10", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
         style={{ transitionDelay: "450ms" }}
       >
-        <button onClick={onPrimaryClick} className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-primary/90 to-primary px-4 md:px-8 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+        <button onClick={onPrimaryClick} className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-primary/90 to-primary px-5 md:px-8 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
           <span className="inline md:hidden">{primaryCtaMobile}</span>
           <span className="hidden md:inline">{primaryCta}</span>
           <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
@@ -427,7 +415,7 @@ export function PixelHero({
           target={githubUrl?.startsWith("http") ? "_blank" : undefined}
           rel={githubUrl?.startsWith("http") ? "noopener noreferrer" : undefined}
           onClick={onSecondaryClick}
-          className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-card/80 to-card px-4 md:px-8 text-xs md:text-sm font-semibold text-card-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.05),0_12px_24px_rgba(0,0,0,0.05)] ring-1 ring-border/50 backdrop-blur-md transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-card/80 to-card px-5 md:px-8 text-xs md:text-sm font-semibold text-card-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.05),0_12px_24px_rgba(0,0,0,0.05)] ring-1 ring-border/50 backdrop-blur-md transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
         >
           <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
           <span className="inline md:hidden">{secondaryCtaMobile}</span>
@@ -435,18 +423,18 @@ export function PixelHero({
         </a>
       </div>
 
-      {/* Desktop-only Marquee Block */}
+      {/* Marquee Block (Responsive for all screen sizes) */}
       <div
-        className={cn("hidden md:flex absolute bottom-8 left-0 right-0 w-full z-10 pointer-events-auto flex-col items-center justify-center gap-4 transition-all duration-1000 transform order-3 md:order-4", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
+        className={cn("w-full max-w-5xl z-10 pointer-events-auto flex flex-col items-center justify-center gap-3 mt-10 md:mt-14 transition-all duration-1000 transform", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
         style={{ transitionDelay: "600ms" }}
       >
-        <span className="text-xs uppercase tracking-wider text-muted-foreground/80 font-medium select-none">
+        <span className="text-[11px] md:text-xs uppercase tracking-wider text-muted-foreground/80 font-medium select-none">
           Trusted by industry leaders
         </span>
-        <div className="relative w-full max-w-5xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
-          <div className="flex w-max gap-16 py-3 animate-marquee">
-            <div className="flex gap-16 items-center">{BRAND_LOGOS.map((Logo, i) => <Logo key={i} />)}</div>
-            <div className="flex gap-16 items-center" aria-hidden="true">{BRAND_LOGOS.map((Logo, i) => <Logo key={`c-${i}`} />)}</div>
+        <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
+          <div className="flex w-max gap-10 md:gap-16 py-2 animate-marquee">
+            <div className="flex gap-10 md:gap-16 items-center">{BRAND_LOGOS.map((Logo, i) => <Logo key={i} />)}</div>
+            <div className="flex gap-10 md:gap-16 items-center" aria-hidden="true">{BRAND_LOGOS.map((Logo, i) => <Logo key={`c-${i}`} />)}</div>
           </div>
         </div>
       </div>

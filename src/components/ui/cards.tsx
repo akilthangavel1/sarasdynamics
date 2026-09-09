@@ -1,1 +1,2 @@
-export { default, type CardItem, type HoverRevealCardsProps } from "@/components/ui/cards";
+export * from "../../../components/ui/cards";
+export { default } from "../../../components/ui/cards";

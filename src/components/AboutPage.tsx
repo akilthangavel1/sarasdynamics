@@ -15,7 +15,7 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
       <Navbar1Demo />
 
       {/* Replaced Hero Section with Pixel-Perfect Canvas Physics Hero */}
-      <main className="w-full flex-1">
+      <main className="w-full">
         <PixelHero
           word1="Silent"
           word2="Precision."

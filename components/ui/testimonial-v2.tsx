@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "motion/react";
+import { Marquee } from "@/components/ui/cards";
 
 // --- Types ---
 export interface Testimonial {
@@ -154,39 +155,33 @@ export const TestimonialsSection = () => {
       className="bg-white py-24 relative overflow-hidden border-t border-zinc-200/80 transition-colors duration-300 w-full select-none"
     >
       <motion.div 
-        initial={{ opacity: 0, y: 50, rotate: -2 }}
-        whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ 
-          duration: 1.2, 
+          duration: 0.8, 
           ease: [0.16, 1, 0.3, 1],
-          opacity: { duration: 0.8 }
         }}
-        className="container px-4 z-10 mx-auto"
+        className="w-full z-10 mx-auto"
       >
-        <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16">
+        <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-14 px-4 text-center">
           <div className="flex justify-center">
             <div className="border border-zinc-300 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-zinc-700 bg-zinc-100/70 transition-colors">
               Testimonials
             </div>
           </div>
 
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-6 text-center text-zinc-900 transition-colors">
+          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-5 text-center text-zinc-900 transition-colors">
             What our users say
           </h2>
-          <p className="text-center mt-4 text-zinc-500 text-base sm:text-lg leading-relaxed max-w-sm transition-colors">
-            Discover how thousands of teams streamline their operations with our platform.
+          <p className="text-center mt-3 text-zinc-500 text-base sm:text-lg leading-relaxed max-w-md transition-colors">
+            Discover how founders and high-performing teams streamline their design and product operations.
           </p>
         </div>
 
-        <div 
-          className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden"
-          role="region"
-          aria-label="Scrolling Testimonials"
-        >
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+        {/* Dual Horizontal Infinite Marquee with Verified Badges & Cards */}
+        <div className="w-full overflow-hidden">
+          <Marquee />
         </div>
       </motion.div>
     </section>

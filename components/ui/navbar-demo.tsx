@@ -1,4 +1,4 @@
-import { Book, Building2, Mail, Sparkles, Sunset, Trees, Users, Zap } from "lucide-react";
+import { Book, Building2, Globe, Mail, Smartphone, Sparkles, Sunset, Trees, Users, Zap } from "lucide-react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 
 const demoData = {
@@ -14,32 +14,20 @@ const demoData = {
       url: "#",
     },
     {
-      title: "Products",
-      url: "#",
+      title: "Services",
+      url: "#services",
       items: [
         {
-          title: "Design Portfolio",
-          description: "Explore our featured digital work and showcases",
-          icon: <Sparkles className="size-5 shrink-0" />,
+          title: "Web",
+          description: "Custom web applications, responsive websites, and digital platforms",
+          icon: <Globe className="size-5 shrink-0 text-zinc-700" />,
           url: "#interactive-links-section",
         },
         {
-          title: "Work Gallery",
-          description: "Browse interactive case studies and creative builds",
-          icon: <Trees className="size-5 shrink-0" />,
-          url: "#gallery-section",
-        },
-        {
-          title: "Client Testimonials",
-          description: "Discover what founders and partners say about our work",
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: "#testimonials-v2-section",
-        },
-        {
-          title: "Get in Touch",
-          description: "Contact our product team for inquiries and project quotes",
-          icon: <Mail className="size-5 shrink-0" />,
-          url: "#contact",
+          title: "Mobile",
+          description: "Native iOS & Android mobile applications built for speed and scale",
+          icon: <Smartphone className="size-5 shrink-0 text-zinc-700" />,
+          url: "#interactive-links-section",
         },
       ],
     },
@@ -72,10 +60,6 @@ const demoData = {
           url: "#contact",
         },
       ],
-    },
-    {
-      title: "Pricing",
-      url: "#",
     },
     {
       title: "Admin",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Globe, Menu, Smartphone, Sunset, Trees, Zap } from "lucide-react";
 
 import {
   Accordion,
@@ -66,32 +66,19 @@ const Navbar1 = ({
   menu = [
     { title: "Home", url: "#" },
     {
-      title: "Products",
+      title: "Services",
       url: "#",
       items: [
         {
-          title: "Blog",
-          description: "The latest industry news, updates, and info",
-          icon: <Book className="size-5 shrink-0 text-zinc-700" />,
+          title: "Web",
+          description: "Modern responsive websites and web applications",
+          icon: <Globe className="size-5 shrink-0 text-zinc-700" />,
           url: "#",
         },
         {
-          title: "Company",
-          description: "Our mission is to innovate and empower the world",
-          icon: <Trees className="size-5 shrink-0 text-zinc-700" />,
-          url: "#",
-        },
-        {
-          title: "Careers",
-          description: "Browse job listing and discover our workspace",
-          icon: <Sunset className="size-5 shrink-0 text-zinc-700" />,
-          url: "#",
-        },
-        {
-          title: "Support",
-          description:
-            "Get in touch with our support team or visit our community forums",
-          icon: <Zap className="size-5 shrink-0 text-zinc-700" />,
+          title: "Mobile",
+          description: "Native iOS and Android mobile app development",
+          icon: <Smartphone className="size-5 shrink-0 text-zinc-700" />,
           url: "#",
         },
       ],
@@ -125,10 +112,6 @@ const Navbar1 = ({
           url: "#",
         },
       ],
-    },
-    {
-      title: "Pricing",
-      url: "#",
     },
     {
       title: "Blog",
