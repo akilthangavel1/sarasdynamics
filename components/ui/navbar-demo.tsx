@@ -27,7 +27,7 @@ const demoData = {
           title: "Mobile",
           description: "Native iOS & Android mobile applications built for speed and scale",
           icon: <Smartphone className="size-5 shrink-0 text-zinc-700" />,
-          url: "#interactive-links-section",
+          url: "#mobile",
         },
       ],
     },
@@ -74,6 +74,7 @@ const demoData = {
   ],
   mobileExtraLinks: [
     { name: "Web Development", url: "#web" },
+    { name: "Mobile Development", url: "#mobile" },
     { name: "About Us", url: "#about" },
     { name: "Recent Hire", url: "#recent-hires" },
     { name: "Contact Us", url: "#contact" },

@@ -23,6 +23,7 @@ const navigation = {
           name: "Features",
           items: [
             { name: "Web Development", href: "#web" },
+            { name: "Mobile Development", href: "#mobile" },
             { name: "Products", href: "#" },
             { name: "Agency", href: "#" },
             { name: "Dashboard", href: "#" },

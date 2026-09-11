@@ -6,15 +6,17 @@ import InteractiveHoverLinks from '@/components/ui/interactive-hover-links';
 import ExpandableGallery from '@/components/ui/expandable-gallery';
 import { TestimonialsSection } from '@/components/ui/testimonial-v2';
 import { SiteFooter } from '@/components/ui/site-footer';
+import { BlogCards } from '@/components/ui/cards';
 import ContactPage from './components/ContactPage';
 import AboutPage from './components/AboutPage';
 import RecentHirePage from './components/RecentHirePage';
 import CareersPage from './components/CareersPage';
 import BlogPage from './components/BlogPage';
 import WebDevelopmentPage from './components/WebDevelopmentPage';
+import MobileDevelopmentPage from './components/MobileDevelopmentPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web' | 'mobile'>('home');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -37,6 +39,9 @@ export default function App() {
       } else if (hash === '#web' || hash === '#web-development' || hash === '#web-dev') {
         setCurrentPage('web');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#mobile' || hash === '#mobile-development' || hash === '#mobile-dev') {
+        setCurrentPage('mobile');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#home' || hash === '' || hash === '#') {
         setCurrentPage('home');
       }
@@ -58,6 +63,12 @@ export default function App() {
     ) {
       setCurrentPage('web');
     } else if (
+      window.location.hash === '#mobile' ||
+      window.location.hash === '#mobile-development' ||
+      window.location.hash === '#mobile-dev'
+    ) {
+      setCurrentPage('mobile');
+    } else if (
       window.location.hash === '#recent-hires' ||
       window.location.hash === '#admin-recent-hires' ||
       window.location.hash === '#recent-hire' ||
@@ -70,7 +81,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web') => {
+  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web' | 'mobile') => {
     setCurrentPage(page);
     window.location.hash =
       page === 'contact'
@@ -85,6 +96,8 @@ export default function App() {
         ? '#blog'
         : page === 'web'
         ? '#web'
+        : page === 'mobile'
+        ? '#mobile'
         : '#';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -111,6 +124,10 @@ export default function App() {
 
   if (currentPage === 'web') {
     return <WebDevelopmentPage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'mobile') {
+    return <MobileDevelopmentPage onBackToHome={() => navigateTo('home')} />;
   }
 
   return (
@@ -190,6 +207,9 @@ export default function App() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Latest Blog Cards Section */}
+      <BlogCards />
 
       {/* Site Footer */}
       <SiteFooter />

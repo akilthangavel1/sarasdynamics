@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
 /* -----------------------------------------------------------------------------
@@ -248,59 +248,6 @@ export function WhatOurUsersSaySection() {
 }
 
 /* -----------------------------------------------------------------------------
- * BLOG CARDS (from cards.tsx)
- * -------------------------------------------------------------------------- */
-
-export function BlogCards() {
-  return (
-    <div className="flex flex-col items-center w-full py-12">
-      <h1 className="text-3xl font-semibold">Latest Blog</h1>
-      <p className="text-sm text-slate-500 mt-2 max-w-lg text-center">
-        Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
-      </p>
-
-      <div className="mt-10 flex flex-wrap justify-center gap-8">
-        <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-          <img
-            className="rounded-xl"
-            src="https://cdn.21st.dev/assets/mirror/6f/6f1c926bae8d6e71a611ff4516129defb81169307e6ed04bb285252af9a35082.jpg"
-            alt="Color Psychology"
-          />
-          <h3 className="text-base text-slate-900 font-medium mt-3">
-            Color Psychology in UI: How to Choose the Right Palette
-          </h3>
-          <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
-        </div>
-
-        <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-          <img
-            className="rounded-xl"
-            src="https://cdn.21st.dev/assets/mirror/53/532743c99df6086cd352dddd6c4123c731174ce078fbf8aa6b95d66a239ffb9b.jpg"
-            alt="Typography"
-          />
-          <h3 className="text-base text-slate-900 font-medium mt-3">
-            Understanding Typography: Crafting a Visual Voice for Your Brand
-          </h3>
-          <p className="text-xs text-indigo-600 font-medium mt-1">Branding</p>
-        </div>
-
-        <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-          <img
-            className="rounded-xl"
-            src="https://cdn.21st.dev/assets/mirror/6c/6cfc99c18d9a71ed731d82d84406a209b30f7fa76f3e5b7ecdfa48efbd62f613.jpg"
-            alt="Design Thinking"
-          />
-          <h3 className="text-base text-slate-900 font-medium mt-3">
-            Design Thinking in Practice: How to Solve Real User Problems
-          </h3>
-          <p className="text-xs text-indigo-600 font-medium mt-1">Product Design</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* -----------------------------------------------------------------------------
  * HOVER REVEAL CARDS (backward compatibility)
  * -------------------------------------------------------------------------- */
 
@@ -347,4 +294,95 @@ export function HoverRevealCards({ items }: { items: CardItem[] }) {
   );
 }
 
-export default HoverRevealCards;
+/* -----------------------------------------------------------------------------
+ * LATEST BLOG CARDS (cards.tsx component as requested)
+ * -------------------------------------------------------------------------- */
+
+export function Example() {
+  const [images, setImages] = useState({
+    img1: "https://cdn.21st.dev/assets/mirror/6f/6f1c926bae8d6e71a611ff4516129defb81169307e6ed04bb285252af9a35082.jpg",
+    img2: "https://cdn.21st.dev/assets/mirror/53/532743c99df6086cd352dddd6c4123c731174ce078fbf8aa6b95d66a239ffb9b.jpg",
+    img3: "https://cdn.21st.dev/assets/mirror/6c/6cfc99c18d9a71ed731d82d84406a209b30f7fa76f3e5b7ecdfa48efbd62f613.jpg",
+  });
+
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        .cards-poppins-scope, .cards-poppins-scope * {
+          font-family: 'Poppins', sans-serif;
+        }
+      `}</style>
+
+      {/* Контейнер с колонкой */}
+      <section id="latest-blog-section" className="cards-poppins-scope flex flex-col items-center w-full py-16 px-4 bg-white border-t border-zinc-200/80">
+        {/* Заголовок сверху */}
+        <h1 className="text-3xl font-semibold text-slate-900">Latest Blog</h1>
+        <p className="text-sm text-slate-500 mt-2 max-w-lg text-center">
+          Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
+        </p>
+
+        {/* Карточки */}
+        <div className="mt-10 flex flex-wrap justify-center gap-8">
+          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+            <img
+              className="rounded-xl w-full aspect-[16/10] object-cover"
+              src={images.img1}
+              onError={() =>
+                setImages((prev) => ({
+                  ...prev,
+                  img1: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
+                }))
+              }
+              alt="Color Psychology in UI"
+            />
+            <h3 className="text-base text-slate-900 font-medium mt-3">
+              Color Psychology in UI: How to Choose the Right Palette
+            </h3>
+            <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+          </div>
+
+          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+            <img
+              className="rounded-xl w-full aspect-[16/10] object-cover"
+              src={images.img2}
+              onError={() =>
+                setImages((prev) => ({
+                  ...prev,
+                  img2: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?w=600&auto=format&fit=crop&q=80",
+                }))
+              }
+              alt="Understanding Typography"
+            />
+            <h3 className="text-base text-slate-900 font-medium mt-3">
+              Understanding Typography: Crafting a Visual Voice for Your Brand
+            </h3>
+            <p className="text-xs text-indigo-600 font-medium mt-1">Branding</p>
+          </div>
+
+          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+            <img
+              className="rounded-xl w-full aspect-[16/10] object-cover"
+              src={images.img3}
+              onError={() =>
+                setImages((prev) => ({
+                  ...prev,
+                  img3: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=80",
+                }))
+              }
+              alt="Design Thinking in Practice"
+            />
+            <h3 className="text-base text-slate-900 font-medium mt-3">
+              Design Thinking in Practice: How to Solve Real User Problems
+            </h3>
+            <p className="text-xs text-indigo-600 font-medium mt-1">Product Design</p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export const BlogCards = Example;
+
+export default Example;

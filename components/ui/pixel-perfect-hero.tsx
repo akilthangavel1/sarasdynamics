@@ -301,9 +301,9 @@ export interface PixelHeroProps {
 }
 
 export function PixelHero({
-  word1 = "Silent",
-  word2 = "Precision.",
-  description = "Minimalist interfaces driven by refined motion. Every calculated detail delivers an elevated digital experience.",
+  word1 = "Minds Behind",
+  word2 = "The Machine",
+  description = "SarasDynamics builds software, AI systems and intelligent automation for people creating the next generation of technology.",
   primaryCta = "Explore Design",
   primaryCtaMobile = "Explore",
   secondaryCta = "View GitHub",

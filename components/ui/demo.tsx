@@ -1,5 +1,5 @@
-import { BlogSection } from "@/components/ui/blog-section";
+import Testimonial2 from "@/components/ui/testimonial-section-2";
 
-export default function DemoOne() {
-  return <BlogSection />;
+export default function Demo() {
+  return <Testimonial2 />;
 }

@@ -3,25 +3,25 @@ import { motion } from "motion/react";
 import {
   ArrowLeft,
   ArrowRight,
-  Globe,
-  Code2,
+  Smartphone,
   Layers,
   Cpu,
   ShieldCheck,
   Zap,
   CheckCircle2,
   Sparkles,
-  Server,
-  Terminal,
-  Database,
+  WifiOff,
+  Fingerprint,
   Workflow,
   Rocket,
+  AppWindow,
+  DownloadCloud,
 } from "lucide-react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { ImageExpansionSlider } from "@/components/ui/image-expansion";
+import Testimonial2 from "@/components/ui/testimonial-section-2";
 
-interface WebDevelopmentPageProps {
+interface MobileDevelopmentPageProps {
   onBackToHome?: () => void;
 }
 
@@ -35,122 +35,122 @@ interface CapabilityItem {
 
 const CAPABILITIES: CapabilityItem[] = [
   {
-    icon: Code2,
-    title: "High-Performance Web Applications",
-    tag: "SPAs & PWAs",
+    icon: Smartphone,
+    title: "Native iOS & Android Engineering",
+    tag: "Swift & Kotlin",
     description:
-      "Engineered with modern React and TypeScript for lightning-fast interactions, responsive layouts, and rock-solid state management.",
+      "Precision-built native applications utilizing Swift, SwiftUI, Kotlin, and Jetpack Compose for platform-native responsiveness and deep OS integration.",
     highlights: [
-      "Zero-latency reactive user interfaces",
-      "Robust state machines & optimistic UI",
-      "Progressive Web App (PWA) offline capabilities",
+      "Hardware-accelerated 120 FPS rendering",
+      "Native widgets, live activities, & dynamic island support",
+      "Direct integration with Camera, Bluetooth LE, & GPS sensors",
     ],
   },
   {
-    icon: Server,
-    title: "Cloud APIs & Serverless Backends",
-    tag: "Microservices & Edge",
+    icon: AppWindow,
+    title: "Cross-Platform React Native & Flutter",
+    tag: "Multi-Platform",
     description:
-      "Scalable REST and GraphQL APIs crafted in Node.js, containerized for Cloud Run, and backed by high-throughput database architectures.",
+      "A unified, type-safe codebase that runs natively on both iOS and Android, dramatically reducing time to market without compromising on UI fidelity.",
     highlights: [
-      "Containerized microservices on Cloud Run",
-      "Resilient database schemas & connection pooling",
-      "Sub-100ms global edge response times",
+      "Shared TypeScript business logic & state machines",
+      "Over 90% cross-platform code reuse",
+      "High-performance Hermes JS engine optimization",
+    ],
+  },
+  {
+    icon: WifiOff,
+    title: "Offline-First Data Architecture",
+    tag: "Zero-Drop Sync",
+    description:
+      "Resilient offline architecture powered by local SQLite, MMKV, and reactive background workers ensuring full usability without an active network.",
+    highlights: [
+      "Instant local reads & writes with optimistic UI",
+      "Conflict-free replicated data types (CRDTs)",
+      "Automatic background queue sync upon reconnection",
     ],
   },
   {
     icon: Zap,
-    title: "Core Web Vitals & Speed Optimization",
-    tag: "Sub-Second Loads",
+    title: "Fluid Gesture Physics & Microinteractions",
+    tag: "Haptics & Motion",
     description:
-      "Deep audits and structural optimizations ensuring perfect Lighthouse scores, minimal layout shift, and instant bundle delivery.",
+      "Silky-smooth touch tracking and physics-driven spring animations driven by react-native-reanimated and integrated system haptics.",
     highlights: [
-      "Aggressive tree-shaking & code-splitting",
-      "Automated image caching and modern formats",
-      "Perfect 95+ Core Web Vitals compliance",
+      "Continuous 60-120Hz ProMotion gesture responsiveness",
+      "Tactile Taptic Engine and vibration feedback",
+      "Shared element transitions and modal sheets",
     ],
   },
   {
-    icon: Layers,
-    title: "Design Systems & Component Libraries",
-    tag: "Design to Code",
+    icon: Fingerprint,
+    title: "On-Device Security & Biometrics",
+    tag: "Zero-Trust Mobile",
     description:
-      "Custom component architectures built on Tailwind CSS and shadcn/ui primitives, strictly harmonized with your company's visual language.",
+      "Enterprise-grade security using Apple Keychain, Android Keystore, biometric authentication (Face ID / Touch ID), and SSL certificate pinning.",
     highlights: [
-      "Accessible WCAG AA/AAA compliant controls",
-      "Design token synchronizations",
-      "GPU-accelerated micro-interactions",
+      "Biometric enrollment and cryptographic authentication",
+      "Hardware-backed encryption at rest",
+      "Strict man-in-the-middle (MitM) protections",
     ],
   },
   {
-    icon: ShieldCheck,
-    title: "Enterprise Auth & Data Security",
-    tag: "Security Hardened",
+    icon: DownloadCloud,
+    title: "CI/CD & App Store Delivery",
+    tag: "Automated Deployments",
     description:
-      "Hardened authentication pipelines with OAuth 2.0, role-based access control (RBAC), CSRF/XSS mitigations, and encrypted storage.",
+      "Automated build and signing pipelines with Fastlane and GitHub Actions, enabling seamless TestFlight distribution and instant Over-the-Air updates.",
     highlights: [
-      "Role-Based Access Control (RBAC)",
-      "Strict Content Security Policy (CSP)",
-      "Secure credential & token storage",
-    ],
-  },
-  {
-    icon: Cpu,
-    title: "Modern Full-Stack Integrations",
-    tag: "Ecosystems",
-    description:
-      "Seamless connectivity with payment processors (Stripe), AI models, transactional emails, search indexes, and custom third-party SDKs.",
-    highlights: [
-      "Stripe payment & subscription webhooks",
-      "Real-time event streaming & WebSockets",
-      "Cloud storage & automated CDN pipelines",
+      "Automated provisioning profiles & code signing",
+      "Instant hot-patching via Expo EAS / CodePush",
+      "Guaranteed compliance with Apple & Google review standards",
     ],
   },
 ];
 
 const TECH_STACK = [
-  { name: "React 19", category: "Frontend" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Next.js / Vite", category: "Tooling" },
-  { name: "Tailwind CSS", category: "Styling" },
-  { name: "Node.js", category: "Runtime" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Cloud Run", category: "Infrastructure" },
-  { name: "Docker", category: "Containers" },
-  { name: "Redis", category: "Caching" },
-  { name: "GraphQL", category: "Data Layer" },
+  { name: "React Native", category: "Framework" },
+  { name: "Swift / SwiftUI", category: "iOS Native" },
+  { name: "Kotlin", category: "Android Native" },
+  { name: "Flutter", category: "Cross-Platform" },
+  { name: "Expo EAS", category: "Tooling & CI/CD" },
+  { name: "SQLite / MMKV", category: "Local Storage" },
+  { name: "Fastlane", category: "Automation" },
+  { name: "Reanimated 3", category: "Gestures & Physics" },
+  { name: "TypeScript", category: "Core Language" },
+  { name: "Firebase Cloud Messaging", category: "Push Notifications" },
 ];
 
 const PROCESS_STEPS = [
   {
     step: "01",
-    title: "Architectural Discovery",
-    desc: "We analyze technical requirements, database topologies, security profiles, and define the core blueprint before writing code.",
-    icon: Terminal,
+    title: "Mobile Architecture & UX",
+    desc: "We define user journeys, native screen hierarchies, offline data flows, and device permission models prior to development.",
+    icon: Layers,
   },
   {
     step: "02",
-    title: "Iterative Sprint Builds",
-    desc: "Rapid delivery of testable, production-grade features every week with live preview staging and continuous client collaboration.",
+    title: "Sprint Prototyping & Builds",
+    desc: "Rapid delivery of testable internal builds every week directly to your phone via Apple TestFlight and Google Play Internal Testing.",
     icon: Workflow,
   },
   {
     step: "03",
-    title: "Automated QA & Security",
-    desc: "Comprehensive automated test suites, end-to-end user journeys, performance stress testing, and vulnerability auditing.",
+    title: "Device Matrix & Stress Testing",
+    desc: "Exhaustive QA across diverse screen sizes, orientations, OS versions, low-battery states, and erratic network conditions.",
     icon: ShieldCheck,
   },
   {
     step: "04",
-    title: "Zero-Downtime Launch",
-    desc: "Seamless container deployment with automated CI/CD pipelines, SSL provisioning, and real-time observability telemetry.",
+    title: "App Store & Play Store Launch",
+    desc: "Complete management of App Store Connect and Google Play Console submissions, privacy manifests, and global store rollout.",
     icon: Rocket,
   },
 ];
 
-export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
+export function MobileDevelopmentPage({ onBackToHome }: MobileDevelopmentPageProps) {
   const scrollToCapabilities = () => {
-    document.getElementById("web-capabilities")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("mobile-capabilities")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleStartProject = () => {
@@ -159,7 +159,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
 
   return (
     <div
-      id="web-development-page-wrapper"
+      id="mobile-development-page-wrapper"
       className="w-full min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white"
     >
       {/* Sticky Responsive Header Navigation */}
@@ -167,7 +167,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
 
       {/* Simple, Polished Hero Section */}
       <section
-        id="web-hero"
+        id="mobile-hero"
         className="relative w-full border-b border-zinc-200/80 bg-zinc-50/60 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Subtle grid background accent */}
@@ -185,7 +185,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
             </span>
-            <span>Full-Stack Web Engineering &bull; Modern Architecture</span>
+            <span>Native & Cross-Platform Mobile Engineering &bull; iOS & Android</span>
           </motion.div>
 
           {/* Simple Hero Headline */}
@@ -195,7 +195,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.08] text-balance"
           >
-            Modern web applications built for speed, scale, and clarity.
+            High-performance mobile apps crafted for iOS, Android, and beyond.
           </motion.h1>
 
           {/* Simple Supportive Description */}
@@ -205,7 +205,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-5 text-base sm:text-lg md:text-xl text-zinc-600 max-w-2xl text-balance font-normal leading-relaxed"
           >
-            We engineer bespoke web applications, high-throughput cloud backends, and responsive design systems with TypeScript, React, and Node.js.
+            We build fluid, responsive mobile experiences with React Native, Swift, Kotlin, and Flutter — engineered for 120 FPS performance, offline reliability, and seamless app store launches.
           </motion.p>
 
           {/* Action Controls */}
@@ -250,20 +250,20 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
             className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl pt-8 border-t border-zinc-200/80"
           >
             <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">99.9%</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Uptime Target</div>
+              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">120 FPS</div>
+              <div className="text-xs text-zinc-500 mt-0.5">Smooth Gestures</div>
             </div>
             <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-red-600 font-mono">&lt;100ms</div>
-              <div className="text-xs text-zinc-500 mt-0.5">P95 Latency</div>
+              <div className="text-xl sm:text-2xl font-bold text-red-600 font-mono">100%</div>
+              <div className="text-xs text-zinc-500 mt-0.5">Offline-First Sync</div>
             </div>
             <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">100%</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Type-Safe TS</div>
+              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">4.9 ★</div>
+              <div className="text-xs text-zinc-500 mt-0.5">App Store Standards</div>
             </div>
             <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">CI/CD</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Zero Downtime</div>
+              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">OTA</div>
+              <div className="text-xs text-zinc-500 mt-0.5">Instant Updates</div>
             </div>
           </motion.div>
         </div>
@@ -271,19 +271,19 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
 
       {/* Capabilities Section */}
       <section
-        id="web-capabilities"
+        id="mobile-capabilities"
         className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       >
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-medium text-zinc-700 mb-3">
-            <Globe className="size-3.5 text-red-600" />
-            <span>Engineering Capabilities</span>
+            <Smartphone className="size-3.5 text-red-600" />
+            <span>Mobile Engineering Capabilities</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            End-to-end full-stack web solutions.
+            End-to-end native & cross-platform mobile solutions.
           </h2>
           <p className="mt-3 text-base text-zinc-600">
-            From initial database modeling to frontend motion systems, we deliver turnkey web architecture designed for real-world reliability.
+            From low-level gesture physics to automated App Store releases, we engineer mobile software ready for millions of downloads.
           </p>
         </div>
 
@@ -335,7 +335,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
       <section className="w-full py-12 border-y border-zinc-200/80 bg-zinc-50/50 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-6">
-            Technologies & Frameworks We Master
+            Mobile Frameworks & Tooling We Master
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2.5">
             {TECH_STACK.map((tech) => (
@@ -353,25 +353,23 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         </div>
       </section>
 
-      {/* Featured Explorations & Image Expansion Showcase */}
-      <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <ImageExpansionSlider />
-      </section>
+      {/* Trusted By The Best People Testimonials Section */}
+      <Testimonial2 />
 
       {/* Delivery Process */}
       <section className="w-full py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-medium text-zinc-700 mb-3">
             <Workflow className="size-3.5 text-red-600" />
-            <span>Structured Delivery</span>
+            <span>Structured App Release Lifecycle</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            How we take products from concept to live production.
+            How we take mobile apps from idea to the App Store.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PROCESS_STEPS.map((p, idx) => {
+          {PROCESS_STEPS.map((p) => {
             const Icon = p.icon;
             return (
               <div
@@ -402,20 +400,20 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
           <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800 text-xs text-zinc-300 mb-4 border border-zinc-700">
               <Sparkles className="size-3.5 text-red-400" />
-              <span>Let&apos;s Build Together</span>
+              <span>iOS & Android Development</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-              Have a web application or digital platform in mind?
+              Ready to bring your mobile application to life?
             </h2>
             <p className="mt-4 text-zinc-300 text-sm sm:text-base leading-relaxed max-w-lg">
-              Partner with Saras Dynamics to architect, design, and deploy web software engineered for peak reliability.
+              Partner with Saras Dynamics to build, polish, and launch native or cross-platform mobile software users love to touch.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={handleStartProject}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-zinc-900 font-semibold text-sm hover:bg-zinc-100 transition-colors cursor-pointer shadow-sm"
               >
-                <span>Request Project Scoping</span>
+                <span>Request Mobile Project Scoping</span>
                 <ArrowRight className="size-4" />
               </button>
               <button
@@ -435,4 +433,4 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
   );
 }
 
-export default WebDevelopmentPage;
+export default MobileDevelopmentPage;

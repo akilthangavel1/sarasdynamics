@@ -1,4 +1,4 @@
-import HoverRevealCards, { type CardItem } from '@/components/ui/cards';
+import { HoverRevealCards, type CardItem } from '@/components/ui/cards';
 
 const demoItems: CardItem[] = [
   {
