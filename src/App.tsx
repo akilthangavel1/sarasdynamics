@@ -9,9 +9,12 @@ import { SiteFooter } from '@/components/ui/site-footer';
 import ContactPage from './components/ContactPage';
 import AboutPage from './components/AboutPage';
 import RecentHirePage from './components/RecentHirePage';
+import CareersPage from './components/CareersPage';
+import BlogPage from './components/BlogPage';
+import WebDevelopmentPage from './components/WebDevelopmentPage';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web'>('home');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -25,6 +28,15 @@ export default function App() {
       } else if (hash === '#recent-hires' || hash === '#admin-recent-hires' || hash === '#recent-hire' || hash === '#admin') {
         setCurrentPage('recent-hires');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#careers' || hash === '#career') {
+        setCurrentPage('careers');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#blog' || hash === '#blogs') {
+        setCurrentPage('blog');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#web' || hash === '#web-development' || hash === '#web-dev') {
+        setCurrentPage('web');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#home' || hash === '' || hash === '#') {
         setCurrentPage('home');
       }
@@ -35,6 +47,16 @@ export default function App() {
       setCurrentPage('contact');
     } else if (window.location.hash === '#about') {
       setCurrentPage('about');
+    } else if (window.location.hash === '#careers' || window.location.hash === '#career') {
+      setCurrentPage('careers');
+    } else if (window.location.hash === '#blog' || window.location.hash === '#blogs') {
+      setCurrentPage('blog');
+    } else if (
+      window.location.hash === '#web' ||
+      window.location.hash === '#web-development' ||
+      window.location.hash === '#web-dev'
+    ) {
+      setCurrentPage('web');
     } else if (
       window.location.hash === '#recent-hires' ||
       window.location.hash === '#admin-recent-hires' ||
@@ -48,7 +70,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires') => {
+  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web') => {
     setCurrentPage(page);
     window.location.hash =
       page === 'contact'
@@ -57,6 +79,12 @@ export default function App() {
         ? '#about'
         : page === 'recent-hires'
         ? '#recent-hires'
+        : page === 'careers'
+        ? '#careers'
+        : page === 'blog'
+        ? '#blog'
+        : page === 'web'
+        ? '#web'
         : '#';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -71,6 +99,18 @@ export default function App() {
 
   if (currentPage === 'recent-hires') {
     return <RecentHirePage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'careers') {
+    return <CareersPage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'blog') {
+    return <BlogPage onBackToHome={() => navigateTo('home')} />;
+  }
+
+  if (currentPage === 'web') {
+    return <WebDevelopmentPage onBackToHome={() => navigateTo('home')} />;
   }
 
   return (

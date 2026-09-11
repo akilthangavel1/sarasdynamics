@@ -1,12 +1,12 @@
-import { Book, Building2, Globe, Mail, Smartphone, Sparkles, Sunset, Trees, Users, Zap } from "lucide-react";
+import { BookOpen, Globe, Smartphone, Sunset, Users } from "lucide-react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 
 const demoData = {
   logo: {
     url: "#",
-    src: "https://cdn.21st.dev/assets/mirror/06/067c72836298829da27d230af61c2b4be0e09da5103dc2789639d18beea789f4.svg",
-    alt: "blocks for shadcn/ui",
-    title: "Shadcnblocks.com",
+    src: "/saras-dynamics-logo.svg",
+    alt: "Saras Dynamics logo",
+    title: "Saras Dynamics",
   },
   menu: [
     {
@@ -21,7 +21,7 @@ const demoData = {
           title: "Web",
           description: "Custom web applications, responsive websites, and digital platforms",
           icon: <Globe className="size-5 shrink-0 text-zinc-700" />,
-          url: "#interactive-links-section",
+          url: "#web",
         },
         {
           title: "Mobile",
@@ -45,19 +45,13 @@ const demoData = {
           title: "Careers",
           description: "Discover opportunities to join our team of designers and engineers",
           icon: <Sunset className="size-5 shrink-0" />,
-          url: "#interactive-links-section",
+          url: "#careers",
         },
         {
-          title: "Help Center & FAQs",
-          description: "Get quick answers to common questions about our services",
-          icon: <Zap className="size-5 shrink-0" />,
-          url: "#contact",
-        },
-        {
-          title: "Contact Us",
-          description: "Speak directly with our team or request assistance",
-          icon: <Mail className="size-5 shrink-0" />,
-          url: "#contact",
+          title: "Blog",
+          description: "Read our latest articles on design systems, UI architecture, and tech",
+          icon: <BookOpen className="size-5 shrink-0" />,
+          url: "#blog",
         },
       ],
     },
@@ -79,10 +73,12 @@ const demoData = {
     },
   ],
   mobileExtraLinks: [
+    { name: "Web Development", url: "#web" },
     { name: "About Us", url: "#about" },
     { name: "Recent Hire", url: "#recent-hires" },
     { name: "Contact Us", url: "#contact" },
-    { name: "Careers", url: "#interactive-links-section" },
+    { name: "Careers", url: "#careers" },
+    { name: "Blog", url: "#blog" },
     { name: "Sitemap", url: "#" },
   ],
   auth: {

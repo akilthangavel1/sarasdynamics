@@ -1,9 +1,5 @@
-import ExpandableGallery from "@/components/ui/expandable-gallery";
+import { BlogSection } from "@/components/ui/blog-section";
 
-export default function Demo() {
-  return (
-    <div className="flex items-center justify-center w-full bg-white">
-      <ExpandableGallery />
-    </div>
-  );
+export default function DemoOne() {
+  return <BlogSection />;
 }

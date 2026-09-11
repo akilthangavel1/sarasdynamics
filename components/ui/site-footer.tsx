@@ -22,6 +22,7 @@ const navigation = {
           id: "features",
           name: "Features",
           items: [
+            { name: "Web Development", href: "#web" },
             { name: "Products", href: "#" },
             { name: "Agency", href: "#" },
             { name: "Dashboard", href: "#" },
@@ -58,7 +59,9 @@ const navigation = {
           id: "company",
           name: "Company",
           items: [
-            { name: "Contact", href: "mailto:contact@designali.in" },
+            { name: "Blog", href: "#blog" },
+            { name: "Careers", href: "#careers" },
+            { name: "Contact", href: "#contact" },
             { name: "Terms of Service", href: "#" },
             { name: "Privacy Policy", href: "#" },
           ],

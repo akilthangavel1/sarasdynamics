@@ -59,9 +59,9 @@ export interface Navbar1Props {
 const Navbar1 = ({
   logo = {
     url: "#",
-    src: "https://cdn.21st.dev/assets/mirror/06/067c72836298829da27d230af61c2b4be0e09da5103dc2789639d18beea789f4.svg",
-    alt: "logo",
-    title: "Shadcnblocks.com",
+    src: "/saras-dynamics-logo.svg",
+    alt: "Saras Dynamics logo",
+    title: "Saras Dynamics",
   },
   menu = [
     { title: "Home", url: "#" },
@@ -129,14 +129,32 @@ const Navbar1 = ({
     signup: { text: "Sign up", url: "#" },
   },
 }: Navbar1Props) => {
+  const renderBrandTitle = (title: string) => {
+    if (title.includes("Dynamics")) {
+      const parts = title.split("Dynamics");
+      return (
+        <span className="text-base font-bold tracking-tight text-zinc-900 group-hover:text-zinc-700 transition-colors">
+          {parts[0]}<span className="text-red-600 font-extrabold">Dynamics</span>{parts.slice(1).join("Dynamics")}
+        </span>
+      );
+    }
+    return (
+      <span className="text-base font-bold tracking-tight text-zinc-900 group-hover:text-zinc-700 transition-colors">
+        {title}
+      </span>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-md transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <nav className="hidden justify-between items-center lg:flex">
           <div className="flex items-center gap-8">
-            <a href={logo.url} className="flex items-center gap-2.5">
-              <img src={logo.src} className="w-7 h-7 object-contain" alt={logo.alt} />
-              <span className="text-base font-bold tracking-tight text-zinc-900">{logo.title}</span>
+            <a href={logo.url} className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0 group-hover:border-zinc-300 transition-colors">
+                <img src={logo.src} className="w-full h-full object-contain rounded-md" alt={logo.alt} />
+              </div>
+              {renderBrandTitle(logo.title)}
             </a>
             <div className="flex items-center">
               <NavigationMenu>
@@ -157,11 +175,11 @@ const Navbar1 = ({
         </nav>
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <a href={logo.url} className="flex items-center gap-2.5">
-              <img src={logo.src} className="w-7 h-7 object-contain" alt={logo.alt} />
-              <span className="text-base font-bold tracking-tight text-zinc-900">
-                {logo.title}
-              </span>
+            <a href={logo.url} className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
+                <img src={logo.src} className="w-full h-full object-contain rounded-md" alt={logo.alt} />
+              </div>
+              {renderBrandTitle(logo.title)}
             </a>
             <Sheet>
               <SheetTrigger asChild>
@@ -173,10 +191,10 @@ const Navbar1 = ({
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2.5">
-                      <img src={logo.src} className="w-7 h-7" alt={logo.alt} />
-                      <span className="text-base font-bold tracking-tight text-zinc-900">
-                        {logo.title}
-                      </span>
+                      <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
+                        <img src={logo.src} className="w-full h-full object-contain rounded-md" alt={logo.alt} />
+                      </div>
+                      {renderBrandTitle(logo.title)}
                     </a>
                   </SheetTitle>
                 </SheetHeader>
