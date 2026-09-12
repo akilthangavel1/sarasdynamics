@@ -1,6 +1,6 @@
 import React from "react";
 import { DIcons } from "dicons";
-import { Heart, Github } from "lucide-react";
+import { Heart } from "lucide-react";
 import ScrollTopFooter from "@/components/ui/footer";
 
 const navigation = {
@@ -13,58 +13,58 @@ const navigation = {
           id: "about",
           name: "About",
           items: [
-            { name: "About Saras Dynamics", href: "#about" },
-            { name: "Recent Hires", href: "#recent-hire" },
-            { name: "Production Works", href: "#gallery-preview" },
+            { name: "About Story", href: "#about" },
+            { name: "Brand Works", href: "#gallery-preview" },
+            { name: "Interactive Showcase", href: "#expandable-gallery-section" },
           ],
         },
         {
-          id: "services",
-          name: "Services",
+          id: "features",
+          name: "Features",
           items: [
             { name: "Web Development", href: "#web" },
             { name: "Mobile Development", href: "#mobile" },
-            { name: "AI & RAG Systems", href: "#web" },
-            { name: "Cloud Architecture", href: "#web" },
+            { name: "Products", href: "#" },
+            { name: "Agency", href: "#" },
+            { name: "Dashboard", href: "#" },
           ],
         },
         {
-          id: "technologies",
-          name: "Technologies",
+          id: "products",
+          name: "Products",
           items: [
-            { name: "React & Next.js", href: "#web" },
-            { name: "Swift & Kotlin", href: "#mobile" },
-            { name: "Python & PyTorch", href: "#web" },
-            { name: "Kubernetes & Docker", href: "#web" },
+            { name: "DIcons", href: "https://dicons.designali.in" },
+            { name: "DShapes", href: "#" },
+            { name: "Graaadients", href: "#" },
           ],
         },
         {
-          id: "engineering",
-          name: "Architecture",
+          id: "designs",
+          name: "Designs",
           items: [
-            { name: "Design Systems", href: "#web" },
-            { name: "Distributed Backends", href: "#web" },
-            { name: "Contact & Briefing", href: "#contact" },
+            { name: "Design System", href: "#" },
+            { name: "Components", href: "#" },
+            { name: "Contact & FAQ", href: "#contact" },
           ],
         },
         {
-          id: "resources",
-          name: "Resources",
+          id: "other",
+          name: "Others",
           items: [
-            { name: "Engineering Journal", href: "#blog" },
-            { name: "System Benchmarks", href: "#about" },
-            { name: "Technical FAQs", href: "#contact" },
+            { name: "Graphic Assets", href: "#" },
+            { name: "3D Icons", href: "#" },
+            { name: "Palette Generator", href: "#" },
           ],
         },
         {
           id: "company",
           name: "Company",
           items: [
-            { name: "Engineering Journal", href: "#blog" },
-            { name: "Careers & Openings", href: "#careers" },
-            { name: "Contact & Support", href: "#contact" },
-            { name: "Privacy Policy", href: "#" },
+            { name: "Blog", href: "#blog" },
+            { name: "Careers", href: "#careers" },
+            { name: "Contact", href: "#contact" },
             { name: "Terms of Service", href: "#" },
+            { name: "Privacy Policy", href: "#" },
           ],
         },
       ],
@@ -80,14 +80,21 @@ export function SiteFooter() {
   return (
     <footer id="site-footer" className="w-full border-t border-zinc-200 bg-white text-zinc-800 transition-colors">
       <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-8 sm:p-10 pb-0 md:flex">
-        <a href="#home" className="flex items-center justify-center rounded-full shrink-0 group">
-          <div className="w-10 h-10 rounded-xl bg-zinc-900 text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-xs">
-            <span className="font-mono font-black text-sm tracking-tight">SD</span>
+        <a href="#about-page" className="flex items-center justify-center rounded-xl shrink-0 group" aria-label="Saras Dynamics">
+          <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500/15 group-hover:scale-105 transition-all shadow-2xs">
+            <DIcons.Sparkles className="w-5 h-5 text-emerald-600" />
           </div>
         </a>
-        <p className="bg-transparent text-center text-xs leading-5 text-zinc-500 md:text-left max-w-4xl">
-          At Saras Dynamics, we engineer intelligent software, advanced AI architectures, and robust digital systems for high-growth enterprises and ambitious technical founders. From low-latency RAG retrieval and autonomous agentic pipelines to distributed cloud backends and responsive mobile applications, we build software designed for deterministic performance and long-term maintainability.
-        </p>
+        <div className="flex flex-col gap-1 text-center md:text-left max-w-4xl">
+          <span className="text-xs font-bold uppercase tracking-wider text-zinc-900 flex items-center justify-center md:justify-start gap-2">
+            <span>Saras Dynamics</span>
+            <span className="text-zinc-300">•</span>
+            <span className="text-zinc-500 font-normal">Next-Gen Software &amp; AI Engineering</span>
+          </span>
+          <p className="bg-transparent text-xs sm:text-[13px] leading-relaxed text-zinc-600">
+            Welcome to Saras Dynamics — where technical rigor meets intelligent innovation. We architect, engineer, and deploy high-performance web applications, native mobile systems, enterprise AI solutions, and resilient distributed cloud infrastructure. Committed to craftsmanship, security, and measurable impact.
+          </p>
+        </div>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-8">
@@ -131,7 +138,7 @@ export function SiteFooter() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             aria-label="Email"
-            href="mailto:hello@sarasdynamics.com"
+            href="mailto:contact@designali.in"
             rel="noreferrer"
             target="_blank"
             className={Underline}
@@ -140,7 +147,7 @@ export function SiteFooter() {
           </a>
           <a
             aria-label="X / Twitter"
-            href="https://x.com"
+            href="https://x.com/designali_in"
             rel="noreferrer"
             target="_blank"
             className={Underline}
@@ -148,8 +155,53 @@ export function SiteFooter() {
             <DIcons.X className="h-5 w-5" />
           </a>
           <a
+            aria-label="Instagram"
+            href="https://www.instagram.com/designali.in/"
+            rel="noreferrer"
+            target="_blank"
+            className={Underline}
+          >
+            <DIcons.Instagram className="h-5 w-5" />
+          </a>
+          <a
+            aria-label="Threads"
+            href="https://www.threads.net/designali.in"
+            rel="noreferrer"
+            target="_blank"
+            className={Underline}
+          >
+            <DIcons.Threads className="h-5 w-5" />
+          </a>
+          <a
+            aria-label="WhatsApp"
+            href="https://chat.whatsapp.com/LWsNPcz5BlWDVOha41vzuh"
+            rel="noreferrer"
+            target="_blank"
+            className={Underline}
+          >
+            <DIcons.WhatsApp className="h-5 w-5" />
+          </a>
+          <a
+            aria-label="Behance"
+            href="https://www.behance.net/designali-in"
+            rel="noreferrer"
+            target="_blank"
+            className={Underline}
+          >
+            <DIcons.Behance className="h-5 w-5" />
+          </a>
+          <a
+            aria-label="Facebook"
+            href="https://www.facebook.com/designali.agency"
+            rel="noreferrer"
+            target="_blank"
+            className={Underline}
+          >
+            <DIcons.Facebook className="h-5 w-5" />
+          </a>
+          <a
             aria-label="LinkedIn"
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/designali"
             rel="noreferrer"
             target="_blank"
             className={Underline}
@@ -157,13 +209,13 @@ export function SiteFooter() {
             <DIcons.LinkedIn className="h-5 w-5" />
           </a>
           <a
-            aria-label="GitHub"
-            href="https://github.com"
+            aria-label="YouTube"
+            href="https://www.youtube.com/@designali-in"
             rel="noreferrer"
             target="_blank"
             className={Underline}
           >
-            <Github className="h-5 w-5" />
+            <DIcons.YouTube className="h-5 w-5" />
           </a>
         </div>
 
@@ -172,11 +224,29 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto mb-10 mt-8 flex flex-col justify-between text-center text-xs max-w-7xl px-4">
-        <div className="flex flex-wrap items-center justify-center gap-1.5 text-zinc-500">
+        <div className="flex flex-row items-center justify-center gap-1 text-zinc-500">
           <span>©</span>
           <span>{currentYear}</span>
-          <span className="font-semibold text-zinc-800">Saras Dynamics Inc.</span>
-          <span>— All rights reserved. Architected for speed, resilience, and scale.</span>
+          <span>Made with</span>
+          <Heart className="text-red-600 mx-1 h-3.5 w-3.5 fill-red-600 animate-pulse inline-block" />
+          <span>by</span>
+          <a
+            aria-label="Ali Imam"
+            className="font-semibold text-zinc-800 hover:text-zinc-950 transition-colors underline-offset-2 hover:underline"
+            href="https://www.instagram.com/aliimam.in/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ali Imam
+          </a>
+          <span>-</span>
+          <a
+            aria-label="Designali"
+            className="text-zinc-600 hover:text-red-600 transition-colors"
+            href="/"
+          >
+            Designali
+          </a>
         </div>
       </div>
     </footer>

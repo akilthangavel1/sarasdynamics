@@ -125,13 +125,13 @@ export function Cta69({
         {badge && <Badge7 label={badge.label} />}
 
         {heading && (
-          <h2 className="mt-6 text-balance text-3xl font-bold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-balance text-3xl font-bold leading-[1.1] tracking-tight text-zinc-900 md:text-5xl lg:text-6xl">
             {heading}
           </h2>
         )}
 
         {labels.note && (
-          <p className="mt-4 max-w-xl text-balance text-base text-muted-foreground md:text-lg">
+          <p className="mt-4 max-w-xl text-balance text-base text-zinc-600 md:text-lg">
             {labels.note}
           </p>
         )}
@@ -149,7 +149,7 @@ export function Cta69({
         )}
 
         {labels.footnote && (
-          <p className="mt-6 text-sm text-muted-foreground">
+          <p className="mt-6 text-sm text-zinc-500">
             {labels.footnote}
           </p>
         )}
