@@ -250,20 +250,82 @@ export function ViteIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function PythonIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 256" width="32" height="32" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.127.145 125.886c0 64.762 36.216 62.45 36.216 62.45l21.61-.001-.001-30.351s-1.182-36.216 35.638-36.216h61.363s34.486-.554 34.486-33.918V28.187S194.457.072 126.916.072zM92.802 19.66a11.52 11.52 0 1 1 0 23.041 11.52 11.52 0 0 1 0-23.041z" fill="#3776AB"/>
+      <path d="M128.757 255.857c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127h-61.868v-8.745h86.441s41.486 4.933 41.486-59.826c0-64.761-36.216-62.45-36.216-62.45l-21.61.001.001 30.351s1.182 36.216-35.638 36.216h-61.363s-34.486.554-34.486 33.918v59.673s-5.001 28.104 62.54 28.104zm34.114-19.588a11.52 11.52 0 1 1 0-23.041 11.52 11.52 0 0 1 0 23.041z" fill="#FFD43B"/>
+    </svg>
+  );
+}
+
+export function NodejsIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 289" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#339933" {...props}>
+      <path d="M128 0L6.4 70.2v148.6L128 289l121.6-70.2V70.2L128 0zm97.7 203.9L128 260.2l-97.7-56.3V91.5L128 35.2l97.7 56.3v112.4z"/>
+      <path d="M128 65.6l64 36.9v73.8l-64 36.9-64-36.9v-73.8l64-36.9z" fill="#68A063"/>
+    </svg>
+  );
+}
+
+export function DockerIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 218" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2496ED" {...props}>
+      <path d="M255.8 107.1c-1.6-25-18.7-39.7-44.5-39.7-5.9 0-11.8.8-17.5 2.5-9.1-13.8-24.3-22.3-41-22.3h-7.3v30.4h11.2c8.9 0 16.5 5.5 19.3 13.8 2.1 6.1 1.6 12.8-1.5 18.5-5.9 10.9-17.5 17.5-30 17.5H16.2c-5.8 0-11.4-2.8-14.8-7.6-1-1.4-1.4-1.9-1.4-1.9C-.4 122.9 0 148 13.1 169.5c17.5 28.7 50.1 48.5 86.8 48.5 73.6 0 133.5-53.9 148-124.9 3.2.4 5.9.6 7.9.6zM85.7 38H61.6V14h24.1v24zm32.1 0H93.7V14h24.1v24zm32.1 0H125.8V14H150v24zM85.7 70H61.6V46h24.1v24zm32.1 0H93.7V46h24.1v24zm32.1 0H125.8V46H150v24zm-64.2 32H61.6V78h24.1v24zm32.1 0H93.7V78h24.1v24zm32.1 0H125.8V78H150v24z"/>
+    </svg>
+  );
+}
+
+export function PostgresIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 264" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#4169E1" {...props}>
+      <path d="M125.2 0C56.6 0 20.3 43.1 18.6 96.6c-1.3 41.2 19.6 77 52.8 93.6l10.5-20.9c-24-12.7-39.1-39.2-38.2-69.8 1.3-43 28.3-76.3 81.5-76.3 54.4 0 81.5 34.3 81.5 76.3 0 29.5-14.6 55.4-37.4 68.4l9.5 21.4c31.8-17.7 52.9-52.5 52.9-92.8C232 43.1 193.8 0 125.2 0z"/>
+      <circle cx="95" cy="95" r="14" fill="#336791"/>
+      <circle cx="161" cy="95" r="14" fill="#336791"/>
+      <path d="M128 140c-25 0-38 18-38 35 0 22 20 40 38 55 18-15 38-33 38-55 0-17-13-35-38-35z" fill="#336791"/>
+    </svg>
+  );
+}
+
+export function GraphQLIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 256" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#E10098" {...props}>
+      <path d="M128 0l110.9 64v128L128 256 17.1 192V64L128 0zm0 18.5L25.3 77.8v100.4L128 237.5l102.7-59.3V77.8L128 18.5z"/>
+      <circle cx="128" cy="28" r="18" fill="#E10098"/>
+      <circle cx="222" cy="82" r="18" fill="#E10098"/>
+      <circle cx="222" cy="190" r="18" fill="#E10098"/>
+      <circle cx="128" cy="244" r="18" fill="#E10098"/>
+      <circle cx="34" cy="190" r="18" fill="#E10098"/>
+      <circle cx="34" cy="82" r="18" fill="#E10098"/>
+    </svg>
+  );
+}
+
+export function RedisIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 256 219" width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#DC382D" {...props}>
+      <path d="M127.6 0L0 55.4l50.6 22 77-33.5 77 33.5 51.4-22.4L127.6 0zM0 83.1v55.4l43 18.7V102L0 83.1zm213 18.9v55.4l43-18.7V83.1l-43 18.9zm-136 10.9l51 22.2 51-22.2-51-22.2-51 22.2zM0 163.6l128 55.4 128-55.4-43-18.7-85 36.8-85-36.8L0 163.6z"/>
+    </svg>
+  );
+}
+
 export const allLogos: Logo[] = [
   { name: "React", id: 1, img: ReactIcon },
   { name: "Next.js", id: 2, img: NextjsIcon },
   { name: "TypeScript", id: 3, img: TypeScriptIcon },
-  { name: "Tailwind CSS", id: 4, img: TailwindCSSIcon },
-  { name: "Vercel", id: 5, img: VercelIcon },
-  { name: "Supabase", id: 6, img: SupabaseIcon },
-  { name: "Claude AI", id: 7, img: ClaudeAIIcon },
-  { name: "OpenAI", id: 8, img: OpenAIIconBlack },
-  { name: "Stripe", id: 9, img: StripeIcon },
-  { name: "Vite", id: 10, img: ViteIcon },
-  { name: "Apple", id: 11, img: AppleIcon },
-  { name: "BMW", id: 12, img: BMWIcon },
-  { name: "Pierre", id: 13, img: PierreIcon },
+  { name: "Python", id: 4, img: PythonIcon },
+  { name: "Node.js", id: 5, img: NodejsIcon },
+  { name: "Tailwind CSS", id: 6, img: TailwindCSSIcon },
+  { name: "OpenAI", id: 7, img: OpenAIIconBlack },
+  { name: "Claude AI", id: 8, img: ClaudeAIIcon },
+  { name: "Supabase", id: 9, img: SupabaseIcon },
+  { name: "PostgreSQL", id: 10, img: PostgresIcon },
+  { name: "Docker", id: 11, img: DockerIcon },
+  { name: "GraphQL", id: 12, img: GraphQLIcon },
+  { name: "Redis", id: 13, img: RedisIcon },
+  { name: "Vite", id: 14, img: ViteIcon },
+  { name: "Vercel", id: 15, img: VercelIcon },
+  { name: "Stripe", id: 16, img: StripeIcon },
 ];
 
 export function LogoCarouselDemo() {

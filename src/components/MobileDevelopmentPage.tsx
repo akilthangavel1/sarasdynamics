@@ -20,6 +20,7 @@ import {
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import Testimonial2 from "@/components/ui/testimonial-section-2";
+import StatsBento from "@/components/ui/stats-bento";
 
 interface MobileDevelopmentPageProps {
   onBackToHome?: () => void;
@@ -268,6 +269,9 @@ export function MobileDevelopmentPage({ onBackToHome }: MobileDevelopmentPagePro
           </motion.div>
         </div>
       </section>
+
+      {/* Stats Bento Showcase */}
+      <StatsBento />
 
       {/* Capabilities Section */}
       <section

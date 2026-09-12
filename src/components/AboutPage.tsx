@@ -3,6 +3,7 @@ import Navbar1Demo from "@/components/ui/navbar-demo";
 import WorldMapDemo from "@/components/ui/world-map-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { PixelHero } from "@/components/ui/pixel-perfect-hero";
+import { AboutUsSection } from "./AboutUsSection";
 
 interface AboutPageProps {
   onBackToHome?: () => void;
@@ -14,7 +15,7 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Replaced Hero Section with Pixel-Perfect Canvas Physics Hero */}
+      {/* Hero Section with Pixel-Perfect Canvas Physics */}
       <main className="w-full">
         <PixelHero
           word1="Minds Behind"
@@ -38,6 +39,9 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
           }}
           githubUrl="#home"
         />
+
+        {/* Dedicated About Us Section */}
+        <AboutUsSection />
       </main>
 
       {/* Global Remote Connectivity World Map Section */}

@@ -32,10 +32,10 @@ export default function AboutSection() {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black tracking-[-0.03em] uppercase leading-[1.25] text-left"
             >
               <span className="text-black">
-                WE&apos;RE UI/UX DESIGNERS FOCUSED ON CREATING USER-CENTERED DIGITAL PRODUCTS THAT ARE FUNCTIONAL,{' '}
+                AT SARAS DYNAMICS, WE ENGINEER INTELLIGENT SOFTWARE, ADVANCED AI ARCHITECTURES, AND ROBUST DIGITAL SYSTEMS,{' '}
               </span>
               <span className="text-[#8c8c8c] transition-colors duration-300 hover:text-zinc-600">
-                ACCESSIBLE, AND VISUALLY ENGAGING. FROM MOBILE APPS TO COMPLEX DASHBOARDS, WE TURN IDEAS INTO INTUITIVE, ENJOYABLE EXPERIENCES.
+                COMBINING TECHNICAL DEPTH WITH UNCOMPROMISING CRAFTSMANSHIP. FROM HIGH-THROUGHPUT WEB PLATFORMS TO INTUITIVE MOBILE APPS, WE BUILD TECHNOLOGY SHAPING WHAT COMES NEXT.
               </span>
             </motion.h2>
           </div>
@@ -44,9 +44,22 @@ export default function AboutSection() {
         {/* Animated Technology Logos Carousel */}
         <div
           id="about-brand-logos"
-          className="pt-10 md:pt-14 border-t border-zinc-200/90 w-full"
+          className="pt-10 md:pt-14 border-t border-zinc-200/90 w-full flex flex-col gap-6 sm:gap-8"
         >
-          <div className="w-full flex items-center justify-center">
+          {/* Section Header Label */}
+          <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#c30000]" />
+              <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-zinc-900">
+                Core Technologies &amp; Architecture We Use
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm font-medium text-zinc-500 tracking-wide">
+              Full-Stack &bull; Autonomous AI &bull; Cloud Infrastructure &bull; High-Performance Data
+            </p>
+          </div>
+
+          <div className="w-full flex items-center justify-center py-2">
             <LogoCarousel columnCount={7} logos={allLogos} />
           </div>
         </div>

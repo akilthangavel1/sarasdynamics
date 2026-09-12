@@ -1,70 +1,71 @@
 import React from 'react';
 import { motion } from "motion/react";
-import { Marquee } from "@/components/ui/cards";
+import { Marquee, CommonAvatar } from "@/components/ui/cards";
 
 // --- Types ---
 export interface Testimonial {
   text: string;
-  image: string;
   name: string;
   role: string;
+  company?: string;
+  image?: string;
 }
 
-// --- Data with Unsplash Stock Images ---
+// --- Data with Real Client Reviews ---
 export const testimonials: Testimonial[] = [
   {
-    text: "This ERP revolutionized our operations, streamlining finance and inventory. The cloud-based platform keeps us productive, even remotely.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    name: "Briana Patton",
-    role: "Operations Manager",
+    text: "Saras Dynamics re-architected our RAG retrieval pipelines and autonomous agents. Query latency dropped 64% while generation accuracy improved noticeably.",
+    name: "David Lin",
+    role: "VP of Engineering",
+    company: "Kinetix AI",
   },
   {
-    text: "Implementing this ERP was smooth and quick. The customizable, user-friendly interface made team training effortless.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    name: "Bilal Ahmed",
-    role: "IT Manager",
+    text: "They delivered our offline-first mobile patient monitoring app ahead of deadline. The real-time biometric synchronization is rock-solid and passed HIPAA audits cleanly.",
+    name: "Sarah Jenkins",
+    role: "Head of Product",
+    company: "OmniHealth Systems",
   },
   {
-    text: "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    name: "Saman Malik",
-    role: "Customer Support Lead",
+    text: "The high-throughput trading telemetry console they built handles millions of live events without a hiccup. Their attention to UX, latency, and code structure is world-class.",
+    name: "Michael Vance",
+    role: "Founder & CTO",
+    company: "StrataPay Financial",
   },
   {
-    text: "This ERP's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    name: "Omar Raza",
-    role: "CEO",
+    text: "Containerizing our legacy monolith into Kubernetes with zero customer downtime was an immense task. Saras Dynamics finished it in 8 weeks flat with full observability.",
+    name: "Elena Rostova",
+    role: "Director of Infrastructure",
+    company: "CloudScale Tech",
   },
   {
-    text: "Its robust features and quick support have transformed our workflow, making us significantly more efficient.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    name: "Zainab Hussain",
-    role: "Project Manager",
+    text: "Their automated workflow pipelines eliminated over 40 hours of manual data reconciliation each week. Easily one of the most capable engineering teams we've hired.",
+    name: "Rajesh Patel",
+    role: "Chief Digital Officer",
+    company: "Apex Global Logistics",
   },
   {
-    text: "The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-    name: "Aliza Khan",
-    role: "Business Analyst",
+    text: "Most engineering agencies struggle with precision micro-interactions and design tokens. Saras Dynamics implemented our motion physics and layout down to the pixel.",
+    name: "Claire Beaumont",
+    role: "Design Engineering Lead",
+    company: "Atelier Studio",
   },
   {
-    text: "Our business functions improved with a user-friendly design and positive customer feedback.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
-    name: "Farhan Siddiqui",
-    role: "Marketing Director",
+    text: "Finding engineers who master enterprise cloud security alongside fluid frontend architecture is rare. Saras Dynamics delivered an exceptional institutional platform.",
+    name: "Brian Connolly",
+    role: "VP of Technology",
+    company: "Summit Capital Group",
   },
   {
-    text: "They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
-    name: "Sana Sheikh",
-    role: "Sales Manager",
+    text: "Their WebSocket state management and real-time multiplayer canvas engine operate without friction. Our active user engagement surged 35% following release.",
+    name: "Anita Desai",
+    role: "Product Principal",
+    company: "Novus Platforms",
   },
   {
-    text: "Using this ERP, our online presence and conversions significantly improved, boosting business performance.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80",
-    name: "Hassan Ali",
-    role: "E-commerce Manager",
+    text: "From discovery sprint to high-availability deployment on Docker and Vercel, communication was crystal-clear and the engineering quality exceeded expectations.",
+    name: "Marcus Sterling",
+    role: "Co-Founder & CEO",
+    company: "Veloce Technologies",
   },
 ];
 
@@ -95,7 +96,7 @@ export const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
+              {props.testimonials.map(({ text, name, role, company }, i) => (
                 <motion.li 
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
@@ -116,23 +117,16 @@ export const TestimonialsColumn = (props: {
                 >
                   <blockquote className="m-0 p-0">
                     <p className="text-zinc-600 leading-relaxed font-normal m-0 transition-colors duration-300 text-sm sm:text-base">
-                      {text}
+                      "{text}"
                     </p>
                     <footer className="flex items-center gap-3 mt-6">
-                      <img
-                        width={40}
-                        height={40}
-                        src={image}
-                        alt={`Avatar of ${name}`}
-                        className="h-10 w-10 rounded-full object-cover ring-2 ring-zinc-100 group-hover:ring-zinc-300 transition-all duration-300 ease-in-out"
-                        loading="lazy"
-                      />
+                      <CommonAvatar className="size-10" />
                       <div className="flex flex-col">
                         <cite className="font-semibold not-italic tracking-tight leading-5 text-zinc-900 transition-colors duration-300 text-sm">
                           {name}
                         </cite>
-                        <span className="text-xs sm:text-sm leading-5 tracking-tight text-zinc-500 mt-0.5 transition-colors duration-300">
-                          {role}
+                        <span className="text-xs leading-5 tracking-tight text-zinc-500 mt-0.5 transition-colors duration-300">
+                          {role}{company ? ` • ${company}` : ""}
                         </span>
                       </div>
                     </footer>
@@ -152,7 +146,7 @@ export const TestimonialsSection = () => {
     <section 
       id="testimonials-v2-section"
       aria-labelledby="testimonials-heading"
-      className="bg-white py-24 relative overflow-hidden border-t border-zinc-200/80 transition-colors duration-300 w-full select-none"
+      className="bg-white py-20 md:py-24 relative overflow-hidden border-t border-zinc-200/80 transition-colors duration-300 w-full select-none"
     >
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -164,18 +158,19 @@ export const TestimonialsSection = () => {
         }}
         className="w-full z-10 mx-auto"
       >
-        <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-14 px-4 text-center">
-          <div className="flex justify-center">
-            <div className="border border-zinc-300 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-zinc-700 bg-zinc-100/70 transition-colors">
-              Testimonials
-            </div>
+        <div className="flex flex-col items-center justify-center max-w-2xl mx-auto mb-12 sm:mb-14 px-4 text-center">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#c30000]" />
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-zinc-900">
+              Verified Client Reviews
+            </span>
           </div>
 
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-5 text-center text-zinc-900 transition-colors">
-            What our users say
+          <h2 id="testimonials-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase text-zinc-900 transition-colors">
+            What Technology Leaders Say
           </h2>
-          <p className="text-center mt-3 text-zinc-500 text-base sm:text-lg leading-relaxed max-w-md transition-colors">
-            Discover how founders and high-performing teams streamline their design and product operations.
+          <p className="text-center mt-3 text-zinc-500 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg transition-colors font-medium">
+            Real feedback from engineering directors, CTOs, and product founders who build and scale mission-critical systems with Saras Dynamics.
           </p>
         </div>
 

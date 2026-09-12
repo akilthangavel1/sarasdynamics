@@ -8,100 +8,135 @@ import { cn } from "@/lib/utils";
  * -------------------------------------------------------------------------- */
 
 export type CardT = {
-  image: string;
   name: string;
-  handle: string;
-  quote?: string;
+  role: string;
+  company?: string;
+  handle?: string;
+  quote: string;
+  rating?: number;
   date?: string;
+  image?: string;
 };
+
+export const CommonAvatar: React.FC<{ className?: string }> = ({ className }) => (
+  <div
+    className={cn(
+      "size-11 rounded-full flex items-center justify-center bg-zinc-100 text-zinc-500 ring-1 ring-zinc-200/90 shrink-0 select-none",
+      className
+    )}
+    aria-hidden="true"
+  >
+    <svg
+      className="size-6 text-zinc-400"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fillRule="evenodd"
+        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </div>
+);
+
+const StarRating: React.FC<{ rating?: number }> = ({ rating = 5 }) => (
+  <div className="flex items-center gap-0.5 text-amber-500 mb-2.5">
+    {Array.from({ length: rating }).map((_, i) => (
+      <svg key={i} className="size-3.5 fill-current" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+    ))}
+  </div>
+);
 
 export const DEFAULT_DATA: CardT[] = [
   {
-    image:
-      "https://cdn.21st.dev/assets/mirror/20/202f28d9108e13136b34315b1c8dac25678f9dc5cb2f004c713d930cf285e62c.jpg",
-    name: "Briar Martin",
-    handle: "@neilstellar",
-    quote: "Radiant made undercutting all of our competitors an absolute breeze.",
+    name: "David Lin",
+    role: "VP of Engineering",
+    company: "Kinetix AI",
+    quote: "Saras Dynamics re-architected our RAG pipelines and autonomous agents. Query latency dropped 64% while generation accuracy improved noticeably. Outstanding engineering rigor.",
+    rating: 5,
   },
   {
-    image:
-      "https://cdn.21st.dev/assets/mirror/ce/ce1536afd37b7d4e6c9ffbee65b35e6897d4467ab07efc9b6466b6c1744654f9.jpg",
-    name: "Avery Johnson",
-    handle: "@averywrites",
-    quote: "The speed and architectural precision of this team completely transformed our product launch.",
+    name: "Sarah Jenkins",
+    role: "Head of Product",
+    company: "OmniHealth Systems",
+    quote: "They delivered our offline-first mobile patient monitoring app ahead of deadline. The real-time biometric synchronization is rock-solid and passed HIPAA audits cleanly.",
+    rating: 5,
   },
   {
-    image:
-      "https://cdn.21st.dev/assets/mirror/b5/b504a8aa09393bdf43a6b1aefe9baa60374c6716947bec200ddaff469b561fa5.jpg",
-    name: "Jordan Lee",
-    handle: "@jordantalks",
-    quote: "Flawless attention to detail. Our conversion rate jumped 42% after the redesign.",
+    name: "Michael Vance",
+    role: "Founder & CTO",
+    company: "StrataPay Financial",
+    quote: "The high-throughput trading telemetry console they built handles millions of live events without a hiccup. Their attention to UX, latency, and code structure is world-class.",
+    rating: 5,
   },
   {
-    image:
-      "https://cdn.21st.dev/assets/mirror/85/85ba79a1a989b29a505b7b377c77009d124216a8e312f80339cd8c50fdc8e401.jpg",
     name: "Elena Rostova",
-    handle: "@elenarostova",
-    quote: "Hands down the best engineering and design agency we've ever partnered with.",
+    role: "Director of Infrastructure",
+    company: "CloudScale Tech",
+    quote: "Containerizing our legacy monolith into Kubernetes with zero customer downtime was an immense task. Saras Dynamics finished it in 8 weeks flat with full observability.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    name: "Marcus Vance",
-    handle: "@marcus_v",
-    quote: "The motion system and micro-interactions elevate our software to a whole new level.",
+    name: "Rajesh Patel",
+    role: "Chief Digital Officer",
+    company: "Apex Global Logistics",
+    quote: "Their automated workflow pipelines eliminated over 40 hours of manual data reconciliation each week. Easily one of the most capable engineering teams we've hired.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    name: "Bilal Ahmed",
-    handle: "@bilalahmed",
-    quote: "Super fast implementation and pristine code quality throughout the entire engagement.",
+    name: "Claire Beaumont",
+    role: "Design Engineering Lead",
+    company: "Atelier Studio",
+    quote: "Most engineering agencies struggle with precision micro-interactions and design tokens. Saras Dynamics implemented our motion physics and layout down to the pixel.",
+    rating: 5,
   },
 ];
 
 export const SECOND_ROW_DATA: CardT[] = [
   {
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    name: "Briana Patton",
-    handle: "@brianapatton",
-    quote: "Streamlined our entire customer workflow and made collaboration seamless across timezones.",
+    name: "Brian Connolly",
+    role: "VP of Technology",
+    company: "Summit Capital Group",
+    quote: "Finding engineers who master enterprise cloud security alongside fluid frontend architecture is rare. Saras Dynamics delivered an exceptional institutional platform.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    name: "Omar Raza",
-    handle: "@omar_raza",
-    quote: "An indispensable partner. Their design instincts and velocity are truly unmatched.",
+    name: "Anita Desai",
+    role: "Product Principal",
+    company: "Novus Platforms",
+    quote: "Their WebSocket state management and real-time multiplayer canvas engine operate without friction. Our active user engagement surged 35% following release.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    name: "Saman Malik",
-    handle: "@samanm",
-    quote: "Our users constantly praise the intuitive UX. It drastically cut down our onboarding friction.",
+    name: "Marcus Sterling",
+    role: "Co-Founder & CEO",
+    company: "Veloce Technologies",
+    quote: "From discovery sprint to high-availability deployment on Docker and Vercel, communication was crystal-clear and the engineering quality exceeded expectations.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-    name: "Aliza Khan",
-    handle: "@alizakhan",
-    quote: "The polish, accessibility, and responsiveness exceeded every benchmark we set.",
+    name: "Emily Zhang",
+    role: "Senior Director of Ops",
+    company: "Beacon Cloud",
+    quote: "The autonomous ETL ingestion pipeline processes multi-gigabyte data streams around the clock without failures. Zero critical downtime since launching.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
-    name: "Farhan Siddiqui",
-    handle: "@farhansid",
-    quote: "Delivered on time and within scope. Our retention metrics spiked immediately post-launch.",
+    name: "Tariq Al-Mansoor",
+    role: "Technical Co-Founder",
+    company: "Quantiva Labs",
+    quote: "Their custom LLM fine-tuning and agentic routing integrated directly into our internal ERP, transforming how our team triages system anomalies in real time.",
+    rating: 5,
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
-    name: "Sana Sheikh",
-    handle: "@sanasheikh",
-    quote: "Truly world-class craftsmanship. Every animation feels intentional, fluid, and crisp.",
+    name: "Laura Miller",
+    role: "Head of Growth",
+    company: "Pulse Analytics",
+    quote: "Our application load times plummeted from 3.6s to 0.7s after their web architecture refactor. That speed improvement directly drove a 38% increase in trial conversions.",
+    rating: 5,
   },
 ];
 
@@ -133,27 +168,35 @@ export interface CardProps {
 export const Card: React.FC<CardProps> = ({ card, className }) => (
   <div
     className={cn(
-      "p-5 rounded-2xl mx-3 shadow-md shadow-zinc-900/[0.04] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-80 shrink-0 bg-white border border-zinc-200/80 cursor-default select-none",
+      "p-5 rounded-2xl mx-3 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-84 shrink-0 bg-white border border-zinc-200/90 cursor-default select-none flex flex-col justify-between",
       className
     )}
   >
-    <div className="flex items-center gap-3">
-      <img
-        className="size-11 rounded-full object-cover ring-2 ring-zinc-100"
-        src={card.image}
-        alt={card.name}
-      />
-      <div className="flex flex-col">
-        <div className="flex items-center gap-1.5">
-          <p className="font-semibold text-sm text-zinc-900 leading-none">{card.name}</p>
-          <VerifyIcon />
+    <div>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-3">
+          <CommonAvatar />
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <p className="font-bold text-sm text-zinc-900 leading-none">{card.name}</p>
+              <VerifyIcon />
+            </div>
+            <span className="text-xs text-zinc-500 mt-1 font-medium">
+              {card.role}{card.company ? ` • ${card.company}` : ""}
+            </span>
+          </div>
         </div>
-        <span className="text-xs text-slate-500 mt-1">{card.handle}</span>
       </div>
+      <StarRating rating={card.rating || 5} />
+      <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed font-normal">
+        "{card.quote}"
+      </p>
     </div>
-    <p className="text-sm pt-4 text-zinc-700 leading-relaxed font-normal">
-      {card.quote || "Radiant made undercutting all of our competitors an absolute breeze."}
-    </p>
+
+    <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-400 font-medium">
+      <span className="text-[#c30000] font-semibold">Verified Client Review</span>
+      <span>Enterprise Delivery</span>
+    </div>
   </div>
 );
 

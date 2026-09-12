@@ -3,123 +3,123 @@ import { LazyImage } from './lazy-image';
 
 const blogs = [
 	{
-		title: 'Design Systems That Scale',
+		title: 'Architecting Zero-Downtime Migration to Kubernetes',
 		slug: '#',
 		description:
-			'Learn how to build and maintain scalable design systems that empower teams to move faster while staying consistent.',
+			'How we decomposed a legacy relational monolith into containerized services, automated canary deployments, and sustained 99.99% uptime.',
 		image: 'https://cdn.21st.dev/assets/mirror/f2/f2b2a055966c6c1681569e43db628e02b5f32ce532c436bd05b2889a78914819.jpg',
-		createdAt: '2025-08-25',
-		author: 'Ava Mitchell',
+		createdAt: '2026-08-25',
+		author: 'Alex Rivera',
 		readTime: '7 min read',
 	},
 	{
-		title: 'The Psychology of Color in UI',
+		title: 'Production RAG: Hybrid Vector Search & Reranking',
 		slug: '#',
 		description:
-			'Explore how different colors influence user perception, emotion, and conversion in digital product design.',
+			'Why naive cosine embeddings fail at enterprise scale, and how cross-encoders, BM25 hybrid indexing, and chunk deduplication yield 94% retrieval accuracy.',
 		image: 'https://cdn.21st.dev/assets/mirror/1c/1c9069d4c0e2ec6e906649d4872849733f11e1d5bc9acc77afa11d51300e042f.jpg',
-		createdAt: '2025-07-14',
-		author: 'Liam Carter',
-		readTime: '5 min read',
-	},
-	{
-		title: 'Microinteractions That Delight',
-		slug: '#',
-		description:
-			'Discover how subtle animations and interactions can enhance usability and bring joy to your users.',
-		image: 'https://cdn.21st.dev/assets/mirror/02/02f7ddc201e97fad2664c317fa4182a86cd41174d0618f09d41b712cafd243be.jpg',
-		createdAt: '2025-06-30',
-		author: 'Sophia Kim',
-		readTime: '6 min read',
-	},
-	{
-		title: 'Accessibility Beyond Compliance',
-		slug: '#',
-		description:
-			'Practical steps to make your UI accessible, not just legally compliant, but genuinely inclusive for everyone.',
-		image: 'https://cdn.21st.dev/assets/mirror/ba/ba0e6341e9bf5eefa9dd354dce1cdc4a0ca745a5b6f338b0271000f1b7fc3248.jpg',
-		createdAt: '2025-06-18',
-		author: 'Ethan Rodriguez',
-		readTime: '8 min read',
-	},
-	{
-		title: 'Dark Mode Done Right',
-		slug: '#',
-		description:
-			'Tips and tricks to design beautiful and functional dark mode experiences that users will love.',
-		image: 'https://cdn.21st.dev/assets/mirror/c1/c12cf6dc6daca5173fd0bfc4b1562743c92e8f1fb17efa224098180d940ba880.jpg',
-		createdAt: '2025-05-20',
-		author: 'Maya Chen',
-		readTime: '4 min read',
-	},
-	{
-		title: 'Typography That Speaks',
-		slug: '#',
-		description:
-			'How to select and pair typefaces that enhance readability, hierarchy, and brand personality.',
-		image: 'https://cdn.21st.dev/assets/mirror/03/03e08e6b748cd888b6c4bb295b1348148830b5cfc87cce5ecb1ad62b4dd79fb3.jpg',
-		createdAt: '2025-05-02',
-		author: 'Noah Patel',
+		createdAt: '2026-07-14',
+		author: 'Dr. Elena Rostova',
 		readTime: '9 min read',
 	},
 	{
-		title: 'The Future of UI Animation',
+		title: 'Reaching 120 FPS in React Native & Reanimated 3',
 		slug: '#',
 		description:
-			'From motion guidelines to advanced prototyping—discover where UI animation is headed in 2025.',
-		image: 'https://cdn.21st.dev/assets/mirror/94/94f309ffe240e6252865b9a1fe6fc11c086414e7271e8565aae29d9e75dcfc44.jpg',
-		createdAt: '2025-04-15',
-		author: 'Chloe Ramirez',
-		readTime: '10 min read',
-	},
-	{
-		title: 'Minimalism vs Maximalism in Design',
-		slug: '#',
-		description:
-			'A deep dive into two opposing design philosophies and how to decide which fits your product.',
-		image: 'https://cdn.21st.dev/assets/mirror/dd/dd7374e5608609dce96fedb6220383770fe180d2d2e9f41f9b3c22ccfa5b654e.jpg',
-		createdAt: '2025-04-01',
-		author: 'Benjamin Scott',
+			'Optimizing the shadow tree, offloading gesture math to the UI thread, and eliminating micro-janks across high-refresh iOS and Android displays.',
+		image: 'https://cdn.21st.dev/assets/mirror/02/02f7ddc201e97fad2664c317fa4182a86cd41174d0618f09d41b712cafd243be.jpg',
+		createdAt: '2026-06-30',
+		author: 'Marcus Vance',
 		readTime: '6 min read',
 	},
 	{
-		title: 'Designing for Mobile-First',
+		title: 'Hardening Distributed Webhooks with Idempotency Keys',
 		slug: '#',
 		description:
-			'Best practices for mobile-first design, from layout decisions to performance optimization.',
-		image: 'https://cdn.21st.dev/assets/mirror/1e/1e4a4d1babea6eab29262d2283d9fb7a28b0301690e5f9c45612978ae2ff064f.jpg',
-		createdAt: '2025-03-22',
-		author: 'Isabella White',
-		readTime: '7 min read',
-	},
-	{
-		title: 'Figma Hacks for Power Users',
-		slug: '#',
-		description:
-			'Hidden features, shortcuts, and workflows in Figma that can dramatically speed up your design process.',
-		image: 'https://cdn.21st.dev/assets/mirror/66/66c2376b01010086f676afcd56d9e3b0f0498b4d1c4e2c3e7e91eb3af2f179f2.jpg',
-		createdAt: '2025-03-09',
-		author: 'James Walker',
-		readTime: '5 min read',
-	},
-	{
-		title: 'Designing With AI Tools',
-		slug: '#',
-		description:
-			'A practical look at how AI tools are shaping UI/UX workflows—from ideation to final delivery.',
-		image: 'https://cdn.21st.dev/assets/mirror/ee/ee1bd0742f0ae1ed3cc484df2b2a51495d35fd0e853eb14757b4f78df82f450c.jpg',
-		createdAt: '2025-02-28',
-		author: 'Olivia Brooks',
+			'Eliminating duplicate data processing and double billing in asynchronous distributed payment workflows with Redis-backed atomic lease locks.',
+		image: 'https://cdn.21st.dev/assets/mirror/ba/ba0e6341e9bf5eefa9dd354dce1cdc4a0ca745a5b6f338b0271000f1b7fc3248.jpg',
+		createdAt: '2026-06-18',
+		author: 'Devlin Scott',
 		readTime: '8 min read',
 	},
 	{
-		title: 'The Art of Prototyping',
+		title: 'Zero-Copy Data Pipelines with Arrow and Rust',
 		slug: '#',
 		description:
-			'How to create prototypes that effectively communicate your ideas and speed up stakeholder feedback.',
+			'Processing gigabyte-scale telemetry batches without memory thrashing using Apache Arrow columnar memory layout and native Rust FFI bridges.',
+		image: 'https://cdn.21st.dev/assets/mirror/c1/c12cf6dc6daca5173fd0bfc4b1562743c92e8f1fb17efa224098180d940ba880.jpg',
+		createdAt: '2026-05-20',
+		author: 'Priyantha Sen',
+		readTime: '6 min read',
+	},
+	{
+		title: 'Fine-Tuning Small Language Models for Edge Inference',
+		slug: '#',
+		description:
+			'Deploying quantized 4-bit LoRA adapters on local mobile devices to deliver sub-100ms offline intent classification without cloud roundtrips.',
+		image: 'https://cdn.21st.dev/assets/mirror/03/03e08e6b748cd888b6c4bb295b1348148830b5cfc87cce5ecb1ad62b4dd79fb3.jpg',
+		createdAt: '2026-05-02',
+		author: 'Sarah Lin',
+		readTime: '10 min read',
+	},
+	{
+		title: 'Event-Driven Telemetry at 10M Daily Transactions',
+		slug: '#',
+		description:
+			'Architectural lessons from scaling Kafka partitions, dead-letter re-queuing, and ClickHouse analytical stores under heavy burst traffic.',
+		image: 'https://cdn.21st.dev/assets/mirror/94/94f309ffe240e6252865b9a1fe6fc11c086414e7271e8565aae29d9e75dcfc44.jpg',
+		createdAt: '2026-04-15',
+		author: 'Julian Becker',
+		readTime: '11 min read',
+	},
+	{
+		title: 'Contract-First API Architecture: Protobuf to TypeScript',
+		slug: '#',
+		description:
+			'Enforcing type-safe RPC boundaries, backward-compatible schemas, and automated client generation across polyglot microservice clusters.',
+		image: 'https://cdn.21st.dev/assets/mirror/dd/dd7374e5608609dce96fedb6220383770fe180d2d2e9f41f9b3c22ccfa5b654e.jpg',
+		createdAt: '2026-04-01',
+		author: 'Tanya Morris',
+		readTime: '7 min read',
+	},
+	{
+		title: 'Native iOS Secure Enclave & Biometric Cryptography',
+		slug: '#',
+		description:
+			'Generating non-exportable hardware-backed ECC keys on Apple Secure Enclave for zero-trust enterprise financial transactions.',
+		image: 'https://cdn.21st.dev/assets/mirror/1e/1e4a4d1babea6eab29262d2283d9fb7a28b0301690e5f9c45612978ae2ff064f.jpg',
+		createdAt: '2026-03-22',
+		author: 'Rohit Sharma',
+		readTime: '8 min read',
+	},
+	{
+		title: 'Database Sharding vs Read-Replicas: When to Split',
+		slug: '#',
+		description:
+			'Evaluating connection pooling, replication lag, cross-shard constraints, and operational overhead before partitioning production PostgreSQL.',
+		image: 'https://cdn.21st.dev/assets/mirror/66/66c2376b01010086f676afcd56d9e3b0f0498b4d1c4e2c3e7e91eb3af2f179f2.jpg',
+		createdAt: '2026-03-09',
+		author: 'Carlos Mendes',
+		readTime: '9 min read',
+	},
+	{
+		title: 'Autonomous Multi-Agent Systems in Production',
+		slug: '#',
+		description:
+			'Designing deterministic state machines for autonomous LLM agents to execute multi-step database mutations with human-in-the-loop approval.',
+		image: 'https://cdn.21st.dev/assets/mirror/ee/ee1bd0742f0ae1ed3cc484df2b2a51495d35fd0e853eb14757b4f78df82f450c.jpg',
+		createdAt: '2026-02-28',
+		author: 'Amanda Wright',
+		readTime: '8 min read',
+	},
+	{
+		title: 'Optimizing Node.js Event Loop Latency under 50k RPS',
+		slug: '#',
+		description:
+			'Profiling V8 heap allocations, eliminating synchronous cryptography blocks, and tuning libuv threadpools for high-concurrency microservices.',
 		image: 'https://cdn.21st.dev/assets/mirror/f0/f05e33f6d849e65bc6507c82ed416805bba5d5dd4152fde67b1d833b5ff91b88.jpg',
-		createdAt: '2025-02-14',
-		author: 'Daniel Green',
+		createdAt: '2026-02-14',
+		author: 'Kevin O’Connor',
 		readTime: '6 min read',
 	},
 ];
@@ -137,11 +137,10 @@ export function BlogSection() {
 			</div>
 			<div className="space-y-1 px-4 py-8">
 				<h1 className="font-mono text-4xl font-bold tracking-wide">
-					Blog Section
+					Engineering & Systems Journal
 				</h1>
 				<p className="text-muted-foreground text-base">
-					Discover the latest trends and insights in the world of design and
-					technology.
+					Deep dives into AI architectures, distributed systems, high-performance web, and mobile engineering by Saras Dynamics.
 				</p>
 			</div>
 			<div className="relative inset-x-0 h-px w-full border-b border-dashed border-zinc-200" />

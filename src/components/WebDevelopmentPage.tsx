@@ -20,6 +20,8 @@ import {
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { ImageExpansionSlider } from "@/components/ui/image-expansion";
+import { BlogPostCardDemo } from "@/components/ui/card-18-demo";
+import { EnhancedBackgroundPaths } from "@/components/ui/modern-background-paths";
 
 interface WebDevelopmentPageProps {
   onBackToHome?: () => void;
@@ -165,108 +167,19 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Simple, Polished Hero Section */}
+      {/* Enhanced Background Paths Hero Section */}
       <section
         id="web-hero"
-        className="relative w-full border-b border-zinc-200/80 bg-zinc-50/60 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative w-full border-b border-zinc-200/80 overflow-hidden"
       >
-        {/* Subtle grid background accent */}
-        <div className="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
-
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-medium text-zinc-800 shadow-xs mb-6"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-            </span>
-            <span>Full-Stack Web Engineering &bull; Modern Architecture</span>
-          </motion.div>
-
-          {/* Simple Hero Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.08] text-balance"
-          >
-            Modern web applications built for speed, scale, and clarity.
-          </motion.h1>
-
-          {/* Simple Supportive Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-5 text-base sm:text-lg md:text-xl text-zinc-600 max-w-2xl text-balance font-normal leading-relaxed"
-          >
-            We engineer bespoke web applications, high-throughput cloud backends, and responsive design systems with TypeScript, React, and Node.js.
-          </motion.p>
-
-          {/* Action Controls */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3.5"
-          >
-            <button
-              onClick={scrollToCapabilities}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900 text-white font-medium text-sm hover:bg-zinc-800 transition-all shadow-sm active:scale-98 cursor-pointer"
-            >
-              <span>Explore Capabilities</span>
-              <ArrowRight className="size-4" />
-            </button>
-
-            <button
-              onClick={handleStartProject}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 bg-white text-zinc-800 font-medium text-sm hover:bg-zinc-100 transition-all shadow-2xs active:scale-98 cursor-pointer"
-            >
-              <Sparkles className="size-4 text-red-600" />
-              <span>Start a Project</span>
-            </button>
-
-            {onBackToHome && (
-              <button
-                onClick={onBackToHome}
-                className="inline-flex items-center gap-1.5 px-4 py-3 rounded-full text-zinc-500 hover:text-zinc-900 text-sm font-medium transition-colors cursor-pointer"
-              >
-                <ArrowLeft className="size-4" />
-                <span>Home</span>
-              </button>
-            )}
-          </motion.div>
-
-          {/* Performance Guarantee Highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-3xl pt-8 border-t border-zinc-200/80"
-          >
-            <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">99.9%</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Uptime Target</div>
-            </div>
-            <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-red-600 font-mono">&lt;100ms</div>
-              <div className="text-xs text-zinc-500 mt-0.5">P95 Latency</div>
-            </div>
-            <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">100%</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Type-Safe TS</div>
-            </div>
-            <div className="p-3 bg-white/70 rounded-xl border border-zinc-200/80 shadow-2xs">
-              <div className="text-xl sm:text-2xl font-bold text-zinc-900 font-mono">CI/CD</div>
-              <div className="text-xs text-zinc-500 mt-0.5">Zero Downtime</div>
-            </div>
-          </motion.div>
-        </div>
+        <EnhancedBackgroundPaths
+          title="Web Development"
+          subtitle="Saras Dynamics architects high-performance web applications, resilient cloud backends, and responsive design systems with React, TypeScript, and modern distributed architecture."
+          badge="Full-Stack Web Engineering • Saras Dynamics"
+          ctaText="Explore Capabilities"
+          onCtaClick={scrollToCapabilities}
+          onSecondaryClick={handleStartProject}
+        />
       </section>
 
       {/* Capabilities Section */}
@@ -274,20 +187,42 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         id="web-capabilities"
         className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       >
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-medium text-zinc-700 mb-3">
-            <Globe className="size-3.5 text-red-600" />
-            <span>Engineering Capabilities</span>
+            <Code2 className="size-3.5 text-red-600" />
+            <span>Web Engineering Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
-            End-to-end full-stack web solutions.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900">
+            Full-Stack Web Architecture & Engineering
           </h2>
-          <p className="mt-3 text-base text-zinc-600">
-            From initial database modeling to frontend motion systems, we deliver turnkey web architecture designed for real-world reliability.
+          <p className="mt-3.5 text-base sm:text-lg text-zinc-600 leading-relaxed">
+            From responsive, high-framerate client applications to containerized microservices and automated CI/CD pipelines, we architect resilient web systems built for scale.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Performance Benchmark Highlights */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mb-14">
+          <div className="p-4 bg-white rounded-2xl border border-zinc-200 shadow-2xs">
+            <div className="text-2xl sm:text-3xl font-bold text-zinc-900 font-mono tracking-tight">&lt; 0.8s</div>
+            <div className="text-xs font-medium text-zinc-500 mt-1">First Contentful Paint</div>
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-zinc-200 shadow-2xs">
+            <div className="text-2xl sm:text-3xl font-bold text-red-600 font-mono tracking-tight">99.99%</div>
+            <div className="text-xs font-medium text-zinc-500 mt-1">Production Uptime SLA</div>
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-zinc-200 shadow-2xs">
+            <div className="text-2xl sm:text-3xl font-bold text-zinc-900 font-mono tracking-tight">98+</div>
+            <div className="text-xs font-medium text-zinc-500 mt-1">Core Web Vitals Benchmark</div>
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-zinc-200 shadow-2xs">
+            <div className="text-2xl sm:text-3xl font-bold text-zinc-900 font-mono tracking-tight">100%</div>
+            <div className="text-xs font-medium text-zinc-500 mt-1">TypeScript Strict Mode</div>
+          </div>
+        </div>
+
+        {/* 6 Core Capabilities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {CAPABILITIES.map((cap, idx) => {
             const Icon = cap.icon;
             return (
@@ -317,18 +252,36 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-100 space-y-2">
-                  {cap.highlights.map((h, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-zinc-600">
-                      <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{h}</span>
-                    </div>
-                  ))}
+                <div className="pt-4 border-t border-zinc-100">
+                  <div className="space-y-2">
+                    {cap.highlights.map((h) => (
+                      <div key={h} className="flex items-start gap-2 text-xs text-zinc-600">
+                        <CheckCircle2 className="size-3.5 text-red-600 shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Case Studies & Engineering Deep-Dives Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 pt-12 border-t border-zinc-200">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-medium text-zinc-700 mb-3">
+            <Sparkles className="size-3.5 text-red-600" />
+            <span>Engineering Case Studies</span>
+          </div>
+          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">
+            Real-World Web Architecture Deep Dives
+          </h3>
+          <p className="mt-2 text-sm sm:text-base text-zinc-600">
+            How we solve complex throughput, latency, and design system challenges in production environments.
+          </p>
+        </div>
+
+        <BlogPostCardDemo className="p-0" />
       </section>
 
       {/* Tech Stack Banner */}
@@ -353,8 +306,24 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         </div>
       </section>
 
-      {/* Featured Explorations & Image Expansion Showcase */}
-      <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      {/* Web Development Portfolio Section */}
+      <section
+        id="web-portfolio"
+        className="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
+      >
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-medium text-zinc-700 mb-3">
+            <Globe className="size-3.5 text-red-600" />
+            <span>Client Work & Architecture</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900">
+            Featured Web Development Portfolio
+          </h2>
+          <p className="mt-3 text-base text-zinc-600">
+            Explore live production web apps, cloud telemetry consoles, and SaaS platforms engineered by Saras Dynamics.
+          </p>
+        </div>
+
         <ImageExpansionSlider />
       </section>
 
