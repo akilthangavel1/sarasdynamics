@@ -80,21 +80,16 @@ export function SiteFooter() {
   return (
     <footer id="site-footer" className="w-full border-t border-zinc-200 bg-white text-zinc-800 transition-colors">
       <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-8 sm:p-10 pb-0 md:flex">
-        <a href="#about-page" className="flex items-center justify-center rounded-xl shrink-0 group" aria-label="Saras Dynamics">
-          <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500/15 group-hover:scale-105 transition-all shadow-2xs">
-            <DIcons.Sparkles className="w-5 h-5 text-emerald-600" />
+        <a href="#hero-canvas" className="flex items-center justify-center rounded-full shrink-0 group">
+          <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-200 flex items-center justify-center text-red-600 group-hover:scale-105 transition-transform">
+            <DIcons.Sparkles className="w-5 h-5 text-red-600" />
           </div>
         </a>
-        <div className="flex flex-col gap-1 text-center md:text-left max-w-4xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-zinc-900 flex items-center justify-center md:justify-start gap-2">
-            <span>Saras Dynamics</span>
-            <span className="text-zinc-300">•</span>
-            <span className="text-zinc-500 font-normal">Next-Gen Software &amp; AI Engineering</span>
-          </span>
-          <p className="bg-transparent text-xs sm:text-[13px] leading-relaxed text-zinc-600">
-            Welcome to Saras Dynamics — where technical rigor meets intelligent innovation. We architect, engineer, and deploy high-performance web applications, native mobile systems, enterprise AI solutions, and resilient distributed cloud infrastructure. Committed to craftsmanship, security, and measurable impact.
-          </p>
-        </div>
+        <p id="footer-brand-description" className="bg-transparent text-center text-xs sm:text-sm leading-relaxed text-zinc-600 md:text-left max-w-4xl font-normal">
+          Welcome to Saras Dynamics, pioneering high-performance software engineering, enterprise AI
+          systems, and intelligent automation architectures. We design scalable digital platforms and
+          mission-critical technology solutions engineered for precision, velocity, and enduring reliability.
+        </p>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-8">

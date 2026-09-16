@@ -22,7 +22,7 @@ export const Button12 = React.forwardRef<HTMLButtonElement, Button12Props>(
         <Comp
           ref={ref}
           className={cn(
-            "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-zinc-900 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-zinc-800 hover:shadow-2xl active:scale-95 cursor-pointer",
+            "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 py-4 text-base font-semibold text-background shadow-lg transition-all duration-300 hover:scale-105 hover:bg-foreground/90 hover:shadow-2xl active:scale-95 cursor-pointer",
             className
           )}
           {...props}
@@ -46,7 +46,7 @@ export const Button12 = React.forwardRef<HTMLButtonElement, Button12Props>(
       <Comp
         ref={ref}
         className={cn(
-          "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-zinc-900 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-zinc-800 hover:shadow-2xl active:scale-95 cursor-pointer",
+          "group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 py-4 text-base font-semibold text-background shadow-lg transition-all duration-300 hover:scale-105 hover:bg-foreground/90 hover:shadow-2xl active:scale-95 cursor-pointer",
           className
         )}
         {...props}

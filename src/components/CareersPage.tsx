@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Briefcase,
   ArrowRight,
@@ -12,62 +12,26 @@ import {
   Globe2,
   ChevronRight,
   Send,
+  Search,
+  Tag,
+  Shield,
+  RefreshCw,
+  X,
 } from "lucide-react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { useAuth } from "../context/AuthContext";
+import {
+  api,
+  type Job,
+  type JobCategory,
+} from "../services/api";
+import { AdminJobManagement } from "./AdminJobManagement";
+import { CandidateApplicationModal } from "./CandidateApplicationModal";
 
 interface CareersPageProps {
   onBackToHome?: () => void;
 }
-
-interface JobPosition {
-  id: string;
-  title: string;
-  department: "Engineering" | "Design" | "Product" | "Operations";
-  location: string;
-  type: string;
-  experience: string;
-  description: string;
-}
-
-const OPEN_POSITIONS: JobPosition[] = [
-  {
-    id: "eng-1",
-    title: "Senior Full-Stack Engineer",
-    department: "Engineering",
-    location: "Remote (Global)",
-    type: "Full-time",
-    experience: "5+ years",
-    description: "Architect high-performance web applications using TypeScript, React, Node.js, and modern cloud infrastructure.",
-  },
-  {
-    id: "des-1",
-    title: "Lead Product & Interaction Designer",
-    department: "Design",
-    location: "Remote / San Francisco",
-    type: "Full-time",
-    experience: "4+ years",
-    description: "Shape minimalist visual languages, design systems, fluid micro-interactions, and high-fidelity prototype flows.",
-  },
-  {
-    id: "eng-2",
-    title: "Frontend Systems & Animation Specialist",
-    department: "Engineering",
-    location: "Remote (Global)",
-    type: "Full-time",
-    experience: "3+ years",
-    description: "Craft pixel-precise canvases, GPU-accelerated motion interfaces, and smooth component library foundations.",
-  },
-  {
-    id: "prod-1",
-    title: "Technical Product Manager",
-    department: "Product",
-    location: "Remote / New York",
-    type: "Full-time",
-    experience: "4+ years",
-    description: "Partner with founders and engineering leaders to translate ambitious product visions into clean, ship-ready roadmaps.",
-  },
-];
 
 const PERKS = [
   {
@@ -93,17 +57,63 @@ const PERKS = [
 ];
 
 export function CareersPage({ onBackToHome }: CareersPageProps) {
-  const [selectedDept, setSelectedDept] = useState<string>("All");
-  const [appliedRole, setAppliedRole] = useState<JobPosition | null>(null);
+  const { dbUser, roles, hasPermission } = useAuth();
+  const canAccessJobAdmin =
+    hasPermission("jobs.read") ||
+    hasPermission("jobs.create") ||
+    hasPermission("jobs.update") ||
+    hasPermission("jobs.update_content");
+
+  const [isAdminViewOpen, setIsAdminViewOpen] = useState(false);
+
+  // Live state from backend
+  const [categories, setCategories] = useState<JobCategory[]>([]);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Modals
+  const [viewingJob, setViewingJob] = useState<Job | null>(null);
+  const [appliedRole, setAppliedRole] = useState<Job | null>(null);
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
   const [applicantName, setApplicantName] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
   const [applicantNote, setApplicantNote] = useState("");
 
-  const filteredPositions =
-    selectedDept === "All"
-      ? OPEN_POSITIONS
-      : OPEN_POSITIONS.filter((p) => p.department === selectedDept);
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const [catsRes, jobsRes] = await Promise.all([
+        api.getPublicCategories(),
+        api.getPublicJobs({
+          category: selectedCategory !== "All" ? selectedCategory : undefined,
+          search: searchQuery || undefined,
+          limit: 50,
+        }),
+      ]);
+
+      if (catsRes.success && catsRes.data) {
+        setCategories(catsRes.data);
+      }
+      if (jobsRes.success && jobsRes.data) {
+        setJobs(jobsRes.data);
+      }
+    } catch (err) {
+      console.error("Failed to load careers data:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedCategory]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    fetchData();
+  };
 
   const scrollToOpenings = () => {
     document.getElementById("open-positions")?.scrollIntoView({ behavior: "smooth" });
@@ -115,7 +125,7 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
     setApplicationSubmitted(true);
   };
 
-  const resetModal = () => {
+  const resetApplicationModal = () => {
     setAppliedRole(null);
     setApplicationSubmitted(false);
     setApplicantName("");
@@ -123,21 +133,46 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
     setApplicantNote("");
   };
 
+  if (isAdminViewOpen) {
+    return <AdminJobManagement onClose={() => setIsAdminViewOpen(false)} />;
+  }
+
   return (
     <div id="careers-page-wrapper" className="w-full min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white">
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Simple, Polished Hero Section */}
+      {/* Admin Quick Banner for Team Members */}
+      {canAccessJobAdmin && (
+        <div className="bg-slate-900 text-slate-200 border-b border-slate-800 py-2.5 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-indigo-400" />
+              <span>
+                Talent Operations Portal &bull; Logged in as{" "}
+                <span className="font-semibold text-white">{roles.join(", ")}</span>
+              </span>
+            </div>
+            <button
+              onClick={() => {
+                window.location.hash = "#management/jobs";
+              }}
+              className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-md transition-colors cursor-pointer"
+            >
+              Open in Management Console &rarr;
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section */}
       <section
         id="careers-hero"
         className="relative w-full border-b border-zinc-200/80 bg-zinc-50/50 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
-        {/* Subtle grid background accent */}
         <div className="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
 
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
-          {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -148,10 +183,9 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span>We&apos;re Hiring &bull; Join the Studio</span>
+            <span>We&apos;re Hiring &bull; Live Positions</span>
           </motion.div>
 
-          {/* Simple Hero Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,7 +195,6 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
             Build thoughtful digital products with us.
           </motion.h1>
 
-          {/* Simple Supportive Description */}
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -171,7 +204,6 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
             We are a tight-knit collective of engineers, designers, and creators crafting minimalist software and precision web experiences.
           </motion.p>
 
-          {/* Action CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -223,7 +255,7 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
       {/* Open Positions Section */}
       <section id="open-positions" className="w-full py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
               <span className="text-xs uppercase tracking-wider text-zinc-500 font-semibold">
                 Current Openings
@@ -233,190 +265,235 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
               </h2>
             </div>
 
-            {/* Department Filter Pills */}
-            <div className="flex flex-wrap gap-2">
-              {["All", "Engineering", "Design", "Product"].map((dept) => (
-                <button
-                  key={dept}
-                  onClick={() => setSelectedDept(dept)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
-                    selectedDept === dept
-                      ? "bg-zinc-900 text-white shadow-xs"
-                      : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900"
-                  }`}
-                >
-                  {dept}
-                </button>
-              ))}
-            </div>
+            {/* Search Input */}
+            <form onSubmit={handleSearchSubmit} className="relative min-w-[260px]">
+              <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search open positions..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-zinc-50 border border-zinc-200 rounded-xl text-xs text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-zinc-800"
+              />
+            </form>
+          </div>
+
+          {/* Department Filter Pills */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            <button
+              onClick={() => setSelectedCategory("All")}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                selectedCategory === "All"
+                  ? "bg-zinc-900 text-white shadow-xs"
+                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900"
+              }`}
+            >
+              All Categories
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.slug)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+                  selectedCategory === cat.slug
+                    ? "bg-zinc-900 text-white shadow-xs"
+                    : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900"
+                }`}
+              >
+                {cat.name}
+              </button>
+            ))}
           </div>
 
           {/* Positions List */}
-          <div className="space-y-4">
-            {filteredPositions.map((position) => (
-              <div
-                key={position.id}
-                className="group p-6 rounded-2xl border border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-xs transition-all flex flex-col md:flex-row md:items-center justify-between gap-6"
-              >
-                <div className="max-w-2xl">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-md bg-zinc-100 text-zinc-700 text-xs font-medium">
-                      {position.department}
-                    </span>
-                    <span className="flex items-center gap-1 text-xs text-zinc-500">
-                      <MapPin className="size-3.5" />
-                      {position.location}
-                    </span>
-                    <span className="flex items-center gap-1 text-xs text-zinc-500">
-                      <Clock className="size-3.5" />
-                      {position.type}
-                    </span>
+          {loading ? (
+            <div className="py-20 text-center text-zinc-400 flex items-center justify-center gap-3">
+              <RefreshCw className="w-5 h-5 animate-spin text-zinc-600" />
+              <span>Loading current openings...</span>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {jobs.map((position) => (
+                <div
+                  key={position.id}
+                  className="group p-6 rounded-2xl border border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-xs transition-all flex flex-col md:flex-row md:items-center justify-between gap-6"
+                >
+                  <div className="max-w-2xl space-y-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {position.category && (
+                        <span className="px-2.5 py-0.5 rounded-md bg-zinc-100 text-zinc-700 text-xs font-medium">
+                          {position.category.name}
+                        </span>
+                      )}
+                      <span className="flex items-center gap-1 text-xs text-zinc-500">
+                        <MapPin className="size-3.5" />
+                        {position.location || position.workplace_type}
+                      </span>
+                      <span className="flex items-center gap-1 text-xs text-zinc-500">
+                        <Clock className="size-3.5" />
+                        {position.employment_type.replace("_", " ")}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-semibold text-zinc-900 group-hover:text-zinc-700 transition-colors">
+                      {position.title}
+                    </h3>
+                    <p className="text-sm text-zinc-600 leading-relaxed line-clamp-2">
+                      {position.description}
+                    </p>
+
+                    {/* Skill Tags */}
+                    {position.skills && position.skills.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {position.skills.map((skill) => (
+                          <span
+                            key={skill.id}
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-zinc-100 text-zinc-600 font-mono"
+                          >
+                            <Tag className="w-2.5 h-2.5" />
+                            {skill.name}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <h3 className="text-xl font-semibold text-zinc-900 group-hover:text-zinc-700 transition-colors">
-                    {position.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-zinc-600 leading-relaxed">
-                    {position.description}
-                  </p>
+                  <div className="shrink-0 flex items-center gap-2">
+                    <button
+                      onClick={() => setViewingJob(position)}
+                      className="px-4 py-2.5 rounded-xl border border-zinc-200 text-zinc-700 text-xs font-semibold hover:bg-zinc-50 transition-colors cursor-pointer"
+                    >
+                      View Details
+                    </button>
+                    <button
+                      onClick={() => {
+                        setAppliedRole(position);
+                        setApplicationSubmitted(false);
+                      }}
+                      className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
+                    >
+                      <span>Apply Now</span>
+                      <ChevronRight className="size-3.5" />
+                    </button>
+                  </div>
                 </div>
+              ))}
 
-                <div className="shrink-0 flex items-center">
-                  <button
-                    onClick={() => {
-                      setAppliedRole(position);
-                      setApplicationSubmitted(false);
-                    }}
-                    className="w-full md:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
-                  >
-                    <span>Apply Now</span>
-                    <ChevronRight className="size-3.5" />
-                  </button>
+              {jobs.length === 0 && (
+                <div className="p-12 text-center rounded-2xl border border-dashed border-zinc-200 text-zinc-500">
+                  No published openings currently found in this filter. Check back soon!
                 </div>
-              </div>
-            ))}
-
-            {filteredPositions.length === 0 && (
-              <div className="p-12 text-center rounded-2xl border border-dashed border-zinc-200 text-zinc-500">
-                No open positions currently listed in this category. Check back soon!
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Application Modal */}
-      {appliedRole && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-          <div className="relative w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-zinc-200">
-            {applicationSubmitted ? (
-              <div className="text-center py-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="size-6" />
+      {/* Job Details Modal */}
+      <AnimatePresence>
+        {viewingJob && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-white rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-zinc-200 shadow-2xl space-y-6"
+            >
+              <div className="flex items-start justify-between border-b border-zinc-100 pb-4">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    {viewingJob.category && (
+                      <span className="px-2.5 py-0.5 rounded-md bg-zinc-100 text-zinc-700 text-xs font-medium">
+                        {viewingJob.category.name}
+                      </span>
+                    )}
+                    <span className="text-xs text-zinc-500 font-medium">
+                      {viewingJob.workplace_type} &bull; {viewingJob.employment_type.replace("_", " ")}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-zinc-900">{viewingJob.title}</h3>
                 </div>
-                <h3 className="text-xl font-bold text-zinc-900">Application Received</h3>
-                <p className="mt-2 text-sm text-zinc-600 max-w-sm mx-auto">
-                  Thank you, <span className="font-semibold">{applicantName}</span>! Our team will review your application for the{" "}
-                  <span className="font-semibold">{appliedRole.title}</span> role and reach out to {applicantEmail}.
-                </p>
                 <button
-                  onClick={resetModal}
-                  className="mt-6 px-6 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 cursor-pointer"
+                  onClick={() => setViewingJob(null)}
+                  className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Skills */}
+              {viewingJob.skills && viewingJob.skills.length > 0 && (
+                <div>
+                  <h4 className="text-xs uppercase font-semibold text-zinc-400 tracking-wider mb-2">
+                    Key Competencies
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {viewingJob.skills.map((s) => (
+                      <span
+                        key={s.id}
+                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-zinc-100 text-zinc-800"
+                      >
+                        {s.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Overview */}
+              {viewingJob.description && (
+                <div className="space-y-2">
+                  <h4 className="text-xs uppercase font-semibold text-zinc-400 tracking-wider">
+                    Role Overview
+                  </h4>
+                  <div className="text-sm text-zinc-700 leading-relaxed whitespace-pre-line">
+                    {viewingJob.description}
+                  </div>
+                </div>
+              )}
+
+              {/* Requirements */}
+              {viewingJob.requirements && (
+                <div className="space-y-2">
+                  <h4 className="text-xs uppercase font-semibold text-zinc-400 tracking-wider">
+                    Qualifications & Requirements
+                  </h4>
+                  <div className="text-sm text-zinc-700 leading-relaxed whitespace-pre-line">
+                    {viewingJob.requirements}
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-zinc-100">
+                <button
+                  onClick={() => setViewingJob(null)}
+                  className="px-4 py-2 text-xs font-medium text-zinc-600 hover:text-zinc-900"
                 >
                   Close
                 </button>
+                <button
+                  onClick={() => {
+                    const j = viewingJob;
+                    setViewingJob(null);
+                    setAppliedRole(j);
+                  }}
+                  className="px-5 py-2.5 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800"
+                >
+                  Apply for this Role
+                </button>
               </div>
-            ) : (
-              <div>
-                <div className="flex items-center justify-between pb-4 border-b border-zinc-100 mb-5">
-                  <div>
-                    <span className="text-xs font-medium text-zinc-500 uppercase tracking-wide">
-                      Apply for Position
-                    </span>
-                    <h3 className="text-lg font-bold text-zinc-900">{appliedRole.title}</h3>
-                  </div>
-                  <button
-                    onClick={resetModal}
-                    className="text-zinc-400 hover:text-zinc-600 text-sm font-semibold p-1 cursor-pointer"
-                  >
-                    &times;
-                  </button>
-                </div>
-
-                <form onSubmit={handleApplySubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-700 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={applicantName}
-                      onChange={(e) => setApplicantName(e.target.value)}
-                      placeholder="Jane Doe"
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-700 mb-1">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={applicantEmail}
-                      onChange={(e) => setApplicantEmail(e.target.value)}
-                      placeholder="jane@example.com"
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-700 mb-1">
-                      Portfolio / LinkedIn / GitHub URL
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="https://github.com/janedoe"
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-700 mb-1">
-                      Brief Note or Introduction
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={applicantNote}
-                      onChange={(e) => setApplicantNote(e.target.value)}
-                      placeholder="Tell us about your background, projects, or why you want to work together..."
-                      className="w-full px-3.5 py-2 text-sm rounded-lg border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 resize-none"
-                    />
-                  </div>
-
-                  <div className="pt-2 flex items-center justify-end gap-3">
-                    <button
-                      type="button"
-                      onClick={resetModal}
-                      className="px-4 py-2 text-xs font-medium text-zinc-600 hover:text-zinc-900 cursor-pointer"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
-                    >
-                      <Send className="size-3.5" />
-                      <span>Submit Application</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
+            </motion.div>
           </div>
-        </div>
+        )}
+      </AnimatePresence>
+
+      {/* Real Candidate Application Modal */}
+      {appliedRole && (
+        <CandidateApplicationModal
+          job={appliedRole}
+          isOpen={Boolean(appliedRole)}
+          onClose={() => setAppliedRole(null)}
+        />
       )}
 
       {/* Global Footer */}
@@ -426,3 +503,4 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
 }
 
 export default CareersPage;
+

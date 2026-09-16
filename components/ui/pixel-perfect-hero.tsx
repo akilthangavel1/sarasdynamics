@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 const TECH_LOGOS = [
   // React / React Native
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-cyan-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-cyan-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="-11.5 -10.23174 23 20.46348" className="h-5 w-auto">
         <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
         <g stroke="#61dafb" strokeWidth="1" fill="none">
@@ -22,38 +22,37 @@ const TECH_LOGOS = [
           <ellipse rx="11" ry="4.2" transform="rotate(120)" />
         </g>
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">React</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">React</span>
     </div>
   ),
 
   // TypeScript
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-blue-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 128 128" className="h-5 w-5 rounded-sm">
         <rect width="128" height="128" rx="16" fill="#3178C6" />
         <path d="M77.6 57.6h17.9v48.2c-4.4 2.2-9.7 3.5-15.8 3.5-17.7 0-26.6-9.8-26.6-25.2 0-16.1 10.3-26.5 28.5-26.5 6.6 0 12.1 1.4 16.5 3.7v13.5c-4.8-2.7-9.8-3.9-15.5-3.9-9.9 0-14.8 5.4-14.8 13.5 0 8.3 4.6 13.5 14.5 13.5 3.3 0 6.2-.7 8.5-1.9V69.7h-13.2v-12.1zm-43.2 0h34.6v12.4h-10.7v38.8H45.2V70H34.4V57.6z" fill="#FFF" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">TypeScript</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">TypeScript</span>
     </div>
   ),
 
   // Next.js
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-zinc-400 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
-      <svg className="h-4 sm:h-5 w-auto fill-zinc-900" viewBox="0 0 394 79">
+    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+      <svg className="h-4 sm:h-5 w-auto fill-current" viewBox="0 0 394 79">
         <path d="M261.919 0.0330722H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.0330722Z" />
         <path d="M149.052 0.0330722V12.7H94.0421V33.0772H138.281V45.7441H94.0421V66.6721H149.052V79.339H80.43V12.7H80.4243V0.0330722H149.052Z" />
         <path d="M183.32 0.0661486H165.506L229.312 79.3721H247.178L215.271 39.7464L247.127 0.126654L229.312 0.154184L206.352 28.6697L183.32 0.0661486Z" />
         <path d="M201.6 56.7148L192.679 45.6229L165.455 79.4326H183.32L201.6 56.7148Z" />
         <path clipRule="evenodd" d="M80.907 79.339L17.0151 0H0V79.3059H13.6121V16.9516L63.8067 79.339H80.907Z" fillRule="evenodd" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Next.js</span>
     </div>
   ),
 
   // Tailwind CSS
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-cyan-400 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-cyan-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg className="h-4 sm:h-5 w-auto" viewBox="0 0 54 33" fill="none">
         <path
           className="fill-cyan-500"
@@ -62,54 +61,54 @@ const TECH_LOGOS = [
           d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.464 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z"
         />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Tailwind CSS</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Tailwind CSS</span>
     </div>
   ),
 
   // Node.js
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-emerald-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 32 32" className="h-5 w-5">
         <path fill="#539E43" d="M16 2.2L2.7 9.8v15.2L16 32.8l13.3-7.8V9.8L16 2.2z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Node.js</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Node.js</span>
     </div>
   ),
 
   // Python
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-yellow-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-yellow-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 128 128" className="h-5 w-5">
         <path fill="#3776AB" d="M63.5 5.5c-29.2 0-27.4 12.7-27.4 12.7l.03 13.1h27.9v3.9H25.4S5.5 33 5.5 62.4c0 29.5 17.4 28.5 17.4 28.5h10.4V76.8s-.6-17.4 17.1-17.4h29.5s16.5.3 16.5-16.1V18.2s2.5-12.7-32.9-12.7zm-14.7 9.5a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4z" />
         <path fill="#FFD43B" d="M64.5 122.5c29.2 0 27.4-12.7 27.4-12.7l-.03-13.1H64v-3.9h38.6s19.9 2.2 19.9-27.2c0-29.5-17.4-28.5-17.4-28.5H94.7v14.1s.6 17.4-17.1 17.4H48.1s-16.5-.3-16.5 16.1v25.1s-2.5 12.7 32.9 12.7zm14.7-9.5a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Python</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Python</span>
     </div>
   ),
 
   // Docker
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-blue-400 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#2496ED]">
         <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.929 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.928 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H2.208a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m21.758.337c-.365-.246-1.58-.337-2.735-.337-.365 0-.73.017-1.077.051-.264-1.39-1.28-2.22-2.584-2.22-.442 0-.877.094-1.28.272V8.406a.434.434 0 00-.434-.434H.434A.434.434 0 000 8.406v3.298c0 5.43 4.298 9.89 9.61 9.89 6.837 0 11.536-4.52 13.923-8.895.27-.492.483-1.006.634-1.536z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Docker</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Docker</span>
     </div>
   ),
 
   // Swift (iOS)
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-orange-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-orange-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#F05138]">
         <path d="M21.94 14.12c-.08-.18-1.54-3.37-4.42-5.71 1.72 2.37 2.33 4.54 2.33 4.54s-2.07-1.3-4.6-1.3c-2.3 0-4.66 1.1-6.17 2.68-1.5 1.58-2.18 3.73-2.18 5.67 0 .2.02.4.04.6C3.26 18.06 1 14.34 1 10.15 1 4.54 5.54 0 11.15 0c4.19 0 7.82 2.55 9.4 6.18-.08.06-2.14 1.52-4.14 3.7 2.87-1.8 5.54-1.3 5.54-1.3s-1.83 2.1-3.6 3.65c2.47-.3 3.59.89 3.59.89z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Swift (iOS)</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Swift (iOS)</span>
     </div>
   ),
 
   // Kotlin (Android)
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-purple-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-purple-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5 rounded-xs">
         <defs>
           <linearGradient id="kg" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -121,38 +120,38 @@ const TECH_LOGOS = [
         <polygon points="24,0 0,0 0,24 24,0" fill="url(#kg)" />
         <polygon points="0,24 12,12 24,24" fill="url(#kg)" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Kotlin (Android)</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Kotlin (Android)</span>
     </div>
   ),
 
   // Flutter
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-blue-400 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#02569B]">
         <path d="M14.314 0L2.3 12 6 15.7 21.684 0h-7.37zm.07 11.393l-6.85 6.85 3.7 3.7 3.15-3.15 6.23 6.207h7.386L14.384 11.393z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Flutter</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Flutter</span>
     </div>
   ),
 
   // Google Cloud
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-blue-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5">
         <path fill="#4285F4" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Google Cloud</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Google Cloud</span>
     </div>
   ),
 
   // AWS
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-amber-500/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
-      <svg className="h-5 w-auto fill-zinc-900" viewBox="-45.101 -44.95 390.872 269.7">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-amber-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+      <svg className="h-5 w-auto" viewBox="-45.101 -44.95 390.872 269.7">
         <g transform="translate(-1.668 -1.1)">
           <path
             d="M86.4 66.4c0 3.7.4 6.7 1.1 8.9.8 2.2 1.8 4.6 3.2 7.2.5.8.7 1.6.7 2.3 0 1-.6 2-1.9 3L83.2 92c-.9.6-1.8.9-2.6.9-1 0-2-.5-3-1.4-1.4-1.5-2.6-3.1-3.6-4.7-1-1.7-2-3.6-3.1-5.9Q59.2 94.7 41.5 94.7c-8.4 0-15.1-2.4-20-7.2s-7.4-11.2-7.4-19.2c0-8.5 3-15.4 9.1-20.6s14.2-7.8 24.5-7.8c3.4 0 6.9.3 10.6.8s7.5 1.3 11.5 2.2v-7.3c0-7.6-1.6-12.9-4.7-16-3.2-3.1-8.6-4.6-16.3-4.6-3.5 0-7.1.4-10.8 1.3s-7.3 2-10.8 3.4c-1.6.7-2.8 1.1-3.5 1.3s-1.2.3-1.6.3c-1.4 0-2.1-1-2.1-3.1v-4.9c0-1.6.2-2.8.7-3.5s1.4-1.4 2.8-2.1Q28.75 5 36.1 3.2C41 1.9 46.2 1.3 51.7 1.3c11.9 0 20.6 2.7 26.2 8.1 5.5 5.4 8.3 13.6 8.3 24.6v32.4zM45.8 81.6c3.3 0 6.7-.6 10.3-1.8s6.8-3.4 9.5-6.4c1.6-1.9 2.8-4 3.4-6.4s1-5.3 1-8.7v-4.2c-2.9-.7-6-1.3-9.2-1.7s-6.3-.6-9.4-.6c-6.7 0-11.6 1.3-14.9 4s-4.9 6.5-4.9 11.5c0 4.7 1.2 8.2 3.7 10.6 2.4 2.5 5.9 3.7 10.5 3.7"
-            className="fill-zinc-900"
+            className="fill-current"
           />
           <path
             d="M273.5 143.7c-32.9 24.3-80.7 37.2-121.8 37.2-57.6 0-109.5-21.3-148.7-56.7-3.1-2.8-.3-6.6 3.4-4.4 42.4 24.6 94.7 39.5 148.8 39.5 36.5 0 76.6-7.6 113.5-23.2 5.5-2.5 10.2 3.6 4.8 7.6"
@@ -164,29 +163,29 @@ const TECH_LOGOS = [
           />
         </g>
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">AWS</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">AWS</span>
     </div>
   ),
 
   // PostgreSQL
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-blue-600/50 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-600/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#336791]">
         <path d="M11.96 0C5.355 0 0 5.355 0 11.96c0 6.606 5.355 11.96 11.96 11.96 6.606 0 11.96-5.354 11.96-11.96C23.92 5.355 18.566 0 11.96 0zm.04 2.8a9.16 9.16 0 019.16 9.16c0 5.06-4.1 9.16-9.16 9.16a9.16 9.16 0 01-9.16-9.16c0-5.06 4.1-9.16 9.16-9.16zm-1.8 3.2c-2.3 0-3.9 1.6-3.9 3.9 0 1.8 1.1 3.2 2.6 3.7v3.2h2.5v-3.1c.3 0 .6.1.9.1 2.3 0 3.9-1.6 3.9-3.9 0-2.3-1.6-3.9-3.9-3.9h-2.1zm.4 2.1h1.7c1.1 0 1.8.7 1.8 1.8 0 1.1-.7 1.8-1.8 1.8h-1.7V8.1z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">PostgreSQL</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">PostgreSQL</span>
     </div>
   ),
 
   // Firebase
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-zinc-200/90 text-zinc-900 shadow-2xs hover:border-amber-400 hover:bg-zinc-50 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-amber-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
       <svg viewBox="0 0 24 24" className="h-5 w-5">
         <path fill="#FFA000" d="M3.89 15.67L6.46 2.31c.07-.37.53-.49.77-.2l2.94 3.65-6.28 9.91z" />
         <path fill="#F57C00" d="M13.88 7.42l-2.65-4.99c-.16-.31-.61-.31-.77 0L2.14 18.04l8.69 4.88c.36.2.8.2 1.16 0l8.7-4.88L13.88 7.42z" />
         <path fill="#FFCA28" d="M20.69 18.04L15.34 8.01c-.16-.3-.6-.31-.77-.02L2.14 18.04l8.69 4.88c.36.2.8.2 1.16 0l8.7-4.88z" />
       </svg>
-      <span className="font-semibold text-xs sm:text-sm tracking-tight text-zinc-900">Firebase</span>
+      <span className="font-semibold text-xs sm:text-sm tracking-tight text-foreground/90">Firebase</span>
     </div>
   ),
 ];
@@ -528,7 +527,7 @@ export function PixelHero({
         className={cn("w-full max-w-5xl z-10 pointer-events-auto flex flex-col items-center justify-center gap-3 mt-10 md:mt-14 transition-all duration-1000 transform", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
         style={{ transitionDelay: "600ms" }}
       >
-        <span className="text-[11px] md:text-xs uppercase tracking-wider text-zinc-600 font-semibold select-none">
+        <span className="text-[11px] md:text-xs uppercase tracking-wider text-muted-foreground/80 font-medium select-none">
           Technologies & Engineering Stack
         </span>
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">

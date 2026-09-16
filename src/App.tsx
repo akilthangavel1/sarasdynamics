@@ -14,33 +14,81 @@ import CareersPage from './components/CareersPage';
 import BlogPage from './components/BlogPage';
 import WebDevelopmentPage from './components/WebDevelopmentPage';
 import MobileDevelopmentPage from './components/MobileDevelopmentPage';
+import AuthPage from './components/auth/AuthPage';
+import AuthModal from './components/auth/AuthModal';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
+import { ManagementConsolePage } from './components/management/ManagementConsolePage';
+
+export type PageRoute =
+  | 'home'
+  | 'contact'
+  | 'about'
+  | 'recent-hires'
+  | 'careers'
+  | 'blog'
+  | 'web'
+  | 'mobile'
+  | 'login'
+  | 'register'
+  | 'forgot-password'
+  | 'management';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web' | 'mobile'>('home');
+  const [currentPage, setCurrentPage] = useState<PageRoute>('home');
+  const [managementSubTab, setManagementSubTab] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#contact') {
+      if (hash.startsWith('#management')) {
+        const sub = hash.replace(/^#management\/?/, '');
+        setManagementSubTab(sub || undefined);
+        setCurrentPage('management');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#contact') {
         setCurrentPage('contact');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#about') {
         setCurrentPage('about');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#recent-hires' || hash === '#admin-recent-hires' || hash === '#recent-hire' || hash === '#admin') {
+      } else if (
+        hash === '#recent-hires' ||
+        hash === '#admin-recent-hires' ||
+        hash === '#recent-hire'
+      ) {
         setCurrentPage('recent-hires');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#careers' || hash === '#career') {
         setCurrentPage('careers');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#admin') {
+        // Redirect legacy #admin to #management
+        window.location.hash = '#management';
       } else if (hash === '#blog' || hash === '#blogs') {
         setCurrentPage('blog');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#web' || hash === '#web-development' || hash === '#web-dev') {
+      } else if (
+        hash === '#web' ||
+        hash === '#web-development' ||
+        hash === '#web-dev'
+      ) {
         setCurrentPage('web');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#mobile' || hash === '#mobile-development' || hash === '#mobile-dev') {
+      } else if (
+        hash === '#mobile' ||
+        hash === '#mobile-development' ||
+        hash === '#mobile-dev'
+      ) {
         setCurrentPage('mobile');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#login' || hash === '#signin' || hash === '#auth') {
+        setCurrentPage('login');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#register' || hash === '#signup') {
+        setCurrentPage('register');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#forgot-password' || hash === '#reset-password') {
+        setCurrentPage('forgot-password');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#home' || hash === '' || hash === '#') {
         setCurrentPage('home');
@@ -48,40 +96,52 @@ export default function App() {
     };
 
     // Check initial hash
-    if (window.location.hash === '#contact') {
+    const initialHash = window.location.hash;
+    if (initialHash.startsWith('#management')) {
+      const sub = initialHash.replace(/^#management\/?/, '');
+      setManagementSubTab(sub || undefined);
+      setCurrentPage('management');
+    } else if (initialHash === '#contact') {
       setCurrentPage('contact');
-    } else if (window.location.hash === '#about') {
+    } else if (initialHash === '#about') {
       setCurrentPage('about');
-    } else if (window.location.hash === '#careers' || window.location.hash === '#career') {
+    } else if (initialHash === '#careers' || initialHash === '#career') {
       setCurrentPage('careers');
-    } else if (window.location.hash === '#blog' || window.location.hash === '#blogs') {
+    } else if (initialHash === '#admin') {
+      window.location.hash = '#management';
+    } else if (initialHash === '#blog' || initialHash === '#blogs') {
       setCurrentPage('blog');
     } else if (
-      window.location.hash === '#web' ||
-      window.location.hash === '#web-development' ||
-      window.location.hash === '#web-dev'
+      initialHash === '#web' ||
+      initialHash === '#web-development' ||
+      initialHash === '#web-dev'
     ) {
       setCurrentPage('web');
     } else if (
-      window.location.hash === '#mobile' ||
-      window.location.hash === '#mobile-development' ||
-      window.location.hash === '#mobile-dev'
+      initialHash === '#mobile' ||
+      initialHash === '#mobile-development' ||
+      initialHash === '#mobile-dev'
     ) {
       setCurrentPage('mobile');
     } else if (
-      window.location.hash === '#recent-hires' ||
-      window.location.hash === '#admin-recent-hires' ||
-      window.location.hash === '#recent-hire' ||
-      window.location.hash === '#admin'
+      initialHash === '#recent-hires' ||
+      initialHash === '#admin-recent-hires' ||
+      initialHash === '#recent-hire'
     ) {
       setCurrentPage('recent-hires');
+    } else if (initialHash === '#login' || initialHash === '#signin' || initialHash === '#auth') {
+      setCurrentPage('login');
+    } else if (initialHash === '#register' || initialHash === '#signup') {
+      setCurrentPage('register');
+    } else if (initialHash === '#forgot-password' || initialHash === '#reset-password') {
+      setCurrentPage('forgot-password');
     }
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigateTo = (page: 'home' | 'contact' | 'about' | 'recent-hires' | 'careers' | 'blog' | 'web' | 'mobile') => {
+  const navigateTo = (page: PageRoute) => {
     setCurrentPage(page);
     window.location.hash =
       page === 'contact'
@@ -92,46 +152,131 @@ export default function App() {
         ? '#recent-hires'
         : page === 'careers'
         ? '#careers'
+        : page === 'management'
+        ? '#management'
         : page === 'blog'
         ? '#blog'
         : page === 'web'
         ? '#web'
         : page === 'mobile'
         ? '#mobile'
+        : page === 'login'
+        ? '#login'
+        : page === 'register'
+        ? '#register'
+        : page === 'forgot-password'
+        ? '#forgot-password'
         : '#';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  if (currentPage === 'management') {
+    return (
+      <ProtectedRoute fallbackMessage="You must sign in with an authorized administrative account to access the Management Console.">
+        <AuthModal />
+        <ManagementConsolePage
+          initialSubTab={managementSubTab}
+          onNavigateHome={() => navigateTo('home')}
+        />
+      </ProtectedRoute>
+    );
+  }
+
+  if (currentPage === 'login') {
+    return (
+      <>
+        <AuthModal />
+        <AuthPage initialView="login" onBackToHome={() => navigateTo('home')} />
+      </>
+    );
+  }
+
+  if (currentPage === 'register') {
+    return (
+      <>
+        <AuthModal />
+        <AuthPage initialView="register" onBackToHome={() => navigateTo('home')} />
+      </>
+    );
+  }
+
+  if (currentPage === 'forgot-password') {
+    return (
+      <>
+        <AuthModal />
+        <AuthPage initialView="forgot-password" onBackToHome={() => navigateTo('home')} />
+      </>
+    );
+  }
+
   if (currentPage === 'contact') {
-    return <ContactPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <ContactPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'about') {
-    return <AboutPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <AboutPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'recent-hires') {
-    return <RecentHirePage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <RecentHirePage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'careers') {
-    return <CareersPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <CareersPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'blog') {
-    return <BlogPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <BlogPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'web') {
-    return <WebDevelopmentPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <WebDevelopmentPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   if (currentPage === 'mobile') {
-    return <MobileDevelopmentPage onBackToHome={() => navigateTo('home')} />;
+    return (
+      <>
+        <AuthModal />
+        <MobileDevelopmentPage onBackToHome={() => navigateTo('home')} />
+      </>
+    );
   }
 
   return (
     <div id="page-wrapper" className="w-full min-h-screen bg-white flex flex-col">
+      {/* Global Auth Modal for instant dialog popups */}
+      <AuthModal />
+
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
@@ -250,5 +395,3 @@ export default function App() {
     </div>
   );
 }
-
-
