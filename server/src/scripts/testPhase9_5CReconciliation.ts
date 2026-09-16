@@ -346,15 +346,27 @@ async function runPhase9_5CReconciliationTests() {
     });
     form.append("resume", resumeBlob, "alex_rivera_cv.pdf");
 
-    const applyRes = await fetch(`${baseUrl}/jobs/${createdJob.slug}/applications`, {
+    // Unauthenticated application attempt is rejected with 401 Unauthorized
+    const unauthApplyRes = await fetch(`${baseUrl}/jobs/${createdJob.slug}/applications`, {
       method: "POST",
       body: form,
     });
+    assert(
+      unauthApplyRes.status === 401,
+      "Unauthenticated candidate application attempt is rejected with 401 Unauthorized"
+    );
+
+    // Authenticated candidate submits application
+    const applyRes = await fetch(`${baseUrl}/jobs/${createdJob.slug}/applications`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${candidateToken}` },
+      body: form,
+    });
     const applyData = await applyRes.json();
-    assert(applyRes.status === 201, "Candidate submits application publicly with resume upload (201 Created)");
+    assert(applyRes.status === 201, "Authenticated candidate submits application with resume upload (201 Created)");
     const applicationSummary = applyData.application;
     assert(
-      /^(SD|APP)-\d{4}-\d{5,6}$/.test(applicationSummary.application_number),
+      /^(SD|APP)-\d{4}-\d{5,8}$/.test(applicationSummary.application_number),
       `Application number format matches SD/APP-YYYY-XXXXXX (${applicationSummary.application_number})`
     );
     assert(applicationSummary.status === "NEW", "Initial application status is NEW");

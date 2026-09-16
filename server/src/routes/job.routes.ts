@@ -4,6 +4,7 @@ import {
   resumeUploadMiddleware,
   submitCandidateApplication,
 } from "../controllers/application.controller.js";
+import { requireAuth } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -13,7 +14,12 @@ router.get("/", getPublicJobs);
 // GET /api/jobs/:slug - Get published job details
 router.get("/:slug", getPublicJobBySlug);
 
-// POST /api/jobs/:slug/applications - Public candidate application submission
-router.post("/:slug/applications", resumeUploadMiddleware, submitCandidateApplication);
+// POST /api/jobs/:slug/applications - Candidate application submission (Authentication required)
+router.post(
+  "/:slug/applications",
+  requireAuth,
+  resumeUploadMiddleware,
+  submitCandidateApplication
+);
 
 export default router;

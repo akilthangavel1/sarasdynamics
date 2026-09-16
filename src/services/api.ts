@@ -104,8 +104,8 @@ class ApiService {
   private tokenGetter: (() => Promise<string | null>) | null = null;
   private staticToken: string | null = null;
 
-  constructor(baseUrl: string = "/api") {
-    this.baseUrl = baseUrl;
+  constructor(baseUrl: string = (import.meta.env?.VITE_API_URL as string) || "/api") {
+    this.baseUrl = baseUrl.replace(/\/+$/, "");
   }
 
   /**
@@ -484,11 +484,28 @@ class ApiService {
   // Applications
   async submitApplication(
     jobSlug: string,
-    formData: FormData
+    formData: FormData,
+    explicitToken?: string
   ): Promise<ApiResponse<{ application: PublicApplicationSubmissionResponse }>> {
     const url = `${this.baseUrl}/jobs/${encodeURIComponent(jobSlug)}/applications`;
+    const headers: Record<string, string> = {};
+
+    let token = explicitToken || this.staticToken;
+    if (!token && this.tokenGetter) {
+      try {
+        token = await this.tokenGetter();
+      } catch {
+        // Token retrieval failure
+      }
+    }
+
+    if (token) {
+      headers.Authorization = `Bearer ${token}`;
+    }
+
     const response = await fetch(url, {
       method: "POST",
+      headers,
       body: formData,
     });
     const data = await response.json();

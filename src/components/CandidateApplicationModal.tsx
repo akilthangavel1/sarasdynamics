@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   X,
@@ -9,8 +9,11 @@ import {
   Clock,
   Loader2,
   Trash2,
+  LogIn,
+  Lock,
 } from "lucide-react";
-import { api, type Job, type PublicApplicationSubmissionResponse } from "../services/api";
+import { api, type Job, type PublicApplicationSubmissionResponse } from "../services/api.js";
+import { useAuth } from "../context/AuthContext.js";
 
 interface CandidateApplicationModalProps {
   job: Job;
@@ -23,9 +26,16 @@ export function CandidateApplicationModal({
   isOpen,
   onClose,
 }: CandidateApplicationModalProps) {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const { dbUser, firebaseUser, openAuthModal } = useAuth();
+  const isAuthenticated = Boolean(dbUser || firebaseUser);
+
+  const [fullName, setFullName] = useState(
+    dbUser?.full_name || firebaseUser?.displayName || ""
+  );
+  const [email, setEmail] = useState(
+    dbUser?.email || firebaseUser?.email || ""
+  );
+  const [phone, setPhone] = useState(dbUser?.phone || "");
   const [currentLocation, setCurrentLocation] = useState("");
   const [coverLetter, setCoverLetter] = useState("");
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -37,6 +47,21 @@ export function CandidateApplicationModal({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+
+  // Sync candidate user info when auth state updates
+  useEffect(() => {
+    if (dbUser || firebaseUser) {
+      if (!fullName) {
+        setFullName(dbUser?.full_name || firebaseUser?.displayName || "");
+      }
+      if (!email) {
+        setEmail(dbUser?.email || firebaseUser?.email || "");
+      }
+      if (!phone && dbUser?.phone) {
+        setPhone(dbUser.phone);
+      }
+    }
+  }, [dbUser, firebaseUser]);
 
   if (!isOpen) return null;
 
@@ -81,6 +106,12 @@ export function CandidateApplicationModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
+
+    if (!isAuthenticated) {
+      setErrorMessage("Authentication required. Please sign in to submit your application.");
+      openAuthModal("login");
+      return;
+    }
 
     if (!fullName.trim()) {
       setErrorMessage("Full Name is required.");
@@ -165,7 +196,38 @@ export function CandidateApplicationModal({
           <X className="size-5" />
         </button>
 
-        {submittedData ? (
+        {!isAuthenticated ? (
+          /* Authentication Required Prompt View */
+          <div id="application-auth-required-view" className="text-center py-6">
+            <div className="w-14 h-14 rounded-full bg-zinc-100 text-zinc-800 flex items-center justify-center mx-auto mb-4 border border-zinc-200">
+              <Lock className="size-7 text-zinc-700" />
+            </div>
+            <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
+              Authentication Required
+            </h3>
+            <p className="mt-2 text-sm text-zinc-600 max-w-md mx-auto">
+              You must be signed in to submit an application for{" "}
+              <span className="font-semibold text-zinc-900">{job.title}</span>.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                id="apply-modal-signin-btn"
+                onClick={() => openAuthModal("login")}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
+              >
+                <LogIn className="size-4" />
+                <span>Sign In to Continue</span>
+              </button>
+              <button
+                id="apply-modal-register-btn"
+                onClick={() => openAuthModal("register")}
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-zinc-200 text-zinc-700 text-xs font-semibold hover:bg-zinc-50 transition-colors cursor-pointer"
+              >
+                Create an Account
+              </button>
+            </div>
+          </div>
+        ) : submittedData ? (
           /* Application Success View */
           <div id="application-success-view" className="text-center py-6">
             <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
@@ -260,7 +322,7 @@ export function CandidateApplicationModal({
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="jane.doe@example.com"
+                    placeholder="jane@example.com"
                     className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
                   />
                 </div>
@@ -274,7 +336,7 @@ export function CandidateApplicationModal({
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+1 555-012-3456"
+                    placeholder="+1 555-019-2834"
                     className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
                   />
                 </div>
@@ -283,7 +345,7 @@ export function CandidateApplicationModal({
               {/* Current Location */}
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
-                  Current Location <span className="text-zinc-400 font-normal">(Optional)</span>
+                  Current Location (City, Country / State)
                 </label>
                 <input
                   id="candidate-location-input"
@@ -298,59 +360,44 @@ export function CandidateApplicationModal({
               {/* Cover Letter */}
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
-                  Cover Letter <span className="text-zinc-400 font-normal">(Optional)</span>
+                  Cover Letter / Note
                 </label>
                 <textarea
                   id="candidate-cover-letter-input"
                   rows={3}
                   value={coverLetter}
                   onChange={(e) => setCoverLetter(e.target.value)}
-                  placeholder="Tell us why you are interested in this position and what brings you to Saras Dynamics..."
+                  placeholder="Tell us why you are interested in this position and what makes you a great fit..."
                   className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white resize-none"
                 />
               </div>
 
-              {/* Resume File Upload */}
+              {/* Resume File Upload with Drag & Drop */}
               <div>
                 <label className="block text-xs font-medium text-zinc-700 mb-1">
-                  Resume / CV <span className="text-red-500">*</span>{" "}
-                  <span className="text-zinc-400 font-normal">(PDF, DOCX up to 5MB)</span>
+                  Resume / CV (PDF or DOCX, max 5MB) <span className="text-red-500">*</span>
                 </label>
 
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept=".pdf,.docx,.doc,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword"
-                  className="hidden"
-                  onChange={(e) => {
-                    if (e.target.files && e.target.files[0]) {
-                      handleFileSelection(e.target.files[0]);
-                    }
-                  }}
-                />
-
                 {resumeFile ? (
-                  <div className="flex items-center justify-between p-3.5 bg-zinc-50 border border-zinc-200 rounded-xl">
-                    <div className="flex items-center gap-3 overflow-hidden">
-                      <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center shrink-0">
-                        <FileText className="size-4" />
-                      </div>
-                      <div className="overflow-hidden">
-                        <p className="text-xs font-semibold text-zinc-900 truncate">
+                  <div
+                    id="selected-resume-file-container"
+                    className="p-3.5 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-2.5 overflow-hidden">
+                      <FileText className="size-5 text-zinc-700 shrink-0" />
+                      <div className="truncate text-xs">
+                        <p className="font-semibold text-zinc-900 truncate">
                           {resumeFile.name}
                         </p>
-                        <p className="text-[11px] text-zinc-500">
-                          {(resumeFile.size / (1024 * 1024)).toFixed(2)} MB
+                        <p className="text-zinc-500">
+                          {(resumeFile.size / 1024 / 1024).toFixed(2)} MB
                         </p>
                       </div>
                     </div>
                     <button
                       type="button"
-                      onClick={() => {
-                        setResumeFile(null);
-                        if (fileInputRef.current) fileInputRef.current.value = "";
-                      }}
-                      className="text-zinc-400 hover:text-red-600 p-1.5 rounded-lg hover:bg-zinc-100 transition-colors"
+                      onClick={() => setResumeFile(null)}
+                      className="p-1.5 text-zinc-400 hover:text-red-600 rounded-lg hover:bg-zinc-100 transition-colors"
                       title="Remove file"
                     >
                       <Trash2 className="size-4" />
@@ -358,7 +405,7 @@ export function CandidateApplicationModal({
                   </div>
                 ) : (
                   <div
-                    id="resume-dropzone"
+                    id="resume-drag-drop-zone"
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
@@ -366,27 +413,37 @@ export function CandidateApplicationModal({
                     className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors ${
                       isDragging
                         ? "border-zinc-900 bg-zinc-50"
-                        : "border-zinc-200 hover:border-zinc-400 bg-zinc-50/50"
+                        : "border-zinc-300 hover:border-zinc-400 bg-zinc-50/50"
                     }`}
                   >
                     <UploadCloud className="size-8 text-zinc-400 mx-auto mb-2" />
                     <p className="text-xs font-semibold text-zinc-800">
-                      Click to browse or drag and drop your resume
+                      Click to upload or drag and drop
                     </p>
-                    <p className="text-[11px] text-zinc-500 mt-1">
-                      PDF, DOCX, or DOC (Maximum 5MB)
+                    <p className="text-[11px] text-zinc-500 mt-0.5">
+                      PDF (.pdf) or Word document (.docx, .doc) up to 5MB
                     </p>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf,.docx,.doc,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword"
+                      className="hidden"
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files[0]) {
+                          handleFileSelection(e.target.files[0]);
+                        }
+                      }}
+                    />
                   </div>
                 )}
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-3 flex items-center justify-end gap-3 border-t border-zinc-100">
+              {/* Submit Buttons */}
+              <div className="pt-3 border-t border-zinc-100 flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={resetForm}
-                  disabled={isSubmitting}
-                  className="px-4 py-2 text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-colors"
+                  className="px-4 py-2 text-xs font-medium text-zinc-600 hover:text-zinc-900"
                 >
                   Cancel
                 </button>
@@ -394,15 +451,15 @@ export function CandidateApplicationModal({
                   id="submit-candidate-application-btn"
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2.5 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800 transition-colors disabled:opacity-50 flex items-center gap-2"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 disabled:opacity-50 transition-colors cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="size-3.5 animate-spin" />
-                      Submitting Application...
+                      <span>Submitting...</span>
                     </>
                   ) : (
-                    "Submit Application"
+                    <span>Submit Application</span>
                   )}
                 </button>
               </div>

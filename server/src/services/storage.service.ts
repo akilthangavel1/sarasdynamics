@@ -30,7 +30,7 @@ export class StorageService {
 
     // Check if we have AWS credentials or IAM role available, or if mock mode is forced
     const hasExplicitKeys = Boolean(config.s3.accessKeyId && config.s3.secretAccessKey);
-    const forceMock = process.env.NODE_ENV === "test" || process.env.MOCK_S3 === "true";
+    const forceMock = config.env === "test" || process.env.MOCK_S3 === "true";
 
     this.isMockMode = forceMock && !hasExplicitKeys;
 
@@ -112,7 +112,7 @@ export class StorageService {
         fileName: safeFileName,
       };
     } catch (err: any) {
-      if (process.env.NODE_ENV !== "production") {
+      if (config.env !== "production") {
         console.warn(`[StorageService] S3 blog image upload failed (${err.message}). Recording locally for dev/test.`);
         this.mockStorage.set(fileKey, { buffer: fileBuffer, mimeType });
         return {
@@ -169,7 +169,7 @@ export class StorageService {
       };
     } catch (err: any) {
       // In development or test, if S3 call fails due to invalid credentials, fall back gracefully
-      if (process.env.NODE_ENV !== "production") {
+      if (config.env !== "production") {
         console.warn(`[StorageService] S3 upload failed (${err.message}). Recording locally for dev/test.`);
         this.mockStorage.set(fileKey, { buffer: fileBuffer, mimeType });
         return {
@@ -209,7 +209,7 @@ export class StorageService {
 
       return presignedUrl;
     } catch (err: any) {
-      if (process.env.NODE_ENV !== "production") {
+      if (config.env !== "production") {
         const token = crypto.randomBytes(16).toString("hex");
         return `https://${this.bucketName}.s3.${this.region}.amazonaws.com/${fileKey}?X-Amz-Expires=${expiresInSeconds}&X-Amz-Signature=${token}`;
       }

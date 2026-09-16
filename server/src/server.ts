@@ -2,7 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import { createServer as createViteServer } from "vite";
-import config from "./config/index.js";
+import config, { assertValidConfig, getSanitizedConfig } from "./config/index.js";
 import { app } from "./app.js";
 import { getDb, checkDatabaseConnection, closeDatabase } from "./db/index.js";
 import { runMigrations } from "./db/migrate.js";
@@ -12,10 +12,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
+  // 1. Fail-Fast Environment Configuration Assertion
+  try {
+    assertValidConfig(config);
+    console.log(`[Config] Configuration successfully verified for environment: '${config.env}'`);
+    if (config.env === "production") {
+      console.log("[Config] Production configuration (sanitized):", JSON.stringify(getSanitizedConfig(config), null, 2));
+    }
+  } catch (configErr) {
+    console.error("[Config] FATAL CONFIGURATION ERROR:");
+    console.error(configErr instanceof Error ? configErr.message : String(configErr));
+    process.exit(1);
+  }
+
   const PORT = config.port;
 
   // Initialize and verify database connection
   console.log(`[Database] Initializing ${config.database.provider} connection...`);
+
   try {
     getDb();
     const probe = await checkDatabaseConnection();

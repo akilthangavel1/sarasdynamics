@@ -57,7 +57,9 @@ const PERKS = [
 ];
 
 export function CareersPage({ onBackToHome }: CareersPageProps) {
-  const { dbUser, roles, hasPermission } = useAuth();
+  const { dbUser, firebaseUser, roles, hasPermission, openAuthModal } = useAuth();
+  const isAuthenticated = Boolean(dbUser || firebaseUser);
+
   const canAccessJobAdmin =
     hasPermission("jobs.read") ||
     hasPermission("jobs.create") ||
@@ -80,6 +82,29 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
   const [applicantName, setApplicantName] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
   const [applicantNote, setApplicantNote] = useState("");
+
+  // Restore preserved job application flow after successful authentication
+  useEffect(() => {
+    if (isAuthenticated && jobs.length > 0 && !appliedRole) {
+      const savedSlug = sessionStorage.getItem("saras_intended_apply_slug");
+      if (savedSlug) {
+        const matched = jobs.find((j) => j.slug === savedSlug);
+        if (matched) {
+          setAppliedRole(matched);
+        }
+        sessionStorage.removeItem("saras_intended_apply_slug");
+      }
+    }
+  }, [isAuthenticated, jobs, appliedRole]);
+
+  const handleApplyClick = (position: Job) => {
+    setAppliedRole(position);
+    setApplicationSubmitted(false);
+    if (!isAuthenticated) {
+      sessionStorage.setItem("saras_intended_apply_slug", position.slug);
+      openAuthModal("login");
+    }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -366,13 +391,11 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
                       View Details
                     </button>
                     <button
-                      onClick={() => {
-                        setAppliedRole(position);
-                        setApplicationSubmitted(false);
-                      }}
+                      id={`apply-job-${position.slug}-btn`}
+                      onClick={() => handleApplyClick(position)}
                       className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
                     >
-                      <span>Apply Now</span>
+                      <span>{isAuthenticated ? "Apply Now" : "Login to Apply"}</span>
                       <ChevronRight className="size-3.5" />
                     </button>
                   </div>
@@ -472,14 +495,15 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
                   Close
                 </button>
                 <button
+                  id="job-detail-apply-btn"
                   onClick={() => {
                     const j = viewingJob;
                     setViewingJob(null);
-                    setAppliedRole(j);
+                    handleApplyClick(j);
                   }}
                   className="px-5 py-2.5 bg-zinc-900 text-white rounded-xl text-xs font-semibold hover:bg-zinc-800"
                 >
-                  Apply for this Role
+                  {isAuthenticated ? "Apply for this Role" : "Login to Apply"}
                 </button>
               </div>
             </motion.div>

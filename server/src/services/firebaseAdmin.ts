@@ -51,8 +51,8 @@ export async function verifyFirebaseToken(token: string): Promise<DecodedAuthTok
     throw new Error("Missing or empty token");
   }
 
-  // Development/Test Mode support for CI/CD or testing environment without cloud keys
-  if (config.allowDevAuth && token.startsWith("dev-test:")) {
+  // Development/Test Mode support for CI/CD or testing environment without cloud keys (strictly disabled in production)
+  if (config.allowDevAuth && config.env !== "production" && token.startsWith("dev-test:")) {
     const parts = token.split(":");
     // format: dev-test:<uid>:<email>:<optional_name>
     const uid = parts[1];

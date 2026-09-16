@@ -53,26 +53,30 @@ async function runPhase4Tests() {
     const adminToken = "dev-test:p4-admin:p4admin@saras.com:Admin Alex";
     const writerToken = "dev-test:p4-writer:p4writer@saras.com:Writer Will";
     const unprivToken = "dev-test:p4-unpriv:p4unpriv@saras.com:Unpriv Uma";
+    const candidateToken = "dev-test:p4-candidate:candidate.clara@saras.com:Candidate Clara";
 
-    for (const token of [recruiterToken, adminToken, writerToken, unprivToken]) {
+    for (const token of [recruiterToken, adminToken, writerToken, unprivToken, candidateToken]) {
       await fetch(`${baseUrl}/api/auth/sync`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });
     }
 
+    const candidateHeaders = { Authorization: `Bearer ${candidateToken}` };
+
     const recruiterUser = await userRepository.findByEmail("p4recruiter@saras.com");
     const adminUser = await userRepository.findByEmail("p4admin@saras.com");
     const writerUser = await userRepository.findByEmail("p4writer@saras.com");
     const unprivUser = await userRepository.findByEmail("p4unpriv@saras.com");
+    const candidateUser = await userRepository.findByEmail("candidate.clara@saras.com");
 
     if (recruiterUser) await userRepository.assignRoleByName(recruiterUser.id, "RECRUITER");
     if (adminUser) await userRepository.assignRoleByName(adminUser.id, "ADMIN");
     if (writerUser) await userRepository.assignRoleByName(writerUser.id, "CONTENT_WRITER");
 
     assert(
-      Boolean(recruiterUser && adminUser && writerUser && unprivUser),
-      "Test users synced and configured with RECRUITER, ADMIN, CONTENT_WRITER roles"
+      Boolean(recruiterUser && adminUser && writerUser && unprivUser && candidateUser),
+      "Test users synced and configured with RECRUITER, ADMIN, CONTENT_WRITER, and CANDIDATE users"
     );
 
     // Get a published job
@@ -168,6 +172,16 @@ async function runPhase4Tests() {
     }
 
     // ----------------------------------------------------
+    // Test Suite 0: Application Submission Authentication Guard
+    // ----------------------------------------------------
+    console.log("\n[Test Suite 0: Application Submission Authentication Guard]");
+    const unauthApplyRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
+      method: "POST",
+      body: createCandidateForm(),
+    });
+    assert(unauthApplyRes.status === 401, "Anonymous application submission rejected with 401 Unauthorized");
+
+    // ----------------------------------------------------
     // Test Suite 1: Job Status & Eligibility Validation
     // ----------------------------------------------------
     console.log("\n[Test Suite 1: Job Status & Eligibility Validation]");
@@ -175,6 +189,7 @@ async function runPhase4Tests() {
     // 1. Application to DRAFT job rejected
     const draftRes = await fetch(`${baseUrl}/api/jobs/${draftJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm(),
     });
     const draftJson = await draftRes.json();
@@ -187,6 +202,7 @@ async function runPhase4Tests() {
     // 2. Application to CLOSED job rejected
     const closedRes = await fetch(`${baseUrl}/api/jobs/${closedJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm(),
     });
     assert(closedRes.status === 400, "Application to CLOSED job rejected with 400");
@@ -194,6 +210,7 @@ async function runPhase4Tests() {
     // 3. Application to ARCHIVED job rejected
     const archivedRes = await fetch(`${baseUrl}/api/jobs/${archivedJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm(),
     });
     assert(archivedRes.status === 400, "Application to ARCHIVED job rejected with 400");
@@ -201,6 +218,7 @@ async function runPhase4Tests() {
     // 4. Application past deadline rejected
     const expiredRes = await fetch(`${baseUrl}/api/jobs/${expiredJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm(),
     });
     const expiredJson = await expiredRes.json();
@@ -210,6 +228,7 @@ async function runPhase4Tests() {
     // 5. Non-existent job slug returns 404
     const notFoundRes = await fetch(`${baseUrl}/api/jobs/non-existent-job-slug-9999/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm(),
     });
     assert(notFoundRes.status === 404, "Application to non-existent job returns 404");
@@ -222,6 +241,7 @@ async function runPhase4Tests() {
     // 6. Missing full_name rejected
     const noNameRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ fullName: "" }),
     });
     assert(noNameRes.status === 400, "Missing full_name rejected with 400");
@@ -229,6 +249,7 @@ async function runPhase4Tests() {
     // 7. Whitespace-only full_name rejected
     const wsNameRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ fullName: "   " }),
     });
     assert(wsNameRes.status === 400, "Whitespace-only full_name rejected with 400");
@@ -236,6 +257,7 @@ async function runPhase4Tests() {
     // 8. Too short full_name (<2 chars) rejected
     const shortNameRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ fullName: "J" }),
     });
     assert(shortNameRes.status === 400, "Too short full_name (<2 chars) rejected with 400");
@@ -243,6 +265,7 @@ async function runPhase4Tests() {
     // 9. Missing email rejected
     const noEmailRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ email: "" }),
     });
     assert(noEmailRes.status === 400, "Missing email rejected with 400");
@@ -250,6 +273,7 @@ async function runPhase4Tests() {
     // 10. Invalid email format rejected
     const badEmailRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ email: "notanemail" }),
     });
     assert(badEmailRes.status === 400, "Invalid email format rejected with 400");
@@ -257,6 +281,7 @@ async function runPhase4Tests() {
     // 11. Missing phone rejected
     const noPhoneRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ phone: "" }),
     });
     assert(noPhoneRes.status === 400, "Missing phone rejected with 400");
@@ -264,6 +289,7 @@ async function runPhase4Tests() {
     // 12. Invalid phone format rejected
     const badPhoneRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ phone: "123" }),
     });
     assert(badPhoneRes.status === 400, "Invalid phone (<7 chars) rejected with 400");
@@ -271,6 +297,7 @@ async function runPhase4Tests() {
     // 13. Missing resume file rejected
     const noFileRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ omitFile: true }),
     });
     assert(noFileRes.status === 400, "Missing resume file rejected with 400");
@@ -288,6 +315,7 @@ async function runPhase4Tests() {
     });
     const exeRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: exeForm,
     });
     assert(exeRes.status === 400, "File with .exe extension rejected with 400");
@@ -300,6 +328,7 @@ async function runPhase4Tests() {
     });
     const fakePdfRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: fakePdfForm,
     });
     const fakePdfJson = await fakePdfRes.json();
@@ -318,6 +347,7 @@ async function runPhase4Tests() {
     });
     const bigFileRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: bigFileForm,
     });
     assert(bigFileRes.status === 400, "Oversized file (>5MB) rejected with 400");
@@ -334,16 +364,17 @@ async function runPhase4Tests() {
     });
     const docxRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: docxForm,
     });
     assert(docxRes.status === 201, "Valid DOCX resume accepted with 201 Created");
 
     // ----------------------------------------------------
-    // Test Suite 4: Public Submission & Number Generation
+    // Test Suite 4: Authenticated Submission & Number Generation
     // ----------------------------------------------------
-    console.log("\n[Test Suite 4: Public Submission & Application Number]");
+    console.log("\n[Test Suite 4: Authenticated Submission & Application Number]");
 
-    // 18. Public submission succeeds without auth headers
+    // 18. Authenticated submission succeeds
     const candidateEmail = "jane.success@example.com";
     const validForm = createCandidateForm({
       fullName: "Jane Success",
@@ -355,10 +386,11 @@ async function runPhase4Tests() {
 
     const submitRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: validForm,
     });
     const submitJson = await submitRes.json();
-    assert(submitRes.status === 201, "Public candidate application succeeds with 201 Created");
+    assert(submitRes.status === 201, "Authenticated candidate application succeeds with 201 Created");
     assert(submitJson.success === true, "Response returns success: true");
     assert(
       submitJson.message === "Application submitted successfully.",
@@ -383,6 +415,7 @@ async function runPhase4Tests() {
     // 21. Duplicate application rejected with 409 Conflict
     const dupRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ email: candidateEmail }),
     });
     const dupJson = await dupRes.json();
@@ -396,6 +429,7 @@ async function runPhase4Tests() {
     const upperCasedEmail = `  JANE.SUCCESS@example.COM  `;
     const caseDupRes = await fetch(`${baseUrl}/api/jobs/${targetJob.slug}/applications`, {
       method: "POST",
+      headers: candidateHeaders,
       body: createCandidateForm({ email: upperCasedEmail }),
     });
     assert(
@@ -409,6 +443,7 @@ async function runPhase4Tests() {
     if (secondJob) {
       const secondJobRes = await fetch(`${baseUrl}/api/jobs/${secondJob.slug}/applications`, {
         method: "POST",
+        headers: candidateHeaders,
         body: createCandidateForm({ email: candidateEmail }),
       });
       assert(
