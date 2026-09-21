@@ -1,7 +1,3 @@
-import fs from "fs";
-import path from "path";
-import { createClient, type Client as LibSqlClient } from "@libsql/client";
-import { drizzle as drizzleLibsql, type LibSQLDatabase } from "drizzle-orm/libsql";
 import { drizzle as drizzlePg, type NodePgDatabase } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import config from "../config/index.js";
@@ -9,56 +5,31 @@ import { schema } from "./schema.js";
 
 const { Pool } = pg;
 
-export type AppDatabase = LibSQLDatabase<typeof schema> | NodePgDatabase<typeof schema>;
+export type AppDatabase = NodePgDatabase<typeof schema>;
 
 let dbInstance: AppDatabase | null = null;
-export let rawLibSqlClient: LibSqlClient | null = null;
 export let rawPgPool: pg.Pool | null = null;
 
 /**
- * Initializes and returns the active database connection.
- * Development: SQLite (via @libsql/client local file)
- * Production: PostgreSQL (via pg connection pool)
+ * Initializes and returns the active database connection (PostgreSQL).
  */
 export function getDb(): AppDatabase {
   if (dbInstance) {
     return dbInstance;
   }
 
-  const { provider, url } = config.database;
+  const { url } = config.database;
 
-  if (provider === "sqlite") {
-    // Ensure the data directory exists before opening SQLite database
-    const dbPath = url.startsWith("file:") ? url.replace(/^file:/, "") : url;
-    const resolvedPath = path.resolve(process.cwd(), dbPath);
-    const dir = path.dirname(resolvedPath);
-
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-
-    rawLibSqlClient = createClient({
-      url: `file:${resolvedPath}`,
-    });
-
-    dbInstance = drizzleLibsql(rawLibSqlClient, { schema });
-    return dbInstance;
+  if (!url) {
+    throw new Error("DATABASE_URL environment variable is required when using PostgreSQL.");
   }
 
-  if (provider === "postgresql") {
-    if (!url) {
-      throw new Error("DATABASE_URL environment variable is required when using PostgreSQL.");
-    }
+  rawPgPool = new Pool({
+    connectionString: url,
+  });
 
-    rawPgPool = new Pool({
-      connectionString: url,
-    });
-
-    dbInstance = drizzlePg(rawPgPool, { schema });
-    return dbInstance;
-  }
-
-  throw new Error(`Unsupported database provider: ${provider}`);
+  dbInstance = drizzlePg(rawPgPool, { schema });
+  return dbInstance;
 }
 
 /**
@@ -67,23 +38,17 @@ export function getDb(): AppDatabase {
  */
 export async function checkDatabaseConnection(): Promise<{
   connected: boolean;
-  provider: "sqlite" | "postgresql";
+  provider: "postgresql";
   latencyMs?: number;
   error?: string;
 }> {
-  const provider = config.database.provider;
+  const provider = "postgresql" as const;
   const start = Date.now();
 
   try {
     getDb();
 
-    if (provider === "sqlite" && rawLibSqlClient) {
-      await rawLibSqlClient.execute("SELECT 1 AS probe");
-      const latencyMs = Date.now() - start;
-      return { connected: true, provider, latencyMs };
-    }
-
-    if (provider === "postgresql" && rawPgPool) {
+    if (rawPgPool) {
       const client = await rawPgPool.connect();
       try {
         await client.query("SELECT 1 AS probe");
@@ -115,11 +80,8 @@ export async function closeDatabase(): Promise<void> {
     await rawPgPool.end();
     rawPgPool = null;
   }
-  if (rawLibSqlClient) {
-    rawLibSqlClient.close();
-    rawLibSqlClient = null;
-  }
   dbInstance = null;
 }
 
 export default getDb;
+

@@ -58,15 +58,12 @@ export function loadConfig(envSource: NodeJS.ProcessEnv = process.env): ServerCo
 
   const isProd = env === "production";
 
-  // Database provider: SQLite in dev/test, PostgreSQL in prod
-  const databaseProviderRaw = envSource.DATABASE_PROVIDER;
-  const databaseProvider = (
-    databaseProviderRaw ? databaseProviderRaw.toLowerCase() : isProd ? "postgresql" : "sqlite"
-  ) as "sqlite" | "postgresql";
+  // Database provider: PostgreSQL for all environments
+  const databaseProvider = "postgresql" as const;
 
   // Database URL
-  const defaultSqliteUrl = env === "test" ? "file:./server/data/test.db" : "file:./server/data/dev.db";
-  const databaseUrl = envSource.DATABASE_URL || (databaseProvider === "sqlite" ? defaultSqliteUrl : "");
+  const databaseUrl =
+    envSource.DATABASE_URL || "postgresql://localhost:5432/saras_dev";
 
   // CORS Origin Parsing
   const corsOriginRaw = envSource.CORS_ORIGIN;
@@ -92,8 +89,8 @@ export function loadConfig(envSource: NodeJS.ProcessEnv = process.env): ServerCo
     privateKey = privateKey.replace(/\\n/g, "\n").trim();
   }
 
-  // Development auth bypass: STRICTLY forbidden in production
-  const allowDevAuth = !isProd && envSource.ALLOW_DEV_AUTH !== "false";
+  // Development auth bypass: disabled unconditionally
+  const allowDevAuth = false;
 
   return {
     env,

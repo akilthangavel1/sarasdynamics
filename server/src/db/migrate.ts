@@ -1,41 +1,25 @@
 import path from "path";
 import fs from "fs";
-import { migrate as migrateLibsql } from "drizzle-orm/libsql/migrator";
 import { migrate as migratePg } from "drizzle-orm/node-postgres/migrator";
-import { getDb, rawLibSqlClient, rawPgPool } from "./index.js";
-import config from "../config/index.js";
+import { getDb } from "./index.js";
 
 /**
- * Runs pending Drizzle database migrations for the configured database provider.
+ * Runs pending Drizzle database migrations for PostgreSQL.
  */
 export async function runMigrations(): Promise<void> {
-  const provider = config.database.provider;
-  console.log(`[Migrations] Running migrations for provider: ${provider}...`);
+  console.log(`[Migrations] Running migrations for provider: postgresql...`);
 
   try {
     const db = getDb();
 
-    if (provider === "sqlite") {
-      const migrationsFolder = path.resolve(process.cwd(), "server/src/db/migrations/sqlite");
-      if (!fs.existsSync(migrationsFolder)) {
-        console.warn(`[Migrations] Migrations folder not found at ${migrationsFolder}`);
-        return;
-      }
-      await migrateLibsql(db as any, { migrationsFolder });
-      console.log("[Migrations] SQLite migrations applied successfully.");
+    const migrationsFolder = path.resolve(process.cwd(), "server/src/db/migrations/postgresql");
+    if (!fs.existsSync(migrationsFolder)) {
+      console.warn(`[Migrations] Migrations folder not found at ${migrationsFolder}`);
       return;
     }
-
-    if (provider === "postgresql") {
-      const migrationsFolder = path.resolve(process.cwd(), "server/src/db/migrations/postgresql");
-      if (!fs.existsSync(migrationsFolder)) {
-        console.warn(`[Migrations] Migrations folder not found at ${migrationsFolder}`);
-        return;
-      }
-      await migratePg(db as any, { migrationsFolder });
-      console.log("[Migrations] PostgreSQL migrations applied successfully.");
-      return;
-    }
+    await migratePg(db as any, { migrationsFolder });
+    console.log("[Migrations] PostgreSQL migrations applied successfully.");
+    return;
   } catch (err) {
     console.error("[Migrations] Migration failed:", err);
     throw err;

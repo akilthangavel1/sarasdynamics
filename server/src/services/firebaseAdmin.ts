@@ -51,26 +51,6 @@ export async function verifyFirebaseToken(token: string): Promise<DecodedAuthTok
     throw new Error("Missing or empty token");
   }
 
-  // Development/Test Mode support for CI/CD or testing environment without cloud keys (strictly disabled in production)
-  if (config.allowDevAuth && config.env !== "production" && token.startsWith("dev-test:")) {
-    const parts = token.split(":");
-    // format: dev-test:<uid>:<email>:<optional_name>
-    const uid = parts[1];
-    const email = parts[2];
-    const name = parts[3] || "Dev Test User";
-
-    if (!uid || !email) {
-      throw new Error("Malformed dev test token");
-    }
-
-    return {
-      uid,
-      email,
-      name,
-      picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}`,
-    };
-  }
-
   const app = getFirebaseAdminApp();
   if (!app) {
     throw new Error(

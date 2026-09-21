@@ -18,8 +18,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
-import { FAQSection } from "@/components/ui/faqsection";
-import { defaultFaqsLeft, defaultFaqsRight } from "@/components/ui/faq-demo";
+import Faq from "@/components/ui/faq-13";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { Cta69 } from "@/components/ui/cta69";
@@ -390,18 +389,8 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
         </div>
 
         {/* The Requested Integrated FAQ Component */}
-        <div id="faq-section" className="border-t border-zinc-200 pt-8">
-          <FAQSection
-            title="Platform & Product Support"
-            subtitle="Frequently Asked Questions"
-            description="Everything you need to know about how our platform works, from setup and customization to integrations and updates."
-            buttonLabel="Browse All Knowledge Base →"
-            onButtonClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            faqsLeft={defaultFaqsLeft}
-            faqsRight={defaultFaqsRight}
-          />
+        <div id="faq-section" className="border-t border-zinc-200 py-16 px-4 sm:px-6 lg:px-8">
+          <Faq />
         </div>
       </main>
 

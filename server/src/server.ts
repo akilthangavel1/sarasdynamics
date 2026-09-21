@@ -6,10 +6,9 @@ import config, { assertValidConfig, getSanitizedConfig } from "./config/index.js
 import { app } from "./app.js";
 import { getDb, checkDatabaseConnection, closeDatabase } from "./db/index.js";
 import { runMigrations } from "./db/migrate.js";
-import { seedDatabase } from "./db/seed.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const currentFilename = typeof __filename !== "undefined" ? __filename : fileURLToPath(import.meta.url);
+const currentDirname = typeof __dirname !== "undefined" ? __dirname : path.dirname(currentFilename);
 
 async function startServer() {
   // 1. Fail-Fast Environment Configuration Assertion
@@ -35,14 +34,10 @@ async function startServer() {
     const probe = await checkDatabaseConnection();
     if (probe.connected) {
       console.log(`[Database] Successfully connected to ${probe.provider} (${probe.latencyMs}ms)`);
-      // In development mode, auto-apply migrations and seed database for developer convenience.
-      // In production mode, automatic startup migrations/seeds are strictly disabled.
-      // Production migrations are executed explicitly via `npm run db:migrate` / deployment pipelines.
       if (config.env !== "production") {
         await runMigrations();
-        await seedDatabase();
       } else {
-        console.log("[Database] Production environment detected: Automatic startup migrations/seeds are disabled.");
+        console.log("[Database] Production environment detected: Automatic startup migrations are disabled.");
       }
     } else {
       console.warn(`[Database] Warning: Initial connection probe returned false: ${probe.error}`);

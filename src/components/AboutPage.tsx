@@ -3,6 +3,7 @@ import Navbar1Demo from "@/components/ui/navbar-demo";
 import WorldMapDemo from "@/components/ui/world-map-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { PixelHero } from "@/components/ui/pixel-perfect-hero";
+import Timeline from "@/components/ui/timeline-02";
 import { AboutUsSection } from "./AboutUsSection";
 
 interface AboutPageProps {
@@ -39,6 +40,13 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
           }}
           githubUrl="#home"
         />
+
+        {/* Timeline Section */}
+        <section className="py-24 bg-background overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+            <Timeline />
+          </div>
+        </section>
 
         {/* Dedicated About Us Section */}
         <AboutUsSection />

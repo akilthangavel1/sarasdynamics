@@ -1,10 +1,9 @@
 import * as sqliteSchema from "./schema.sqlite.js";
 import * as pgSchema from "./schema.pg.js";
-import config from "../config/index.js";
 
-export const isPostgres = config.database.provider === "postgresql";
+export const isPostgres = true;
 
-export const schema = isPostgres ? pgSchema : sqliteSchema;
+export const schema = pgSchema;
 
 export type UserStatus = "ACTIVE" | "INACTIVE" | "SUSPENDED";
 

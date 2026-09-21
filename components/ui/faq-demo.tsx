@@ -1,4 +1,4 @@
-import { FAQSection } from "@/components/ui/faqsection";
+import Faq from "@/components/ui/faq-13";
 
 export const defaultFaqsLeft = [
   {
@@ -58,15 +58,8 @@ export const defaultFaqsRight = [
 
 export function FAQDemoPage() {
   return (
-    <main className="min-h-screen bg-white text-zinc-900">
-      <FAQSection
-        title="Platform & Product Support"
-        subtitle="Frequently Asked Questions"
-        description="Everything you need to know about how our platform works, from setup and customization to integrations and updates."
-        buttonLabel="See Full Help Center →"
-        faqsLeft={defaultFaqsLeft}
-        faqsRight={defaultFaqsRight}
-      />
+    <main className="min-h-screen bg-white text-zinc-900 py-16 px-4">
+      <Faq />
     </main>
   );
 }

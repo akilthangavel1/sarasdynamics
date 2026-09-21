@@ -79,22 +79,8 @@ export function SiteFooter() {
 
   return (
     <footer id="site-footer" className="w-full border-t border-zinc-200 bg-white text-zinc-800 transition-colors">
-      <div className="relative mx-auto grid max-w-7xl items-center justify-center gap-6 p-8 sm:p-10 pb-0 md:flex">
-        <a href="#hero-canvas" className="flex items-center justify-center rounded-full shrink-0 group">
-          <div className="w-10 h-10 rounded-xl bg-red-600/10 border border-red-200 flex items-center justify-center text-red-600 group-hover:scale-105 transition-transform">
-            <DIcons.Sparkles className="w-5 h-5 text-red-600" />
-          </div>
-        </a>
-        <p id="footer-brand-description" className="bg-transparent text-center text-xs sm:text-sm leading-relaxed text-zinc-600 md:text-left max-w-4xl font-normal">
-          Welcome to Saras Dynamics, pioneering high-performance software engineering, enterprise AI
-          systems, and intelligent automation architectures. We design scalable digital platforms and
-          mission-critical technology solutions engineered for precision, velocity, and enduring reliability.
-        </p>
-      </div>
-
       <div className="mx-auto max-w-7xl px-6 py-8">
-        <div className="border-b border-dotted border-zinc-200"></div>
-        <div className="py-8">
+        <div className="pb-8">
           {navigation.categories.map((category) => (
             <div
               key={category.name}

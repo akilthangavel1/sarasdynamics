@@ -90,6 +90,16 @@ export async function syncUser(req: Request, res: Response): Promise<void> {
       return;
     }
 
+    // Auto-bootstrap SUPER_ADMIN role if user email matches BOOTSTRAP_SUPER_ADMIN_EMAIL
+    const bootstrapEmail = (process.env.BOOTSTRAP_SUPER_ADMIN_EMAIL || "").toLowerCase().trim();
+    if (bootstrapEmail && user.email.toLowerCase() === bootstrapEmail) {
+      const currentRoles = await userRepository.getUserRoleNames(user.id);
+      if (!currentRoles.includes("SUPER_ADMIN")) {
+        await userRepository.assignRoleByName(user.id, "SUPER_ADMIN");
+        console.log(`[Auth Controller] Automatically granted SUPER_ADMIN role to bootstrap user: ${user.email}`);
+      }
+    }
+
     // Check account status
     if (user.status === "SUSPENDED" || user.status === "INACTIVE") {
       res.status(403).json({

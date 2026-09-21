@@ -21,7 +21,7 @@ const MAX_SUBMISSIONS_PER_WINDOW = 20;
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
 
 function checkRateLimit(ip: string): boolean {
-  if (config.allowDevAuth || config.env === "test") {
+  if (config.env === "development" || config.env === "test") {
     return true;
   }
   const now = Date.now();
