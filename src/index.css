@@ -23,6 +23,14 @@
   --shadow-elevated-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
 }
 
+.h-125 {
+  height: 31.25rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #09090b;
@@ -143,3 +151,21 @@
     transform: translateX(-50%);
   }
 }
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.font-doto {
+  font-family: "Doto", sans-serif;
+}
+

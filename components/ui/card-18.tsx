@@ -1,31 +1,29 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { cn } from '@/lib/utils'; // Assuming you have a `cn` utility from shadcn
+import { Button } from '@/components/ui/button'; // Assuming you have a Button component
 
 // CVA for card variants
 const cardVariants = cva(
-  "group relative flex flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow-xs transition-all duration-300 ease-in-out hover:shadow-md border-zinc-200 hover:border-zinc-300",
+  'group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 ease-in-out hover:shadow-md',
   {
     variants: {
       variant: {
-        default: "p-6",
-        featured: "flex-col md:flex-row",
+        default: 'p-6',
+        featured: 'flex-col md:flex-row',
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: 'default',
     },
   }
 );
 
 // Interface for component props
-export interface BlogPostCardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
+export interface BlogPostCardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
   tag: string;
   date: string;
   title: string;
@@ -36,41 +34,27 @@ export interface BlogPostCardProps
 }
 
 const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
-  (
-    {
-      className,
-      variant,
-      tag,
-      date,
-      title,
-      description,
-      imageUrl,
-      href,
-      readMoreText = "Read the full article",
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, variant, tag, date, title, description, imageUrl, href, readMoreText = 'Read the full article', ...props }, ref) => {
+    
     // Animation variants for framer-motion
     const cardHover = {
       hover: {
         y: -5,
         transition: {
           duration: 0.2,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         },
       },
     };
-
+    
     const content = (
       <>
-        {variant === "featured" && imageUrl && (
-          <div className="relative w-full min-h-[260px] md:min-h-[320px] overflow-hidden md:w-1/2 lg:w-3/5">
+        {variant === 'featured' && imageUrl && (
+          <div className="relative w-full overflow-hidden md:w-1/2 lg:w-3/5">
             <img
               src={imageUrl}
               alt={title}
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              referrerPolicy="no-referrer"
             />
           </div>
         )}
@@ -78,9 +62,7 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
           <div>
             <div className="mb-4 flex items-center gap-4 text-xs font-semibold uppercase text-muted-foreground">
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">
-                {tag}
-              </span>
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">{tag}</span>
               <span>{date}</span>
             </div>
 
@@ -89,18 +71,16 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                 {title}
               </span>
             </h3>
-
-            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-              {description}
-            </p>
+            
+            <p className="text-muted-foreground">{description}</p>
           </div>
 
-          {variant === "featured" && (
+          {variant === 'featured' && (
             <div className="mt-8">
-              <Button variant="default" className="group/button cursor-pointer">
-                {readMoreText}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
-              </Button>
+                <Button variant="default" className="group/button">
+                    {readMoreText}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+                </Button>
             </div>
           )}
         </div>
@@ -115,21 +95,15 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         whileHover="hover"
         {...props}
       >
-        <a
-          href={href}
-          className="absolute inset-0 z-10"
-          aria-label={`Read more about ${title}`}
-        >
+        <a href={href} className="absolute inset-0 z-10" aria-label={`Read more about ${title}`}>
           <span className="sr-only">Read More</span>
         </a>
-        <div className="relative z-0 flex h-full w-full flex-col md:flex-row">
-          {content}
-        </div>
+        <div className="relative z-0 flex h-full w-full flex-col md:flex-row">{content}</div>
       </motion.div>
     );
   }
 );
 
-BlogPostCard.displayName = "BlogPostCard";
+BlogPostCard.displayName = 'BlogPostCard';
 
 export { BlogPostCard };

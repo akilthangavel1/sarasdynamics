@@ -4,7 +4,6 @@ import Navbar1Demo from '@/components/ui/navbar-demo';
 import AboutSection from './components/AboutSection';
 import InteractiveHoverLinks from '@/components/ui/interactive-hover-links';
 import ExpandableGallery from '@/components/ui/expandable-gallery';
-import { TestimonialsSection } from '@/components/ui/testimonial-v2';
 import { SiteFooter } from '@/components/ui/site-footer';
 import { BlogCards } from '@/components/ui/cards';
 import ContactPage from './components/ContactPage';
@@ -383,9 +382,6 @@ export default function App() {
 
       {/* Expandable Gallery Section */}
       <ExpandableGallery />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* Latest Blog Cards Section */}
       <BlogCards />

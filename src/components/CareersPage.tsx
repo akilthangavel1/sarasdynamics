@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Input } from "@/components/ui/input";
 import { useAuth } from "../context/AuthContext";
 import {
   api,
@@ -191,68 +193,27 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
       )}
 
       {/* Hero Section */}
-      <section
-        id="careers-hero"
-        className="relative w-full border-b border-zinc-200/80 bg-zinc-50/50 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
-      >
-        <div className="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
-
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-medium text-zinc-800 shadow-xs mb-6"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span>We&apos;re Hiring &bull; Live Positions</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.08] text-balance"
-          >
-            Build thoughtful digital products with us.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-5 text-base sm:text-lg md:text-xl text-zinc-600 max-w-2xl text-balance font-normal leading-relaxed"
-          >
-            We are a tight-knit collective of engineers, designers, and creators crafting minimalist software and precision web experiences.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3.5"
-          >
-            <button
-              onClick={scrollToOpenings}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-sm cursor-pointer active:scale-98"
-            >
-              <Briefcase className="size-4" />
-              <span>View Open Roles</span>
-              <ArrowRight className="size-4 ml-0.5" />
-            </button>
-
-            <button
-              onClick={onBackToHome}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white border border-zinc-200 text-zinc-700 text-sm font-medium hover:bg-zinc-100 hover:text-zinc-900 transition-colors cursor-pointer active:scale-98"
-            >
-              <span>Back to Home</span>
-            </button>
-          </motion.div>
+      <div id="careers-hero" className="h-[40rem] w-full rounded-md bg-background relative flex flex-col items-center justify-center antialiased">
+        <div className="max-w-2xl mx-auto p-4">
+          <h1 className="relative z-10 text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground text-center font-sans font-bold">
+            Join the waitlist
+          </h1>
+          <p></p>
+          <p className="text-muted-foreground max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+            Welcome to MailJet, the best transactional email service on the web.
+            We provide reliable, scalable, and customizable email solutions for
+            your business. Whether you&apos;re sending order confirmations,
+            password reset emails, or promotional campaigns, MailJet has got you
+            covered.
+          </p>
+          <Input
+            type="email"
+            placeholder="hi@manuarora.in"
+            className="w-full mt-4 relative z-10"
+          />
         </div>
-      </section>
+        <BackgroundBeams />
+      </div>
 
       {/* Perks / Culture Section */}
       <section className="w-full py-12 md:py-16 border-b border-zinc-200 bg-white">
