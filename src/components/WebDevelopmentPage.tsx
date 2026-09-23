@@ -27,17 +27,20 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         className="relative w-full border-b border-zinc-200/80 overflow-hidden"
       >
         <EnhancedBackgroundPaths
-          title="Web Development"
-          subtitle="Saras Dynamics architects high-performance web applications, resilient cloud backends, and responsive design systems with React, TypeScript, and modern distributed architecture."
-          badge="Full-Stack Web Engineering • Saras Dynamics"
+          titleLine1="GLOBAL MOBILE APP"
+          titleLine2="AND WEB DESIGN"
+          subtitle="We are an interdisciplinary design and development studio in Los Angeles, New York, and London creating transformative digital products and platforms for transformative startups and established global brands."
+          sidebarCategory="BRANDING & DESIGN"
+          sidebarFooter="STUDIO X © 2024"
+          onBackToHome={onBackToHome}
         />
       </section>
 
+      {/* Features With Card Gradient Section (Compliance & Core Capabilities) */}
+      <FeaturesSectionWithCardGradient />
+
       {/* How It Works Section */}
       <HowItWorks09 />
-
-      {/* Features With Card Gradient Section */}
-      <FeaturesSectionWithCardGradient />
 
       {/* Squeeze Carousel Section */}
       <section className="w-full border-b border-zinc-200/80">

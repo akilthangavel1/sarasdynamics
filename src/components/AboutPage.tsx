@@ -4,7 +4,6 @@ import WorldMapDemo from "@/components/ui/world-map-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { PixelHero } from "@/components/ui/pixel-perfect-hero";
 import Timeline from "@/components/ui/timeline-02";
-import { AboutUsSection } from "./AboutUsSection";
 
 interface AboutPageProps {
   onBackToHome?: () => void;
@@ -47,9 +46,6 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
             <Timeline />
           </div>
         </section>
-
-        {/* Dedicated About Us Section */}
-        <AboutUsSection />
       </main>
 
       {/* Global Remote Connectivity World Map Section */}
