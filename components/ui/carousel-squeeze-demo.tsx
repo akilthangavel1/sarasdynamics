@@ -3,7 +3,7 @@
 import { SqueezeCarousel, type SqueezeSlide } from "@/components/ui/carousel-squeeze";
 
 export const settings = {
-    height: 320,
+    height: 420,
     gap: 16,
     slatGap: 8,
     slatWidth: 8,

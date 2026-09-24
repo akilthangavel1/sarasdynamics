@@ -2,10 +2,11 @@ import React from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { EnhancedBackgroundPaths } from "@/components/ui/modern-background-paths";
-import HowItWorks09 from "@/components/ui/how-it-works-09";
+
 import { FeaturesSectionWithCardGradient } from "@/components/ui/feature-section-with-card-gradient";
+import { RulerCarouselDemo } from "@/components/ui/ruler-carousel-demo";
 import SqueezeCarouselDemo from "@/components/ui/carousel-squeeze-demo";
-import AnimatedTestimonialsBasic from "@/components/ui/animated-testimonials-demo";
+
 import Error404Demo from "@/components/ui/pixeleted-404-not-found-demo";
 
 interface WebDevelopmentPageProps {
@@ -39,16 +40,17 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
       {/* Features With Card Gradient Section (Compliance & Core Capabilities) */}
       <FeaturesSectionWithCardGradient />
 
-      {/* How It Works Section */}
-      <HowItWorks09 />
-
       {/* Squeeze Carousel Section */}
       <section className="w-full border-b border-zinc-200/80">
         <SqueezeCarouselDemo />
       </section>
 
-      {/* Animated Testimonials Section */}
-      <AnimatedTestimonialsBasic />
+      {/* Ruler Carousel Section */}
+      <section className="w-full bg-white">
+        <RulerCarouselDemo />
+      </section>
+
+
 
       {/* Pixelated 404 Section */}
       <Error404Demo />

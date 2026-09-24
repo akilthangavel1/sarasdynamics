@@ -1,9 +1,10 @@
 import React from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
-import WorldMapDemo from "@/components/ui/world-map-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { PixelHero } from "@/components/ui/pixel-perfect-hero";
 import Timeline from "@/components/ui/timeline-02";
+import WorldMapDemo from "@/components/ui/world-map-demo";
+import HeroSectionDemo from "@/components/ui/hero-section-9-demo";
 
 interface AboutPageProps {
   onBackToHome?: () => void;
@@ -40,6 +41,9 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
           githubUrl="#home"
         />
 
+        {/* Hero Section 9 - Below Hero */}
+        <HeroSectionDemo />
+
         {/* Timeline Section */}
         <section className="py-24 bg-background overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
@@ -48,7 +52,7 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
         </section>
       </main>
 
-      {/* Global Remote Connectivity World Map Section */}
+      {/* Remote Connectivity World Map Section */}
       <WorldMapDemo />
 
       {/* Global Footer */}

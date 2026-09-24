@@ -111,7 +111,7 @@ export function Error404({
           </div>
         </div>
 
-        <div className="text-center max-w-2xl">
+        <div className="text-center w-[95%]">
           <h1 className="text-4xl md:text-5xl font-doto mb-6 text-balance leading-tight">
             {heading}
           </h1>

@@ -1,17 +1,39 @@
 import React from "react";
 import { useId } from "react";
 
-export function FeaturesSectionWithCardGradient() {
+interface FeaturesSectionWithCardGradientProps {
+  eyebrow?: string;
+  title?: string;
+}
+
+export function FeaturesSectionWithCardGradient({
+  eyebrow = "INNOVATIVE SOFTWARE SOLUTIONS",
+  title = "GLOBAL SOFTWARE EXCELLENCE",
+}: FeaturesSectionWithCardGradientProps = {}) {
   return (
-    <div className="py-20 lg:py-40">
+    <div className="py-20 lg:py-32 px-4 sm:px-6 md:px-8">
+      {/* Title Header Section */}
+      <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+        <h2 className="font-['Bebas_Neue',sans-serif] tracking-tight uppercase select-none">
+          <span className="block text-lg sm:text-2xl md:text-3xl lg:text-[2.1rem] text-neutral-500 dark:text-neutral-400 mb-1 leading-tight tracking-normal">
+            {eyebrow}
+          </span>
+          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-black dark:text-white leading-[0.9]">
+            {title}
+          </span>
+        </h2>
+        {/* Red accent line below title */}
+        <div className="w-36 sm:w-56 md:w-72 lg:w-[360px] max-w-[80%] h-[2px] bg-[#dc2626] mx-auto mt-3 rounded-full" />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-2 max-w-7xl mx-auto">
         {grid.map((feature) => (
           <div
             key={feature.title}
-            className="relative bg-gradient-to-b from-red-50/80 via-red-50/30 to-white dark:from-red-950/20 dark:to-neutral-950 p-6 rounded-3xl overflow-hidden border border-red-100/80 dark:border-red-900/30 shadow-[0_2px_12px_rgba(239,68,68,0.04)] hover:border-red-200 dark:hover:border-red-800/50 transition-colors"
+            className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden"
           >
             <Grid size={20} />
-            <p className="text-base font-bold text-neutral-900 dark:text-white relative z-20">
+            <p className="text-base font-bold text-neutral-800 dark:text-white relative z-20">
               {feature.title}
             </p>
             <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-base font-normal relative z-20">
@@ -83,14 +105,14 @@ export const Grid = ({
   ];
   return (
     <div className="pointer-events-none absolute left-1/2 top-0  -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]">
-      <div className="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] from-red-100/50 via-rose-100/40 to-red-200/30 dark:from-red-950/40 dark:to-neutral-900/20 opacity-100">
+      <div className="absolute inset-0 bg-gradient-to-r  [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-zinc-900/30 from-zinc-100/30 to-zinc-300/30 dark:to-zinc-900/30 opacity-100">
         <GridPattern
           width={size ?? 20}
           height={size ?? 20}
           x="-12"
           y="4"
           squares={p}
-          className="absolute inset-0 h-full w-full stroke-red-500/25 fill-red-500/20 dark:stroke-red-400/30 dark:fill-red-400/25"
+          className="absolute inset-0 h-full w-full  mix-blend-overlay dark:fill-white/10 dark:stroke-white/10 stroke-black/10 fill-black/10"
         />
       </div>
     </div>

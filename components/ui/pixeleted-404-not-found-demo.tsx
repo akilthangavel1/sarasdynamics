@@ -7,8 +7,8 @@ export default function Error404Demo() {
       postcardAlt="New York City Postcard with Statue of Liberty"
       curvedTextTop="The General Intelligence"
       curvedTextBottom="of New York"
-      heading="(404) Looks like the page you're looking for got lost somewhere."
-      subtext="But hey — in New York, even the unexpected detours lead somewhere."
+      heading="Accelerate your digital transformation journey."
+      subtext="Let your plans shape the future."
       backButtonLabel="Back to Home"
       backButtonHref="/"
     />

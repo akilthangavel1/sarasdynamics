@@ -2,6 +2,7 @@ import React from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import StatsBento from "@/components/ui/stats-bento";
+import CinematicHeroDemo from "@/components/ui/cinematic-hero-demo";
 
 interface MobileDevelopmentPageProps {
   onBackToHome?: () => void;
@@ -15,6 +16,9 @@ export function MobileDevelopmentPage({ onBackToHome }: MobileDevelopmentPagePro
     >
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
+
+      {/* Cinematic Landing Hero Section */}
+      <CinematicHeroDemo />
 
       {/* Stats Bento Section */}
       <StatsBento />
