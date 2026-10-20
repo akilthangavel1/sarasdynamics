@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { EnhancedBackgroundPaths } from "@/components/ui/modern-background-paths";
 
 import { FeaturesSectionWithCardGradient } from "@/components/ui/feature-section-with-card-gradient";
+import LogoCloud04 from "@/components/ui/logo-cloud-04";
 import { RulerCarouselDemo } from "@/components/ui/ruler-carousel-demo";
 import SqueezeCarouselDemo from "@/components/ui/carousel-squeeze-demo";
 
@@ -39,6 +40,9 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
 
       {/* Features With Card Gradient Section (Compliance & Core Capabilities) */}
       <FeaturesSectionWithCardGradient />
+
+      {/* Customer Results / Logo Cloud Section */}
+      <LogoCloud04 />
 
       {/* Squeeze Carousel Section */}
       <section className="w-full border-b border-zinc-200/80">

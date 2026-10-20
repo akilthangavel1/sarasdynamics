@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Github } from "lucide-react";
+import { ArrowRight, Github, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+
 
 /* -----------------------------------------------------------------------------
  * VECTOR TECHNOLOGY LOGO COMPONENTS
@@ -13,7 +14,7 @@ import { cn } from "@/lib/utils";
 const TECH_LOGOS = [
   // React / React Native
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-cyan-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="-11.5 -10.23174 23 20.46348" className="h-5 w-auto">
         <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
         <g stroke="#61dafb" strokeWidth="1" fill="none">
@@ -28,7 +29,7 @@ const TECH_LOGOS = [
 
   // TypeScript
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 128 128" className="h-5 w-5 rounded-sm">
         <rect width="128" height="128" rx="16" fill="#3178C6" />
         <path d="M77.6 57.6h17.9v48.2c-4.4 2.2-9.7 3.5-15.8 3.5-17.7 0-26.6-9.8-26.6-25.2 0-16.1 10.3-26.5 28.5-26.5 6.6 0 12.1 1.4 16.5 3.7v13.5c-4.8-2.7-9.8-3.9-15.5-3.9-9.9 0-14.8 5.4-14.8 13.5 0 8.3 4.6 13.5 14.5 13.5 3.3 0 6.2-.7 8.5-1.9V69.7h-13.2v-12.1zm-43.2 0h34.6v12.4h-10.7v38.8H45.2V70H34.4V57.6z" fill="#FFF" />
@@ -39,7 +40,7 @@ const TECH_LOGOS = [
 
   // Next.js
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg className="h-4 sm:h-5 w-auto fill-current" viewBox="0 0 394 79">
         <path d="M261.919 0.0330722H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.0330722Z" />
         <path d="M149.052 0.0330722V12.7H94.0421V33.0772H138.281V45.7441H94.0421V66.6721H149.052V79.339H80.43V12.7H80.4243V0.0330722H149.052Z" />
@@ -52,7 +53,7 @@ const TECH_LOGOS = [
 
   // Tailwind CSS
   () => (
-    <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-cyan-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2.5 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg className="h-4 sm:h-5 w-auto" viewBox="0 0 54 33" fill="none">
         <path
           className="fill-cyan-500"
@@ -67,7 +68,7 @@ const TECH_LOGOS = [
 
   // Node.js
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 32 32" className="h-5 w-5">
         <path fill="#539E43" d="M16 2.2L2.7 9.8v15.2L16 32.8l13.3-7.8V9.8L16 2.2z" />
       </svg>
@@ -77,7 +78,7 @@ const TECH_LOGOS = [
 
   // Python
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-yellow-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 128 128" className="h-5 w-5">
         <path fill="#3776AB" d="M63.5 5.5c-29.2 0-27.4 12.7-27.4 12.7l.03 13.1h27.9v3.9H25.4S5.5 33 5.5 62.4c0 29.5 17.4 28.5 17.4 28.5h10.4V76.8s-.6-17.4 17.1-17.4h29.5s16.5.3 16.5-16.1V18.2s2.5-12.7-32.9-12.7zm-14.7 9.5a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4z" />
         <path fill="#FFD43B" d="M64.5 122.5c29.2 0 27.4-12.7 27.4-12.7l-.03-13.1H64v-3.9h38.6s19.9 2.2 19.9-27.2c0-29.5-17.4-28.5-17.4-28.5H94.7v14.1s.6 17.4-17.1 17.4H48.1s-16.5-.3-16.5 16.1v25.1s-2.5 12.7 32.9 12.7zm14.7-9.5a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4z" />
@@ -88,7 +89,7 @@ const TECH_LOGOS = [
 
   // Docker
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#2496ED]">
         <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.929 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186h-2.119a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.928 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H2.208a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m21.758.337c-.365-.246-1.58-.337-2.735-.337-.365 0-.73.017-1.077.051-.264-1.39-1.28-2.22-2.584-2.22-.442 0-.877.094-1.28.272V8.406a.434.434 0 00-.434-.434H.434A.434.434 0 000 8.406v3.298c0 5.43 4.298 9.89 9.61 9.89 6.837 0 11.536-4.52 13.923-8.895.27-.492.483-1.006.634-1.536z" />
       </svg>
@@ -98,7 +99,7 @@ const TECH_LOGOS = [
 
   // Swift (iOS)
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-orange-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#F05138]">
         <path d="M21.94 14.12c-.08-.18-1.54-3.37-4.42-5.71 1.72 2.37 2.33 4.54 2.33 4.54s-2.07-1.3-4.6-1.3c-2.3 0-4.66 1.1-6.17 2.68-1.5 1.58-2.18 3.73-2.18 5.67 0 .2.02.4.04.6C3.26 18.06 1 14.34 1 10.15 1 4.54 5.54 0 11.15 0c4.19 0 7.82 2.55 9.4 6.18-.08.06-2.14 1.52-4.14 3.7 2.87-1.8 5.54-1.3 5.54-1.3s-1.83 2.1-3.6 3.65c2.47-.3 3.59.89 3.59.89z" />
       </svg>
@@ -108,7 +109,7 @@ const TECH_LOGOS = [
 
   // Kotlin (Android)
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-purple-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5 rounded-xs">
         <defs>
           <linearGradient id="kg" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -126,7 +127,7 @@ const TECH_LOGOS = [
 
   // Flutter
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#02569B]">
         <path d="M14.314 0L2.3 12 6 15.7 21.684 0h-7.37zm.07 11.393l-6.85 6.85 3.7 3.7 3.15-3.15 6.23 6.207h7.386L14.384 11.393z" />
       </svg>
@@ -136,7 +137,7 @@ const TECH_LOGOS = [
 
   // Google Cloud
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5">
         <path fill="#4285F4" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
       </svg>
@@ -146,7 +147,7 @@ const TECH_LOGOS = [
 
   // AWS
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-amber-500/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg className="h-5 w-auto" viewBox="-45.101 -44.95 390.872 269.7">
         <g transform="translate(-1.668 -1.1)">
           <path
@@ -169,7 +170,7 @@ const TECH_LOGOS = [
 
   // PostgreSQL
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-blue-600/50 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#336791]">
         <path d="M11.96 0C5.355 0 0 5.355 0 11.96c0 6.606 5.355 11.96 11.96 11.96 6.606 0 11.96-5.354 11.96-11.96C23.92 5.355 18.566 0 11.96 0zm.04 2.8a9.16 9.16 0 019.16 9.16c0 5.06-4.1 9.16-9.16 9.16a9.16 9.16 0 01-9.16-9.16c0-5.06 4.1-9.16 9.16-9.16zm-1.8 3.2c-2.3 0-3.9 1.6-3.9 3.9 0 1.8 1.1 3.2 2.6 3.7v3.2h2.5v-3.1c.3 0 .6.1.9.1 2.3 0 3.9-1.6 3.9-3.9 0-2.3-1.6-3.9-3.9-3.9h-2.1zm.4 2.1h1.7c1.1 0 1.8.7 1.8 1.8 0 1.1-.7 1.8-1.8 1.8h-1.7V8.1z" />
       </svg>
@@ -179,7 +180,7 @@ const TECH_LOGOS = [
 
   // Firebase
   () => (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 shadow-2xs hover:border-amber-400 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-200 select-none whitespace-nowrap">
+    <div className="flex items-center gap-2 px-2 py-1 text-zinc-800 dark:text-zinc-200 transition-all duration-200 select-none whitespace-nowrap hover:opacity-70">
       <svg viewBox="0 0 24 24" className="h-5 w-5">
         <path fill="#FFA000" d="M3.89 15.67L6.46 2.31c.07-.37.53-.49.77-.2l2.94 3.65-6.28 9.91z" />
         <path fill="#F57C00" d="M13.88 7.42l-2.65-4.99c-.16-.31-.61-.31-.77 0L2.14 18.04l8.69 4.88c.36.2.8.2 1.16 0l8.7-4.88L13.88 7.42z" />
@@ -383,6 +384,7 @@ function PixelCanvas({ colors, gap = 5, speed = 30 }: PixelCanvasProps) {
  * -------------------------------------------------------------------------- */
 
 export interface PixelHeroProps {
+  title?: string;
   word1?: string;
   word2?: string;
   description?: string;
@@ -390,24 +392,29 @@ export interface PixelHeroProps {
   primaryCtaMobile?: string;
   secondaryCta?: string;
   secondaryCtaMobile?: string;
+  secondaryIcon?: React.ReactNode;
   onPrimaryClick?: () => void;
   onSecondaryClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   githubUrl?: string;
   className?: string;
+  techStackLabel?: string;
 }
 
 export function PixelHero({
-  word1 = "Minds Behind",
-  word2 = "The Machine",
-  description = "SarasDynamics builds software, AI systems and intelligent automation for people creating the next generation of technology.",
-  primaryCta = "Explore Design",
-  primaryCtaMobile = "Explore",
-  secondaryCta = "View GitHub",
-  secondaryCtaMobile = "GitHub",
+  title,
+  word1 = "We Build the AI and Software",
+  word2 = "That Runs Your Business Better",
+  description = "A senior engineering team in India delivering world-class AI and software for clients across time zones, at a fraction of local costs.",
+  primaryCta = "Book a Discovery Call",
+  primaryCtaMobile = "Book Call",
+  secondaryCta = "What We Build",
+  secondaryCtaMobile = "What We Build",
+  secondaryIcon,
   onPrimaryClick,
   onSecondaryClick,
   githubUrl = "https://github.com",
   className = "",
+  techStackLabel = "From frontend to AI: Our Toolkit",
 }: PixelHeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [themeColors, setThemeColors] = useState<string[]>([
@@ -485,16 +492,22 @@ export function PixelHero({
       </div>
 
       {/* Top Container: Tahoe Glass Header */}
-      <div className="flex flex-col items-center justify-center text-center mt-3 sm:mt-2 pointer-events-none w-full z-10">
-        <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-2 sm:gap-4 lg:gap-5 px-1 w-full flex-wrap text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-none">
-          <span className="font-serif italic font-medium">{word1}</span>
-          <span className="font-sans font-extrabold tracking-tighter">{word2}</span>
+      <div className="flex flex-col items-center justify-center text-center mt-3 sm:mt-2 pointer-events-none w-full max-w-5xl px-4 z-10">
+        <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-x-3 gap-y-2 px-1 w-full flex-wrap text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-tight md:leading-[1.12]">
+          {title ? (
+            <span className="font-serif font-extrabold tracking-tight">{title}</span>
+          ) : (
+            <>
+              <span className="font-serif italic font-medium">{word1}</span>
+              <span className="font-serif font-extrabold tracking-tight">{word2}</span>
+            </>
+          )}
         </h1>
       </div>
 
       {/* Center Container: Description */}
       <div className="flex flex-col items-center justify-center text-center px-1 w-full pointer-events-none z-10 mt-4 md:mt-5">
-        <p className="text-sm sm:text-base md:text-lg font-light text-foreground/85 max-w-[95%] sm:max-w-md md:max-w-xl px-1 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg font-serif font-normal text-zinc-900 dark:text-zinc-100 max-w-[95%] sm:max-w-md md:max-w-xl px-1 leading-relaxed">
           {description}
         </p>
       </div>
@@ -516,7 +529,13 @@ export function PixelHero({
           onClick={onSecondaryClick}
           className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-card/80 to-card px-5 md:px-8 text-xs md:text-sm font-semibold text-card-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.05),0_12px_24px_rgba(0,0,0,0.05)] ring-1 ring-border/50 backdrop-blur-md transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
         >
-          <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          {secondaryIcon ?? (
+            secondaryCta?.toLowerCase().includes("github") ? (
+              <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            ) : (
+              <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
+            )
+          )}
           <span className="inline md:hidden">{secondaryCtaMobile}</span>
           <span className="hidden md:inline">{secondaryCta}</span>
         </a>
@@ -527,8 +546,8 @@ export function PixelHero({
         className={cn("w-full max-w-5xl z-10 pointer-events-auto flex flex-col items-center justify-center gap-3 mt-10 md:mt-14 transition-all duration-1000 transform", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
         style={{ transitionDelay: "600ms" }}
       >
-        <span className="text-[11px] md:text-xs uppercase tracking-wider text-muted-foreground/80 font-medium select-none">
-          Technologies & Engineering Stack
+        <span className="text-[11px] md:text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200 font-semibold select-none">
+          {techStackLabel}
         </span>
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
           <div className="flex w-max gap-4 sm:gap-6 md:gap-8 py-2 animate-marquee">

@@ -170,6 +170,7 @@ const INJECTED_STYLES = `
 `;
 
 export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
   brandName?: string;
   tagline1?: string;
   tagline2?: string;

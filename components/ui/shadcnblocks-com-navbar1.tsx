@@ -325,18 +325,36 @@ const Navbar1 = ({
                   id="navbar-login-btn"
                   variant="outline"
                   size="sm"
-                  onClick={() => openAuthModal("login")}
-                  className="rounded-full px-4 border-zinc-200 text-zinc-800 hover:bg-zinc-100"
+                  asChild
+                  className="rounded-full px-4 border-zinc-200 text-zinc-800 hover:bg-zinc-100 cursor-pointer"
                 >
-                  {authConfig.login.text}
+                  <a
+                    href="#login"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.hash = "#login";
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
+                    {authConfig.login.text}
+                  </a>
                 </Button>
                 <Button
                   id="navbar-signup-btn"
                   size="sm"
-                  onClick={() => openAuthModal("register")}
-                  className="rounded-full px-5 bg-zinc-900 hover:bg-zinc-800 text-white shadow-sm"
+                  asChild
+                  className="rounded-full px-5 bg-zinc-900 hover:bg-zinc-800 text-white shadow-sm cursor-pointer"
                 >
-                  {authConfig.signup.text}
+                  <a
+                    href="#register"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.hash = "#register";
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  >
+                    {authConfig.signup.text}
+                  </a>
                 </Button>
               </>
             )}
@@ -462,17 +480,35 @@ const Navbar1 = ({
                         <Button
                           id="mobile-login-btn"
                           variant="outline"
-                          onClick={() => openAuthModal("login")}
-                          className="w-full rounded-full border-zinc-200"
+                          asChild
+                          className="w-full rounded-full border-zinc-200 cursor-pointer"
                         >
-                          {authConfig.login.text}
+                          <a
+                            href="#login"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.location.hash = "#login";
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
+                          >
+                            {authConfig.login.text}
+                          </a>
                         </Button>
                         <Button
                           id="mobile-signup-btn"
-                          onClick={() => openAuthModal("register")}
-                          className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800"
+                          asChild
+                          className="w-full rounded-full bg-zinc-900 text-white hover:bg-zinc-800 cursor-pointer"
                         >
-                          {authConfig.signup.text}
+                          <a
+                            href="#register"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.location.hash = "#register";
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
+                          >
+                            {authConfig.signup.text}
+                          </a>
                         </Button>
                       </>
                     )}

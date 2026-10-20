@@ -1,5 +1,5 @@
-import Testimonial2 from "@/components/ui/testimonial-section-2";
+import Component from "@/components/ui/modern-login-signup";
 
-export default function Demo() {
-  return <Testimonial2 />;
+export default function DemoOne() {
+  return <Component />;
 }

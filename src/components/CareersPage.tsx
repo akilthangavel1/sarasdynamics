@@ -6,11 +6,8 @@ import {
   MapPin,
   Clock,
   CheckCircle2,
-  Sparkles,
-  Laptop,
-  Heart,
-  Globe2,
   ChevronRight,
+
   Send,
   Search,
   Tag,
@@ -21,6 +18,8 @@ import {
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import CTA from "@/components/ui/cta-06";
+import NotchedProjectCardsDemo from "@/components/ui/notched-project-card-demo";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "../context/AuthContext";
 import {
@@ -35,28 +34,6 @@ interface CareersPageProps {
   onBackToHome?: () => void;
 }
 
-const PERKS = [
-  {
-    icon: Globe2,
-    title: "Work From Anywhere",
-    desc: "100% remote-first culture across global time zones.",
-  },
-  {
-    icon: Laptop,
-    title: "Top-Tier Hardware",
-    desc: "Modern MacBook Pro or workstation setup with a home office budget.",
-  },
-  {
-    icon: Heart,
-    title: "Comprehensive Wellness",
-    desc: "Premium health coverage, mental wellness stipend, and unlimited PTO.",
-  },
-  {
-    icon: Sparkles,
-    title: "Growth & Learning",
-    desc: "Generous annual stipends for conferences, courses, and craft books.",
-  },
-];
 
 export function CareersPage({ onBackToHome }: CareersPageProps) {
   const { dbUser, firebaseUser, roles, hasPermission, openAuthModal } = useAuth();
@@ -193,7 +170,7 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
       )}
 
       {/* Hero Section */}
-      <div id="careers-hero" className="h-[40rem] w-full rounded-md bg-background relative flex flex-col items-center justify-center antialiased">
+      <div id="careers-hero" className="h-[28rem] md:h-[32rem] w-full rounded-md bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden py-8">
         <div className="max-w-2xl mx-auto p-4">
           <h1 className="relative z-10 text-lg md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground text-center font-sans font-bold">
             Join the waitlist
@@ -214,29 +191,6 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
         </div>
         <BackgroundBeams />
       </div>
-
-      {/* Perks / Culture Section */}
-      <section className="w-full py-12 md:py-16 border-b border-zinc-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PERKS.map((perk, idx) => {
-              const Icon = perk.icon;
-              return (
-                <div
-                  key={idx}
-                  className="flex flex-col p-6 rounded-2xl bg-zinc-50 border border-zinc-200/80 transition-all hover:border-zinc-300"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-900 mb-4 shadow-xs">
-                    <Icon className="size-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-zinc-900">{perk.title}</h3>
-                  <p className="mt-2 text-sm text-zinc-600 leading-relaxed">{perk.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Open Positions Section */}
       <section id="open-positions" className="w-full py-16 md:py-20 bg-white">
@@ -481,11 +435,52 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
         />
       )}
 
+      {/* Featured Projects & Engineering Craft Section */}
+      <section id="careers-projects-showcase" className="w-full py-16 md:py-24 bg-white border-t border-zinc-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center md:text-left">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-zinc-500 font-semibold">
+                Our Work &amp; Craft
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 mt-1">
+                What you&apos;ll build with our team
+              </h2>
+            </div>
+            <p className="text-sm md:text-base text-zinc-600 max-w-lg leading-relaxed">
+              Explore the kind of engineering challenges, intelligent automation, and polished user experiences our talent tackles every day.
+            </p>
+          </div>
+        </div>
+        <NotchedProjectCardsDemo surface="#ffffff" />
+      </section>
+
+      {/* Careers Call To Action */}
+      <section id="careers-cta-section" className="w-full bg-white">
+        <CTA
+          fullWidth
+          title="Ready to build the future with us?"
+          description="Join an ambitious engineering and design team pushing the boundaries of software, AI, and digital experiences. Explore our open roles and find your fit today."
+          primaryButtonText="Explore Open Positions"
+          onPrimaryClick={() => {
+            const el = document.getElementById("open-positions");
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          secondaryButtonText="Learn About Saras"
+          onSecondaryClick={() => {
+            window.location.hash = "#about";
+          }}
+        />
+      </section>
+
       {/* Global Footer */}
       <SiteFooter />
     </div>
   );
 }
+
 
 export default CareersPage;
 

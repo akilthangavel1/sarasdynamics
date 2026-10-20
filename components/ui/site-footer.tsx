@@ -1,6 +1,5 @@
 import React from "react";
 import { DIcons } from "dicons";
-import { Heart } from "lucide-react";
 import ScrollTopFooter from "@/components/ui/footer";
 
 const navigation = {
@@ -205,31 +204,11 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto mb-10 mt-8 flex flex-col justify-between text-center text-xs max-w-7xl px-4">
-        <div className="flex flex-row items-center justify-center gap-1 text-zinc-500">
-          <span>©</span>
-          <span>{currentYear}</span>
-          <span>Made with</span>
-          <Heart className="text-red-600 mx-1 h-3.5 w-3.5 fill-red-600 animate-pulse inline-block" />
-          <span>by</span>
-          <a
-            aria-label="Ali Imam"
-            className="font-semibold text-zinc-800 hover:text-zinc-950 transition-colors underline-offset-2 hover:underline"
-            href="https://www.instagram.com/aliimam.in/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Ali Imam
-          </a>
-          <span>-</span>
-          <a
-            aria-label="Designali"
-            className="text-zinc-600 hover:text-red-600 transition-colors"
-            href="/"
-          >
-            Designali
-          </a>
-        </div>
+        <p className="text-zinc-500">
+          ©️ {currentYear} SarasDynamics. AI automation and software engineering.
+        </p>
       </div>
+
     </footer>
   );
 }

@@ -67,7 +67,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const openAuthModal = (view: AuthModalView = "login") => {
     setAuthModalView(view);
-    setAuthModalOpen(true);
+    setAuthModalOpen(false);
+    window.location.hash = `#${view}`;
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const closeAuthModal = () => {

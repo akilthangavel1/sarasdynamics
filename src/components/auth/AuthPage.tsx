@@ -100,22 +100,37 @@ export function AuthPage({ initialView = "login", onBackToHome }: AuthPageProps)
                 {view === "login" && (
                   <LoginForm
                     onSuccess={onBackToHome}
-                    onSwitchToRegister={() => setView("register")}
-                    onSwitchToForgotPassword={() => setView("forgot-password")}
+                    onSwitchToRegister={() => {
+                      setView("register");
+                      window.location.hash = "#register";
+                    }}
+                    onSwitchToForgotPassword={() => {
+                      setView("forgot-password");
+                      window.location.hash = "#forgot-password";
+                    }}
                   />
                 )}
 
                 {view === "register" && (
                   <RegisterForm
                     onSuccess={onBackToHome}
-                    onSwitchToLogin={() => setView("login")}
+                    onSwitchToLogin={() => {
+                      setView("login");
+                      window.location.hash = "#login";
+                    }}
                   />
                 )}
 
                 {view === "forgot-password" && (
                   <ForgotPasswordForm
-                    onSuccess={() => {}}
-                    onSwitchToLogin={() => setView("login")}
+                    onSuccess={() => {
+                      setView("login");
+                      window.location.hash = "#login";
+                    }}
+                    onSwitchToLogin={() => {
+                      setView("login");
+                      window.location.hash = "#login";
+                    }}
                   />
                 )}
               </>
