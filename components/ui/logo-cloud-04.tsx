@@ -45,82 +45,82 @@ interface Story {
 
 const STORIES: readonly Story[] = [
   {
-    value: "northwind",
-    name: "Northwind",
+    value: "discovery",
+    name: "Discovery",
     wordmark: "text-lg font-semibold tracking-tight",
-    metric: "41%",
-    metricLabel: "fewer tickets",
-    period: "First quarter after rollout",
+    metric: "Phase 1",
+    metricLabel: "Technical Alignment",
+    period: "Scope, feasibility & milestones",
     quote:
-      "Customers stopped asking where their order was. The status page answered it before they thought to write in.",
-    person: "Nadia Rahman",
-    role: "Head of Support, Northwind",
-    href: "#",
+      "We dissect your business goals, target audience, performance targets, and data structures to formulate an actionable technical blueprint.",
+    person: "Discovery & Strategy",
+    role: "Technical Specification & Milestone Plan",
+    href: "#contact",
   },
   {
-    value: "halcyon",
-    name: "Halcyon",
-    wordmark: "text-xs font-medium uppercase tracking-[0.3em]",
-    metric: "2 days",
-    metricLabel: "to onboard a clinic",
-    period: "Down from nine",
+    value: "architecture",
+    name: "Architecture",
+    wordmark: "text-xs font-medium uppercase tracking-[0.25em]",
+    metric: "100%",
+    metricLabel: "Scalable Foundation",
+    period: "Engineered for longevity",
     quote:
-      "Setup used to be a week of calls. Now a practice manager does it alone on a Tuesday afternoon.",
-    person: "Tomas Lang",
-    role: "Operations Lead, Halcyon",
-    href: "#",
+      "We design modular system architectures, database schemas, secure API boundaries, and cloud infrastructure to eliminate future technical debt.",
+    person: "System Architecture",
+    role: "Data Modeling & Infrastructure Design",
+    href: "#contact",
   },
   {
-    value: "basalt",
-    name: "basalt",
+    value: "interface",
+    name: "design & ux",
     wordmark: "text-xl font-bold lowercase tracking-tighter",
-    metric: "€310k",
-    metricLabel: "saved a year",
-    period: "Across three data centers",
+    metric: "Pixel",
+    metricLabel: "Design System Precision",
+    period: "Component-driven design",
     quote:
-      "We found the idle machines in the first week. Finance asked what else we had been paying for without knowing.",
-    person: "Grace Okafor",
-    role: "Platform Director, Basalt",
-    href: "#",
+      "We craft intuitive user journeys, high-fidelity prototypes, and cohesive component token systems engineered for seamless developer handoff.",
+    person: "UI/UX Engineering",
+    role: "Design Tokens & Interactive Prototypes",
+    href: "#contact",
   },
   {
-    value: "meridian",
-    name: "Meridian",
+    value: "engineering",
+    name: "Engineering",
     wordmark: "font-serif text-xl font-medium italic",
-    metric: "18 min",
-    metricLabel: "median first reply",
-    period: "Was 4 hours in 2025",
+    metric: "Clean",
+    metricLabel: "Type-Safe Codebase",
+    period: "React, Next.js, TypeScript",
     quote:
-      "The queue finally shows who owns what. Nobody waits on a thread that three people assumed someone else had.",
-    person: "Leo Marchetti",
-    role: "Customer Care Manager, Meridian",
-    href: "#",
+      "Our engineers build responsive, resilient frontends paired with high-throughput backend services, clean APIs, and automated pipelines.",
+    person: "Full-Stack Development",
+    role: "Production-Grade Modern Stack Build",
+    href: "#contact",
   },
   {
-    value: "tessera",
-    name: "Tessera",
+    value: "qa",
+    name: "Testing & QA",
     wordmark: "text-lg font-light tracking-wide",
-    metric: "99.98%",
-    metricLabel: "checkout uptime",
-    period: "Through Black Friday week",
+    metric: "99.9%",
+    metricLabel: "Stability & Core Vitals",
+    period: "Rigorous quality verification",
     quote:
-      "Our biggest week of the year was also our quietest on call. I slept through both nights of the sale.",
-    person: "Amira Haddad",
-    role: "Staff Engineer, Tessera",
-    href: "#",
+      "Every release undergoes stringent end-to-end integration testing, accessibility compliance, responsive validation, and sub-second speed optimization.",
+    person: "Quality Assurance",
+    role: "Automated Test Suites & CWV Audits",
+    href: "#contact",
   },
   {
-    value: "corvus",
-    name: "Corvus",
+    value: "deployment",
+    name: "LAUNCH & SCALE",
     wordmark: "text-base font-black uppercase tracking-tight",
-    metric: "6 weeks",
-    metricLabel: "from kickoff to launch",
-    period: "Planned for five months",
+    metric: "Zero",
+    metricLabel: "Downtime Cutover",
+    period: "CI/CD & 24/7 Monitoring",
     quote:
-      "We shipped the new booking flow before the design review we had booked for it. That has never happened here.",
-    person: "Jonas Pereira",
-    role: "VP Product, Corvus",
-    href: "#",
+      "We execute seamless production cutovers with automated CI/CD pipelines, edge CDN caching, and continuous telemetry monitoring to support your growth.",
+    person: "DevOps & Scale",
+    role: "Global Edge Deployment & Ongoing SLAs",
+    href: "#contact",
   },
 ];
 
@@ -157,7 +157,7 @@ const LogoCloud04 = () => {
           <span
             className={cn(ENTER, "text-xs uppercase text-muted-foreground")}
           >
-            Customer results
+            Our process
           </span>
           <h2
             style={stagger(1, 80)}
@@ -166,7 +166,7 @@ const LogoCloud04 = () => {
               "text-balance text-3xl font-semibold tracking-tight sm:text-4xl",
             )}
           >
-            Six teams and the number they moved
+            Six phases from concept to production
           </h2>
           <p
             style={stagger(2, 80)}
@@ -175,8 +175,7 @@ const LogoCloud04 = () => {
               "text-base leading-relaxed text-muted-foreground",
             )}
           >
-            Pick a company to see what changed, measured by them, in their
-            words.
+            Explore our end-to-end engineering methodology, designed to build and scale modern web systems with architectural precision.
           </p>
         </div>
 
@@ -197,7 +196,7 @@ const LogoCloud04 = () => {
         >
           <TabsList
             variant="line"
-            aria-label="Customers"
+            aria-label="Process Phases"
             style={stagger(3, 80)}
             className={cn(
               ENTER,
@@ -319,8 +318,8 @@ const LogoCloud04 = () => {
                   </span>
                   <Button variant="link" className="group h-auto p-0" asChild>
                     <a href={story.href}>
-                      Read the story
-                      <span className="sr-only"> from {story.name}</span>
+                      Start a project
+                      <span className="sr-only"> with {story.name}</span>
                       <ArrowRight
                         aria-hidden
                         className="size-3.5 transition-transform duration-150 ease-out group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"

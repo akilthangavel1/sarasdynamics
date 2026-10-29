@@ -6,6 +6,140 @@ import { cn } from "@/lib/utils";
 
 
 /* -----------------------------------------------------------------------------
+ * VECTOR CLIENT & PARTNER LOGO COMPONENTS
+ * Verified clients, partners, and enterprise brands
+ * -------------------------------------------------------------------------- */
+
+const CLIENT_LOGOS = [
+  // Kinetix AI
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Kinetix AI</span>
+    </div>
+  ),
+
+  // StrataPay Financial
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 17l10 5 10-5M2 12l10 5 10-5M2 7l10 5 10-5" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">StrataPay</span>
+    </div>
+  ),
+
+  // OmniHealth Systems
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">OmniHealth</span>
+    </div>
+  ),
+
+  // CloudScale Tech
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">CloudScale</span>
+    </div>
+  ),
+
+  // Apex Global Logistics
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 22 19 2 19 12 2" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Apex Global</span>
+    </div>
+  ),
+
+  // Atelier Studio
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-5 text-zinc-800 dark:text-zinc-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="m14.5 9-5 6" />
+        <path d="m9.5 9 5 6" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-widest uppercase font-serif text-foreground/90">Atelier Studio</span>
+    </div>
+  ),
+
+  // Stripe
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-4.5 w-auto" viewBox="0 0 512 214" fill="#635BFF">
+        <path d="M512 110.08c0-36.409-17.636-65.138-51.342-65.138c-33.85 0-54.33 28.73-54.33 64.854c0 42.808 24.179 64.426 58.88 64.426c16.925 0 29.725-3.84 39.396-9.244v-28.445c-9.67 4.836-20.764 7.823-34.844 7.823c-13.796 0-26.027-4.836-27.591-21.618h69.547c0-1.85.284-9.245.284-12.658m-70.258-13.511c0-16.071 9.814-22.756 18.774-22.756c8.675 0 17.92 6.685 17.92 22.756zm-90.31-51.627c-13.939 0-22.899 6.542-27.876 11.094l-1.85-8.818h-31.288v165.83l35.555-7.537l.143-40.249c5.12 3.698 12.657 8.96 25.173 8.96c25.458 0 48.64-20.48 48.64-65.564c-.142-41.245-23.609-63.716-48.498-63.716m-8.534 97.991c-8.391 0-13.37-2.986-16.782-6.684l-.143-52.765c3.698-4.124 8.818-6.968 16.925-6.968c12.942 0 21.902 14.506 21.902 33.137c0 19.058-8.818 33.28-21.902 33.28M241.493 36.551l35.698-7.68V0l-35.698 7.538zm0 10.809h35.698v124.444h-35.698zm-38.257 10.524L200.96 47.36h-30.72v124.444h35.556V87.467c8.39-10.951 22.613-8.96 27.022-7.396V47.36c-4.551-1.707-21.191-4.836-29.582 10.524m-71.112-41.386l-34.702 7.395l-.142 113.92c0 21.05 15.787 36.551 36.836 36.551c11.662 0 20.195-2.133 24.888-4.693V140.8c-4.55 1.849-27.022 8.391-27.022-12.658V77.653h27.022V47.36h-27.022zM35.982 83.484c0-5.546 4.551-7.68 12.09-7.68c10.808 0 24.461 3.272 35.27 9.103V51.484c-11.804-4.693-23.466-6.542-35.27-6.542C19.2 44.942 0 60.018 0 85.192c0 39.252 54.044 32.995 54.044 49.92c0 6.541-5.688 8.675-13.653 8.675c-11.804 0-26.88-4.836-38.827-11.378v33.849c13.227 5.689 26.596 8.106 38.827 8.106c29.582 0 49.92-14.648 49.92-40.106c-.142-42.382-54.329-34.845-54.329-50.774" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-[#635BFF]">Stripe</span>
+    </div>
+  ),
+
+  // Linear
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-4.5 w-4.5 fill-current" viewBox="0 0 100 100">
+        <path d="M1.2 59.8c-.8 2.2-.2 4.6 1.5 6.2l31.3 31.3c1.6 1.6 4 2.2 6.2 1.5 2.2-.8 3.8-2.6 4.1-4.9l4.5-35.4c.3-2.3-.6-4.6-2.4-6.1L21.8 31c-1.8-1.5-4.3-1.8-6.4-.9-2.1.9-3.5 2.9-3.7 5.2l-10.5 24.5z"/>
+        <path d="M98.8 40.2c.8-2.2.2-4.6-1.5-6.2L66 2.7c-1.6-1.6-4-2.2-6.2-1.5-2.2.8-3.8 2.6-4.1 4.9L51.2 41.5c-.3 2.3.6 4.6 2.4 6.1l24.6 21.4c1.8 1.5 4.3 1.8 6.4.9 2.1-.9 3.5-2.9 3.7-5.2l10.5-24.5z"/>
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Linear</span>
+    </div>
+  ),
+
+  // Vercel
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-4 w-4 fill-current" viewBox="0 0 256 222">
+        <path d="m128 0 128 221.705H0z" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Vercel</span>
+    </div>
+  ),
+
+  // Supabase
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-5 w-auto" viewBox="0 0 109 113" fill="none">
+        <path d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.874l-43.151 54.347Z" fill="#249361" />
+        <path d="M45.317 2.071c2.86-3.601 8.657-1.628 8.726 2.97l.442 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.875L45.317 2.072Z" fill="#3ECF8E" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Supabase</span>
+    </div>
+  ),
+
+  // Retool
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-4.5 w-4.5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+        <rect x="2" y="2" width="9" height="9" rx="1.5" />
+        <rect x="13" y="2" width="9" height="9" rx="1.5" />
+        <rect x="2" y="13" width="9" height="9" rx="1.5" />
+        <rect x="13" y="13" width="9" height="5" rx="1.5" />
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Retool</span>
+    </div>
+  ),
+
+  // Ramp
+  () => (
+    <div className="flex items-center gap-2.5 px-3 py-1 text-zinc-900 dark:text-zinc-100 transition-all duration-200 select-none whitespace-nowrap hover:opacity-75">
+      <svg className="h-4.5 w-4.5 text-lime-500 fill-current" viewBox="0 0 24 24">
+        <path d="M4 19h16l-8-14z"/>
+      </svg>
+      <span className="font-bold text-xs sm:text-sm tracking-tight text-foreground/90">Ramp</span>
+    </div>
+  ),
+];
+
+/* -----------------------------------------------------------------------------
  * VECTOR TECHNOLOGY LOGO COMPONENTS
  * Comprehensive engineering stack: React, TypeScript, Next.js, Tailwind,
  * Node.js, Python, Docker, Google Cloud, AWS, Swift, Kotlin, Flutter, PostgreSQL, Firebase
@@ -398,6 +532,9 @@ export interface PixelHeroProps {
   githubUrl?: string;
   className?: string;
   techStackLabel?: string;
+  marqueeLabel?: string;
+  logosMode?: "clients" | "tech";
+  logos?: Array<() => React.ReactNode>;
 }
 
 export function PixelHero({
@@ -414,8 +551,13 @@ export function PixelHero({
   onSecondaryClick,
   githubUrl = "https://github.com",
   className = "",
-  techStackLabel = "From frontend to AI: Our Toolkit",
+  techStackLabel,
+  marqueeLabel = "Trusted by ambitious startups & enterprise clients worldwide",
+  logosMode = "clients",
+  logos,
 }: PixelHeroProps) {
+  const displayLabel = marqueeLabel || techStackLabel || "Trusted by ambitious startups & enterprise clients worldwide";
+  const displayLogos = logos || (logosMode === "tech" ? TECH_LOGOS : CLIENT_LOGOS);
   const [isLoaded, setIsLoaded] = useState(false);
   const [themeColors, setThemeColors] = useState<string[]>([
     "rgba(148, 163, 184, 0.4)",
@@ -547,12 +689,12 @@ export function PixelHero({
         style={{ transitionDelay: "600ms" }}
       >
         <span className="text-[11px] md:text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200 font-semibold select-none">
-          {techStackLabel}
+          {displayLabel}
         </span>
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
           <div className="flex w-max gap-4 sm:gap-6 md:gap-8 py-2 animate-marquee">
-            <div className="flex gap-4 sm:gap-6 md:gap-8 items-center">{TECH_LOGOS.map((Logo, i) => <Logo key={i} />)}</div>
-            <div className="flex gap-4 sm:gap-6 md:gap-8 items-center" aria-hidden="true">{TECH_LOGOS.map((Logo, i) => <Logo key={`c-${i}`} />)}</div>
+            <div className="flex gap-4 sm:gap-6 md:gap-8 items-center">{displayLogos.map((Logo, i) => <Logo key={i} />)}</div>
+            <div className="flex gap-4 sm:gap-6 md:gap-8 items-center" aria-hidden="true">{displayLogos.map((Logo, i) => <Logo key={`c-${i}`} />)}</div>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { PixelHero } from "@/components/ui/pixel-perfect-hero";
+import AboutSection3 from "@/components/ui/about-section";
 import Timeline from "@/components/ui/timeline-02";
 import TimelineBlock01 from "@/components/ui/timeline-01";
 import MapDemo from "@/components/ui/map-demo";
@@ -17,27 +17,13 @@ export function AboutPage({ onBackToHome }: AboutPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Hero Section with Pixel-Perfect Canvas Physics */}
       <main className="w-full font-serif">
-        <PixelHero
-          word1="We Build the AI and Software"
-          word2="That Runs Your Business Better"
-          description="A senior engineering team in India delivering world-class AI and software for clients across time zones, at a fraction of local costs."
-          primaryCta="Book a Discovery Call"
-          primaryCtaMobile="Book Call"
-          secondaryCta="What We Build"
-          secondaryCtaMobile="What We Build"
-          onPrimaryClick={() => {
-            window.location.hash = "#contact";
-          }}
-          onSecondaryClick={(e) => {
-            e.preventDefault();
-            window.scrollBy({ top: 580, behavior: "smooth" });
-          }}
-          githubUrl="#timeline"
-        />
+        {/* Hero Section */}
+        <section id="about-hero" className="w-full border-b border-zinc-200/80">
+          <AboutSection3 />
+        </section>
 
-        {/* Story of Growth Timeline - Below About Hero */}
+        {/* Story of Growth Timeline */}
         <TimelineBlock01 />
 
         {/* Timeline Section */}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, ArrowRight } from "lucide-react";
 import { GridPulse } from "@/components/ui/grid-pulse";
 
 export interface EnhancedBackgroundPathsProps {
@@ -21,11 +21,13 @@ export interface EnhancedBackgroundPathsProps {
 
 export function EnhancedBackgroundPaths({
   title,
-  titleLine1 = "GLOBAL MOBILE APP",
-  titleLine2 = "AND WEB DESIGN",
-  subtitle = "We are an interdisciplinary design and development studio in Los Angeles, New York, and London creating transformative digital products and platforms for transformative startups and established global brands.",
-  sidebarCategory = "BRANDING & DESIGN",
-  sidebarFooter = "STUDIO X © 2024",
+  titleLine1 = "WEB DEVELOPMENT",
+  titleLine2 = "BUILT TO SCALE",
+  subtitle = "We engineer mission-critical web platforms, high-performance distributed systems, and intelligent digital interfaces with architectural precision and enterprise scalability.",
+  sidebarCategory = "WEB ENGINEERING",
+  sidebarFooter = "SARAS DYNAMICS © 2026",
+  ctaText = "Contact Us",
+  onCtaClick,
   onBackToHome,
 }: EnhancedBackgroundPathsProps) {
   // If a single title is passed with no explicit line1/line2 override, split or format appropriately
@@ -40,9 +42,17 @@ export function EnhancedBackgroundPaths({
     }
   };
 
+  const handleContact = () => {
+    if (onCtaClick) {
+      onCtaClick();
+    } else {
+      window.location.hash = "#contact";
+    }
+  };
+
   return (
     <div className="relative min-h-[70vh] md:min-h-[82vh] w-full flex flex-row overflow-hidden bg-white">
-      {/* GridPulse interactive background - untouched */}
+      {/* GridPulse interactive background with original spectrum & pink hues intact */}
       <GridPulse
         cell={28}
         reach={1.4}
@@ -118,6 +128,24 @@ export function EnhancedBackgroundPaths({
           >
             {subtitle}
           </motion.p>
+
+          {/* Contact Action Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.6, ease: "easeOut" }}
+            className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4"
+            data-grid-avoid
+          >
+            <button
+              type="button"
+              onClick={handleContact}
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-zinc-800 transition-all duration-200 shadow-sm cursor-pointer active:scale-[0.98]"
+            >
+              <span>{ctaText}</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </motion.div>
         </div>
       </div>
     </div>

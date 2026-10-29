@@ -29,19 +29,23 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         className="relative w-full border-b border-zinc-200/80 overflow-hidden"
       >
         <EnhancedBackgroundPaths
-          titleLine1="GLOBAL MOBILE APP"
-          titleLine2="AND WEB DESIGN"
-          subtitle="We are an interdisciplinary design and development studio in Los Angeles, New York, and London creating transformative digital products and platforms for transformative startups and established global brands."
-          sidebarCategory="BRANDING & DESIGN"
-          sidebarFooter="STUDIO X © 2024"
+          titleLine1="WEB DEVELOPMENT"
+          titleLine2="BUILT TO SCALE"
+          subtitle="We engineer mission-critical web platforms, high-performance distributed systems, and intelligent digital interfaces with architectural precision and enterprise scalability."
+          sidebarCategory="WEB ENGINEERING"
+          sidebarFooter="SARAS DYNAMICS © 2026"
+          ctaText="Contact Us"
+          onCtaClick={() => {
+            window.location.hash = "#contact";
+          }}
           onBackToHome={onBackToHome}
         />
       </section>
 
-      {/* Features With Card Gradient Section (Compliance & Core Capabilities) */}
+      {/* Web Services & Capabilities Section */}
       <FeaturesSectionWithCardGradient />
 
-      {/* Customer Results / Logo Cloud Section */}
+      {/* Our Engineering Process Section */}
       <LogoCloud04 />
 
       {/* Squeeze Carousel Section */}
@@ -56,7 +60,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
 
 
 
-      {/* Pixelated 404 Section */}
+      {/* Web Project Call to Action Section */}
       <Error404Demo />
 
       {/* Global Site Footer */}

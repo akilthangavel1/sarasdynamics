@@ -24,17 +24,19 @@ export interface Error404Props {
   subtext?: string;
   backButtonLabel?: string;
   backButtonHref?: string;
+  onButtonClick?: () => void;
 }
 
 export function Error404({
-  postcardImage = "/statue-of-liberty-oil-pastel.jpg",
-  postcardAlt = "New York City Postcard",
-  curvedTextTop = "The General Intelligence",
-  curvedTextBottom = "Company of New York",
-  heading = "(404) Looks like the page you're looking for got lost somewhere.",
-  subtext = "But hey — in New York, even the unexpected detours lead somewhere.",
-  backButtonLabel = "Back to Home",
-  backButtonHref = "/",
+  postcardImage = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+  postcardAlt = "Saras Dynamics Architecture",
+  curvedTextTop = "Saras Dynamics",
+  curvedTextBottom = "Web Engineering",
+  heading = "Have a web project? Let’s build it.",
+  subtext = "Partner with Saras Dynamics to design, engineer, and deploy high-performance web applications and scalable digital platforms.",
+  backButtonLabel = "Contact Us",
+  backButtonHref = "#contact",
+  onButtonClick,
 }: Error404Props) {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-16">
@@ -112,14 +114,18 @@ export function Error404({
         </div>
 
         <div className="text-center w-[95%]">
-          <h1 className="text-4xl md:text-5xl font-doto mb-6 text-balance leading-tight">
+          <h2 className="text-4xl md:text-5xl font-doto mb-6 text-balance leading-tight">
             {heading}
-          </h1>
+          </h2>
           <p className="text-muted-foreground text-base md:text-lg mb-10 font-sans">
             {subtext}
           </p>
-          <Button asChild className="rounded-lg px-6 py-3 font-sans cursor-pointer">
-            <Link href={backButtonHref} className="flex items-center gap-2">
+          <Button asChild className="rounded-lg px-6 py-3 font-sans cursor-pointer hover:bg-zinc-800 transition-colors">
+            <Link
+              href={backButtonHref}
+              onClick={onButtonClick}
+              className="flex items-center gap-2"
+            >
               {backButtonLabel}
               <ArrowRight className="w-4 h-4" />
             </Link>

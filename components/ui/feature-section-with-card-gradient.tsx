@@ -7,8 +7,8 @@ interface FeaturesSectionWithCardGradientProps {
 }
 
 export function FeaturesSectionWithCardGradient({
-  eyebrow = "INNOVATIVE SOFTWARE SOLUTIONS",
-  title = "GLOBAL SOFTWARE EXCELLENCE",
+  eyebrow = "END-TO-END WEB SERVICES",
+  title = "ENGINEERED FOR SCALE & PERFORMANCE",
 }: FeaturesSectionWithCardGradientProps = {}) {
   return (
     <div className="py-20 lg:py-32 px-4 sm:px-6 md:px-8">
@@ -23,20 +23,20 @@ export function FeaturesSectionWithCardGradient({
           </span>
         </h2>
         {/* Red accent line below title */}
-        <div className="w-36 sm:w-56 md:w-72 lg:w-[360px] max-w-[80%] h-[2px] bg-[#dc2626] mx-auto mt-3 rounded-full" />
+        <div className="w-36 sm:w-56 md:w-72 lg:w-[360px] max-w-[80%] h-[2px] bg-[#c30000] mx-auto mt-3 rounded-full" />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-2 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-4 max-w-7xl mx-auto">
         {grid.map((feature) => (
           <div
             key={feature.title}
-            className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden"
+            className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden border border-zinc-200/60 dark:border-zinc-800/60"
           >
             <Grid size={20} />
             <p className="text-base font-bold text-neutral-800 dark:text-white relative z-20">
               {feature.title}
             </p>
-            <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-base font-normal relative z-20">
+            <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-sm sm:text-base font-normal leading-relaxed relative z-20">
               {feature.description}
             </p>
           </div>
@@ -48,44 +48,44 @@ export function FeaturesSectionWithCardGradient({
 
 const grid = [
   {
-    title: "HIPAA and SOC2 Compliant",
+    title: "Custom Websites",
     description:
-      "Our applications are HIPAA and SOC2 compliant, your data is safe with us, always.",
+      "Bespoke brand and marketing websites built for high engagement, pixel-perfect visual fidelity, and fluid interactivity.",
   },
   {
-    title: "Automated Social Media Posting",
+    title: "Web Apps",
     description:
-      "Schedule and automate your social media posts across multiple platforms to save time and maintain a consistent online presence.",
+      "High-performance, reactive web applications built with modern frontend frameworks, real-time sync, and scalable cloud architectures.",
   },
   {
-    title: "Advanced Analytics",
+    title: "E-commerce",
     description:
-      "Gain insights into your social media performance with detailed analytics and reporting tools to measure engagement and ROI.",
+      "High-converting digital commerce storefronts, custom checkout pipelines, payment gateway integrations, and inventory workflows.",
   },
   {
-    title: "Content Calendar",
+    title: "SaaS Platforms",
     description:
-      "Plan and organize your social media content with an intuitive calendar view, ensuring you never miss a post.",
+      "Multi-tenant cloud architectures, subscription billing, client management portals, and secure role-based dashboards.",
   },
   {
-    title: "Audience Targeting",
+    title: "CMS & Headless",
     description:
-      "Reach the right audience with advanced targeting options, including demographics, interests, and behaviors.",
+      "Flexible headless CMS architectures enabling rapid content authoring, decoupled frontends, and unified omnichannel distribution.",
   },
   {
-    title: "Social Listening",
+    title: "APIs & Integrations",
     description:
-      "Monitor social media conversations and trends to stay informed about what your audience is saying and respond in real-time.",
+      "Resilient REST & GraphQL APIs, microservice orchestrations, webhooks, and seamless enterprise system integrations.",
   },
   {
-    title: "Customizable Templates",
+    title: "Performance & SEO",
     description:
-      "Create stunning social media posts with our customizable templates, designed to fit your brand's unique style and voice.",
+      "Sub-second load times, Core Web Vitals optimization, edge caching, serverless rendering, and top-tier search visibility.",
   },
   {
-    title: "Collaboration Tools",
+    title: "Security & Maintenance",
     description:
-      "Work seamlessly with your team using our collaboration tools, allowing you to assign tasks, share drafts, and provide feedback in real-time.",
+      "Enterprise-grade security audits, automated testing, continuous deployment pipelines, and proactive 24/7 system monitoring.",
   },
 ];
 
