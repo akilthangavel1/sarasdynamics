@@ -10,13 +10,16 @@ interface ContactPageProps {
 }
 
 export function ContactPage({ onBackToHome }: ContactPageProps) {
-  const scrollToContact = () => {
+  const scrollToContact = (e?: React.MouseEvent) => {
+    e?.preventDefault();
     document.getElementById("contact-globe-section")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToFaq = (e?: React.MouseEvent) => {
-    e?.preventDefault();
-    document.getElementById("faq-section")?.scrollIntoView({ behavior: "smooth" });
+  const handleBookCall = () => {
+    window.open(
+      "https://wa.me/919971999100?text=Hi%20Saras%20Dynamics%2C%20I'd%20like%20to%20book%20a%2030-minute%20call%20regarding%20a%20project.",
+      "_blank"
+    );
   };
 
   return (
@@ -24,32 +27,40 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Hero Section with Pixel-Perfect Canvas Physics */}
-      <section id="contact-hero" className="w-full border-b border-zinc-200/80">
-        <PixelHero
-          word1="Get in"
-          word2="Touch."
-          description="Let's build something exceptional together. Reach out to discuss your AI, digital engineering, or systems architecture goals."
-          primaryCta="Message Us"
-          primaryCtaMobile="Message"
-          secondaryCta="View FAQs"
-          secondaryCtaMobile="FAQs"
-          onPrimaryClick={scrollToContact}
-          onSecondaryClick={scrollToFaq}
-          githubUrl="#faq-section"
-          marqueeLabel="Trusted by innovative ventures & enterprise clients"
-          logosMode="clients"
-        />
-      </section>
+      {/* Main Content Landmark */}
+      <main id="main-content" className="flex-1 w-full flex flex-col">
+        {/* Hero Section with Pixel-Perfect Canvas Physics */}
+        <section id="contact-hero" className="w-full border-b border-zinc-200/80">
+          <PixelHero
+            title="Your engineering partner, wherever you are."
+            word1="Your engineering partner,"
+            word2="wherever you are."
+            description="We work with teams across the US, UK, Europe and the Middle East, with overlap hours that suit your time zone. Tell us about your project, and we’ll reply within one business day."
+            primaryCta="Book a 30-min call"
+            primaryCtaMobile="Book a 30-min call"
+            primaryHref="https://wa.me/919971999100?text=Hi%20Saras%20Dynamics%2C%20I'd%20like%20to%20book%20a%2030-minute%20call%20regarding%20a%20project."
+            onPrimaryClick={handleBookCall}
+            secondaryCta="Send a message"
+            secondaryCtaMobile="Send a message"
+            githubUrl="#contact-globe-section"
+            onSecondaryClick={scrollToContact}
+            marqueeLabel="Trusted by innovative ventures & enterprise clients"
+            logosMode="clients"
+          />
+        </section>
 
-      {/* Contact With Globe Section */}
-      <section id="contact-globe-section" className="w-full border-b border-zinc-200/80">
-        <ContactWithGlobe />
-      </section>
+        {/* Contact With Globe Section */}
+        <section id="contact-globe-section" className="w-full border-b border-zinc-200/80">
+          <ContactWithGlobe
+            title="Start a conversation"
+            description="Share a few details and we’ll come back with honest feedback on your idea, a rough approach, and next steps. There’s no obligation and no hard sell."
+          />
+        </section>
 
-      {/* FAQ Section */}
-      <main id="faq-section" className="flex-1 w-full max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <Faq />
+        {/* FAQ Section */}
+        <section id="faq-section" className="w-full max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+          <Faq />
+        </section>
       </main>
 
       {/* Footer */}

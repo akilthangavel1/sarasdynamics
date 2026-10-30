@@ -7,8 +7,7 @@ import { FeaturesSectionWithCardGradient } from "@/components/ui/feature-section
 import LogoCloud04 from "@/components/ui/logo-cloud-04";
 import { RulerCarouselDemo } from "@/components/ui/ruler-carousel-demo";
 import SqueezeCarouselDemo from "@/components/ui/carousel-squeeze-demo";
-
-import Error404Demo from "@/components/ui/pixeleted-404-not-found-demo";
+import CTASection1 from "@/components/ui/cta-1";
 
 interface WebDevelopmentPageProps {
   onBackToHome?: () => void;
@@ -23,45 +22,46 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
-      {/* Enhanced Background Paths Hero Section */}
-      <section
-        id="web-hero"
-        className="relative w-full border-b border-zinc-200/80 overflow-hidden"
-      >
-        <EnhancedBackgroundPaths
-          titleLine1="WEB DEVELOPMENT"
-          titleLine2="BUILT TO SCALE"
-          subtitle="We engineer mission-critical web platforms, high-performance distributed systems, and intelligent digital interfaces with architectural precision and enterprise scalability."
-          sidebarCategory="WEB ENGINEERING"
-          sidebarFooter="SARAS DYNAMICS © 2026"
-          ctaText="Contact Us"
-          onCtaClick={() => {
-            window.location.hash = "#contact";
-          }}
-          onBackToHome={onBackToHome}
-        />
-      </section>
+      {/* Main Content Landmark */}
+      <main id="main-content" className="flex-1 w-full flex flex-col">
+        {/* Enhanced Background Paths Hero Section */}
+        <section
+          id="web-hero"
+          className="relative w-full border-b border-zinc-200/80 overflow-hidden"
+        >
+          <EnhancedBackgroundPaths
+            titleLine1="WEB DEVELOPMENT"
+            titleLine2="BUILT TO SCALE"
+            subtitle="We build fast, modern websites and web applications that look great, work flawlessly on every device, and grow with your business, from first launch to thousands of users."
+            sidebarCategory="WEB ENGINEERING"
+            sidebarFooter="SARAS DYNAMICS © 2026"
+            ctaText="Start Your Project"
+            onCtaClick={() => {
+              window.location.hash = "#contact";
+            }}
+            onBackToHome={onBackToHome}
+          />
+        </section>
 
-      {/* Web Services & Capabilities Section */}
-      <FeaturesSectionWithCardGradient />
+        {/* Web Services & Capabilities Section */}
+        <FeaturesSectionWithCardGradient />
 
-      {/* Our Engineering Process Section */}
-      <LogoCloud04 />
+        {/* Our Engineering Process Section */}
+        <LogoCloud04 />
 
-      {/* Squeeze Carousel Section */}
-      <section className="w-full border-b border-zinc-200/80">
-        <SqueezeCarouselDemo />
-      </section>
+        {/* Squeeze Carousel Section */}
+        <section className="w-full border-b border-zinc-200/80">
+          <SqueezeCarouselDemo />
+        </section>
 
-      {/* Ruler Carousel Section */}
-      <section className="w-full bg-white">
-        <RulerCarouselDemo />
-      </section>
+        {/* Ruler Carousel Section */}
+        <section className="w-full bg-white">
+          <RulerCarouselDemo />
+        </section>
 
-
-
-      {/* Web Project Call to Action Section */}
-      <Error404Demo />
+        {/* CTA 1 Section Above Footer */}
+        <CTASection1 />
+      </main>
 
       {/* Global Site Footer */}
       <SiteFooter />

@@ -6,7 +6,7 @@ export default function AboutSection() {
   return (
     <section
       id="about-section"
-      className="w-full bg-white text-black py-20 md:py-28 px-6 sm:px-10 lg:px-16 border-t border-zinc-200/80 select-none overflow-hidden"
+      className="w-full bg-white dark:bg-zinc-950 text-black dark:text-zinc-100 py-20 md:py-28 px-6 sm:px-10 lg:px-16 border-t border-zinc-200/80 dark:border-zinc-800/80 select-none overflow-hidden transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-16 md:gap-24">
         {/* Main Content Layout */}
@@ -15,7 +15,7 @@ export default function AboutSection() {
           <div className="lg:col-span-3 pt-2">
             <span
               id="about-tag"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-zinc-900"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black tracking-[0.2em] uppercase text-zinc-900 dark:text-zinc-100"
             >
               <span className="text-base font-bold leading-none">®</span> ABOUT
             </span>
@@ -31,10 +31,10 @@ export default function AboutSection() {
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-black tracking-[-0.03em] uppercase leading-[1.25] text-left"
             >
-              <span className="text-black">
+              <span className="text-black dark:text-white">
                 AT SARAS DYNAMICS, WE ENGINEER INTELLIGENT SOFTWARE, ADVANCED AI ARCHITECTURES, AND ROBUST DIGITAL SYSTEMS,{' '}
               </span>
-              <span className="text-[#8c8c8c] transition-colors duration-300 hover:text-zinc-600">
+              <span className="text-[#8c8c8c] dark:text-zinc-400 transition-colors duration-300 hover:text-zinc-600 dark:hover:text-zinc-200">
                 COMBINING TECHNICAL DEPTH WITH UNCOMPROMISING CRAFTSMANSHIP. FROM HIGH-THROUGHPUT WEB PLATFORMS TO INTUITIVE MOBILE APPS, WE BUILD TECHNOLOGY SHAPING WHAT COMES NEXT.
               </span>
             </motion.h2>
@@ -44,17 +44,17 @@ export default function AboutSection() {
         {/* Animated Technology Logos Carousel */}
         <div
           id="about-brand-logos"
-          className="pt-10 md:pt-14 border-t border-zinc-200/90 w-full flex flex-col gap-6 sm:gap-8"
+          className="pt-10 md:pt-14 border-t border-zinc-200/90 dark:border-zinc-800 w-full flex flex-col gap-6 sm:gap-8"
         >
           {/* Section Header Label */}
           <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-[#c30000]" />
-              <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-zinc-900">
+              <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-zinc-900 dark:text-zinc-100">
                 Core Technologies &amp; Architecture We Use
               </h3>
             </div>
-            <p className="text-xs sm:text-sm font-medium text-zinc-500 tracking-wide">
+            <p className="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 tracking-wide">
               Full-Stack &bull; Autonomous AI &bull; Cloud Infrastructure &bull; High-Performance Data
             </p>
           </div>

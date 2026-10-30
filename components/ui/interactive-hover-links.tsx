@@ -19,27 +19,27 @@ export function InteractiveHoverLinks({
   links = INTERACTIVE_LINKS,
 }: InteractiveHoverLinksProps) {
   return (
-    <section id="interactive-links-section" className="bg-white p-6 sm:p-8 md:px-12 md:py-20 w-full border-t border-zinc-200/80 select-none">
+    <section id="interactive-links-section" className="bg-white dark:bg-zinc-950 p-6 sm:p-8 md:px-12 md:py-20 w-full border-t border-zinc-200/80 dark:border-zinc-800/80 select-none transition-colors duration-300">
       <div className="mx-auto max-w-5xl">
         {/* Section Header */}
-        <div className="mb-10 sm:mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-zinc-200">
+        <div className="mb-10 sm:mb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
           <div>
             <div className="inline-flex items-center gap-2 mb-2.5">
               <span className="w-2 h-2 rounded-full bg-[#c30000]" />
-              <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-zinc-900">
+              <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-zinc-900 dark:text-zinc-100">
                 Services &amp; Solutions
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-zinc-900 uppercase">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-zinc-900 dark:text-white uppercase">
               What We Build &amp; Deliver
             </h2>
           </div>
-          <p className="text-xs sm:text-sm font-medium text-zinc-500 max-w-sm leading-relaxed">
+          <p className="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed">
             Enterprise software, autonomous intelligence, and high-performance digital experiences crafted for scale.
           </p>
         </div>
 
-        <div className="divide-y divide-zinc-200">
+        <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
           {links.map((link) => (
             <LinkItem key={link.heading} {...link} />
           ))}
@@ -91,7 +91,7 @@ function LinkItem({ heading, imgSrc, subheading, href, tag }: LinkProps) {
       }}
       initial="initial"
       whileHover="whileHover"
-      className="group relative flex items-center justify-between py-6 transition-colors duration-500 hover:bg-zinc-50/60 px-2 sm:px-4 md:py-8 rounded-xl"
+      className="group relative flex items-center justify-between py-6 transition-colors duration-500 hover:bg-zinc-50/60 dark:hover:bg-zinc-900/60 px-2 sm:px-4 md:py-8 rounded-xl"
     >
       <div>
         {tag && (
@@ -109,7 +109,7 @@ function LinkItem({ heading, imgSrc, subheading, href, tag }: LinkProps) {
             staggerChildren: 0.05,
             delayChildren: 0.15,
           }}
-          className="relative z-10 block text-3xl font-black text-zinc-400 transition-colors duration-500 group-hover:text-zinc-900 sm:text-4xl md:text-5xl tracking-tight"
+          className="relative z-10 block text-3xl font-black text-zinc-400 dark:text-zinc-600 transition-colors duration-500 group-hover:text-zinc-900 dark:group-hover:text-white sm:text-4xl md:text-5xl tracking-tight"
         >
           {heading.split("").map((l, i) => (
             <motion.span
@@ -125,7 +125,7 @@ function LinkItem({ heading, imgSrc, subheading, href, tag }: LinkProps) {
             </motion.span>
           ))}
         </motion.span>
-        <span className="relative z-10 mt-2 block text-xs sm:text-sm md:text-base font-medium text-zinc-500 transition-colors duration-500 group-hover:text-zinc-800">
+        <span className="relative z-10 mt-2 block text-xs sm:text-sm md:text-base font-medium text-zinc-500 dark:text-zinc-400 transition-colors duration-500 group-hover:text-zinc-800 dark:group-hover:text-zinc-200">
           {subheading}
         </span>
       </div>

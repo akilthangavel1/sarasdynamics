@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  Briefcase,
   ArrowRight,
   MapPin,
   Clock,
   CheckCircle2,
   ChevronRight,
-
   Send,
   Search,
   Tag,
@@ -17,7 +15,6 @@ import {
 } from "lucide-react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import CTA from "@/components/ui/cta-06";
 import NotchedProjectCardsDemo from "@/components/ui/notched-project-card-demo";
 import { useAuth } from "../context/AuthContext";
@@ -118,10 +115,6 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
     fetchData();
   };
 
-  const scrollToOpenings = () => {
-    document.getElementById("open-positions")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const handleApplySubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!applicantName || !applicantEmail) return;
@@ -168,40 +161,10 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
         </div>
       )}
 
-      {/* Hero Section */}
-      <div id="careers-hero" className="w-full rounded-md bg-background relative flex flex-col items-center justify-center antialiased overflow-hidden py-10 md:py-16 min-h-[18rem] md:min-h-[22rem]">
-        <div className="max-w-2xl mx-auto px-4 text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-zinc-200 bg-zinc-100/80 backdrop-blur-sm text-[11px] font-medium text-zinc-700 mb-3 relative z-10">
-            <Briefcase className="w-3 h-3 text-zinc-500" />
-            <span>Careers at SarasDynamics</span>
-          </div>
-          <h1 className="relative z-10 text-xl sm:text-3xl md:text-4xl lg:text-[42px] leading-tight bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground text-center font-sans font-bold tracking-tight">
-            Build the future of AI automation with us
-          </h1>
-          <p className="text-muted-foreground max-w-lg mx-auto mt-3 mb-2 text-xs sm:text-sm text-center relative z-10 leading-relaxed">
-            Join an ambitious team of engineers, designers, and innovators building next-generation intelligent systems, digital products, and autonomous workflows.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mt-5 relative z-10">
-            <button
-              onClick={scrollToOpenings}
-              className="px-4 py-2 bg-zinc-900 text-white hover:bg-zinc-800 font-semibold rounded-lg text-xs transition-all shadow-sm flex items-center gap-1.5 cursor-pointer"
-            >
-              <span>Explore Open Positions</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-            <a
-              href="mailto:careers@sarasdynamics.com"
-              className="px-3.5 py-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-medium rounded-lg text-xs transition-colors flex items-center gap-1.5"
-            >
-              <span>Contact Talent Team</span>
-            </a>
-          </div>
-        </div>
-        <BackgroundBeams />
-      </div>
-
-      {/* Open Positions Section */}
-      <section id="open-positions" className="w-full py-16 md:py-20 bg-white">
+      {/* Main Content Landmark */}
+      <main id="main-content" className="flex-1 w-full flex flex-col">
+        {/* Open Positions Section */}
+        <section id="open-positions" className="w-full py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
@@ -482,9 +445,10 @@ export function CareersPage({ onBackToHome }: CareersPageProps) {
           }}
         />
       </section>
+    </main>
 
-      {/* Global Footer */}
-      <SiteFooter />
+    {/* Global Footer */}
+    <SiteFooter />
     </div>
   );
 }

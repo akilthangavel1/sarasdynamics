@@ -28,41 +28,41 @@ const STYLES = `
 
   position: relative;
   z-index: 2;
-  background: var(--cta-paper);
+  width: 100%;
+  background: var(--cta-void);
   color: var(--cta-ink);
-  padding: clamp(3rem, 8vw, 5.5rem) var(--page-gutter, 1.25rem)
-    clamp(4rem, 10vw, 6.5rem);
+  padding: 0;
+  margin: 0;
 }
 
 .fcb-banner {
   /* Type + spacing scale with the card itself */
-  --cta-pad-y: clamp(1.1rem, 8cqh, 3.75rem);
-  --cta-pad-x: clamp(1.15rem, 4.5cqw, 3.25rem);
-  --cta-gap: clamp(0.45rem, 2.8cqh, 1rem);
-  --cta-eyebrow: clamp(0.58rem, 1.35cqw, 0.68rem);
-  --cta-heading: clamp(1.35rem, 4.6cqw + 1.2cqh, 3.35rem);
-  --cta-body: clamp(0.82rem, 1.35cqw + 0.55cqh, 1.08rem);
-  --cta-action: clamp(0.78rem, 1.2cqw + 0.4cqh, 0.92rem);
-  --cta-btn-y: clamp(0.55rem, 2.2cqh, 0.85rem);
-  --cta-btn-x: clamp(0.95rem, 2.8cqw, 1.35rem);
+  --cta-pad-y: clamp(1.75rem, 3.5vw, 2.75rem);
+  --cta-pad-x: clamp(1.5rem, 5vw, 5rem);
+  --cta-gap: 0.65rem;
+  --cta-eyebrow: clamp(0.65rem, 1vw, 0.75rem);
+  --cta-heading: clamp(1.5rem, 2.4vw + 0.5rem, 2.6rem);
+  --cta-body: clamp(0.85rem, 0.8vw + 0.35rem, 1rem);
+  --cta-action: clamp(0.82rem, 0.7vw + 0.35rem, 0.92rem);
+  --cta-btn-y: 0.65rem;
+  --cta-btn-x: 1.35rem;
 
   position: relative;
   isolation: isolate;
-  container-type: size;
+  container-type: inline-size;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
-  width: min(100%, 82rem);
-  margin-inline: auto;
-  aspect-ratio: 2.4 / 1;
-  min-height: fit-content;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  min-height: clamp(220px, 28vh, 310px);
   padding: var(--cta-pad-y) var(--cta-pad-x);
-  border-radius: clamp(0.9rem, 2.2cqw, 1.35rem);
+  border-radius: 0;
+  border-top: 1px solid color-mix(in srgb, white 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, white 10%, transparent);
   background: var(--cta-void);
   color: var(--cta-paper);
-  box-shadow:
-    0 1px 0 color-mix(in srgb, white 8%, transparent) inset,
-    0 28px 56px -28px color-mix(in srgb, black 45%, transparent);
 }
 
 .fcb-blinds {
@@ -106,9 +106,10 @@ const STYLES = `
 .fcb-copy {
   position: relative;
   z-index: 2;
-  width: min(100%, 36rem);
-  max-width: 58cqw;
-  display: grid;
+  width: min(100%, 48rem);
+  max-width: 58rem;
+  display: flex;
+  flex-direction: column;
   gap: var(--cta-gap);
   pointer-events: none;
 }
@@ -223,56 +224,27 @@ const STYLES = `
   border-radius: 4px;
 }
 
-/* Short cards: tighten further so nothing clips */
-@container (max-height: 22rem) {
-  .fcb-eyebrow {
-    letter-spacing: 0.12em;
-  }
-
-  .fcb-body {
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
-
-@container (max-height: 16rem) {
-  .fcb-eyebrow {
-    display: none;
-  }
-
-  .fcb-body {
-    -webkit-line-clamp: 1;
-  }
-
-  .fcb-actions {
-    margin-top: 0;
-  }
-}
-
 @media (max-width: 640px) {
   .fcb-banner {
-    border-radius: 1.1rem;
+    border-radius: 0;
     aspect-ratio: auto;
-    min-height: 22rem;
+    min-height: auto;
     container-type: inline-size;
-    --cta-heading: clamp(1.75rem, 8vw, 2.35rem);
-    --cta-body: clamp(0.95rem, 3.2vw, 1.05rem);
-    --cta-action: 0.9rem;
-    --cta-pad-y: 2rem;
-    --cta-pad-x: 1.35rem;
-    --cta-gap: 0.85rem;
+    --cta-heading: clamp(1.4rem, 6vw, 1.85rem);
+    --cta-body: 0.88rem;
+    --cta-action: 0.85rem;
+    --cta-pad-y: 2.25rem;
+    --cta-pad-x: 1.25rem;
+    --cta-gap: 0.75rem;
   }
 
   .fcb-copy {
-    max-width: none;
+    max-width: 100%;
   }
 
   .fcb-actions {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
 }
 

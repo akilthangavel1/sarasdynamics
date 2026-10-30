@@ -2,213 +2,118 @@ import React from "react";
 import { DIcons } from "dicons";
 import ScrollTopFooter from "@/components/ui/footer";
 
-const navigation = {
-  categories: [
-    {
-      id: "explore",
-      name: "Explore",
-      sections: [
-        {
-          id: "about",
-          name: "About",
-          items: [
-            { name: "About Story", href: "#about" },
-            { name: "Brand Works", href: "#gallery-preview" },
-            { name: "Interactive Showcase", href: "#expandable-gallery-section" },
-          ],
-        },
-        {
-          id: "features",
-          name: "Features",
-          items: [
-            { name: "Web Development", href: "#web" },
-            { name: "Mobile Development", href: "#mobile" },
-            { name: "Products", href: "#" },
-            { name: "Agency", href: "#" },
-            { name: "Dashboard", href: "#" },
-          ],
-        },
-        {
-          id: "products",
-          name: "Products",
-          items: [
-            { name: "DIcons", href: "https://dicons.designali.in" },
-            { name: "DShapes", href: "#" },
-            { name: "Graaadients", href: "#" },
-          ],
-        },
-        {
-          id: "designs",
-          name: "Designs",
-          items: [
-            { name: "Design System", href: "#" },
-            { name: "Components", href: "#" },
-            { name: "Contact & FAQ", href: "#contact" },
-          ],
-        },
-        {
-          id: "other",
-          name: "Others",
-          items: [
-            { name: "Graphic Assets", href: "#" },
-            { name: "3D Icons", href: "#" },
-            { name: "Palette Generator", href: "#" },
-          ],
-        },
-        {
-          id: "company",
-          name: "Company",
-          items: [
-            { name: "Blog", href: "#blog" },
-            { name: "Careers", href: "#careers" },
-            { name: "Contact", href: "#contact" },
-            { name: "Terms of Service", href: "#" },
-            { name: "Privacy Policy", href: "#" },
-          ],
-        },
-      ],
-    },
-  ],
-};
+const footerColumns = [
+  {
+    title: "Services",
+    items: [
+      { name: "AI & Autonomous Systems", href: "#services" },
+      { name: "Web Application Engineering", href: "#web" },
+      { name: "Mobile App Development", href: "#mobile" },
+      { name: "Cloud & Systems Architecture", href: "#services" },
+      { name: "UI/UX & Product Design", href: "#web" },
+    ],
+  },
+  {
+    title: "Work",
+    items: [
+      { name: "Featured Case Studies", href: "#gallery-preview" },
+      { name: "Interactive Showcase", href: "#expandable-gallery-section" },
+      { name: "Client Architecture", href: "#about" },
+      { name: "Recent Hires & Team", href: "#recent-hires" },
+    ],
+  },
+  {
+    title: "Company",
+    items: [
+      { name: "About Saras Dynamics", href: "#about" },
+      { name: "Careers & Culture", href: "#careers" },
+      { name: "Engineering Blog", href: "#blog" },
+      { name: "Contact & Consultations", href: "#contact" },
+    ],
+  },
+  {
+    title: "Legal",
+    items: [
+      { name: "Privacy Policy", href: "#privacy" },
+      { name: "Terms of Service", href: "#terms" },
+      { name: "Security & Compliance", href: "#security" },
+      { name: "Mutual NDA & IP Rights", href: "#contact" },
+    ],
+  },
+];
 
-const Underline = "hover:-translate-y-1 border border-dotted border-zinc-300 rounded-xl p-2.5 transition-transform text-zinc-700 hover:text-zinc-950 hover:border-zinc-500 inline-flex items-center justify-center bg-white shadow-xs";
+const Underline =
+  "hover:-translate-y-1 border border-dotted border-zinc-300 dark:border-zinc-700 rounded-xl p-2.5 transition-transform text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white hover:border-zinc-500 dark:hover:border-zinc-400 inline-flex items-center justify-center bg-white dark:bg-zinc-900 shadow-xs";
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="site-footer" className="w-full border-t border-zinc-200 bg-white text-zinc-800 transition-colors">
-      <div className="mx-auto max-w-7xl px-6 py-8">
-        <div className="pb-8">
-          {navigation.categories.map((category) => (
-            <div
-              key={category.name}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 leading-6"
-            >
-              {category.sections.map((section) => (
-                <div key={section.name} className="flex flex-col">
-                  <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3">
-                    {section.name}
-                  </span>
-                  <ul
-                    role="list"
-                    aria-labelledby={`${category.id}-${section.id}-heading`}
-                    className="flex flex-col space-y-2 list-none p-0 m-0"
-                  >
-                    {section.items.map((item) => (
-                      <li key={item.name} className="flow-root">
-                        <a
-                          href={item.href}
-                          className="text-xs sm:text-sm text-zinc-600 hover:text-zinc-950 transition-colors"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+    <footer
+      id="site-footer"
+      className="w-full border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 transition-colors"
+    >
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-10">
+          {footerColumns.map((col) => (
+            <div key={col.title} className="flex flex-col">
+              <span className="text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-4">
+                {col.title}
+              </span>
+              <ul className="flex flex-col space-y-2.5 list-none p-0 m-0">
+                {col.items.map((item) => (
+                  <li key={item.name} className="flow-root">
+                    <a
+                      href={item.href}
+                      className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
-        <div className="border-b border-dotted border-zinc-200"></div>
-      </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-4 px-6">
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <a
-            aria-label="Email"
-            href="mailto:contact@designali.in"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.Mail strokeWidth={1.5} className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="X / Twitter"
-            href="https://x.com/designali_in"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.X className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="Instagram"
-            href="https://www.instagram.com/designali.in/"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.Instagram className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="Threads"
-            href="https://www.threads.net/designali.in"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.Threads className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="WhatsApp"
-            href="https://chat.whatsapp.com/LWsNPcz5BlWDVOha41vzuh"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.WhatsApp className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="Behance"
-            href="https://www.behance.net/designali-in"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.Behance className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="Facebook"
-            href="https://www.facebook.com/designali.agency"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.Facebook className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="LinkedIn"
-            href="https://www.linkedin.com/company/designali"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.LinkedIn className="h-5 w-5" />
-          </a>
-          <a
-            aria-label="YouTube"
-            href="https://www.youtube.com/@designali-in"
-            rel="noreferrer"
-            target="_blank"
-            className={Underline}
-          >
-            <DIcons.YouTube className="h-5 w-5" />
-          </a>
+        <div className="border-b border-dotted border-zinc-200 dark:border-zinc-800 mb-8" />
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <a
+              aria-label="Email"
+              href="mailto:info@sarasdynamics.com"
+              className={Underline}
+            >
+              <DIcons.Mail strokeWidth={1.5} className="h-5 w-5" />
+            </a>
+            <a
+              aria-label="WhatsApp"
+              href="https://wa.me/919971999100"
+              rel="noreferrer"
+              target="_blank"
+              className={Underline}
+            >
+              <DIcons.WhatsApp className="h-5 w-5" />
+            </a>
+            <a
+              aria-label="LinkedIn"
+              href="https://in.linkedin.com/company/sarasdynamics?trk=public_jobs_topcard-org-name"
+              rel="noreferrer"
+              target="_blank"
+              className={Underline}
+            >
+              <DIcons.LinkedIn className="h-5 w-5" />
+            </a>
+          </div>
+
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center sm:text-right">
+            © {currentYear} Saras Dynamics. AI automation and software engineering.
+          </p>
+
+          <ScrollTopFooter />
         </div>
-
-        {/* Scroll Top Button (Theme toggler removed as requested) */}
-        <ScrollTopFooter />
       </div>
-
-      <div className="mx-auto mb-10 mt-8 flex flex-col justify-between text-center text-xs max-w-7xl px-4">
-        <p className="text-zinc-500">
-          ©️ {currentYear} SarasDynamics. AI automation and software engineering.
-        </p>
-      </div>
-
     </footer>
   );
 }

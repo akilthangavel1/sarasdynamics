@@ -23,58 +23,55 @@ interface TimelineProps {
 
 const defaultItems: TimelineItem[] = [
   {
-    year: "2011",
-    title: "The Beginning",
+    year: "01",
+    title: "Clarity",
     description:
-      "Our journey started with a small team and a big vision to revolutionize the digital landscape.",
-    image:
-      "https://cdn.21st.dev/assets/localized/8fcabd896d283359f9f601b92bce74fc06aa48f368e56afbd21dca69a9742809.webp",
-    badge: "Timeline",
+      "No jargon, no hidden costs. You get clear timelines, honest updates and always know exactly where your project stands.",
+    image: "/images/clarity-lens.jpg",
+    badge: "Our Values",
   },
   {
-    year: "2012",
-    title: "First Major Milestone",
+    year: "02",
+    title: "Ownership",
     description:
-      "Successfully launched our first flagship product, gaining recognition across the industry.",
+      "Everything we build is yours: the code, the data and the IP. No lock-in, no strings attached, ever.",
     image:
-      "https://cdn.21st.dev/assets/localized/9d72709f2a25728cdbb0f9a5c09dfc0f0cf555bb6dfa20bba9021c1c88f62c01.webp",
-    badge: "Timeline",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
+    badge: "Our Values",
   },
   {
-    year: "2013",
-    title: "Driving Innovation",
+    year: "03",
+    title: "Quality",
     description:
-      "We introduced modern technologies and creative solutions, helping businesses adapt, evolve, and stay ahead in competitive markets.",
-    image:
-      "https://cdn.21st.dev/assets/localized/01f07009019e5463975090364d44c19dcf7ef13cef67af4719b683f7cb91ca38.png",
-    badge: "Timeline",
+      "We build software that lasts, not quick fixes. Every system is tested thoroughly and designed to scale with you.",
+    image: "/images/quality-gears.jpg",
+    badge: "Our Values",
   },
   {
-    year: "2014",
-    title: "Global Expansion",
+    year: "04",
+    title: "Speed",
     description:
-      "Expanded our operations to three continents, bringing our solutions to a global audience.",
-    image:
-      "https://cdn.21st.dev/assets/localized/9d72709f2a25728cdbb0f9a5c09dfc0f0cf555bb6dfa20bba9021c1c88f62c01.webp",
-    badge: "Timeline",
+      "Fast replies and steady weekly progress, across every time zone. Your project keeps moving, even while you sleep.",
+    image: "/images/speed-plane.jpg",
+    badge: "Our Values",
   },
   {
-    year: "2015",
-    title: "Tech Innovation Award",
+    year: "05",
+    title: "Transparency",
     description:
-      "Received prestigious awards for our contribution to open-source software and technology.",
+      "No surprises, ever. You get honest timelines, clear pricing and regular updates, so you always know what’s happening and why.",
     image:
-      "https://cdn.21st.dev/assets/localized/24716fc0046aab265ae19811fbde555f656120af16661320a99b9977b86b5023.webp",
-    badge: "Timeline",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    badge: "Our Values",
   },
   {
-    year: "2016",
-    title: "Scaling Up",
+    year: "06",
+    title: "Curiosity",
     description:
-      "Grew our team to over 100 passionate individuals, fostering a culture of creativity and excellence.",
+      "We keep learning and experimenting, so your business always benefits from the latest in AI.",
     image:
-      "https://cdn.21st.dev/assets/localized/f8596260a4e342a4a2d85e821ff477a8e71182f373aea763dfd4f13fe657f5fa.webp",
-    badge: "Timeline",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+    badge: "Our Values",
   },
 ];
 
@@ -82,7 +79,7 @@ export const Timeline = ({
   items = defaultItems,
   className,
 }: TimelineProps) => {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = items[activeIndex];
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 

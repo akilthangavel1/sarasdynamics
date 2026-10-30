@@ -23,10 +23,10 @@ export function EnhancedBackgroundPaths({
   title,
   titleLine1 = "WEB DEVELOPMENT",
   titleLine2 = "BUILT TO SCALE",
-  subtitle = "We engineer mission-critical web platforms, high-performance distributed systems, and intelligent digital interfaces with architectural precision and enterprise scalability.",
+  subtitle = "We build fast, modern websites and web applications that look great, work flawlessly on every device, and grow with your business, from first launch to thousands of users.",
   sidebarCategory = "WEB ENGINEERING",
   sidebarFooter = "SARAS DYNAMICS © 2026",
-  ctaText = "Contact Us",
+  ctaText = "Start Your Project",
   onCtaClick,
   onBackToHome,
 }: EnhancedBackgroundPathsProps) {

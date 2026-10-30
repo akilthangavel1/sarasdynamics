@@ -3,17 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hero Section</title>
-    <meta name="description" content="A bold minimalist application featuring a responsive navigation bar, hero section with visceral digital storytelling, Web and Mobile Development showcases, brand about showcase, interactive hover links, expandable gallery, scrolling testimonials, interactive Contact Us page, Careers page, comprehensive Blog section, and site footer." />
-    <meta property="og:title" content="Hero Section" />
-    <meta property="og:description" content="A bold minimalist application featuring a responsive navigation bar, hero section with visceral digital storytelling, Web and Mobile Development showcases, brand about showcase, interactive hover links, expandable gallery, scrolling testimonials, interactive Contact Us page, Careers page, comprehensive Blog section, and site footer." />
+    <title>Saras Dynamics | AI Automation &amp; Digital Engineering</title>
+    <meta name="description" content="Saras Dynamics engineers intelligent software, advanced AI architectures, and robust digital systems. Combining technical depth with uncompromising craftsmanship." />
+    <meta property="og:title" content="Saras Dynamics | AI Automation &amp; Digital Engineering" />
+    <meta property="og:description" content="Saras Dynamics engineers intelligent software, advanced AI architectures, and robust digital systems." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('saras_theme');
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-[#ebecee] text-black antialiased font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden selection:bg-[#1652f0] selection:text-white">
+  <body class="bg-[#ebecee] dark:bg-zinc-950 text-black dark:text-zinc-100 antialiased font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden selection:bg-[#1652f0] selection:text-white transition-colors duration-200">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

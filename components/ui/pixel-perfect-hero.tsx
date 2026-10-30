@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight, Github, Sparkles } from "lucide-react";
+import { ArrowRight, Github, Mail, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 
@@ -518,12 +518,14 @@ function PixelCanvas({ colors, gap = 5, speed = 30 }: PixelCanvasProps) {
  * -------------------------------------------------------------------------- */
 
 export interface PixelHeroProps {
+  eyebrow?: string;
   title?: string;
   word1?: string;
   word2?: string;
   description?: string;
   primaryCta?: string;
   primaryCtaMobile?: string;
+  primaryHref?: string;
   secondaryCta?: string;
   secondaryCtaMobile?: string;
   secondaryIcon?: React.ReactNode;
@@ -538,12 +540,14 @@ export interface PixelHeroProps {
 }
 
 export function PixelHero({
+  eyebrow,
   title,
   word1 = "We Build the AI and Software",
   word2 = "That Runs Your Business Better",
   description = "A senior engineering team in India delivering world-class AI and software for clients across time zones, at a fraction of local costs.",
   primaryCta = "Book a Discovery Call",
   primaryCtaMobile = "Book Call",
+  primaryHref,
   secondaryCta = "What We Build",
   secondaryCtaMobile = "What We Build",
   secondaryIcon,
@@ -635,6 +639,12 @@ export function PixelHero({
 
       {/* Top Container: Tahoe Glass Header */}
       <div className="flex flex-col items-center justify-center text-center mt-3 sm:mt-2 pointer-events-none w-full max-w-5xl px-4 z-10">
+        {eyebrow && (
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-200/90 dark:border-zinc-800 bg-zinc-100/90 dark:bg-zinc-900/90 px-3.5 py-1 text-xs font-bold tracking-[0.22em] uppercase text-zinc-900 dark:text-zinc-100 shadow-2xs backdrop-blur-sm select-none">
+            <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-pulse" />
+            <span>{eyebrow}</span>
+          </div>
+        )}
         <h1 className="tahoe-glass-text flex flex-row items-center justify-center gap-x-3 gap-y-2 px-1 w-full flex-wrap text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] leading-tight md:leading-[1.12]">
           {title ? (
             <span className="font-serif font-extrabold tracking-tight">{title}</span>
@@ -649,7 +659,7 @@ export function PixelHero({
 
       {/* Center Container: Description */}
       <div className="flex flex-col items-center justify-center text-center px-1 w-full pointer-events-none z-10 mt-4 md:mt-5">
-        <p className="text-sm sm:text-base md:text-lg font-serif font-normal text-zinc-900 dark:text-zinc-100 max-w-[95%] sm:max-w-md md:max-w-xl px-1 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg font-serif font-normal text-zinc-900 dark:text-zinc-100 max-w-[95%] sm:max-w-lg md:max-w-2xl px-1 leading-relaxed">
           {description}
         </p>
       </div>
@@ -659,11 +669,29 @@ export function PixelHero({
         className={cn("pointer-events-auto flex flex-row items-center justify-center gap-3 mt-6 md:mt-8 transition-all duration-1000 transform px-1 z-10", isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}
         style={{ transitionDelay: "450ms" }}
       >
-        <button onClick={onPrimaryClick} className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-primary/90 to-primary px-5 md:px-8 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-          <span className="inline md:hidden">{primaryCtaMobile}</span>
-          <span className="hidden md:inline">{primaryCta}</span>
-          <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
-        </button>
+        {primaryHref ? (
+          <a
+            href={primaryHref}
+            target={primaryHref.startsWith("http") ? "_blank" : undefined}
+            rel={primaryHref.startsWith("http") ? "noopener noreferrer" : undefined}
+            onClick={onPrimaryClick}
+            className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-primary/90 to-primary px-5 md:px-8 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <span className="inline md:hidden">{primaryCtaMobile}</span>
+            <span className="hidden md:inline">{primaryCta}</span>
+            <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={onPrimaryClick}
+            className="relative inline-flex h-10 md:h-12 items-center justify-center gap-1.5 md:gap-2 rounded-xl bg-gradient-to-b from-primary/90 to-primary px-5 md:px-8 text-xs md:text-sm font-semibold text-primary-foreground shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_4px_rgba(0,0,0,0.15),0_12px_24px_rgba(0,0,0,0.15)] ring-1 ring-primary/20 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          >
+            <span className="inline md:hidden">{primaryCtaMobile}</span>
+            <span className="hidden md:inline">{primaryCta}</span>
+            <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          </button>
+        )}
         <a
           href={githubUrl}
           target={githubUrl?.startsWith("http") ? "_blank" : undefined}
@@ -674,6 +702,8 @@ export function PixelHero({
           {secondaryIcon ?? (
             secondaryCta?.toLowerCase().includes("github") ? (
               <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            ) : secondaryCta?.toLowerCase().includes("message") ? (
+              <Mail className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
             ) : (
               <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
             )

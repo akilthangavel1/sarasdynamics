@@ -245,15 +245,15 @@ export default function PerspectiveTunnelHero() {
                 className="pointer-events-none z-0 flex flex-col items-center text-center px-6 max-w-xl"
             >
                 <p className="text-xs font-mono uppercase tracking-[0.4em] text-indigo-600 dark:text-indigo-400 mb-4">
-                    Warp Drive Sequence
+                    NAVIGATING THE FUTURE
                 </p>
                 <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-[0.9] bg-gradient-to-b from-neutral-950 via-neutral-800 to-neutral-400 dark:from-white dark:via-white dark:to-white/40 bg-clip-text text-transparent">
                     INTO THE
                     <br />
-                    ETHER.
+                    AI ERA.
                 </h1>
-                <p className="mt-4 max-w-[36ch] text-sm sm:text-base font-light text-neutral-600 dark:text-neutral-400">
-                    Scroll your trackpad or mouse wheel to fly through the spatial 3D corridor.
+                <p className="mt-4 max-w-[42ch] text-sm sm:text-base font-light text-neutral-600 dark:text-neutral-400">
+                    Take the journey from idea to intelligent product, one layer at a time
                 </p>
             </motion.div>
 
@@ -262,7 +262,7 @@ export default function PerspectiveTunnelHero() {
                 style={{ opacity: promptOpacity }}
                 className="pointer-events-none absolute bottom-8 z-20 flex flex-col items-center gap-2 text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 dark:text-neutral-400"
             >
-                <span>Scroll to Explore</span>
+                <span>Scroll to accelerate</span>
                 <div className="h-6 w-px bg-gradient-to-b from-indigo-500 to-transparent" />
             </motion.div>
 

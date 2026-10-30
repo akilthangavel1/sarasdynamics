@@ -55,8 +55,8 @@ const CTA = ({
       <div
         className={
           fullWidth
-            ? `relative w-full overflow-hidden border-y border-zinc-200/80 p-10 sm:p-14 md:p-16 lg:p-20 shadow-muted bg-background/50 ${cardClassName}`
-            : `relative mx-auto max-w-5xl overflow-hidden border-y p-14 shadow-muted sm:rounded-xl sm:border-x sm:shadow-lg/5 bg-background/50 ${cardClassName}`
+            ? `relative w-full overflow-hidden border-y border-zinc-200/80 py-8 sm:py-10 md:py-12 px-6 sm:px-10 lg:px-16 shadow-muted bg-background/50 ${cardClassName}`
+            : `relative mx-auto max-w-5xl overflow-hidden border-y py-8 sm:py-10 px-6 sm:px-10 shadow-muted sm:rounded-xl sm:border-x sm:shadow-lg/5 bg-background/50 ${cardClassName}`
         }
       >
         <NeuroNoise
@@ -88,13 +88,13 @@ const CTA = ({
           }
         >
 
-          <h2 className="text-balance font-medium text-4xl text-foreground tracking-tighter md:leading-tight lg:text-[2.75rem]">
+          <h2 className="text-balance font-medium text-3xl sm:text-4xl text-foreground tracking-tighter md:leading-tight lg:text-[2.35rem]">
             {title}
           </h2>
-          <p className="mt-4 text-balance text-zinc-700 dark:text-zinc-300 text-xl/normal md:mt-2.5 lg:text-[1.4rem]/normal">
+          <p className="mt-3 text-balance text-zinc-700 dark:text-zinc-300 text-base md:text-lg lg:text-[1.15rem]/relaxed">
             {description}
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button
               size="lg"
               onClick={onPrimaryClick}

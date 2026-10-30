@@ -36,6 +36,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuth } from "../../src/context/AuthContext.js";
 
 export interface MenuItem {
@@ -183,7 +184,7 @@ const Navbar1 = ({
     if (title.includes("Dynamics")) {
       const parts = title.split("Dynamics");
       return (
-        <span className="text-base font-bold tracking-tight text-zinc-900 group-hover:text-zinc-700 transition-colors">
+        <span className="text-base font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
           {parts[0]}
           <span className="text-red-600 font-extrabold">Dynamics</span>
           {parts.slice(1).join("Dynamics")}
@@ -191,7 +192,7 @@ const Navbar1 = ({
       );
     }
     return (
-      <span className="text-base font-bold tracking-tight text-zinc-900 group-hover:text-zinc-700 transition-colors">
+      <span className="text-base font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
         {title}
       </span>
     );
@@ -212,12 +213,12 @@ const Navbar1 = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/95 backdrop-blur-md transition-all">
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <nav className="hidden justify-between items-center lg:flex">
           <div className="flex items-center gap-8">
             <a href={logo.url} className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0 group-hover:border-zinc-300 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 transition-colors">
                 <img
                   src={logo.src}
                   className="w-full h-full object-contain rounded-md"
@@ -235,8 +236,9 @@ const Navbar1 = ({
             </div>
           </div>
 
-          {/* Desktop Auth Controls */}
+          {/* Desktop Controls & Theme Switcher */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             {firebaseUser ? (
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -244,9 +246,9 @@ const Navbar1 = ({
                   type="button"
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                   aria-expanded={userDropdownOpen}
-                  className="flex items-center gap-2 rounded-full border border-zinc-200 bg-white py-1.5 pl-2 pr-3 text-sm font-medium text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900"
+                  className="flex items-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 py-1.5 pl-2 pr-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 shadow-xs hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900"
                 >
-                  <div className="flex size-7 items-center justify-center rounded-full bg-zinc-900 text-xs font-semibold text-white">
+                  <div className="flex size-7 items-center justify-center rounded-full bg-zinc-900 dark:bg-zinc-700 text-xs font-semibold text-white">
                     {getInitials(dbUser?.full_name, firebaseUser.email)}
                   </div>
                   <span className="max-w-[120px] truncate text-xs font-semibold">
@@ -259,7 +261,7 @@ const Navbar1 = ({
                 {userDropdownOpen && (
                   <div
                     id="navbar-user-dropdown-menu"
-                    className="absolute right-0 mt-2 w-64 rounded-xl border border-zinc-200 bg-white p-2 shadow-lg ring-1 ring-black/5 z-50 divide-y divide-zinc-100"
+                    className="absolute right-0 mt-2 w-64 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-2 shadow-lg ring-1 ring-black/5 z-50 divide-y divide-zinc-100 dark:divide-zinc-800"
                   >
                     <div className="px-3 py-2.5">
                       <p className="text-xs font-semibold text-zinc-900 truncate">
@@ -365,7 +367,7 @@ const Navbar1 = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             <a href={logo.url} className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
                 <img
                   src={logo.src}
                   className="w-full h-full object-contain rounded-md"
@@ -374,49 +376,55 @@ const Navbar1 = ({
               </div>
               {renderBrandTitle(logo.title)}
             </a>
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  id="navbar-mobile-menu-trigger"
-                  variant="outline"
-                  size="icon"
-                  className="rounded-lg border-zinc-200"
-                >
-                  <Menu className="size-4 text-zinc-800" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto bg-white">
-                <SheetHeader>
-                  <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
-                        <img
-                          src={logo.src}
-                          className="w-full h-full object-contain rounded-md"
-                          alt={logo.alt}
-                        />
-                      </div>
-                      {renderBrandTitle(logo.title)}
-                    </a>
-                  </SheetTitle>
-                </SheetHeader>
-                <div className="my-6 flex flex-col gap-6">
-                  {/* If user logged in on mobile, show profile card */}
-                  {firebaseUser && (
-                    <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-3.5">
-                      <div className="flex items-center gap-3">
-                        <div className="flex size-9 items-center justify-center rounded-full bg-zinc-900 text-xs font-semibold text-white">
-                          {getInitials(dbUser?.full_name, firebaseUser.email)}
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button
+                    id="navbar-mobile-menu-trigger"
+                    variant="outline"
+                    size="icon"
+                    className="rounded-lg border-zinc-200 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                  >
+                    <Menu className="size-4 text-zinc-800 dark:text-zinc-200" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="overflow-y-auto bg-white dark:bg-zinc-950 dark:text-zinc-100 dark:border-zinc-800">
+                  <SheetHeader>
+                    <SheetTitle>
+                      <a href={logo.url} className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
+                          <img
+                            src={logo.src}
+                            className="w-full h-full object-contain rounded-md"
+                            alt={logo.alt}
+                          />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-zinc-900 truncate">
-                            {dbUser?.full_name || "Saras User"}
-                          </p>
-                          <p className="text-xs text-zinc-500 truncate">
-                            {firebaseUser.email}
-                          </p>
+                        {renderBrandTitle(logo.title)}
+                      </a>
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="my-6 flex flex-col gap-6">
+                    {/* Theme switcher option inside mobile sheet */}
+                    <div className="pt-1">
+                      <ThemeToggle showLabel />
+                    </div>
+                    {/* If user logged in on mobile, show profile card */}
+                    {firebaseUser && (
+                      <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 p-3.5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex size-9 items-center justify-center rounded-full bg-zinc-900 dark:bg-zinc-700 text-xs font-semibold text-white">
+                            {getInitials(dbUser?.full_name, firebaseUser.email)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                              {dbUser?.full_name || "Saras User"}
+                            </p>
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                              {firebaseUser.email}
+                            </p>
+                          </div>
                         </div>
-                      </div>
                       {roles.length > 0 && (
                         <div className="mt-2.5 flex flex-wrap gap-1">
                           {roles.map((r) => (
@@ -519,35 +527,36 @@ const Navbar1 = ({
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
   );
 };
 
 const renderMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
-      <NavigationMenuItem key={item.title} className="relative text-zinc-700">
-        <NavigationMenuTrigger className="text-zinc-700 hover:text-zinc-900 font-medium text-sm">
+      <NavigationMenuItem key={item.title} className="relative text-zinc-700 dark:text-zinc-300">
+        <NavigationMenuTrigger className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white font-medium text-sm">
           {item.title}
         </NavigationMenuTrigger>
         <NavigationMenuContent className="before:absolute before:-top-3 before:left-0 before:right-0 before:h-3">
-          <ul className="w-80 p-2.5 bg-white rounded-xl shadow-xl border border-zinc-200/90 divide-y divide-zinc-100">
+          <ul className="w-80 p-2.5 bg-white dark:bg-zinc-900 rounded-xl shadow-xl border border-zinc-200/90 dark:border-zinc-800 divide-y divide-zinc-100 dark:divide-zinc-800">
             {item.items.map((subItem) => (
               <li key={subItem.title}>
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex select-none gap-3.5 rounded-lg p-2.5 leading-none no-underline outline-none transition-colors hover:bg-zinc-100/80 text-zinc-900 group"
+                    className="flex select-none gap-3.5 rounded-lg p-2.5 leading-none no-underline outline-none transition-colors hover:bg-zinc-100/80 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 group"
                     href={subItem.url}
                   >
-                    <div className="text-zinc-500 group-hover:text-zinc-900 transition-colors mt-0.5">
+                    <div className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors mt-0.5">
                       {subItem.icon}
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-zinc-900 group-hover:text-zinc-950">
+                      <div className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-zinc-950 dark:group-hover:text-white">
                         {subItem.title}
                       </div>
                       {subItem.description && (
-                        <p className="text-xs leading-snug text-zinc-500 mt-1">
+                        <p className="text-xs leading-snug text-zinc-500 dark:text-zinc-400 mt-1">
                           {subItem.description}
                         </p>
                       )}
@@ -566,7 +575,7 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink asChild>
         <a
-          className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-900"
+          className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
           href={item.url}
         >
           {item.title}
@@ -580,23 +589,23 @@ const renderMobileMenuItem = (item: MenuItem) => {
   if (item.items) {
     return (
       <AccordionItem key={item.title} value={item.title} className="border-b-0">
-        <AccordionTrigger className="py-1 font-semibold text-zinc-900 hover:no-underline">
+        <AccordionTrigger className="py-1 font-semibold text-zinc-900 dark:text-zinc-100 hover:no-underline">
           {item.title}
         </AccordionTrigger>
         <AccordionContent className="mt-2 pl-2">
           {item.items.map((subItem) => (
             <a
               key={subItem.title}
-              className="flex select-none gap-3 rounded-md p-2.5 leading-none outline-none transition-colors hover:bg-zinc-100 text-zinc-900"
+              className="flex select-none gap-3 rounded-md p-2.5 leading-none outline-none transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
               href={subItem.url}
             >
-              {subItem.icon}
+              <div className="text-zinc-500 dark:text-zinc-400">{subItem.icon}</div>
               <div>
-                <div className="text-sm font-semibold text-zinc-900">
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                   {subItem.title}
                 </div>
                 {subItem.description && (
-                  <p className="text-xs leading-snug text-zinc-500 mt-0.5">
+                  <p className="text-xs leading-snug text-zinc-500 dark:text-zinc-400 mt-0.5">
                     {subItem.description}
                   </p>
                 )}
@@ -609,7 +618,7 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a key={item.title} href={item.url} className="font-semibold text-zinc-900 py-1">
+    <a key={item.title} href={item.url} className="font-semibold text-zinc-900 dark:text-zinc-100 py-1">
       {item.title}
     </a>
   );

@@ -157,7 +157,7 @@ export function BlogSection({ onSelectPost }: BlogSectionProps) {
 	const displayBlogs = apiPosts.length > 0 ? apiPosts : defaultBlogs;
 
 	return (
-		<div className="relative mx-auto w-full max-w-5xl grow">
+		<div className="relative mx-auto w-full max-w-6xl grow">
 			<div
 				aria-hidden
 				className="absolute inset-0 isolate contain-strict -z-10 opacity-60 overflow-hidden pointer-events-none"
@@ -166,16 +166,23 @@ export function BlogSection({ onSelectPost }: BlogSectionProps) {
 				<div className="-rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(0,0,0,0.04)_0,rgba(0,0,0,0.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 [translate:5%_-50%] rounded-full" />
 				<div className="-rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,rgba(0,0,0,0.04)_0,rgba(0,0,0,0.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 -translate-y-87.5 rounded-full" />
 			</div>
-			<div className="space-y-1 px-4 py-8">
-				<h1 className="font-mono text-4xl font-bold tracking-wide">
-					Engineering & Systems Journal
-				</h1>
-				<p className="text-muted-foreground text-base">
-					Deep dives into AI architectures, distributed systems, high-performance web, and mobile engineering by Saras Dynamics.
-				</p>
+			<div className="px-4 py-8 mb-4">
+				<div className="flex flex-col md:flex-row md:items-end justify-between gap-6 text-left">
+					<div>
+						<span className="text-xs uppercase tracking-wider text-zinc-500 font-semibold block">
+							Articles &amp; Insights
+						</span>
+						<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 mt-1">
+							Engineering &amp; Systems Journal
+						</h1>
+					</div>
+					<p className="text-sm md:text-base text-zinc-600 max-w-lg leading-relaxed">
+						Deep dives into AI architectures, distributed systems, high-performance web, and mobile engineering by Saras Dynamics.
+					</p>
+				</div>
 			</div>
 			<div className="relative inset-x-0 h-px w-full border-b border-dashed border-zinc-200" />
-			<div className="grid p-4 md:grid-cols-2 lg:grid-cols-3 z-10 gap-4">
+			<div className="grid p-4 md:grid-cols-2 lg:grid-cols-3 z-10 gap-6">
 				{displayBlogs.map((blog) => (
 					<div
 						key={blog.title}

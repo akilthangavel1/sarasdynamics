@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Navbar1Demo from '@/components/ui/navbar-demo';
-import AboutSection from './components/AboutSection';
 import InteractiveHoverLinks from '@/components/ui/interactive-hover-links';
 import ExpandableGallery from '@/components/ui/expandable-gallery';
 import { SiteFooter } from '@/components/ui/site-footer';
@@ -91,8 +90,24 @@ export default function App() {
       } else if (hash === '#forgot-password' || hash === '#reset-password') {
         setCurrentPage('forgot-password');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (hash === '#home' || hash === '' || hash === '#') {
+      } else if (
+        hash === '#home' ||
+        hash === '' ||
+        hash === '#' ||
+        hash === '#services' ||
+        hash === '#work' ||
+        hash.startsWith('#gallery') ||
+        hash.startsWith('#expandable')
+      ) {
         setCurrentPage('home');
+        if (hash && hash !== '#home' && hash !== '#') {
+          setTimeout(() => {
+            const targetEl = document.querySelector(hash);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 60);
+        }
       }
     };
 
@@ -136,6 +151,19 @@ export default function App() {
       setCurrentPage('register');
     } else if (initialHash === '#forgot-password' || initialHash === '#reset-password') {
       setCurrentPage('forgot-password');
+    } else if (
+      initialHash === '#services' ||
+      initialHash === '#work' ||
+      initialHash.startsWith('#gallery') ||
+      initialHash.startsWith('#expandable')
+    ) {
+      setCurrentPage('home');
+      setTimeout(() => {
+        const targetEl = document.querySelector(initialHash);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
 
     window.addEventListener('hashchange', handleHashChange);
@@ -224,31 +252,39 @@ export default function App() {
     }
 
     return (
-      <div id="page-wrapper" className="w-full min-h-screen bg-white flex flex-col">
+      <div id="page-wrapper" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col transition-colors duration-300">
         {/* Sticky Responsive Header Navigation */}
         <Navbar1Demo />
 
-        {/* Perspective Tunnel Hero Section */}
-        <main id="perspective-tunnel-section">
-          <PerspectiveTunnelHero />
+        {/* Semantic Main Content Landmark */}
+        <main id="main-content" className="flex-1 w-full flex flex-col">
+          {/* Perspective Tunnel Hero Section */}
+          <section id="hero" aria-label="Hero">
+            <PerspectiveTunnelHero />
+          </section>
+
+          {/* Interactive Hover Links / Services Section */}
+          <section id="services" aria-label="Services & Solutions">
+            <InteractiveHoverLinks />
+          </section>
+
+          {/* Expandable Gallery / Work Showcase */}
+          <section id="work" aria-label="Selected Works & Case Studies">
+            <ExpandableGallery />
+          </section>
+
+          {/* Latest Blog Cards Section */}
+          <section id="blog-preview" aria-label="Engineering Blog">
+            <BlogCards />
+          </section>
+
+          {/* Final CTA Banner Section */}
+          <section id="cta" aria-label="Get Started" className="w-full">
+            <FinalCtaBanner />
+          </section>
         </main>
 
-        {/* About Section (White Theme) */}
-        <AboutSection />
-
-        {/* Interactive Hover Links Section */}
-        <InteractiveHoverLinks />
-
-        {/* Expandable Gallery Section */}
-        <ExpandableGallery />
-
-        {/* Latest Blog Cards Section */}
-        <BlogCards />
-
-        {/* Final CTA Banner Section */}
-        <FinalCtaBanner />
-
-        {/* Site Footer */}
+        {/* Global Site Footer */}
         <SiteFooter />
       </div>
     );
