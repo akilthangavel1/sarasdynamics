@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 import { ColumnLines } from "@/components/ui/download-with-columnlines-utils/columnlines";
 
 interface DownloadWithColumnLinesProps {
@@ -10,6 +11,7 @@ interface DownloadWithColumnLinesProps {
   subheadline?: string;
   linuxHref?: string;
   windowsHref?: string;
+  className?: string;
 }
 
 const LinuxIcon = ({ className }: { className?: string }) => (
@@ -44,6 +46,7 @@ export default function DownloadWithColumnLines({
   subheadline = "Our state of the art tool allows you to operate swiftly with precise accuracy",
   linuxHref = "#",
   windowsHref = "#",
+  className = "",
 }: DownloadWithColumnLinesProps) {
   return (
     <ColumnLines
@@ -51,9 +54,9 @@ export default function DownloadWithColumnLines({
       columnCount={14}
       radialFadeStart={30}
       radialFadeEnd={70}
-      className="relative min-h-screen w-full bg-zinc-50 dark:bg-zinc-950"
+      className={cn("relative w-full bg-zinc-50 dark:bg-zinc-950", className)}
     >
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-4 py-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-4 pt-16 pb-12 md:pt-24 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

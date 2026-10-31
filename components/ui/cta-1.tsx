@@ -1,15 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import React, { useState, useRef } from "react";
-
-// ─── Avatars ──────────────────────────────────────────────────────────────────
-
-const avatars = [
-  "https://cdn.21st.dev/assets/mirror/8a/8a408cedc21ef4dbf04a47dbf2cf874a1b9eca7177393bbbf50101b0ad6d79d6.jpg",
-  "https://cdn.21st.dev/assets/mirror/4a/4a954f55fa043fde5c54517143992ad3cdbec049a8706746e666387297f9c65a.jpg",
-  "https://cdn.21st.dev/assets/mirror/19/19a98f2d08c52d576344bb2be87eef7c1f883ebf2f28b51f6b51acce6bc9dc94.jpg",
-];
+import React, { useRef } from "react";
 
 // ─── Hover image with 3D tilt + glow ─────────────────────────────────────────
 
@@ -95,32 +87,52 @@ function FadeUp({
 
 // ─── Main ────────────────────────────────────────────────────────────────────
 
+export interface CTASection1Props {
+  className?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  onButtonClick?: () => void;
+}
+
 export default function CTASection1({
   className = "",
-}: {
-  className?: string;
-} = {}) {
-  const [email, setEmail] = useState("");
+  buttonText = "Book a Discovery Call",
+  buttonHref = "#contact",
+  onButtonClick,
+}: CTASection1Props = {}) {
+  const handleClick = () => {
+    if (onButtonClick) {
+      onButtonClick();
+    } else if (buttonHref) {
+      if (buttonHref.startsWith("http")) {
+        window.open(buttonHref, "_blank");
+      } else {
+        window.location.hash = buttonHref;
+      }
+    } else {
+      window.location.hash = "#contact";
+    }
+  };
 
   return (
     <section className={`w-full pt-8 pb-20 md:pt-12 md:pb-24 px-4 overflow-hidden ${className}`}>
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
         {/* ── Headline ── */}
         <h2
-          className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-black leading-[1.15] tracking-tight mb-10"
+          className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-black leading-[1.15] tracking-tight mb-8"
           style={{ perspective: 800 }}
         >
           {/* Line 1 */}
           <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mb-2">
-            <FadeUp delay={0}>Ship</FadeUp>
-            <FadeUp delay={0.06}>beautiful</FadeUp>
+            <FadeUp delay={0}>Launch</FadeUp>
+            <FadeUp delay={0.06}>your</FadeUp>
 
             <FadeUp delay={0.11}>
               <HoverImage />
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <em className="italic font-bold text-black">blocks</em>
+              <em className="italic font-bold text-black">app</em>
             </FadeUp>
 
             <FadeUp delay={0.19}>
@@ -142,7 +154,7 @@ export default function CTASection1({
 
             <FadeUp delay={0.35}>
               <span className="inline-flex items-center border-2 border-black rounded-full px-5 py-1 leading-none text-black">
-                Bag/UI
+                Hassle
               </span>
             </FadeUp>
 
@@ -150,76 +162,27 @@ export default function CTASection1({
           </span>
         </h2>
 
-        {/* ── Subline ── */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.45,
-            delay: 0.44,
-            ease: "easeOut",
-          }}
-          className="text-sm text-zinc-500 mb-8 max-w-sm"
-        >
-          Premium shadcn/ui blocks — plug in, customize, ship.
-        </motion.p>
-
-        {/* ── Email form ── */}
+        {/* ── Action Button: Book a Discovery Call ── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{
             duration: 0.5,
-            delay: 0.48,
+            delay: 0.44,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="flex items-center gap-3 w-full max-w-lg mb-5"
+          className="flex items-center justify-center mt-2"
         >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your e-mail"
-            className="flex-1 bg-white text-zinc-950 placeholder-zinc-400 text-sm rounded-full px-5 py-3.5 outline-none border border-zinc-200 focus:border-zinc-400 transition-colors"
-          />
-
           <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="bg-black text-white text-sm font-semibold rounded-full px-6 py-3.5 whitespace-nowrap hover:bg-zinc-800 transition-colors cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleClick}
+            className="inline-flex items-center justify-center gap-2.5 bg-black text-white text-sm sm:text-base font-semibold rounded-full px-8 py-4 shadow-lg hover:bg-zinc-800 transition-all cursor-pointer active:scale-98"
           >
-            Subscribe →
+            <span>{buttonText}</span>
+            <span className="text-base sm:text-lg">→</span>
           </motion.button>
-        </motion.div>
-
-        {/* ── Social proof ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.4,
-            delay: 0.56,
-            ease: "easeOut",
-          }}
-          className="flex items-center gap-2.5"
-        >
-          <div className="flex -space-x-2.5">
-            {avatars.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt=""
-                className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm"
-              />
-            ))}
-          </div>
-
-          <span className="text-[13px] text-zinc-600">
-            11.5k+ devs already subscribed
-          </span>
         </motion.div>
       </div>
     </section>

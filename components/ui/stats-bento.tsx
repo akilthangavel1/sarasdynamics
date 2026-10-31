@@ -1,10 +1,15 @@
 "use client";
 import React from "react";
+import { cn } from "@/lib/utils";
 
-export const StatsBento = () => {
+export interface StatsBentoProps {
+  className?: string;
+}
+
+export const StatsBento = ({ className = "" }: StatsBentoProps = {}) => {
   return (
-    <section className="min-h-screen bg-background flex flex-col justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-4 max-w-7xl mx-auto">
+    <section className={cn("w-full pt-6 pb-16 md:pt-10 md:pb-24 px-4 sm:px-6 lg:px-8 bg-background flex flex-col justify-center", className)}>
+      <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-2 gap-4 max-w-7xl mx-auto w-full">
         {/* Primary Stat */}
         <div className="md:col-span-3 md:row-span-2 bg-primary rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[repeating-linear-gradient(45deg,#808080_0px_1px,transparent_1px_10px)] opacity-30 mask-[radial-gradient(ellipse_80%_50%_at_100%_0%,#000_70%,transparent_110%)] pointer-events-none"></div>

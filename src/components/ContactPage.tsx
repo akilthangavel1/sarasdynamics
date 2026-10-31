@@ -32,9 +32,9 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
         {/* Hero Section with Pixel-Perfect Canvas Physics */}
         <section id="contact-hero" className="w-full border-b border-zinc-200/80">
           <PixelHero
-            title="Your engineering partner, wherever you are."
-            word1="Your engineering partner,"
-            word2="wherever you are."
+            title="Get in touch"
+            word1="Get in"
+            word2="touch"
             description="We work with teams across the US, UK, Europe and the Middle East, with overlap hours that suit your time zone. Tell us about your project, and we’ll reply within one business day."
             primaryCta="Book a 30-min call"
             primaryCtaMobile="Book a 30-min call"
