@@ -51,24 +51,24 @@ export function EnhancedBackgroundPaths({
   };
 
   return (
-    <div className="relative min-h-[70vh] md:min-h-[82vh] w-full flex flex-row overflow-hidden bg-white">
+    <div className="relative min-h-[70vh] md:min-h-[82vh] w-full flex flex-row overflow-hidden bg-white dark:bg-zinc-950 transition-colors duration-300">
       {/* GridPulse interactive background with original spectrum & pink hues intact */}
       <GridPulse
         cell={28}
         reach={1.4}
         ambient={2}
         maxLit={80}
-        className="[--grid-pulse-line:color-mix(in_oklab,#000_6%,transparent)]"
+        className="[--grid-pulse-line:color-mix(in_oklab,#000_6%,transparent)] dark:[--grid-pulse-line:color-mix(in_oklab,#fff_6%,transparent)]"
       />
 
       {/* Left Sidebar Rail */}
-      <div className="relative z-10 w-14 sm:w-16 md:w-20 lg:w-24 shrink-0 border-r border-zinc-300/80 flex flex-col justify-between items-center py-7 sm:py-9 select-none bg-white/40 backdrop-blur-[2px]">
+      <div className="relative z-10 w-14 sm:w-16 md:w-20 lg:w-24 shrink-0 border-r border-zinc-300/80 dark:border-zinc-800 flex flex-col justify-between items-center py-7 sm:py-9 select-none bg-white/40 dark:bg-zinc-950/40 backdrop-blur-[2px]">
         {/* Top Back Chevron */}
         <button
           type="button"
           onClick={handleBack}
           aria-label="Back to home"
-          className="group p-2 rounded-full hover:bg-zinc-100 transition-colors text-zinc-800 hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 cursor-pointer"
+          className="group p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-800 dark:text-zinc-200 hover:text-black dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 cursor-pointer"
           data-grid-avoid
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8] group-hover:-translate-x-0.5 transition-transform" />
@@ -76,7 +76,7 @@ export function EnhancedBackgroundPaths({
 
         {/* Center Vertical Text */}
         <div
-          className="my-auto py-6 [writing-mode:vertical-rl] rotate-180 uppercase tracking-[0.24em] text-[11px] sm:text-xs font-semibold text-zinc-900 select-none whitespace-nowrap"
+          className="my-auto py-6 [writing-mode:vertical-rl] rotate-180 uppercase tracking-[0.24em] text-[11px] sm:text-xs font-semibold text-zinc-900 dark:text-zinc-100 select-none whitespace-nowrap"
           data-grid-avoid
         >
           {sidebarCategory}
@@ -84,7 +84,7 @@ export function EnhancedBackgroundPaths({
 
         {/* Bottom Vertical Studio / Copyright Text */}
         <div
-          className="[writing-mode:vertical-rl] rotate-180 uppercase tracking-[0.18em] text-[10px] sm:text-[11px] font-medium text-zinc-700 select-none whitespace-nowrap"
+          className="[writing-mode:vertical-rl] rotate-180 uppercase tracking-[0.18em] text-[10px] sm:text-[11px] font-medium text-zinc-700 dark:text-zinc-400 select-none whitespace-nowrap"
           data-grid-avoid
         >
           {sidebarFooter}
@@ -102,9 +102,9 @@ export function EnhancedBackgroundPaths({
               transition={{ duration: 0.65, ease: "easeOut" }}
               className="font-['Bebas_Neue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-[7.2rem] xl:text-[8.5rem] tracking-tight leading-[0.88] select-none uppercase"
             >
-              <span className="block text-black">{displayLine1}</span>
+              <span className="block text-black dark:text-white">{displayLine1}</span>
               {displayLine2 && (
-                <span className="block text-zinc-500">{displayLine2}</span>
+                <span className="block text-zinc-500 dark:text-zinc-400">{displayLine2}</span>
               )}
             </motion.h1>
           </div>
@@ -114,7 +114,7 @@ export function EnhancedBackgroundPaths({
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ delay: 0.2, duration: 0.65, ease: "easeOut" }}
-            className="w-full h-px bg-zinc-300 my-6 sm:my-8 origin-left"
+            className="w-full h-px bg-zinc-300 dark:bg-zinc-800 my-6 sm:my-8 origin-left"
             data-grid-avoid
           />
 
@@ -123,7 +123,7 @@ export function EnhancedBackgroundPaths({
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl text-zinc-600 font-normal leading-relaxed max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-300 font-normal leading-relaxed max-w-2xl"
             data-grid-avoid
           >
             {subtitle}
@@ -140,7 +140,7 @@ export function EnhancedBackgroundPaths({
             <button
               type="button"
               onClick={handleContact}
-              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-zinc-800 transition-all duration-200 shadow-sm cursor-pointer active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-black dark:bg-white text-white dark:text-zinc-950 font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 shadow-sm cursor-pointer active:scale-[0.98]"
             >
               <span>{ctaText}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

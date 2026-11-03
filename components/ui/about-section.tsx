@@ -40,7 +40,7 @@ export default function AboutSection3() {
   };
 
   return (
-    <section className="py-8 px-4 bg-[#f9f9f9]" ref={heroRef}>
+    <section className="py-8 px-4 bg-[#f9f9f9] dark:bg-zinc-950 transition-colors" ref={heroRef}>
       <div className="max-w-6xl mx-auto">
         <div className="relative">
           {/* Header with social icons */}
@@ -52,7 +52,7 @@ export default function AboutSection3() {
                 animationNum={0}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-sm font-medium text-gray-600"
+                className="text-sm font-medium text-gray-600 dark:text-zinc-400"
               >
                 ABOUT US
               </TimelineContent>
@@ -66,7 +66,7 @@ export default function AboutSection3() {
                 href="https://www.facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 rounded-lg flex items-center justify-center cursor-pointer"
               >
                 <img src="https://cdn.21st.dev/assets/mirror/72/720171c5f1b63d690045243006ee87b6d6ab779b85971b5bc9e3267dae5b4747.svg" alt="fb" width={24} height={24} />
               </TimelineContent>
@@ -78,7 +78,7 @@ export default function AboutSection3() {
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 rounded-lg flex items-center justify-center cursor-pointer"
               >
                 <img src="https://cdn.21st.dev/assets/mirror/80/8060ef38a7f4c25ea5e8bf5df005a4472de35f56836c64442341a9e590591e56.svg" alt="insta" width={24} height={24} />
               </TimelineContent>
@@ -90,7 +90,7 @@ export default function AboutSection3() {
                 href="https://in.linkedin.com/company/sarasdynamics?trk=public_jobs_topcard-org-name"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 rounded-lg flex items-center justify-center cursor-pointer"
               >
                 <img src="https://cdn.21st.dev/assets/mirror/23/2371179e72304e6296cb7324ea9ea67a1ad6cb1fe3a35c40a689ed7bf6dd5064.svg" alt="linkedin" width={24} height={24} />
               </TimelineContent>
@@ -102,7 +102,7 @@ export default function AboutSection3() {
                 href="https://www.youtube.com/naymurweb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 rounded-lg flex items-center justify-center cursor-pointer"
               >
                 <img src="https://cdn.21st.dev/assets/mirror/37/3792b7e33f779b6c2819619228cdcc8d279b3020f19c34dc1ef311756eccbf22.svg" alt="youtube" width={24} height={24} />
               </TimelineContent>
@@ -154,12 +154,12 @@ export default function AboutSection3() {
             >
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
                 <span className="text-red-500 font-bold">24/7</span>
-                <span className="text-gray-600">AUTOMATION</span>
-                <span className="text-gray-300">|</span>
+                <span className="text-gray-600 dark:text-zinc-400">AUTOMATION</span>
+                <span className="text-gray-300 dark:text-zinc-600">|</span>
               </div>
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
                 <span className="text-red-500 font-bold">Zero</span>
-                <span className="text-gray-600">repetitive tasks</span>
+                <span className="text-gray-600 dark:text-zinc-400">repetitive tasks</span>
               </div>
             </TimelineContent>
             <div className="lg:absolute right-0 bottom-16 flex lg:flex-col flex-row-reverse lg:gap-0 gap-4">
@@ -171,7 +171,7 @@ export default function AboutSection3() {
                 className="flex lg:text-4xl sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
                 <span className="text-red-500 font-semibold">AI</span>
-                <span className="text-gray-600 uppercase">AGENTS</span>
+                <span className="text-gray-600 dark:text-zinc-300 uppercase">AGENTS</span>
               </TimelineContent>
               <TimelineContent
                 as="div"
@@ -180,8 +180,8 @@ export default function AboutSection3() {
                 customVariants={revealVariants}
                 className="flex items-center gap-2 mb-2 sm:text-base text-xs"
               >
-                <span className="text-gray-600">Working round the clock</span>
-                <span className="text-gray-300 lg:hidden block">/</span>
+                <span className="text-gray-600 dark:text-zinc-400">Working round the clock</span>
+                <span className="text-gray-300 dark:text-zinc-600 lg:hidden block">/</span>
               </TimelineContent>
             </div>
           </div>
@@ -190,7 +190,7 @@ export default function AboutSection3() {
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-gray-900 mb-8">
+            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-gray-900 dark:text-zinc-100 mb-8">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.1}
@@ -212,7 +212,7 @@ export default function AboutSection3() {
               animationNum={9}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="grid md:grid-cols-2 gap-8 text-gray-600"
+              className="grid md:grid-cols-2 gap-8 text-gray-600 dark:text-zinc-400"
             >
               <TimelineContent
                 as="div"
@@ -255,7 +255,7 @@ export default function AboutSection3() {
                 animationNum={13}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-gray-600 text-sm mb-8"
+                className="text-gray-600 dark:text-zinc-400 text-sm mb-8"
               >
                 AI Automation | Software Engineering
               </TimelineContent>
@@ -267,7 +267,7 @@ export default function AboutSection3() {
                 customVariants={revealVariants}
                 className="mb-6"
               >
-                <p className="text-gray-900 font-medium mb-4">
+                <p className="text-gray-900 dark:text-zinc-100 font-medium mb-4">
                   Want your team focused on work that matters?
                 </p>
               </TimelineContent>
@@ -280,7 +280,7 @@ export default function AboutSection3() {
                 onClick={() => {
                   window.location.hash = "#contact";
                 }}
-                className="bg-neutral-900 hover:bg-neutral-950 shadow-lg shadow-neutral-900 border border-neutral-700 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-lg cursor-pointer font-semibold"
+                className="bg-neutral-900 dark:bg-zinc-100 hover:bg-neutral-950 dark:hover:bg-white text-white dark:text-zinc-950 shadow-lg shadow-neutral-900/20 border border-neutral-700 dark:border-zinc-300 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out px-5 py-3 rounded-lg cursor-pointer font-semibold"
               >
                 BOOK A FREE CALL <ArrowRight className="" />
               </TimelineContent>

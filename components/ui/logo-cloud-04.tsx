@@ -150,33 +150,51 @@ const LogoCloud04 = () => {
   return (
     <section data-slot="logo-cloud" className="bg-background py-20 md:py-28">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 md:px-10">
+        {/* Process Header matching Saras Dynamics standard */}
         <div
           data-slot="logo-cloud-header"
-          className="flex max-w-xl flex-col gap-4"
+          className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-10 lg:gap-12"
         >
-          <span
-            className={cn(ENTER, "text-xs uppercase text-muted-foreground")}
-          >
-            Our process
-          </span>
-          <h2
-            style={stagger(1, 80)}
-            className={cn(
-              ENTER,
-              "text-balance text-3xl font-semibold tracking-tight sm:text-4xl",
-            )}
-          >
-            Six phases from concept to production
-          </h2>
-          <p
-            style={stagger(2, 80)}
-            className={cn(
-              ENTER,
-              "text-base leading-relaxed text-muted-foreground",
-            )}
-          >
-            Explore our end-to-end engineering methodology, designed to build and scale modern web systems with architectural precision.
-          </p>
+          {/* Left Column: Eyebrow with red accent line & Title */}
+          <div className="flex flex-col items-start gap-3">
+            <div className={cn(ENTER, "flex items-center gap-3.5")}>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-foreground">
+                Our process
+              </span>
+              <span
+                className="inline-block w-20 sm:w-24 h-[2px] bg-[#c30000] rounded-sm shrink-0"
+                aria-hidden="true"
+              />
+            </div>
+            <h2
+              style={stagger(1, 80)}
+              className={cn(
+                ENTER,
+                "text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl leading-[1.08] text-balance",
+              )}
+            >
+              Six phases from<br className="hidden sm:inline" /> concept to production
+            </h2>
+          </div>
+
+          {/* Center Divider: Vertical separator line */}
+          <div
+            className="hidden md:block w-px h-16 lg:h-20 bg-border/80 dark:bg-zinc-800 shrink-0"
+            aria-hidden="true"
+          />
+
+          {/* Right Column: Description positioned at right */}
+          <div className="flex flex-col justify-center max-w-md md:ml-auto">
+            <p
+              style={stagger(2, 80)}
+              className={cn(
+                ENTER,
+                "text-sm sm:text-base text-muted-foreground leading-relaxed",
+              )}
+            >
+              Explore our end-to-end engineering methodology, designed to build and scale modern web systems with architectural precision.
+            </p>
+          </div>
         </div>
 
         <Tabs

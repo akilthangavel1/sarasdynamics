@@ -23,14 +23,14 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
   };
 
   return (
-    <div id="contact-page-wrapper" className="w-full min-h-screen bg-white text-zinc-900 flex flex-col font-serif">
+    <div id="contact-page-wrapper" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-serif transition-colors duration-300">
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
       {/* Main Content Landmark */}
       <main id="main-content" className="flex-1 w-full flex flex-col">
         {/* Hero Section with Pixel-Perfect Canvas Physics */}
-        <section id="contact-hero" className="w-full border-b border-zinc-200/80">
+        <section id="contact-hero" className="w-full border-b border-zinc-200/80 dark:border-zinc-800">
           <PixelHero
             title="Get in touch"
             word1="Get in"
@@ -50,7 +50,7 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
         </section>
 
         {/* Contact With Globe Section */}
-        <section id="contact-globe-section" className="w-full border-b border-zinc-200/80">
+        <section id="contact-globe-section" className="w-full border-b border-zinc-200/80 dark:border-zinc-800">
           <ContactWithGlobe
             title="Start a conversation"
             description="Share a few details and we’ll come back with honest feedback on your idea, a rough approach, and next steps. There’s no obligation and no hard sell."

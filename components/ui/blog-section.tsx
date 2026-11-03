@@ -169,19 +169,19 @@ export function BlogSection({ onSelectPost }: BlogSectionProps) {
 			<div className="px-4 py-8 mb-4">
 				<div className="flex flex-col md:flex-row md:items-end justify-between gap-6 text-left">
 					<div>
-						<span className="text-xs uppercase tracking-wider text-zinc-500 font-semibold block">
+						<span className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-semibold block">
 							Articles &amp; Insights
 						</span>
-						<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 mt-1">
+						<h1 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mt-1">
 							Engineering &amp; Systems Journal
 						</h1>
 					</div>
-					<p className="text-sm md:text-base text-zinc-600 max-w-lg leading-relaxed">
+					<p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed">
 						Deep dives into AI architectures, distributed systems, high-performance web, and mobile engineering by Saras Dynamics.
 					</p>
 				</div>
 			</div>
-			<div className="relative inset-x-0 h-px w-full border-b border-dashed border-zinc-200" />
+			<div className="relative inset-x-0 h-px w-full border-b border-dashed border-zinc-200 dark:border-zinc-800" />
 			<div className="grid p-4 md:grid-cols-2 lg:grid-cols-3 z-10 gap-6">
 				{displayBlogs.map((blog) => (
 					<div
@@ -192,7 +192,7 @@ export function BlogSection({ onSelectPost }: BlogSectionProps) {
 								if (onSelectPost) onSelectPost(blog.slug);
 							}
 						}}
-						className="group hover:bg-zinc-100 active:bg-zinc-200 flex flex-col gap-2 rounded-lg p-2 duration-75 cursor-pointer"
+						className="group hover:bg-zinc-100 dark:hover:bg-zinc-900 active:bg-zinc-200 dark:active:bg-zinc-800 flex flex-col gap-2 rounded-lg p-2 duration-75 cursor-pointer transition-colors"
 					>
 						<LazyImage
 							src={blog.image}
@@ -210,7 +210,7 @@ export function BlogSection({ onSelectPost }: BlogSectionProps) {
 								<div className="bg-muted-foreground size-1 rounded-full" />
 								<p>{blog.readTime}</p>
 							</div>
-							<h2 className="line-clamp-2 text-lg leading-5 font-semibold tracking-tight text-zinc-900">
+							<h2 className="line-clamp-2 text-lg leading-5 font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
 								{blog.title}
 							</h2>
 							<p className="text-muted-foreground line-clamp-3 text-sm">

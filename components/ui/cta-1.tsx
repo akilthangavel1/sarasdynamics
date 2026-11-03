@@ -119,7 +119,7 @@ export default function CTASection1({
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
         {/* ── Headline ── */}
         <h2
-          className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-black leading-[1.15] tracking-tight mb-8"
+          className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-black dark:text-white leading-[1.15] tracking-tight mb-8"
           style={{ perspective: 800 }}
         >
           {/* Line 1 */}
@@ -132,11 +132,11 @@ export default function CTASection1({
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <em className="italic font-bold text-black">app</em>
+              <em className="italic font-bold text-black dark:text-white">app</em>
             </FadeUp>
 
             <FadeUp delay={0.19}>
-              <span className="text-black font-light">←</span>
+              <span className="text-black dark:text-white font-light">←</span>
             </FadeUp>
           </span>
 
@@ -153,7 +153,7 @@ export default function CTASection1({
             <FadeUp delay={0.31}>zero</FadeUp>
 
             <FadeUp delay={0.35}>
-              <span className="inline-flex items-center border-2 border-black rounded-full px-5 py-1 leading-none text-black">
+              <span className="inline-flex items-center border-2 border-black dark:border-white rounded-full px-5 py-1 leading-none text-black dark:text-white">
                 Hassle
               </span>
             </FadeUp>
@@ -178,7 +178,7 @@ export default function CTASection1({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-2.5 bg-black text-white text-sm sm:text-base font-semibold rounded-full px-8 py-4 shadow-lg hover:bg-zinc-800 transition-all cursor-pointer active:scale-98"
+            className="inline-flex items-center justify-center gap-2.5 bg-black dark:bg-white text-white dark:text-zinc-950 text-sm sm:text-base font-semibold rounded-full px-8 py-4 shadow-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all cursor-pointer active:scale-98"
           >
             <span>{buttonText}</span>
             <span className="text-base sm:text-lg">→</span>

@@ -9,7 +9,7 @@ export interface NotchedProjectCardsDemoProps {
 
 export function NotchedProjectCardsDemo({
   className = "",
-  surface = "white",
+  surface = "var(--background)",
 }: NotchedProjectCardsDemoProps = {}) {
   return (
     <div className={`grid w-full max-w-7xl mx-auto gap-x-6 gap-y-12 px-4 sm:px-6 lg:px-8 min-[700px]:grid-cols-3 ${className}`}>

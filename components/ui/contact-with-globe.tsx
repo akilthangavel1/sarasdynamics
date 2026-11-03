@@ -693,6 +693,7 @@ const FormDots = React.forwardRef<
 FormDots.displayName = "FormDots";
 
 export interface ContactWithGlobeProps {
+  eyebrow?: string;
   title?: string;
   subtitle?: string;
   description?: string;
@@ -700,53 +701,67 @@ export interface ContactWithGlobeProps {
 }
 
 export function ContactWithGlobe({
+  eyebrow = "GET IN TOUCH",
   title = "Start a conversation",
   subtitle,
   description = "Share a few details and we’ll come back with honest feedback on your idea, a rough approach, and next steps. There’s no obligation and no hard sell.",
   className,
 }: ContactWithGlobeProps) {
+  const displayEyebrow = eyebrow || subtitle;
+
   return (
     <section
       className={cn(
-        "relative w-full bg-zinc-50 dark:bg-zinc-950 overflow-hidden py-20",
+        "relative w-full bg-zinc-50 dark:bg-zinc-950 overflow-hidden py-16 md:py-24",
         className,
       )}
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col items-center text-center gap-4 mb-12">
-          {subtitle && (
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: smoothEase }}
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-rose-500/10 border border-rose-400/30"
-            >
-              <span className="text-sm text-rose-500 font-medium">
-                {subtitle}
-              </span>
-            </motion.div>
-          )}
+        {/* Brand Title Header matching Saras Dynamics standard */}
+        <div className="max-w-5xl mx-auto mb-12 sm:mb-16">
+          <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-10 lg:gap-12">
+            {/* Left Column: Eyebrow with red accent line & Title */}
+            <div className="flex flex-col items-start gap-3">
+              {displayEyebrow && (
+                <div className="flex items-center gap-3.5">
+                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-zinc-900 dark:text-zinc-100">
+                    {displayEyebrow}
+                  </span>
+                  <span
+                    className="inline-block w-20 sm:w-24 h-[2px] bg-[#c30000] rounded-sm shrink-0"
+                    aria-hidden="true"
+                  />
+                </div>
+              )}
+              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 dark:text-white sm:text-4xl md:text-5xl leading-[1.08] text-balance">
+                {typeof title === "string" ? (
+                  title.split("\n").map((line, idx, arr) => (
+                    <React.Fragment key={idx}>
+                      {line}
+                      {idx < arr.length - 1 && <br className="hidden sm:inline" />}
+                    </React.Fragment>
+                  ))
+                ) : (
+                  title
+                )}
+              </h2>
+            </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.15, ease: smoothEase }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white"
-          >
-            {title}
-          </motion.h2>
+            {/* Center Divider: Vertical separator line */}
+            <div
+              className="hidden md:block w-px h-16 lg:h-20 bg-zinc-200 dark:bg-zinc-800 shrink-0"
+              aria-hidden="true"
+            />
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed"
-          >
-            {description}
-          </motion.p>
+            {/* Right Column: Description positioned at right */}
+            {description && (
+              <div className="flex flex-col justify-center max-w-md md:ml-auto">
+                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  {description}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto items-start">

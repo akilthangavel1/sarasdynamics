@@ -26,7 +26,7 @@ export function BlogPage({ onBackToHome }: BlogPageProps) {
   };
 
   return (
-    <div id="blog-page-wrapper" className="w-full min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white">
+    <div id="blog-page-wrapper" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-zinc-900 selection:text-white transition-colors duration-300">
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 

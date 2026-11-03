@@ -63,7 +63,7 @@ export function NotchedProjectCard({
   screen,
   dim = screen ? 0.45 : 0,
   monochrome = false,
-  surface = "var(--color-background)",
+  surface = "var(--background)",
   accent,
   accentForeground = "#0a0a0a",
   className,

@@ -17,7 +17,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
   return (
     <div
       id="web-development-page-wrapper"
-      className="w-full min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white"
+      className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-zinc-900 selection:text-white transition-colors duration-300"
     >
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
@@ -27,7 +27,7 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         {/* Enhanced Background Paths Hero Section */}
         <section
           id="web-hero"
-          className="relative w-full border-b border-zinc-200/80 overflow-hidden"
+          className="relative w-full border-b border-zinc-200/80 dark:border-zinc-800 overflow-hidden"
         >
           <EnhancedBackgroundPaths
             titleLine1="WEB DEVELOPMENT"
@@ -50,12 +50,12 @@ export function WebDevelopmentPage({ onBackToHome }: WebDevelopmentPageProps) {
         <LogoCloud04 />
 
         {/* Squeeze Carousel Section */}
-        <section className="w-full border-b border-zinc-200/80">
+        <section className="w-full border-b border-zinc-200/80 dark:border-zinc-800">
           <SqueezeCarouselDemo />
         </section>
 
         {/* Ruler Carousel Section */}
-        <section className="w-full bg-white">
+        <section className="w-full bg-white dark:bg-zinc-950">
           <RulerCarouselDemo />
         </section>
 

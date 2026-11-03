@@ -68,10 +68,10 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
   return (
     <div id="register-form-container" className="w-full">
       <div className="mb-6 text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-zinc-900">
+        <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
           Create an account
         </h2>
-        <p className="mt-1.5 text-sm text-zinc-600">
+        <p className="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400">
           Join Saras Dynamics to apply for careers and track your applications
         </p>
       </div>
@@ -80,9 +80,9 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         <div
           id="register-error-alert"
           role="alert"
-          className="mb-5 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-3.5 text-sm text-red-800"
+          className="mb-5 flex items-start gap-3 rounded-lg border border-red-200 dark:border-red-900/60 bg-red-50 dark:bg-red-950/30 p-3.5 text-sm text-red-800 dark:text-red-300"
         >
-          <AlertCircle className="mt-0.5 size-4 shrink-0 text-red-600" />
+          <AlertCircle className="mt-0.5 size-4 shrink-0 text-red-600 dark:text-red-400" />
           <div className="flex-1 leading-relaxed">{error}</div>
         </div>
       )}
@@ -91,7 +91,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         <div>
           <label
             htmlFor="register-fullname"
-            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700"
+            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300"
           >
             Full Name
           </label>
@@ -109,7 +109,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Alex Morgan"
-              className="block w-full rounded-lg border border-zinc-200 bg-white py-2.5 pl-10 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-500"
+              className="block w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 py-2.5 pl-10 pr-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:border-zinc-900 dark:focus:border-zinc-300 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-300 disabled:bg-zinc-50 dark:disabled:bg-zinc-900 disabled:text-zinc-500"
             />
           </div>
         </div>
@@ -117,7 +117,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         <div>
           <label
             htmlFor="register-email"
-            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700"
+            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300"
           >
             Email address
           </label>
@@ -135,7 +135,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="name@company.com"
-              className="block w-full rounded-lg border border-zinc-200 bg-white py-2.5 pl-10 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-500"
+              className="block w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 py-2.5 pl-10 pr-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:border-zinc-900 dark:focus:border-zinc-300 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-300 disabled:bg-zinc-50 dark:disabled:bg-zinc-900 disabled:text-zinc-500"
             />
           </div>
         </div>
@@ -143,7 +143,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         <div>
           <label
             htmlFor="register-password"
-            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700"
+            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300"
           >
             Password
           </label>
@@ -161,14 +161,14 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="At least 6 characters"
-              className="block w-full rounded-lg border border-zinc-200 bg-white py-2.5 pl-10 pr-10 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-500"
+              className="block w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 py-2.5 pl-10 pr-10 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:border-zinc-900 dark:focus:border-zinc-300 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-300 disabled:bg-zinc-50 dark:disabled:bg-zinc-900 disabled:text-zinc-500"
             />
             <button
               id="register-toggle-password-visibility"
               type="button"
               aria-label={showPassword ? "Hide password" : "Show password"}
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 focus:outline-none"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 focus:outline-none cursor-pointer"
             >
               {showPassword ? (
                 <EyeOff className="size-4" />
@@ -182,7 +182,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         <div>
           <label
             htmlFor="register-confirm-password"
-            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700"
+            className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300"
           >
             Confirm Password
           </label>
@@ -200,14 +200,14 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Repeat your password"
-              className="block w-full rounded-lg border border-zinc-200 bg-white py-2.5 pl-10 pr-10 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-500"
+              className="block w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 py-2.5 pl-10 pr-10 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:border-zinc-900 dark:focus:border-zinc-300 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-300 disabled:bg-zinc-50 dark:disabled:bg-zinc-900 disabled:text-zinc-500"
             />
             <button
               id="register-toggle-confirm-password-visibility"
               type="button"
               aria-label={showConfirmPassword ? "Hide password" : "Show password"}
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 focus:outline-none"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-zinc-400 hover:text-zinc-600 focus:outline-none cursor-pointer"
             >
               {showConfirmPassword ? (
                 <EyeOff className="size-4" />
@@ -222,7 +222,7 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
           id="register-submit-button"
           type="submit"
           disabled={loading}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 px-4 py-2.5 text-sm font-semibold text-white dark:text-zinc-900 shadow-sm transition hover:bg-zinc-800 dark:hover:bg-white focus:outline-none focus:ring-2 focus:ring-zinc-900 disabled:cursor-not-allowed disabled:opacity-70 cursor-pointer"
         >
           {loading ? (
             <>
@@ -235,14 +235,14 @@ export function RegisterForm({ onSuccess, onSwitchToLogin }: RegisterFormProps) 
         </button>
       </form>
 
-      <div className="mt-6 border-t border-zinc-100 pt-4 text-center">
-        <p className="text-sm text-zinc-600">
+      <div className="mt-6 border-t border-zinc-100 dark:border-zinc-800 pt-4 text-center">
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
           Already have an account?{" "}
           <button
             id="register-switch-to-login-btn"
             type="button"
             onClick={handleLoginClick}
-            className="font-semibold text-zinc-900 hover:underline"
+            className="font-semibold text-zinc-900 dark:text-zinc-100 hover:underline cursor-pointer"
           >
             Log in
           </button>

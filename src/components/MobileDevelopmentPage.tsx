@@ -15,7 +15,7 @@ export function MobileDevelopmentPage({ onBackToHome }: MobileDevelopmentPagePro
   return (
     <div
       id="mobile-development-page-wrapper"
-      className="w-full min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-zinc-900 selection:text-white"
+      className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-zinc-900 selection:text-white transition-colors duration-300"
     >
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
@@ -33,13 +33,15 @@ export function MobileDevelopmentPage({ onBackToHome }: MobileDevelopmentPagePro
         {/* Grid Feature Cards Section */}
         <GridFeatureCardsDemo />
 
-        {/* Testimonials Section */}
-        <Testimonial2 />
+        {/* Testimonials / Apps Section */}
+        <section id="apps" aria-label="Our Apps and Testimonials" className="scroll-mt-16">
+          <Testimonial2 />
+        </section>
 
         {/* Newsletter Section */}
         <Newsletter
           variant="plain"
-          className="w-full border-t border-zinc-200/80 bg-zinc-50/60 dark:bg-zinc-900/30 py-16 sm:py-20"
+          className="w-full border-t border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/30 py-16 sm:py-20"
           containerClassName="w-full max-w-7xl px-4 sm:px-6 lg:px-8"
           title="Stay in the loop"
           description="Get product updates, tips and release notes in your inbox once a month."

@@ -4,29 +4,64 @@ import { useId } from "react";
 interface FeaturesSectionWithCardGradientProps {
   eyebrow?: string;
   title?: string;
+  description?: string;
 }
 
 export function FeaturesSectionWithCardGradient({
   eyebrow = "END-TO-END WEB SERVICES",
-  title = "ENGINEERED FOR SCALE & PERFORMANCE",
+  title = "Engineered for\nScale & Performance",
+  description = "From custom web applications to scalable cloud platforms, we design and build modern digital products tailored to your business goals.",
 }: FeaturesSectionWithCardGradientProps = {}) {
   return (
-    <div className="py-20 lg:py-32 px-4 sm:px-6 md:px-8">
-      {/* Title Header Section */}
-      <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-        <h2 className="font-['Bebas_Neue',sans-serif] tracking-tight uppercase select-none">
-          <span className="block text-lg sm:text-2xl md:text-3xl lg:text-[2.1rem] text-neutral-500 dark:text-neutral-400 mb-1 leading-tight tracking-normal">
-            {eyebrow}
-          </span>
-          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-black dark:text-white leading-[0.9]">
-            {title}
-          </span>
-        </h2>
-        {/* Red accent line below title */}
-        <div className="w-36 sm:w-56 md:w-72 lg:w-[360px] max-w-[80%] h-[2px] bg-[#c30000] mx-auto mt-3 rounded-full" />
+    <div className="py-20 lg:py-28 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+      {/* Title Header Section matching Saras Dynamics standard */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-10 lg:gap-12 mb-12 sm:mb-16">
+        {/* Left Column: Eyebrow with red accent line & Title */}
+        <div className="flex flex-col items-start gap-3">
+          {eyebrow && (
+            <div className="flex items-center gap-3.5">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-zinc-900 dark:text-zinc-100">
+                {eyebrow}
+              </span>
+              <span
+                className="inline-block w-20 sm:w-24 h-[2px] bg-[#c30000] rounded-sm shrink-0"
+                aria-hidden="true"
+              />
+            </div>
+          )}
+          {title && (
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 dark:text-white sm:text-4xl md:text-5xl leading-[1.08] text-balance">
+              {typeof title === "string" ? (
+                title.split("\n").map((line, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    {line}
+                    {idx < arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))
+              ) : (
+                title
+              )}
+            </h2>
+          )}
+        </div>
+
+        {/* Center Divider: Vertical separator line */}
+        <div
+          className="hidden md:block w-px h-16 lg:h-20 bg-zinc-200 dark:bg-zinc-800 shrink-0"
+          aria-hidden="true"
+        />
+
+        {/* Right Column: Description positioned at right */}
+        {description && (
+          <div className="flex flex-col justify-center max-w-md md:ml-auto">
+            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              {description}
+            </p>
+          </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-4">
         {grid.map((feature) => (
           <div
             key={feature.title}

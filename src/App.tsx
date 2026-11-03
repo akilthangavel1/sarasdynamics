@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import Navbar1Demo from '@/components/ui/navbar-demo';
-import InteractiveHoverLinks from '@/components/ui/interactive-hover-links';
-import ExpandableGallery from '@/components/ui/expandable-gallery';
 import { SiteFooter } from '@/components/ui/site-footer';
 import { BlogCards } from '@/components/ui/cards';
 import ContactPage from './components/ContactPage';
@@ -17,6 +15,8 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { ManagementConsolePage } from './components/management/ManagementConsolePage';
 import FloatingAIChat from '@/components/ui/floating-ai-chat';
 import PerspectiveTunnelHero from '@/components/ui/perspective-tunnel-hero';
+import Services01 from '@/components/ui/services-01';
+import FeaturedProjectHeroDemo from '@/components/ui/featured-project-hero-demo';
 import FinalCtaBanner from '@/components/ui/final-cta-banner';
 
 export type PageRoute =
@@ -263,14 +263,12 @@ export default function App() {
             <PerspectiveTunnelHero />
           </section>
 
-          {/* Interactive Hover Links / Services Section */}
-          <section id="services" aria-label="Services & Solutions">
-            <InteractiveHoverLinks />
-          </section>
+          {/* Structured Services & Offerings Section */}
+          <Services01 id="services" />
 
-          {/* Expandable Gallery / Work Showcase */}
+          {/* Featured Project Hero Section */}
           <section id="work" aria-label="Selected Works & Case Studies">
-            <ExpandableGallery />
+            <FeaturedProjectHeroDemo />
           </section>
 
           {/* Latest Blog Cards Section */}

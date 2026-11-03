@@ -37,15 +37,14 @@ const STYLES = `
 
 .fcb-banner {
   /* Type + spacing scale with the card itself */
-  --cta-pad-y: clamp(1.75rem, 3.5vw, 2.75rem);
-  --cta-pad-x: clamp(1.5rem, 5vw, 5rem);
-  --cta-gap: 0.65rem;
-  --cta-eyebrow: clamp(0.65rem, 1vw, 0.75rem);
-  --cta-heading: clamp(1.5rem, 2.4vw + 0.5rem, 2.6rem);
-  --cta-body: clamp(0.85rem, 0.8vw + 0.35rem, 1rem);
-  --cta-action: clamp(0.82rem, 0.7vw + 0.35rem, 0.92rem);
-  --cta-btn-y: 0.65rem;
-  --cta-btn-x: 1.35rem;
+  --cta-pad-y: clamp(2.5rem, 5vw, 4rem);
+  --cta-gap: 0.85rem;
+  --cta-eyebrow: clamp(0.7rem, 0.9vw, 0.8rem);
+  --cta-heading: clamp(1.75rem, 2.5vw + 0.5rem, 2.85rem);
+  --cta-body: clamp(0.9rem, 0.85vw + 0.35rem, 1.05rem);
+  --cta-action: clamp(0.85rem, 0.75vw + 0.35rem, 0.95rem);
+  --cta-btn-y: 0.75rem;
+  --cta-btn-x: 1.5rem;
 
   position: relative;
   isolation: isolate;
@@ -56,13 +55,36 @@ const STYLES = `
   width: 100%;
   max-width: 100%;
   margin: 0;
-  min-height: clamp(220px, 28vh, 310px);
-  padding: var(--cta-pad-y) var(--cta-pad-x);
+  min-height: clamp(260px, 32vh, 360px);
+  padding: var(--cta-pad-y) 0;
   border-radius: 0;
   border-top: 1px solid color-mix(in srgb, white 10%, transparent);
   border-bottom: 1px solid color-mix(in srgb, white 10%, transparent);
   background: var(--cta-void);
   color: var(--cta-paper);
+}
+
+.fcb-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .fcb-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fcb-container {
+    padding: 0 2.5rem;
+  }
 }
 
 .fcb-blinds {
@@ -106,8 +128,8 @@ const STYLES = `
 .fcb-copy {
   position: relative;
   z-index: 2;
-  width: min(100%, 48rem);
-  max-width: 58rem;
+  width: 100%;
+  max-width: 56rem;
   display: flex;
   flex-direction: column;
   gap: var(--cta-gap);
@@ -139,23 +161,23 @@ const STYLES = `
 
 .fcb-heading {
   margin: 0;
-  max-width: 14ch;
+  max-width: 36ch;
   font-family: var(--font-display, Georgia, "Times New Roman", serif);
   font-size: var(--cta-heading);
   font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--cta-paper);
   text-wrap: balance;
 }
 
 .fcb-body {
   margin: 0;
-  max-width: 34ch;
+  max-width: 60ch;
   font-family: var(--font-body, system-ui, sans-serif);
   font-size: var(--cta-body);
-  line-height: 1.45;
-  color: color-mix(in srgb, var(--cta-paper) 72%, transparent);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--cta-paper) 78%, transparent);
 }
 
 .fcb-actions {
@@ -971,9 +993,9 @@ export default function FinalCtaBanner({
             }}
             gradientColors={gradientColors}
             angle={20}
-            blindCount={16}
-            blindMinWidth={60}
-            spotlightRadius={0.5}
+            blindCount={28}
+            blindMinWidth={55}
+            spotlightRadius={0.7}
             shine={0.4}
             relief={0.5}
             glow={0.4}
@@ -991,29 +1013,31 @@ export default function FinalCtaBanner({
         </div>
         <div className="fcb-scrim" aria-hidden="true" />
 
-        <div className="fcb-copy">
-          <p className="fcb-eyebrow">
-            <span className="fcb-eyebrowRule" aria-hidden="true" />
-            {eyebrow}
-          </p>
-          <h2 id="final-cta-heading" className="fcb-heading">
-            {heading}
-          </h2>
-          <p className="fcb-body">{body}</p>
+        <div className="fcb-container">
+          <div className="fcb-copy">
+            <p className="fcb-eyebrow">
+              <span className="fcb-eyebrowRule" aria-hidden="true" />
+              {eyebrow}
+            </p>
+            <h2 id="final-cta-heading" className="fcb-heading">
+              {heading}
+            </h2>
+            <p className="fcb-body">{body}</p>
 
-          <div className="fcb-actions">
-            <a href={primaryHref} className="fcb-primary">
-              {primaryLabel}
-              <span aria-hidden="true"> →</span>
-            </a>
-            <a
-              href={secondaryHref}
-              className="fcb-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {secondaryLabel}
-            </a>
+            <div className="fcb-actions">
+              <a href={primaryHref} className="fcb-primary">
+                {primaryLabel}
+                <span aria-hidden="true"> →</span>
+              </a>
+              <a
+                href={secondaryHref}
+                className="fcb-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {secondaryLabel}
+              </a>
+            </div>
           </div>
         </div>
       </div>

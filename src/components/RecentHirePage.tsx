@@ -16,7 +16,7 @@ export function RecentHirePage({ onBackToHome }: RecentHirePageProps) {
   };
 
   return (
-    <div id="recent-hire-page" className="w-full min-h-screen bg-white text-zinc-900 flex flex-col">
+    <div id="recent-hire-page" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col transition-colors duration-300">
       {/* Sticky Responsive Header Navigation with Admin item */}
       <Navbar1Demo />
 

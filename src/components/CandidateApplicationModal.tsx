@@ -184,13 +184,13 @@ export function CandidateApplicationModal({
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
-        className="relative w-full max-w-xl bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-zinc-200 my-8 max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-xl bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 shadow-2xl border border-zinc-200 dark:border-zinc-800 my-8 max-h-[90vh] overflow-y-auto text-zinc-900 dark:text-zinc-100"
       >
         {/* Close Button */}
         <button
           id="close-application-modal-btn"
           onClick={resetForm}
-          className="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 p-1.5 rounded-lg hover:bg-zinc-100 transition-colors"
+          className="absolute top-5 right-5 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           aria-label="Close modal"
         >
           <X className="size-5" />
@@ -199,21 +199,21 @@ export function CandidateApplicationModal({
         {!isAuthenticated ? (
           /* Authentication Required Prompt View */
           <div id="application-auth-required-view" className="text-center py-6">
-            <div className="w-14 h-14 rounded-full bg-zinc-100 text-zinc-800 flex items-center justify-center mx-auto mb-4 border border-zinc-200">
-              <Lock className="size-7 text-zinc-700" />
+            <div className="w-14 h-14 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 flex items-center justify-center mx-auto mb-4 border border-zinc-200 dark:border-zinc-700">
+              <Lock className="size-7 text-zinc-700 dark:text-zinc-300" />
             </div>
-            <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
               Authentication Required
             </h3>
-            <p className="mt-2 text-sm text-zinc-600 max-w-md mx-auto">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
               You must be signed in to submit an application for{" "}
-              <span className="font-semibold text-zinc-900">{job.title}</span>.
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">{job.title}</span>.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 id="apply-modal-signin-btn"
                 onClick={() => openAuthModal("login")}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 text-white text-xs font-semibold hover:bg-zinc-800 transition-colors cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-800 dark:hover:bg-white transition-colors cursor-pointer"
               >
                 <LogIn className="size-4" />
                 <span>Sign In to Continue</span>
@@ -221,7 +221,7 @@ export function CandidateApplicationModal({
               <button
                 id="apply-modal-register-btn"
                 onClick={() => openAuthModal("register")}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-zinc-200 text-zinc-700 text-xs font-semibold hover:bg-zinc-50 transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
               >
                 Create an Account
               </button>
@@ -230,13 +230,13 @@ export function CandidateApplicationModal({
         ) : submittedData ? (
           /* Application Success View */
           <div id="application-success-view" className="text-center py-6">
-            <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4 border border-emerald-200 dark:border-emerald-800">
               <CheckCircle2 className="size-8" />
             </div>
-            <h3 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
               Application submitted successfully.
             </h3>
-            <p className="mt-2 text-sm text-zinc-600 max-w-md mx-auto">
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 max-w-md mx-auto">
               Thank you for applying to{" "}
               <span className="font-semibold text-zinc-900">{job.title}</span> at Saras Dynamics.
             </p>
@@ -296,7 +296,7 @@ export function CandidateApplicationModal({
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-medium text-zinc-700 mb-1">
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -306,14 +306,14 @@ export function CandidateApplicationModal({
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Jane Doe"
-                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
+                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-300 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                 />
               </div>
 
               {/* Email & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-700 mb-1">
+                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -323,11 +323,11 @@ export function CandidateApplicationModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@example.com"
-                    className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
+                    className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-300 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-700 mb-1">
+                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -337,14 +337,14 @@ export function CandidateApplicationModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 555-019-2834"
-                    className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
+                    className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-300 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                   />
                 </div>
               </div>
 
               {/* Current Location */}
               <div>
-                <label className="block text-xs font-medium text-zinc-700 mb-1">
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   Current Location (City, Country / State)
                 </label>
                 <input
@@ -353,13 +353,13 @@ export function CandidateApplicationModal({
                   value={currentLocation}
                   onChange={(e) => setCurrentLocation(e.target.value)}
                   placeholder="San Francisco, CA or London, UK"
-                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white"
+                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-300 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
                 />
               </div>
 
               {/* Cover Letter */}
               <div>
-                <label className="block text-xs font-medium text-zinc-700 mb-1">
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   Cover Letter / Note
                 </label>
                 <textarea
@@ -368,7 +368,7 @@ export function CandidateApplicationModal({
                   value={coverLetter}
                   onChange={(e) => setCoverLetter(e.target.value)}
                   placeholder="Tell us why you are interested in this position and what makes you a great fit..."
-                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-900 bg-white resize-none"
+                  className="w-full px-3.5 py-2 text-sm rounded-xl border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-300 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 resize-none"
                 />
               </div>
 

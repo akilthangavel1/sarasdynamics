@@ -153,24 +153,24 @@ export function ExpandableGallery() {
   return (
     <section
       id="expandable-gallery-section"
-      className="relative w-full px-4 md:px-8 bg-white flex flex-col items-center justify-start min-h-[750px] md:min-h-[850px] overflow-hidden py-16 md:py-20 border-t border-zinc-200/80 select-none"
+      className="relative w-full px-4 md:px-8 bg-white dark:bg-zinc-950 flex flex-col items-center justify-start min-h-[750px] md:min-h-[850px] overflow-hidden py-16 md:py-20 border-t border-zinc-200/80 dark:border-zinc-800 select-none transition-colors"
     >
       <LayoutGroup id={layoutGroupId}>
         <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
           {/* Portfolio Section Header */}
-          <div className="w-full mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-zinc-200">
+          <div className="w-full mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
             <div>
               <div className="inline-flex items-center gap-2 mb-2.5">
                 <span className="w-2 h-2 rounded-full bg-[#c30000]" />
-                <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-zinc-900">
+                <span className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-zinc-900 dark:text-zinc-100">
                   Featured Portfolio
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-zinc-900 uppercase">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 uppercase">
                 Selected Works &amp; Deployments
               </h2>
             </div>
-            <p className="text-xs sm:text-sm font-medium text-zinc-500 max-w-sm leading-relaxed">
+            <p className="text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 max-w-sm leading-relaxed">
               Production architectures, enterprise AI platforms, and bespoke digital products built by Saras Dynamics.
             </p>
           </div>
@@ -263,8 +263,8 @@ export function ExpandableGallery() {
                     className={cn(
                       "cursor-pointer overflow-hidden group transition-shadow duration-300",
                       isExpanded
-                        ? "relative rounded-2xl md:rounded-3xl border border-zinc-200 bg-white shadow-sm hover:shadow-xl flex flex-col"
-                        : "absolute w-44 h-44 md:w-60 md:h-60 rounded-[2.5rem] md:rounded-[3rem] border-[6px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.12)] bg-zinc-100"
+                        ? "relative rounded-2xl md:rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-xl flex flex-col"
+                        : "absolute w-44 h-44 md:w-60 md:h-60 rounded-[2.5rem] md:rounded-[3rem] border-[6px] border-white dark:border-zinc-800 shadow-[0_20px_50px_rgba(0,0,0,0.12)] bg-zinc-100 dark:bg-zinc-800"
                     )}
                     onClick={() => !isExpanded && setIsExpanded(true)}
                   >
@@ -298,17 +298,17 @@ export function ExpandableGallery() {
 
                     {/* Metadata displayed in expanded view */}
                     {isExpanded && (
-                      <div className="p-5 flex flex-col flex-1 justify-between bg-white border-t border-zinc-100">
+                      <div className="p-5 flex flex-col flex-1 justify-between bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800">
                         <div>
                           <div className="flex items-center justify-between gap-2 mb-1.5">
                             <span className="text-[11px] font-bold uppercase tracking-wider text-[#c30000]">
                               {project.category}
                             </span>
                           </div>
-                          <h3 className="text-lg font-bold text-zinc-900 group-hover:text-[#c30000] transition-colors">
+                          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-[#c30000] transition-colors">
                             {project.title}
                           </h3>
-                          <p className="mt-1 text-xs text-zinc-600 line-clamp-2 leading-relaxed">
+                          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 line-clamp-2 leading-relaxed">
                             {project.description}
                           </p>
                         </div>

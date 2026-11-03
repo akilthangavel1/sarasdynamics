@@ -13,13 +13,13 @@ interface AboutPageProps {
 
 export function AboutPage({ onBackToHome }: AboutPageProps) {
   return (
-    <div id="about-page" className="w-full min-h-screen bg-white flex flex-col selection:bg-zinc-900 selection:text-white font-serif">
+    <div id="about-page" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-zinc-900 selection:text-white font-serif transition-colors duration-300">
       {/* Sticky Responsive Header Navigation */}
       <Navbar1Demo />
 
       <main className="w-full font-serif">
         {/* Hero Section */}
-        <section id="about-hero" className="w-full border-b border-zinc-200/80">
+        <section id="about-hero" className="w-full border-b border-zinc-200/80 dark:border-zinc-800">
           <AboutSection3 />
         </section>
 

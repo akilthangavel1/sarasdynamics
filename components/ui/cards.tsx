@@ -168,7 +168,7 @@ export interface CardProps {
 export const Card: React.FC<CardProps> = ({ card, className }) => (
   <div
     className={cn(
-      "p-5 rounded-2xl mx-3 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-84 shrink-0 bg-white border border-zinc-200/90 cursor-default select-none flex flex-col justify-between",
+      "p-5 rounded-2xl mx-3 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-84 shrink-0 bg-white dark:bg-zinc-900 border border-zinc-200/90 dark:border-zinc-800 cursor-default select-none flex flex-col justify-between",
       className
     )}
   >
@@ -178,24 +178,24 @@ export const Card: React.FC<CardProps> = ({ card, className }) => (
           <CommonAvatar />
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <p className="font-bold text-sm text-zinc-900 leading-none">{card.name}</p>
+              <p className="font-bold text-sm text-zinc-900 dark:text-zinc-100 leading-none">{card.name}</p>
               <VerifyIcon />
             </div>
-            <span className="text-xs text-zinc-500 mt-1 font-medium">
+            <span className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 font-medium">
               {card.role}{card.company ? ` • ${card.company}` : ""}
             </span>
           </div>
         </div>
       </div>
       <StarRating rating={card.rating || 5} />
-      <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed font-normal">
+      <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
         "{card.quote}"
       </p>
     </div>
 
-    <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-400 font-medium">
+    <div className="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] text-zinc-400 font-medium">
       <span className="text-[#c30000] font-semibold">Verified Client Review</span>
-      <span>Enterprise Delivery</span>
+      <span className="text-zinc-500 dark:text-zinc-400">Enterprise Delivery</span>
     </div>
   </div>
 );
@@ -212,7 +212,7 @@ export function MarqueeRow({
   const tripled = React.useMemo(() => [...data, ...data, ...data], [data]);
   return (
     <div className="relative w-full mx-auto max-w-7xl overflow-hidden isolation-isolate group">
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-24 md:w-40 z-10 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-24 md:w-40 z-10 bg-gradient-to-r from-white dark:from-zinc-950 via-white/80 dark:via-zinc-950/80 to-transparent" />
       <div
         className={cn(
           "flex transform-gpu min-w-[200%] group-hover:[animation-play-state:paused] will-change-transform",
@@ -227,7 +227,7 @@ export function MarqueeRow({
           <Card key={i} card={c} />
         ))}
       </div>
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-24 md:w-40 z-10 bg-gradient-to-l from-white via-white/80 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-24 md:w-40 z-10 bg-gradient-to-l from-white dark:from-zinc-950 via-white/80 dark:via-zinc-950/80 to-transparent" />
     </div>
   );
 }
@@ -264,21 +264,21 @@ export function WhatOurUsersSaySection() {
     <section
       id="what-our-users-say-section"
       aria-labelledby="users-say-heading"
-      className="bg-white py-24 relative overflow-hidden border-t border-zinc-200/80 w-full"
+      className="bg-white dark:bg-zinc-950 py-24 relative overflow-hidden border-t border-zinc-200/80 dark:border-zinc-800 w-full transition-colors"
     >
       <div className="container px-4 z-10 mx-auto">
         <div className="flex flex-col items-center justify-center max-w-xl mx-auto mb-14 text-center">
-          <div className="inline-flex items-center gap-2 border border-zinc-300/80 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-zinc-700 bg-zinc-100/80 mb-4">
+          <div className="inline-flex items-center gap-2 border border-zinc-300/80 dark:border-zinc-700 py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-zinc-700 dark:text-zinc-300 bg-zinc-100/80 dark:bg-zinc-900/80 mb-4">
             Testimonials
           </div>
 
           <h2
             id="users-say-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100"
           >
             What our users say
           </h2>
-          <p className="mt-4 text-zinc-600 text-base sm:text-lg leading-relaxed max-w-md">
+          <p className="mt-4 text-zinc-600 dark:text-zinc-400 text-base sm:text-lg leading-relaxed max-w-md">
             Discover how visionary founders and global product teams accelerate their growth with our studio.
           </p>
         </div>
@@ -346,6 +346,7 @@ export function Example() {
     img1: "https://cdn.21st.dev/assets/mirror/6f/6f1c926bae8d6e71a611ff4516129defb81169307e6ed04bb285252af9a35082.jpg",
     img2: "https://cdn.21st.dev/assets/mirror/53/532743c99df6086cd352dddd6c4123c731174ce078fbf8aa6b95d66a239ffb9b.jpg",
     img3: "https://cdn.21st.dev/assets/mirror/6c/6cfc99c18d9a71ed731d82d84406a209b30f7fa76f3e5b7ecdfa48efbd62f613.jpg",
+    img4: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=80",
   });
 
   return (
@@ -357,71 +358,117 @@ export function Example() {
         }
       `}</style>
 
-      {/* Контейнер с колонкой */}
-      <section id="latest-blog-section" className="cards-poppins-scope flex flex-col items-center w-full py-16 px-4 bg-white border-t border-zinc-200/80">
-        {/* Заголовок сверху */}
-        <h1 className="text-3xl font-semibold text-slate-900">Latest Blog</h1>
-        <p className="text-sm text-slate-500 mt-2 max-w-lg text-center">
-          Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
-        </p>
+      {/* Container */}
+      <section id="latest-blog-section" className="cards-poppins-scope flex flex-col items-center w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-zinc-950 border-t border-zinc-200/80 dark:border-zinc-800 transition-colors">
+        <div className="max-w-6xl mx-auto w-full">
+          {/* Brand Title Header */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-6 md:gap-10 lg:gap-12 mb-12 sm:mb-16">
+            {/* Left Column: Eyebrow with red accent line & Title */}
+            <div className="flex flex-col items-start gap-3">
+              <div className="flex items-center gap-3.5">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-zinc-900 dark:text-zinc-100">
+                  Engineering &amp; Insights
+                </span>
+                <span
+                  className="inline-block w-20 sm:w-24 h-[2px] bg-[#c30000] rounded-sm shrink-0"
+                  aria-hidden="true"
+                />
+              </div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-zinc-950 dark:text-white sm:text-4xl md:text-5xl leading-[1.08] text-balance">
+                Latest Blog
+              </h2>
+            </div>
 
-        {/* Карточки */}
-        <div className="mt-10 flex flex-wrap justify-center gap-8">
-          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-            <img
-              className="rounded-xl w-full aspect-[16/10] object-cover"
-              src={images.img1}
-              onError={() =>
-                setImages((prev) => ({
-                  ...prev,
-                  img1: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
-                }))
-              }
-              alt="Color Psychology in UI"
+            {/* Center Divider: Vertical separator line */}
+            <div
+              className="hidden md:block w-px h-16 lg:h-20 bg-zinc-200 dark:bg-zinc-800 shrink-0"
+              aria-hidden="true"
             />
-            <h3 className="text-base text-slate-900 font-medium mt-3">
-              Color Psychology in UI: How to Choose the Right Palette
-            </h3>
-            <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+            {/* Right Column: Description positioned at right */}
+            <div className="flex flex-col justify-center max-w-md md:ml-auto">
+              <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
+              </p>
+            </div>
           </div>
 
-          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-            <img
-              className="rounded-xl w-full aspect-[16/10] object-cover"
-              src={images.img2}
-              onError={() =>
-                setImages((prev) => ({
-                  ...prev,
-                  img2: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?w=600&auto=format&fit=crop&q=80",
-                }))
-              }
-              alt="Understanding Typography"
-            />
-            <h3 className="text-base text-slate-900 font-medium mt-3">
-              Understanding Typography: Crafting a Visual Voice for Your Brand
-            </h3>
-            <p className="text-xs text-indigo-600 font-medium mt-1">Branding</p>
-          </div>
+          {/* Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
+            <div className="w-full hover:-translate-y-1 transition duration-300 group cursor-pointer">
+              <img
+                className="rounded-xl w-full aspect-[16/10] object-cover"
+                src={images.img1}
+                onError={() =>
+                  setImages((prev) => ({
+                    ...prev,
+                    img1: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&auto=format&fit=crop&q=80",
+                  }))
+                }
+                alt="Color Psychology in UI"
+              />
+              <h3 className="text-base text-zinc-900 dark:text-zinc-100 font-medium mt-3 leading-snug group-hover:text-[#c30000] transition-colors">
+                Color Psychology in UI: How to Choose the Right Palette
+              </h3>
+              <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX Design</p>
+            </div>
 
-          <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
-            <img
-              className="rounded-xl w-full aspect-[16/10] object-cover"
-              src={images.img3}
-              onError={() =>
-                setImages((prev) => ({
-                  ...prev,
-                  img3: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=80",
-                }))
-              }
-              alt="Design Thinking in Practice"
-            />
-            <h3 className="text-base text-slate-900 font-medium mt-3">
-              Design Thinking in Practice: How to Solve Real User Problems
-            </h3>
-            <p className="text-xs text-indigo-600 font-medium mt-1">Product Design</p>
+            <div className="w-full hover:-translate-y-1 transition duration-300 group cursor-pointer">
+              <img
+                className="rounded-xl w-full aspect-[16/10] object-cover"
+                src={images.img2}
+                onError={() =>
+                  setImages((prev) => ({
+                    ...prev,
+                    img2: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?w=600&auto=format&fit=crop&q=80",
+                  }))
+                }
+                alt="Understanding Typography"
+              />
+              <h3 className="text-base text-zinc-900 dark:text-zinc-100 font-medium mt-3 leading-snug group-hover:text-[#c30000] transition-colors">
+                Understanding Typography: Crafting a Visual Voice for Your Brand
+              </h3>
+              <p className="text-xs text-indigo-600 font-medium mt-1">Branding</p>
+            </div>
+
+            <div className="w-full hover:-translate-y-1 transition duration-300 group cursor-pointer">
+              <img
+                className="rounded-xl w-full aspect-[16/10] object-cover"
+                src={images.img3}
+                onError={() =>
+                  setImages((prev) => ({
+                    ...prev,
+                    img3: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=80",
+                  }))
+                }
+                alt="Design Thinking in Practice"
+              />
+              <h3 className="text-base text-zinc-900 dark:text-zinc-100 font-medium mt-3 leading-snug group-hover:text-[#c30000] transition-colors">
+                Design Thinking in Practice: How to Solve Real User Problems
+              </h3>
+              <p className="text-xs text-indigo-600 font-medium mt-1">Product Design</p>
+            </div>
+
+            <div className="w-full hover:-translate-y-1 transition duration-300 group cursor-pointer">
+              <img
+                className="rounded-xl w-full aspect-[16/10] object-cover"
+                src={images.img4}
+                onError={() =>
+                  setImages((prev) => ({
+                    ...prev,
+                    img4: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
+                  }))
+                }
+                alt="Architecting AI Agents"
+              />
+              <h3 className="text-base text-zinc-900 dark:text-zinc-100 font-medium mt-3 leading-snug group-hover:text-[#c30000] transition-colors">
+                Architecting AI Agents: Multi-Modal LLMs in Modern Software
+              </h3>
+              <p className="text-xs text-indigo-600 font-medium mt-1">AI Architecture</p>
+            </div>
           </div>
-        </div>
-      </section>
+      </div>
+    </section>
     </>
   );
 }
