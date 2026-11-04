@@ -9,7 +9,7 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className = "", showLabel = false }: ThemeToggleProps) {
   const { theme, toggleTheme, mounted } = useTheme();
-  const isDark = mounted ? theme === "dark" : false;
+  const isDark = mounted ? theme === "dark" : true;
 
   return (
     <button

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,15 +8,17 @@
     <meta property="og:title" content="Saras Dynamics | AI Automation &amp; Digital Engineering" />
     <meta property="og:description" content="Saras Dynamics engineers intelligent software, advanced AI architectures, and robust digital systems." />
     <meta property="og:type" content="website" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="dark light" />
     <script>
       (function() {
         try {
-          const stored = localStorage.getItem('saras_theme');
-          if (stored === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
+          const stored = localStorage.getItem('theme') || localStorage.getItem('saras_theme');
+          if (stored === 'light') {
             document.documentElement.classList.remove('dark');
+            document.documentElement.style.colorScheme = 'light';
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
           }
         } catch (e) {}
       })();

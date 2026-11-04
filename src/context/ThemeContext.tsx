@@ -11,7 +11,7 @@ export function useTheme() {
     setMounted(true);
   }, []);
 
-  const currentTheme = (mounted ? (resolvedTheme || theme || 'light') : 'light') as Theme;
+  const currentTheme = (mounted ? (resolvedTheme || theme || 'dark') : 'dark') as Theme;
 
   const toggleTheme = () => {
     const next = currentTheme === 'dark' ? 'light' : 'dark';
