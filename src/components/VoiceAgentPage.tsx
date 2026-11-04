@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
+import SpeakingOrb, { SpeakingOrbHandle, OrbState } from "@/components/ui/speaking-orb";
 import {
   Mic,
   MicOff,
@@ -124,6 +125,47 @@ export function VoiceAgentPage({ onBackToHome }: VoiceAgentPageProps) {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [isMicMuted, setIsMicMuted] = useState<boolean>(false);
 
+  // Speaking Orb Hero State
+  const orbRef = useRef<SpeakingOrbHandle>(null);
+  const [orbState, setOrbState] = useState<OrbState>("listening");
+  const [customInput, setCustomInput] = useState<string>(
+    "Good morning. Saras Dynamics voice agent active and listening. How can I help you today?"
+  );
+  const [isMicActive, setIsMicActive] = useState<boolean>(false);
+  const stopMicRef = useRef<(() => void) | null>(null);
+
+  const handleSpeak = (text?: string) => {
+    const toSay = text || customInput || "Good morning. Saras Dynamics voice agent active and listening.";
+    setOrbState("speaking");
+    orbRef.current?.say(toSay);
+  };
+
+  const handleToggleMic = async () => {
+    if (isMicActive) {
+      stopMicRef.current?.();
+      stopMicRef.current = null;
+      setIsMicActive(false);
+      setOrbState("listening");
+    } else {
+      try {
+        const stop = await orbRef.current?.listen();
+        if (stop) {
+          stopMicRef.current = stop;
+          setIsMicActive(true);
+          setOrbState("listening");
+        }
+      } catch (err) {
+        console.error("Mic access error:", err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      stopMicRef.current?.();
+    };
+  }, []);
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (isSimulatingCall) {
@@ -216,6 +258,117 @@ export function VoiceAgentPage({ onBackToHome }: VoiceAgentPageProps) {
                 <Headphones className="size-4 text-[#c30000]" />
                 <span>Test Live Simulator</span>
               </a>
+            </div>
+
+            {/* ===================== SPEAKING ORB HERO CENTERPIECE ===================== */}
+            <div className="mt-12 w-full max-w-2xl rounded-3xl border border-zinc-200/90 dark:border-zinc-800 bg-[#07070c] text-[#f4f1fa] shadow-2xl p-6 sm:p-8 flex flex-col items-center relative overflow-hidden">
+              {/* Radial gradient background illumination */}
+              <div className="absolute inset-0 bg-radial-gradient from-red-600/15 via-transparent to-transparent pointer-events-none" />
+
+              {/* Status Header */}
+              <div className="w-full flex items-center justify-between pb-4 border-b border-white/10 text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <span className="font-mono uppercase tracking-wider text-zinc-300">
+                    Saras Real-Time Neural Orb
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400">
+                  <span>State:</span>
+                  <span className="px-2 py-0.5 rounded bg-white/10 uppercase text-amber-300 font-bold">
+                    {orbState}
+                  </span>
+                </div>
+              </div>
+
+              {/* The Speaking Orb Canvas */}
+              <div className="w-full max-w-[340px] sm:max-w-[380px] my-3">
+                <SpeakingOrb
+                  ref={orbRef}
+                  state={orbState}
+                  level={0.4}
+                  onEnd={() => setOrbState("listening")}
+                />
+              </div>
+
+              {/* Quick Speech Phrases */}
+              <div className="w-full mt-3 flex flex-wrap items-center justify-center gap-2">
+                {[
+                  "Good morning. Saras Dynamics voice agent active and listening. How can I help you today?",
+                  "Checking production telemetry... all Kubernetes nodes healthy with 12ms latency.",
+                  "Lead qualified. Booking discovery sprint for tomorrow at 2 PM EST."
+                ].map((phrase, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => handleSpeak(phrase)}
+                    className="text-xs px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/15 text-zinc-200 transition-all cursor-pointer text-left truncate max-w-xs sm:max-w-md"
+                  >
+                    💬 {phrase}
+                  </button>
+                ))}
+              </div>
+
+              {/* Live Mic and Custom Input Bar */}
+              <div className="w-full mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleToggleMic}
+                  className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-colors cursor-pointer shrink-0 ${
+                    isMicActive
+                      ? "bg-red-600 text-white animate-pulse"
+                      : "bg-white/10 hover:bg-white/20 text-white"
+                  }`}
+                >
+                  {isMicActive ? <MicOff className="size-4" /> : <Mic className="size-4" />}
+                  <span>{isMicActive ? "Mute Microphone" : "Test Your Mic"}</span>
+                </button>
+
+                <div className="flex-1 w-full flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={customInput}
+                    onChange={(e) => setCustomInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSpeak(customInput)}
+                    placeholder="Type anything for the Orb to synthesize..."
+                    className="flex-1 bg-white/5 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-red-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSpeak(customInput)}
+                    className="px-4 py-2.5 rounded-xl bg-[#c30000] hover:bg-[#a50000] text-white text-xs font-bold transition-colors cursor-pointer shrink-0"
+                  >
+                    Speak
+                  </button>
+                </div>
+              </div>
+
+              {/* Visual State Selectors */}
+              <div className="w-full mt-4 flex items-center justify-center gap-1.5 pt-2 text-[11px] text-zinc-400">
+                <span>Morph State:</span>
+                {(["listening", "thinking", "searching", "speaking", "done"] as OrbState[]).map((st) => (
+                  <button
+                    key={st}
+                    onClick={() => {
+                      setOrbState(st);
+                      if (st === "speaking") {
+                        handleSpeak();
+                      }
+                    }}
+                    className={`px-2 py-0.5 rounded capitalize transition-colors cursor-pointer ${
+                      orbState === st
+                        ? "bg-red-500 text-white font-bold"
+                        : "hover:text-white"
+                    }`}
+                  >
+                    {st}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Performance Metrics Row */}
@@ -907,3 +1060,4 @@ export function VoiceAgentPage({ onBackToHome }: VoiceAgentPageProps) {
 }
 
 export default VoiceAgentPage;
+
