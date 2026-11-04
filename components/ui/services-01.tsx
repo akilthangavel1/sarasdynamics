@@ -32,6 +32,14 @@ const services = [
     href: "#web",
   },
   {
+    title: "Voice AI & Agents",
+    description:
+      "Ultra-low latency conversational voice agents with real-time tool calling, telephony integration, and natural turn-taking.",
+    deliverables: ["Streaming STT/TTS", "SIP Trunking", "CRM & Tool Sync"],
+    price: "From $5,000",
+    href: "#voice-agent",
+  },
+  {
     title: "Design systems",
     description:
       "Tokens, components and documentation that keep every screen consistent as your team scales.",

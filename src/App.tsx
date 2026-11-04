@@ -9,6 +9,7 @@ import CareersPage from './components/CareersPage';
 import BlogPage from './components/BlogPage';
 import WebDevelopmentPage from './components/WebDevelopmentPage';
 import MobileDevelopmentPage from './components/MobileDevelopmentPage';
+import VoiceAgentPage from './components/VoiceAgentPage';
 import AuthPage from './components/auth/AuthPage';
 import AuthModal from './components/auth/AuthModal';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -28,6 +29,7 @@ export type PageRoute =
   | 'blog'
   | 'web'
   | 'mobile'
+  | 'voice-agent'
   | 'login'
   | 'register'
   | 'forgot-password'
@@ -80,6 +82,14 @@ export default function App() {
         hash === '#mobile-dev'
       ) {
         setCurrentPage('mobile');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (
+        hash === '#voice-agent' ||
+        hash === '#voice' ||
+        hash === '#voice-ai' ||
+        hash === '#voiceagent'
+      ) {
+        setCurrentPage('voice-agent');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#login' || hash === '#signin' || hash === '#auth') {
         setCurrentPage('login');
@@ -140,6 +150,13 @@ export default function App() {
     ) {
       setCurrentPage('mobile');
     } else if (
+      initialHash === '#voice-agent' ||
+      initialHash === '#voice' ||
+      initialHash === '#voice-ai' ||
+      initialHash === '#voiceagent'
+    ) {
+      setCurrentPage('voice-agent');
+    } else if (
       initialHash === '#recent-hires' ||
       initialHash === '#admin-recent-hires' ||
       initialHash === '#recent-hire'
@@ -189,6 +206,8 @@ export default function App() {
                     ? '#web'
                     : page === 'mobile'
                       ? '#mobile'
+                      : page === 'voice-agent'
+                        ? '#voice-agent'
                       : page === 'login'
                         ? '#login'
                         : page === 'register'
@@ -249,6 +268,10 @@ export default function App() {
 
     if (currentPage === 'mobile') {
       return <MobileDevelopmentPage onBackToHome={() => navigateTo('home')} />;
+    }
+
+    if (currentPage === 'voice-agent') {
+      return <VoiceAgentPage onBackToHome={() => navigateTo('home')} />;
     }
 
     return (

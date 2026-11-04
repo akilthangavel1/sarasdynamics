@@ -3,6 +3,7 @@ import {
   Book,
   Globe,
   Menu,
+  Mic,
   Smartphone,
   Sunset,
   Trees,
@@ -96,6 +97,12 @@ const Navbar1 = ({
           icon: <Smartphone className="size-5 shrink-0 text-zinc-700" />,
           url: "#mobile",
         },
+        {
+          title: "Voice Agent",
+          description: "Ultra-low latency conversational AI and voice automation agents",
+          icon: <Mic className="size-5 shrink-0 text-zinc-700" />,
+          url: "#voice-agent",
+        },
       ],
     },
     {
@@ -130,6 +137,7 @@ const Navbar1 = ({
   mobileExtraLinks = [
     { name: "Web Development", url: "#web" },
     { name: "Mobile Development", url: "#mobile" },
+    { name: "Voice Agent", url: "#voice-agent" },
     { name: "About Us", url: "#about" },
     { name: "Careers", url: "#careers" },
     { name: "Blog", url: "#blog" },
