@@ -10,6 +10,7 @@ import BlogPage from './components/BlogPage';
 import WebDevelopmentPage from './components/WebDevelopmentPage';
 import MobileDevelopmentPage from './components/MobileDevelopmentPage';
 import VoiceAgentPage from './components/VoiceAgentPage';
+import LMSPage from './components/LMSPage';
 import AuthPage from './components/auth/AuthPage';
 import AuthModal from './components/auth/AuthModal';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -30,6 +31,7 @@ export type PageRoute =
   | 'web'
   | 'mobile'
   | 'voice-agent'
+  | 'lms'
   | 'login'
   | 'register'
   | 'forgot-password'
@@ -90,6 +92,14 @@ export default function App() {
         hash === '#voiceagent'
       ) {
         setCurrentPage('voice-agent');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (
+        hash === '#lms' ||
+        hash === '#learning-management-system' ||
+        hash === '#elearning' ||
+        hash === '#learning'
+      ) {
+        setCurrentPage('lms');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#login' || hash === '#signin' || hash === '#auth') {
         setCurrentPage('login');
@@ -157,6 +167,13 @@ export default function App() {
     ) {
       setCurrentPage('voice-agent');
     } else if (
+      initialHash === '#lms' ||
+      initialHash === '#learning-management-system' ||
+      initialHash === '#elearning' ||
+      initialHash === '#learning'
+    ) {
+      setCurrentPage('lms');
+    } else if (
       initialHash === '#recent-hires' ||
       initialHash === '#admin-recent-hires' ||
       initialHash === '#recent-hire'
@@ -208,6 +225,8 @@ export default function App() {
                       ? '#mobile'
                       : page === 'voice-agent'
                         ? '#voice-agent'
+                      : page === 'lms'
+                        ? '#lms'
                       : page === 'login'
                         ? '#login'
                         : page === 'register'
@@ -272,6 +291,10 @@ export default function App() {
 
     if (currentPage === 'voice-agent') {
       return <VoiceAgentPage onBackToHome={() => navigateTo('home')} />;
+    }
+
+    if (currentPage === 'lms') {
+      return <LMSPage onBackToHome={() => navigateTo('home')} />;
     }
 
     return (

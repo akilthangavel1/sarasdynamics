@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   Book,
   Globe,
+  GraduationCap,
   Menu,
   Mic,
   Smartphone,
@@ -103,6 +104,12 @@ const Navbar1 = ({
           icon: <Mic className="size-5 shrink-0 text-zinc-700" />,
           url: "#voice-agent",
         },
+        {
+          title: "LMS & E-Learning",
+          description: "Enterprise learning management systems and custom EdTech platforms",
+          icon: <GraduationCap className="size-5 shrink-0 text-zinc-700" />,
+          url: "#lms",
+        },
       ],
     },
     {
@@ -138,6 +145,7 @@ const Navbar1 = ({
     { name: "Web Development", url: "#web" },
     { name: "Mobile Development", url: "#mobile" },
     { name: "Voice Agent", url: "#voice-agent" },
+    { name: "LMS & E-Learning", url: "#lms" },
     { name: "About Us", url: "#about" },
     { name: "Careers", url: "#careers" },
     { name: "Blog", url: "#blog" },

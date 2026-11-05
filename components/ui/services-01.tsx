@@ -40,6 +40,14 @@ const services = [
     href: "#voice-agent",
   },
   {
+    title: "LMS & E-Learning Platforms",
+    description:
+      "Enterprise Learning Management Systems with SCORM/LTI compliance, AI auto-grading, and high-concurrency streaming.",
+    deliverables: ["SCORM / xAPI / LTI", "AI Tutoring", "SSO & Compliance"],
+    price: "From $8,000",
+    href: "#lms",
+  },
+  {
     title: "Design systems",
     description:
       "Tokens, components and documentation that keep every screen consistent as your team scales.",

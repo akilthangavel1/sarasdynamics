@@ -1,4 +1,4 @@
-import { BookOpen, Globe, Mic, Smartphone, Sunset, Users } from "lucide-react";
+import { BookOpen, Globe, GraduationCap, Mic, Smartphone, Sunset, Users } from "lucide-react";
 import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 
 const demoData = {
@@ -35,6 +35,12 @@ const demoData = {
           icon: <Mic className="size-5 shrink-0 text-zinc-700" />,
           url: "#voice-agent",
         },
+        {
+          title: "LMS & E-Learning",
+          description: "Enterprise learning management systems and custom EdTech platforms",
+          icon: <GraduationCap className="size-5 shrink-0 text-zinc-700" />,
+          url: "#lms",
+        },
       ],
     },
     {
@@ -70,6 +76,7 @@ const demoData = {
     { name: "Web Development", url: "#web" },
     { name: "Mobile Development", url: "#mobile" },
     { name: "Voice Agent", url: "#voice-agent" },
+    { name: "LMS & E-Learning", url: "#lms" },
     { name: "About Us", url: "#about" },
     { name: "Careers", url: "#careers" },
     { name: "Blog", url: "#blog" },

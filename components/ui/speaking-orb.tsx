@@ -1021,3 +1021,4 @@ const SpeakingOrb = React.forwardRef<SpeakingOrbHandle, SpeakingOrbProps>(
 
 export default SpeakingOrb;
 export { SpeakingOrb };
+

@@ -10,6 +10,7 @@ const footerColumns = [
       { name: "Web Application Engineering", href: "#web" },
       { name: "Mobile App Development", href: "#mobile" },
       { name: "Voice AI & Autonomous Agents", href: "#voice-agent" },
+      { name: "Enterprise LMS & E-Learning", href: "#lms" },
       { name: "Cloud & Systems Architecture", href: "#services" },
       { name: "UI/UX & Product Design", href: "#web" },
     ],
