@@ -1,0 +1,73 @@
+{
+    "ResourceRecordSets": [
+        {
+            "Name": "sarasdynamics.com.",
+            "Type": "A",
+            "TTL": 60,
+            "ResourceRecords": [
+                {
+                    "Value": "52.66.182.165"
+                }
+            ]
+        },
+        {
+            "Name": "sarasdynamics.com.",
+            "Type": "NS",
+            "TTL": 172800,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-717.awsdns-25.net."
+                },
+                {
+                    "Value": "ns-452.awsdns-56.com."
+                },
+                {
+                    "Value": "ns-1927.awsdns-48.co.uk."
+                },
+                {
+                    "Value": "ns-1311.awsdns-35.org."
+                }
+            ]
+        },
+        {
+            "Name": "sarasdynamics.com.",
+            "Type": "SOA",
+            "TTL": 900,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-717.awsdns-25.net. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+                }
+            ]
+        },
+        {
+            "Name": "lms.sarasdynamics.com.",
+            "Type": "A",
+            "TTL": 60,
+            "ResourceRecords": [
+                {
+                    "Value": "13.203.79.138"
+                }
+            ]
+        },
+        {
+            "Name": "work.sarasdynamics.com.",
+            "Type": "A",
+            "TTL": 60,
+            "ResourceRecords": [
+                {
+                    "Value": "52.66.246.155"
+                }
+            ]
+        },
+        {
+            "Name": "www.sarasdynamics.com.",
+            "Type": "A",
+            "TTL": 60,
+            "ResourceRecords": [
+                {
+                    "Value": "52.66.182.165"
+                }
+            ]
+        }
+    ]
+}

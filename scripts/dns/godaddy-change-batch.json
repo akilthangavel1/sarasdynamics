@@ -1,0 +1,103 @@
+{
+  "Comment": "Configure GoDaddy Business Email DNS records for sarasdynamics.com",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "sarasdynamics.com.",
+        "Type": "TXT",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "\"T3956101\""
+          },
+          {
+            "Value": "\"v=spf1 include:secureserver.net -all\""
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_dmarc.sarasdynamics.com.",
+        "Type": "TXT",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "\"v=DMARC1; p=reject; rua=mailto:dmarc_rua@onsecureserver.net; adkim=r; aspf=r;\""
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "sarasdynamics.com.",
+        "Type": "MX",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "0 smtp.secureserver.net."
+          },
+          {
+            "Value": "10 mailstore1.secureserver.net."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "email.sarasdynamics.com.",
+        "Type": "CNAME",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "email.secureserver.net."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "secureserver1._domainkey.sarasdynamics.com.",
+        "Type": "CNAME",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "s1.dkim.sarasdynamics_com.52c.onsecureserver.net."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "secureserver2._domainkey.sarasdynamics.com.",
+        "Type": "CNAME",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "s2.dkim.sarasdynamics_com.52c.onsecureserver.net."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_autodiscover._tcp.sarasdynamics.com.",
+        "Type": "SRV",
+        "TTL": 3600,
+        "ResourceRecords": [
+          {
+            "Value": "100 1 443 autodiscover.secureserver.net."
+          }
+        ]
+      }
+    }
+  ]
+}
+
