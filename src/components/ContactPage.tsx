@@ -16,7 +16,7 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
   };
 
   const handleBookCall = () => {
-    window.open("https://calendar.app.google/4JkJc4kyNoDSfL699", "_blank");
+    window.open("https://calendly.com/sarasdynamics/30min", "_blank");
   };
 
   return (
@@ -35,7 +35,7 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
             description="We work with teams across the US, UK, Europe and the Middle East, with overlap hours that suit your time zone. Tell us about your project, and we’ll reply within one business day."
             primaryCta="Book a 30-min call"
             primaryCtaMobile="Book a 30-min call"
-            primaryHref="https://calendar.app.google/4JkJc4kyNoDSfL699"
+            primaryHref="https://calendly.com/sarasdynamics/30min"
             onPrimaryClick={handleBookCall}
             secondaryCta="Send a message"
             secondaryCtaMobile="Send a message"
