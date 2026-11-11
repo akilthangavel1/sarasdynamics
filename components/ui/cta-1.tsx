@@ -97,7 +97,7 @@ export interface CTASection1Props {
 export default function CTASection1({
   className = "",
   buttonText = "Book a Discovery Call",
-  buttonHref = "#contact",
+  buttonHref = "https://calendar.app.google/4JkJc4kyNoDSfL699",
   onButtonClick,
 }: CTASection1Props = {}) {
   const handleClick = () => {

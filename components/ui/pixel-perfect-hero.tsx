@@ -547,7 +547,7 @@ export function PixelHero({
   description = "A senior engineering team in India delivering world-class AI and software for clients across time zones, at a fraction of local costs.",
   primaryCta = "Book a Discovery Call",
   primaryCtaMobile = "Book Call",
-  primaryHref,
+  primaryHref = "https://calendar.app.google/4JkJc4kyNoDSfL699",
   secondaryCta = "What We Build",
   secondaryCtaMobile = "What We Build",
   secondaryIcon,

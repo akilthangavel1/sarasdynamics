@@ -41,7 +41,9 @@ export function VoiceAgentPage({ onBackToHome }: VoiceAgentPageProps) {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
               <a
-                href="#contact"
+                href="https://calendar.app.google/4JkJc4kyNoDSfL699"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#c30000] hover:bg-[#a50000] text-white font-bold text-sm tracking-wide shadow-lg shadow-red-900/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Book Technical Discovery</span>

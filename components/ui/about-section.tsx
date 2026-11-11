@@ -278,7 +278,7 @@ export default function AboutSection3() {
                 timelineRef={heroRef}
                 customVariants={revealVariants}
                 onClick={() => {
-                  window.location.hash = "#contact";
+                  window.open("https://calendar.app.google/4JkJc4kyNoDSfL699", "_blank");
                 }}
                 className="bg-neutral-900 dark:bg-zinc-100 hover:bg-neutral-950 dark:hover:bg-white text-white dark:text-zinc-950 shadow-lg shadow-neutral-900/20 border border-neutral-700 dark:border-zinc-300 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out px-5 py-3 rounded-lg cursor-pointer font-semibold"
               >

@@ -16,10 +16,7 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
   };
 
   const handleBookCall = () => {
-    window.open(
-      "https://wa.me/919971999100?text=Hi%20Saras%20Dynamics%2C%20I'd%20like%20to%20book%20a%2030-minute%20call%20regarding%20a%20project.",
-      "_blank"
-    );
+    window.open("https://calendar.app.google/4JkJc4kyNoDSfL699", "_blank");
   };
 
   return (
@@ -38,7 +35,7 @@ export function ContactPage({ onBackToHome }: ContactPageProps) {
             description="We work with teams across the US, UK, Europe and the Middle East, with overlap hours that suit your time zone. Tell us about your project, and we’ll reply within one business day."
             primaryCta="Book a 30-min call"
             primaryCtaMobile="Book a 30-min call"
-            primaryHref="https://wa.me/919971999100?text=Hi%20Saras%20Dynamics%2C%20I'd%20like%20to%20book%20a%2030-minute%20call%20regarding%20a%20project."
+            primaryHref="https://calendar.app.google/4JkJc4kyNoDSfL699"
             onPrimaryClick={handleBookCall}
             secondaryCta="Send a message"
             secondaryCtaMobile="Send a message"

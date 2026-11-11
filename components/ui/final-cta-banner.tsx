@@ -968,7 +968,7 @@ export default function FinalCtaBanner({
   heading = "Let's make your business look the way it deserves.",
   body = "Tell us about your business. We will set up a free discovery call and follow with a written proposal.",
   primaryLabel = "Book a discovery call",
-  primaryHref = "#contact",
+  primaryHref = "https://calendar.app.google/4JkJc4kyNoDSfL699",
   secondaryLabel = "Message us on WhatsApp",
   secondaryHref = "https://wa.me/",
   gradientColors = ["#FF5A6E", "#d0112b", "#6b0a16", "#1a0508"],
@@ -1025,7 +1025,12 @@ export default function FinalCtaBanner({
             <p className="fcb-body">{body}</p>
 
             <div className="fcb-actions">
-              <a href={primaryHref} className="fcb-primary">
+              <a
+                href={primaryHref}
+                className="fcb-primary"
+                target={primaryHref.startsWith("http") ? "_blank" : undefined}
+                rel={primaryHref.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
                 {primaryLabel}
                 <span aria-hidden="true"> →</span>
               </a>
