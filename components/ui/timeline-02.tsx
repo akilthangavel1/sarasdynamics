@@ -81,16 +81,34 @@ export const Timeline = ({
 }: TimelineProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = items[activeIndex];
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    // Avoid scrolling the page window on initial mount
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     const activeRef = buttonRefs.current[activeIndex];
-    if (activeRef) {
-      activeRef.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
+    const container = containerRef.current;
+    if (activeRef && container) {
+      const isLg = typeof window !== "undefined" && window.innerWidth >= 1024;
+      if (isLg) {
+        const top =
+          activeRef.offsetTop -
+          container.clientHeight / 2 +
+          activeRef.clientHeight / 2;
+        container.scrollTo({ top, behavior: "smooth" });
+      } else {
+        const left =
+          activeRef.offsetLeft -
+          container.clientWidth / 2 +
+          activeRef.clientWidth / 2;
+        container.scrollTo({ left, behavior: "smooth" });
+      }
     }
   }, [activeIndex]);
 
@@ -99,6 +117,7 @@ export const Timeline = ({
       <div className="grid grid-cols-12 gap-6">
         <div className="relative flex flex-col items-center shrink-0 w-full lg:w-auto lg:col-span-1 col-span-12">
           <div
+            ref={containerRef}
             className="flex flex-row lg:flex-col gap-6 lg:h-105 overflow-auto no-scrollbar md:snap-y snap-x lg:py-40 lg:px-0 px-40 snap-mandatory w-full"
             style={{ scrollBehavior: "smooth" }}
           >

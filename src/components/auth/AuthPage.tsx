@@ -43,15 +43,20 @@ export function AuthPage({ initialView = "login", onBackToHome }: AuthPageProps)
           <div className="rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8 shadow-sm">
             {/* Brand Header */}
             <div className="mb-6 flex flex-col items-center justify-center">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2.5 mb-2">
                 <img
-                  src="/saras-dynamics-logo.svg"
+                  src="/saras-dynamics-logo.png?v=2"
                   alt="Saras Dynamics"
-                  className="size-8 object-contain"
-                  referrerPolicy="no-referrer"
+                  className="h-9 w-auto object-contain dark:hidden shrink-0"
                 />
-                <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                  Saras<span className="text-red-600 font-extrabold">Dynamics</span>
+                <img
+                  src="/saras-dynamics-logo-dark.png?v=2"
+                  alt="Saras Dynamics"
+                  className="h-9 w-auto object-contain hidden dark:block shrink-0"
+                />
+                <span className="text-xl tracking-tight">
+                  <span className="text-black dark:text-white font-black">Saras </span>
+                  <span className="text-zinc-500 dark:text-zinc-400 font-bold">Dynamics</span>
                 </span>
               </div>
             </div>

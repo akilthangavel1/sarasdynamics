@@ -8,60 +8,44 @@ import {
 import { cn } from "@/lib/utils";
 
 const header = {
-  eyebrow: "SERVICES",
-  title: "What I can do for you.",
+  eyebrow: "OUR SERVICES",
+  title: "Pick a service, start building.",
   description:
     "Focused engagements with a clear scope, a fixed price and a date you can plan around.",
 };
 
 const services = [
   {
-    title: "Product design",
+    title: "AI & Autonomous Systems",
     description:
-      "Research, flows and high-fidelity interfaces, tested with real users before a line of code is written.",
-    deliverables: ["User research", "Wireframes", "Prototypes"],
-    price: "From $4,000",
+      "We build AI agents and intelligent systems that handle repetitive work, answer questions and make decisions inside your business tools.",
+    deliverables: ["AI Agents", "LLM Integration", "Custom AI Systems"],
+    price: "From $2,500",
     href: "#contact",
   },
   {
-    title: "Web development",
+    title: "Web Application Engineering",
     description:
-      "Fast, accessible sites and web apps built with React and Next.js, ready to grow with your product.",
-    deliverables: ["Next.js", "CMS", "Performance"],
-    price: "From $6,000",
+      "Custom dashboards, portals and web platforms engineered for speed and reliability.",
+    deliverables: ["Next.js", "SaaS", "Performance"],
+    price: "From $1,000",
     href: "#web",
   },
   {
-    title: "Voice AI & Agents",
+    title: "Mobile App Development",
     description:
-      "Ultra-low latency conversational voice agents with real-time tool calling, telephony integration, and natural turn-taking.",
-    deliverables: ["Streaming STT/TTS", "SIP Trunking", "CRM & Tool Sync"],
-    price: "From $5,000",
+      "We take your app from idea to App Store and Google Play launch, with one team handling every step.",
+    deliverables: ["iOS & Android", "App Store", "Google Play"],
+    price: "From $2,500",
+    href: "#mobile",
+  },
+  {
+    title: "Voice AI & Autonomous Agents",
+    description:
+      "Real-time voice agents that answer calls, book appointments and update your CRM, with natural turn-taking. Voice agents that answer calls, qualify leads and book meetings around the clock.",
+    deliverables: ["Streaming STT/TTS", "SIP Trunking", "CRM Sync"],
+    price: "From $2,500",
     href: "#voice-agent",
-  },
-  {
-    title: "LMS & E-Learning Platforms",
-    description:
-      "Enterprise Learning Management Systems with SCORM/LTI compliance, AI auto-grading, and high-concurrency streaming.",
-    deliverables: ["SCORM / xAPI / LTI", "AI Tutoring", "SSO & Compliance"],
-    price: "From $8,000",
-    href: "#lms",
-  },
-  {
-    title: "Design systems",
-    description:
-      "Tokens, components and documentation that keep every screen consistent as your team scales.",
-    deliverables: ["Tokens", "Component library", "Docs"],
-    price: "From $8,000",
-    href: "#contact",
-  },
-  {
-    title: "Audits and consulting",
-    description:
-      "A clear report on accessibility, performance and UX, with a prioritised plan your team can act on.",
-    deliverables: ["Accessibility", "Core Web Vitals", "UX review"],
-    price: "From $1,500",
-    href: "#contact",
   },
 ];
 

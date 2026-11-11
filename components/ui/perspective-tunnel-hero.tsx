@@ -11,13 +11,13 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 const IMAGES = [
-    { src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80", title: "Chroma I" },
-    { src: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop&q=80", title: "Neural Core II" },
-    { src: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=80", title: "Cyber Grid III" },
-    { src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop&q=80", title: "Quantum V" },
-    { src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80", title: "Nebula VI" },
+    { src: "https://images.pexels.com/photos/7682211/pexels-photo-7682211.jpeg?auto=compress&cs=tinysrgb&w=800", title: "Voice Agent" },
+    { src: "/hero-ai-automation.jpg", title: "AI Automation" },
+    { src: "https://i.pinimg.com/1200x/00/fe/63/00fe63dba9802d545bc1c06b2e3e806e.jpg", title: "Web Development" },
+    { src: "/hero-mobile-app-dev.jpg", title: "Mobile App Development" },
+    { src: "https://i.pinimg.com/736x/fd/77/83/fd7783698ea13963078effe7e2dd8678.jpg", title: "n8n Agents" },
     { src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80", title: "Synthetics VII" },
-    { src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80", title: "Flux Matrix VIII" },
+    { src: "https://images.pexels.com/photos/3184635/pexels-photo-3184635.jpeg?auto=compress&cs=tinysrgb&w=800", title: "Digital Marketing" },
     { src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80", title: "Aether Grid IX" },
     { src: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&auto=format&fit=crop&q=80", title: "Prism Horizon X" },
 ];
@@ -242,18 +242,18 @@ export default function PerspectiveTunnelHero() {
             {/* Central Anchor Typography */}
             <motion.div
                 style={{ scale: titleScale, opacity: titleOpacity }}
-                className="pointer-events-none z-0 flex flex-col items-center text-center px-6 max-w-xl"
+                className="pointer-events-none z-0 flex flex-col items-center text-center px-6 max-w-2xl"
             >
                 <p className="text-xs font-mono uppercase tracking-[0.4em] text-indigo-600 dark:text-indigo-400 mb-4">
-                    NAVIGATING THE FUTURE
+                    FROM PROTOTYPE TO PRODUCTION
                 </p>
-                <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-[0.9] bg-gradient-to-b from-neutral-950 via-neutral-800 to-neutral-400 dark:from-white dark:via-white dark:to-white/40 bg-clip-text text-transparent">
-                    INTO THE
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.92] bg-gradient-to-b from-neutral-950 via-neutral-800 to-neutral-400 dark:from-white dark:via-white dark:to-white/40 bg-clip-text text-transparent">
+                    MAKE YOUR BUSINESS
                     <br />
-                    AI ERA.
+                    AUTONOMOUS
                 </h1>
-                <p className="mt-4 max-w-[42ch] text-sm sm:text-base font-light text-neutral-600 dark:text-neutral-400">
-                    Take the journey from idea to intelligent product, one layer at a time
+                <p className="mt-4 max-w-[44ch] text-sm sm:text-base font-light text-neutral-600 dark:text-neutral-400">
+                    We design and build AI-powered products, from first sketch to live launch.
                 </p>
             </motion.div>
 

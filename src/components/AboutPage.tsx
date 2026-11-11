@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar1Demo from "@/components/ui/navbar-demo";
 import { SiteFooter } from "@/components/ui/site-footer";
 import AboutSection3 from "@/components/ui/about-section";
@@ -12,6 +12,10 @@ interface AboutPageProps {
 }
 
 export function AboutPage({ onBackToHome }: AboutPageProps) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
   return (
     <div id="about-page" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col selection:bg-zinc-900 selection:text-white font-serif transition-colors duration-300">
       {/* Sticky Responsive Header Navigation */}

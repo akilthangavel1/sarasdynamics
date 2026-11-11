@@ -139,8 +139,10 @@ export default function App() {
       setCurrentPage('management');
     } else if (initialHash === '#contact') {
       setCurrentPage('contact');
+      window.scrollTo({ top: 0, behavior: 'instant' });
     } else if (initialHash === '#about') {
       setCurrentPage('about');
+      window.scrollTo({ top: 0, behavior: 'instant' });
     } else if (initialHash === '#careers' || initialHash === '#career') {
       setCurrentPage('careers');
     } else if (initialHash === '#admin') {
@@ -298,7 +300,7 @@ export default function App() {
     }
 
     return (
-      <div id="page-wrapper" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col transition-colors duration-300">
+      <div id="page-wrapper" className="w-full min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-serif transition-colors duration-300">
         {/* Sticky Responsive Header Navigation */}
         <Navbar1Demo />
 

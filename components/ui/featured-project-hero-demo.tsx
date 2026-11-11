@@ -5,10 +5,10 @@ import FeaturedProjectHero, { type FeaturedProject } from "@/components/ui/featu
 import { cn } from "@/lib/utils";
 
 const settings = {
-  eyebrow: "MOBILE APP DEVELOPMENT",
-  title: "From Idea to\nMobile App",
+  eyebrow: "FEATURED WORK",
+  title: "Apps Built for\nReal Users",
   description:
-    "We design, develop, and deploy high-performance mobile applications for Android and iOS, tailored to your business goals.",
+    "We handle the design, the code and the launch so you can focus on your users.",
   projectCount: 3,
   showServices: true,
   showOutcome: true,
@@ -71,112 +71,104 @@ const demoStyles = `
 @media (prefers-reduced-motion:reduce) {.fph-demo__window{transform:none}}
 `;
 
-function ProductPreview({ kind, name }: { kind: "north" | "folio" | "relay"; name: string }) {
+function ProductPreview({ kind, name }: { kind: "lms" | "voice" | "pdf"; name: string }) {
   return (
     <div className="fph-demo__visual bg-muted/40 text-foreground">
       <div className="fph-demo__visual-label text-muted-foreground">
         <strong className="text-foreground">{name}</strong>
-        <span>Concept / 0{kind === "north" ? 1 : kind === "folio" ? 2 : 3}</span>
+        <span>Platform / 0{kind === "lms" ? 1 : kind === "voice" ? 2 : 3}</span>
       </div>
       <div className="fph-demo__window border-border bg-card text-card-foreground">
         <div className="fph-demo__window-head border-border">
           <i className="fph-demo__dot" />
           <i className="fph-demo__dot" />
           <i className="fph-demo__dot" />
-          <span className="text-muted-foreground">{name.toLowerCase()} — workspace</span>
+          <span className="text-muted-foreground">{name.toLowerCase()} — live product</span>
         </div>
-        {kind === "north" ? (
+        {kind === "lms" ? (
           <div className="fph-demo__product">
             <div className="fph-demo__sidebar border-border text-muted-foreground">
-              <span className="fph-demo__brand text-foreground">n / northstar</span>
-              <span className="fph-demo__nav bg-muted text-foreground">Overview</span>
-              <span className="fph-demo__nav">Deployments</span>
-              <span className="fph-demo__nav">Activity</span>
-              <span className="fph-demo__nav">Settings</span>
+              <span className="fph-demo__brand text-foreground">s / skillpath</span>
+              <span className="fph-demo__nav bg-muted text-foreground">Curriculum</span>
+              <span className="fph-demo__nav">Learners</span>
+              <span className="fph-demo__nav">SCORM Tests</span>
+              <span className="fph-demo__nav">Certificates</span>
             </div>
             <div className="fph-demo__screen">
-              <strong className="fph-demo__screen-title">Ready for what’s next.</strong>
-              <span className="fph-demo__screen-sub text-muted-foreground">A clear view of every release.</span>
+              <strong className="fph-demo__screen-title">AI & Engineering Curriculum</strong>
+              <span className="fph-demo__screen-sub text-muted-foreground">Module 04: SCORM / xAPI Auto-Graded</span>
               <div className="fph-demo__metric border-border">
                 <div className="fph-demo__metric-head text-muted-foreground">
-                  <span>Deployment activity</span>
-                  <span>7 days</span>
+                  <span>Completion Rate</span>
+                  <span>96.4% avg</span>
                 </div>
                 <div className="fph-demo__bars">
-                  {[32, 49, 37, 60, 48, 72, 62, 88].map((height, index) => (
+                  {[45, 62, 58, 80, 72, 88, 91, 98].map((height, index) => (
                     <span
                       key={index}
                       className="fph-demo__bar bg-primary"
-                      style={{ height: `${height}%`, opacity: index === 7 ? 0.9 : 0.12 + index * 0.06 }}
+                      style={{ height: `${height}%`, opacity: index === 7 ? 0.95 : 0.2 + index * 0.08 }}
                     />
                   ))}
                 </div>
               </div>
               <div className="fph-demo__release border-border text-muted-foreground">
-                <span>Production / main</span>
-                <span className="fph-demo__status text-foreground">Ready</span>
+                <span>Accreditation / SSO</span>
+                <span className="fph-demo__status text-foreground">Active</span>
               </div>
             </div>
           </div>
-        ) : kind === "folio" ? (
-          <div className="fph-demo__folio">
-            <div className="fph-demo__folio-top">
-              <strong>Folio studio</strong>
-              <span className="text-muted-foreground">Work / About / Contact</span>
-            </div>
-            <div className="fph-demo__folio-title">
-              Make room<br />for the work.
-            </div>
-            <div className="fph-demo__gallery">
-              <div>
-                <div className="fph-demo__art" />
-                <div className="fph-demo__art-label text-muted-foreground">
-                  <span>Form & function</span>
-                  <span>01</span>
-                </div>
+        ) : kind === "voice" ? (
+          <div className="fph-demo__screen p-5">
+            <div className="flex items-center justify-between pb-3 border-b border-border">
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <strong className="text-xs font-semibold">Callwise Telephony Gateway</strong>
               </div>
-              <div>
-                <div className="fph-demo__art" />
-                <div className="fph-demo__art-label text-muted-foreground">
-                  <span>A different perspective</span>
-                  <span>02</span>
-                </div>
+              <span className="text-[10px] font-mono text-muted-foreground">SIP: 200 OK</span>
+            </div>
+            <div className="my-4 p-3 rounded-lg bg-muted/40 border border-border">
+              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                <span>Caller: +1 (555) 019-2834</span>
+                <span className="font-mono text-emerald-500">Latency: 380ms</span>
               </div>
+              <p className="mt-2 text-xs font-medium text-foreground">
+                &ldquo;Thanks for calling Saras. I can book your technical discovery sprint right away.&rdquo;
+              </p>
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-muted-foreground pt-2 border-t border-border">
+              <span>Streaming STT &rarr; LLM &rarr; TTS</span>
+              <span className="text-foreground font-semibold">CRM Synced</span>
             </div>
           </div>
         ) : (
-          <div className="fph-demo__relay">
-            <strong className="fph-demo__screen-title">A little more clarity.</strong>
-            <span className="fph-demo__screen-sub text-muted-foreground">Product workspace / This week</span>
-            <div className="fph-demo__board">
-              {["Planned", "In progress", "Complete"].map((column, index) => (
-                <div key={column}>
-                  <div className="fph-demo__column-label text-muted-foreground">
-                    <span>{column}</span>
-                    <span>02</span>
-                  </div>
-                  {[0, 1].map((row) => (
-                    <div key={row} className="fph-demo__task border-border bg-muted/20">
-                      <span className="fph-demo__task-label">
-                        {[
-                          ["Release brief", "Content audit"],
-                          ["Design review", "Build handoff"],
-                          ["Team kickoff", "Scope agreed"],
-                        ][index]?.[row]}
-                      </span>
-                      <div className="fph-demo__task-line" />
-                      <span className="fph-demo__task-dot" />
-                    </div>
-                  ))}
-                </div>
-              ))}
+          <div className="fph-demo__screen p-5">
+            <div className="flex items-center justify-between pb-3 border-b border-border">
+              <strong className="text-xs font-semibold">ClearPDF Document Engine</strong>
+              <span className="text-[10px] font-mono text-emerald-500">Cleaned in 0.8s</span>
+            </div>
+            <div className="my-4 grid grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border bg-muted/30 text-center">
+                <span className="text-[9px] uppercase tracking-wider text-muted-foreground block mb-1">Before</span>
+                <span className="text-xs line-through text-red-400 font-mono">WATERMARK</span>
+                <span className="text-[10px] text-muted-foreground block mt-1">Obscured Layout</span>
+              </div>
+              <div className="p-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-center">
+                <span className="text-[9px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block mb-1">After</span>
+                <span className="text-xs font-bold text-foreground font-mono">Clean Vector</span>
+                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 block mt-1">100% Quality</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between text-[10px] text-muted-foreground pt-2 border-t border-border">
+              <span>Client-Side Isolation</span>
+              <span className="text-foreground font-semibold">Ready to Download</span>
             </div>
           </div>
         )}
       </div>
       <div className="fph-demo__visual-footer text-muted-foreground">
-        <span>Designed with intention</span>
-        <span>↗ {kind === "relay" ? "2025" : "2026"}</span>
+        <span>Engineered by Saras Dynamics</span>
+        <span>↗ 2026</span>
       </div>
     </div>
   );
@@ -184,52 +176,73 @@ function ProductPreview({ kind, name }: { kind: "north" | "folio" | "relay"; nam
 
 const projects: readonly FeaturedProject[] = [
   {
-    id: "north",
-    name: "Northstar",
-    category: "Developer tools",
+    id: "lms",
+    name: "SkillPath",
+    tabLabel: "SkillPath",
+    category: "LMS & E-LEARNING",
     year: "2026",
-    summary: "A deployment workspace that turns complex release decisions into a clear, considered flow.",
-    services: ["Product strategy", "Interface design", "Design system"],
-    outcome: "One workflow, from first commit to release.",
-    visual: <ProductPreview kind="north" name="Northstar" />,
-    visualDescription: "Northstar concept: a deployment dashboard with release activity and production status.",
+    summary:
+      "A SCORM-compliant learning platform that makes it easy to build courses, assign training and measure results.",
+    services: ["SCORM / xAPI", "AI Auto-Grading", "SSO"],
+    outcome: "One platform, from first lesson to final certificate.",
+    actionLabel: "Explore the LMS",
+    href: "#lms",
+    visual: <ProductPreview kind="lms" name="SkillPath" />,
+    visualDescription:
+      "SkillPath concept: enterprise learning platform with course management, SCORM compliance and auto-grading.",
   },
   {
-    id: "folio",
-    name: "Folio",
-    category: "Creative software",
+    id: "voice",
+    name: "Callwise",
+    tabLabel: "Callwise",
+    category: "VOICE AI",
     year: "2026",
-    summary: "An editorial portfolio platform that gives independent studios more room to show what makes their work their own.",
-    services: ["Brand direction", "Web experience", "Motion design"],
-    outcome: "A flexible canvas for independent practices.",
-    visual: <ProductPreview kind="folio" name="Folio" />,
-    visualDescription: "Folio concept: an editorial portfolio with a large headline and two abstract project previews.",
+    summary:
+      "A real-time voice agent that answers calls, books appointments and updates your CRM, with natural conversation and no awkward pauses.",
+    services: ["Streaming STT/TTS", "SIP Trunking", "CRM Sync"],
+    outcome: "Every call answered, every lead followed up.",
+    actionLabel: "Hear the agent",
+    href: "#voice-agent",
+    visual: <ProductPreview kind="voice" name="Callwise" />,
+    visualDescription:
+      "Callwise concept: real-time telephony agent with sub-second latency and live CRM synchronization.",
   },
   {
-    id: "relay",
-    name: "Relay",
-    category: "Team operations",
-    year: "2025",
-    summary: "A shared workspace that brings the brief, the decisions, and the next useful action into focus.",
-    services: ["User research", "Product design", "Frontend"],
-    outcome: "Clear ownership across every handoff.",
-    visual: <ProductPreview kind="relay" name="Relay" />,
-    visualDescription: "Relay concept: a project board with planned, in-progress, and completed tasks.",
+    id: "pdf",
+    name: "ClearPDF",
+    tabLabel: "ClearPDF",
+    category: "PDF TOOLS",
+    year: "2026",
+    summary:
+      "A fast online tool that removes watermarks from your own PDF documents in seconds, keeping the layout, text and quality intact.",
+    services: ["PDF Processing", "Batch Upload", "Secure Files"],
+    outcome: "Upload, clean, download. No software to install.",
+    actionLabel: "Try the tool",
+    href: "#contact",
+    visual: <ProductPreview kind="pdf" name="ClearPDF" />,
+    visualDescription:
+      "ClearPDF concept: fast PDF watermark removal utility with instant document preview and export.",
   },
 ];
 
 const caseNotes: Record<string, { challenge: string; approach: string }> = {
-  north: {
-    challenge: "Release information was spread across tools, making it difficult to see what was ready and what still needed attention.",
-    approach: "Bring deployment activity, release status, and next steps into one quiet workspace. Give each decision a clear place, and use a shared design system to keep the experience consistent.",
+  lms: {
+    challenge:
+      "Legacy enterprise learning platforms were rigid, difficult to author in, and lacked modern automated grading or clean SSO integrations.",
+    approach:
+      "Architected a SCORM and xAPI-compliant LMS with a modular authoring canvas, AI-driven assessment grading, and turnkey enterprise SSO authentication.",
   },
-  folio: {
-    challenge: "Independent studios needed a portfolio that could communicate their point of view without competing with the work itself.",
-    approach: "Start with editorial typography and a flexible project grid. Keep the navigation small, the rhythm generous, and the presentation adaptable to different creative practices.",
+  voice: {
+    challenge:
+      "High inbound call volumes caused missed opportunities, long caller wait queues, and manual, error-prone CRM record keeping.",
+    approach:
+      "Engineered an ultra-low latency voice pipeline running streaming speech recognition and neural TTS over WebRTC/SIP, executing live CRM lookups and booking calendar invites mid-sentence.",
   },
-  relay: {
-    challenge: "Teams could track tasks, but the reasoning and ownership behind them was harder to find.",
-    approach: "Connect the brief to the board. Make the next action visible, group related decisions, and give every handoff a clear owner and an understandable status.",
+  pdf: {
+    challenge:
+      "Stripping intrusive watermarks from personal and business PDFs typically corrupted document vectors, stripped fonts, or required unsafe software downloads.",
+    approach:
+      "Built a secure, client-accelerated PDF processing pipeline that isolates and eliminates background watermark layers while preserving text formatting, vector sharpness, and document resolution.",
   },
 };
 
@@ -273,7 +286,7 @@ export default function FeaturedProjectHeroDemo({
           onOpenProject={setOpenProjectId}
         />
         <p className="fph-demo__note border-border text-muted-foreground">
-          Concept projects and original interface studies. All names and project stories are fictional.
+          Selected platforms and specialized product builds developed by Saras Dynamics.
         </p>
       </div>
 

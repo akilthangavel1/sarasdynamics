@@ -4,7 +4,7 @@ import { Navbar1 } from "@/components/ui/shadcnblocks-com-navbar1";
 const demoData = {
   logo: {
     url: "#",
-    src: "/saras-dynamics-logo.svg",
+    src: "/saras-dynamics-logo.png",
     alt: "Saras Dynamics logo",
     title: "Saras Dynamics",
   },

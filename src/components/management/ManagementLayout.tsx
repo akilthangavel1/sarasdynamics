@@ -147,12 +147,17 @@ export function ManagementLayout({
 
             <div
               onClick={onBackToWebsite}
-              className="flex items-center gap-2 cursor-pointer group"
+              className="flex items-center gap-2.5 cursor-pointer group"
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-[#c30000] group-hover:scale-110 transition-transform" />
+              <img
+                src="/saras-dynamics-logo.png?v=2"
+                className="h-8 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform"
+                alt="Saras Dynamics"
+              />
               <div className="flex flex-col">
-                <span className="text-sm font-black tracking-tight text-zinc-900 uppercase">
-                  Saras Dynamics
+                <span className="text-sm tracking-tight uppercase">
+                  <span className="text-black font-black">Saras </span>
+                  <span className="text-zinc-500 font-bold">Dynamics</span>
                 </span>
                 <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
                   Management Console

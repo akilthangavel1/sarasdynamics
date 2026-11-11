@@ -76,7 +76,7 @@ export interface Navbar1Props {
 const Navbar1 = ({
   logo = {
     url: "#",
-    src: "/saras-dynamics-logo.svg",
+    src: "/saras-dynamics-logo.png",
     alt: "Saras Dynamics logo",
     title: "Saras Dynamics",
   },
@@ -200,15 +200,19 @@ const Navbar1 = ({
     if (title.includes("Dynamics")) {
       const parts = title.split("Dynamics");
       return (
-        <span className="text-base font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
-          {parts[0]}
-          <span className="text-red-600 font-extrabold">Dynamics</span>
+        <span className="text-base tracking-tight transition-colors">
+          <span className="text-black dark:text-white font-black">
+            {parts[0]}
+          </span>
+          <span className="text-zinc-500 dark:text-zinc-400 font-bold">
+            Dynamics
+          </span>
           {parts.slice(1).join("Dynamics")}
         </span>
       );
     }
     return (
-      <span className="text-base font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors">
+      <span className="text-base font-bold tracking-tight text-black dark:text-white transition-colors">
         {title}
       </span>
     );
@@ -233,15 +237,17 @@ const Navbar1 = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
         <nav className="hidden justify-between items-center lg:flex">
           <div className="flex items-center gap-8">
-            <a href={logo.url} className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 transition-colors">
-                <img
-                  src={logo.src}
-                  className="w-full h-full object-contain rounded-md"
-                  alt={logo.alt}
-                />
-              </div>
-              {renderBrandTitle(logo.title)}
+            <a href={logo.url} className="flex items-center group py-0.5">
+              <img
+                src="/saras-dynamics-navbar-logo.png?v=4"
+                className="h-6 sm:h-7 w-auto object-contain dark:hidden shrink-0 transition-transform group-hover:scale-[1.02]"
+                alt={logo.alt}
+              />
+              <img
+                src="/saras-dynamics-navbar-logo-dark.png?v=4"
+                className="h-6 sm:h-7 w-auto object-contain hidden dark:block shrink-0 transition-transform group-hover:scale-[1.02]"
+                alt={logo.alt}
+              />
             </a>
             <div className="flex items-center">
               <NavigationMenu>
@@ -382,15 +388,17 @@ const Navbar1 = ({
         {/* Mobile Navigation */}
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <a href={logo.url} className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
-                <img
-                  src={logo.src}
-                  className="w-full h-full object-contain rounded-md"
-                  alt={logo.alt}
-                />
-              </div>
-              {renderBrandTitle(logo.title)}
+            <a href={logo.url} className="flex items-center group py-0.5">
+              <img
+                src="/saras-dynamics-navbar-logo.png?v=4"
+                className="h-5.5 sm:h-6 w-auto object-contain dark:hidden shrink-0"
+                alt={logo.alt}
+              />
+              <img
+                src="/saras-dynamics-navbar-logo-dark.png?v=4"
+                className="h-5.5 sm:h-6 w-auto object-contain hidden dark:block shrink-0"
+                alt={logo.alt}
+              />
             </a>
             <div className="flex items-center gap-2">
               <ThemeToggle />
@@ -408,15 +416,17 @@ const Navbar1 = ({
                 <SheetContent className="overflow-y-auto bg-white dark:bg-zinc-950 dark:text-zinc-100 dark:border-zinc-800">
                   <SheetHeader>
                     <SheetTitle>
-                      <a href={logo.url} className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-2xs flex items-center justify-center p-0.5 shrink-0">
-                          <img
-                            src={logo.src}
-                            className="w-full h-full object-contain rounded-md"
-                            alt={logo.alt}
-                          />
-                        </div>
-                        {renderBrandTitle(logo.title)}
+                      <a href={logo.url} className="flex items-center py-0.5">
+                        <img
+                          src="/saras-dynamics-navbar-logo.png?v=4"
+                          className="h-6 w-auto object-contain dark:hidden shrink-0"
+                          alt={logo.alt}
+                        />
+                        <img
+                          src="/saras-dynamics-navbar-logo-dark.png?v=4"
+                          className="h-6 w-auto object-contain hidden dark:block shrink-0"
+                          alt={logo.alt}
+                        />
                       </a>
                     </SheetTitle>
                   </SheetHeader>

@@ -56,6 +56,23 @@ export function SiteFooter() {
       className="w-full border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-200 transition-colors"
     >
       <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="flex items-center gap-2.5 mb-10">
+          <img
+            src="/saras-dynamics-logo.png?v=2"
+            className="h-8 w-auto object-contain dark:hidden shrink-0"
+            alt="Saras Dynamics"
+          />
+          <img
+            src="/saras-dynamics-logo-dark.png?v=2"
+            className="h-8 w-auto object-contain hidden dark:block shrink-0"
+            alt="Saras Dynamics"
+          />
+          <span className="text-base tracking-tight">
+            <span className="text-black dark:text-white font-black">Saras </span>
+            <span className="text-zinc-500 dark:text-zinc-400 font-bold">Dynamics</span>
+          </span>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pb-10">
           {footerColumns.map((col) => (
             <div key={col.title} className="flex flex-col">

@@ -16,6 +16,8 @@ export interface FeaturedProject {
   visualDescription?: string;
   /** A real case-study route; links take priority over the callback. */
   href?: string;
+  actionLabel?: string;
+  tabLabel?: string;
 }
 
 export interface FeaturedProjectHeroProps
@@ -158,7 +160,7 @@ export function FeaturedProjectHero({
               select(next);
               tabs.current[next]?.focus();
             }}>
-            <span className={`fph__tab-number ${index === selectedIndex ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{item.name}
+            <span className={`fph__tab-number ${index === selectedIndex ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{item.tabLabel ?? item.name}
           </button>)}
         </div>
         <article key={project.id} className="fph__panel" id={panelId} role="tabpanel" aria-labelledby={`${uid}-tab-${selectedIndex}`} tabIndex={0}>
@@ -173,7 +175,7 @@ export function FeaturedProjectHero({
             <p className="fph__summary text-muted-foreground">{project.summary}</p>
             {showServices && project.services.length > 0 && <ul className="fph__services border-border" aria-label="Project services">{project.services.map((service, index) => <li key={`${service}-${index}`} className="fph__service border-border bg-card text-muted-foreground">{service}</li>)}</ul>}
             {showOutcome && project.outcome && <div className="fph__outcome border-border"><span className="fph__outcome-label text-muted-foreground">The difference</span><p>{project.outcome}</p></div>}
-            {project.href ? <a className="fph__action bg-primary text-primary-foreground" href={project.href}>{actionLabel}<Arrow /></a> : onOpenProject ? <button type="button" className="fph__action bg-primary text-primary-foreground" onClick={() => onOpenProject(project.id)}>{actionLabel}<Arrow /></button> : null}
+            {project.href ? <a className="fph__action bg-primary text-primary-foreground" href={project.href}>{project.actionLabel ?? actionLabel}<Arrow /></a> : onOpenProject ? <button type="button" className="fph__action bg-primary text-primary-foreground" onClick={() => onOpenProject(project.id)}>{project.actionLabel ?? actionLabel}<Arrow /></button> : null}
           </div>
         </article>
       </> : <div className="fph__empty border-border bg-muted/20 text-muted-foreground" role="status"><strong className="text-foreground">No projects yet</strong><p>Add a project to start your selected-work collection.</p></div>}
